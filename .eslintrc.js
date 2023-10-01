@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ["@calblueprint/eslint-config-react", "eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+    extends: ["@calblueprint/eslint-config-react"],
     rules: {
       // Add any custom rules here
       // Disable the rule that requires React to be in scope -- we don't need this with React 18
