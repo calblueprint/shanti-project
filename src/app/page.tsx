@@ -8,7 +8,6 @@ export default function App() {
         <main>
             <GlobalStyle />
             <Fullscreen>
-
                 <LoginBox>
                     <LoginContent>
                         <WelcomeSign>Welcome</WelcomeSign>
