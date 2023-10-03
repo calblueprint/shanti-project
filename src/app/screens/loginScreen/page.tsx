@@ -1,8 +1,16 @@
-'use client'
+'use client';
 
-import LoginForm from "../../components/LoginForm";
+import LoginForm from '../../components/LoginForm';
 
-import { GlobalStyle, Fullscreen, Img, LoginBox, LoginContent, WelcomeSign, Button } from "./styles"
+import {
+  GlobalStyle,
+  Fullscreen,
+  Img,
+  LoginBox,
+  LoginContent,
+  WelcomeSign,
+  Button,
+} from './styles';
 
 export default function App() {
   return (
@@ -18,6 +26,6 @@ export default function App() {
           </LoginContent>
         </LoginBox>
       </Fullscreen>
-    </main >
-  )
+    </main>
+  );
 }
