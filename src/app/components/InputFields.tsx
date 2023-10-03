@@ -3,11 +3,12 @@
 import { FormHeaders, Input } from "../screens/loginScreen/styles"
 
 export default function InputFields(props: { text: string, placeholder: string }) {
+    const { text, placeholder } = props;
     return (
         <main>
             <div id="userInfo">
-                <FormHeaders>{props.text}</FormHeaders>
-                <Input type="text" placeholder={props.placeholder} />
+                <FormHeaders>{text}</FormHeaders>
+                <Input type="text" placeholder={placeholder} />
             </div>
         </main>
 

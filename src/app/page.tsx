@@ -1,4 +1,5 @@
 'use client'
+
 import LoginForm from "./components/LoginForm";
 import { GlobalStyle, Fullscreen, LoginBox, LoginContent, WelcomeSign, Button } from "./screens/loginScreen/styles"
 
