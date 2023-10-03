@@ -1,5 +1,7 @@
 'use client'
+
 import LoginForm from "../../components/LoginForm";
+
 import { GlobalStyle, Fullscreen, Img, LoginBox, LoginContent, WelcomeSign, Button } from "./styles"
 
 export default function App() {

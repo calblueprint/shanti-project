@@ -1,6 +1,8 @@
 'use client'
+
 import { FormHeaders, Input } from "../screens/loginScreen/styles"
-export default function InputFields(props: { text: String, placeholder: string }) {
+
+export default function InputFields(props: { text: string, placeholder: string }) {
     return (
         <main>
             <div id="userInfo">

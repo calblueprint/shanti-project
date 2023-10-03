@@ -1,5 +1,7 @@
 'use client'
+
 import InputFields from "./InputFields"
+
 export default function LoginForm() {
     return (
         <div>
