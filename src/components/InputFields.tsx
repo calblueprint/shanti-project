@@ -1,6 +1,6 @@
 'use client';
 
-import { FormHeaders, Input } from '../screens/loginScreen/styles';
+import { FormHeaders, Input } from '../app/screens/login/styles';
 
 export default function InputFields(props: {
   text: string;
