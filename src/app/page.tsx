@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Checkout() {
     return (
       <main>
-        <div>Landing Page</div>
+        <Link href="/login">Login</Link>
       </main>
     );
   }
