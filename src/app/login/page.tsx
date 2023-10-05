@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import LoginForm from '../../components/LoginForm';
 
 import {
@@ -22,7 +23,9 @@ export default function App() {
           <LoginContent>
             <WelcomeSign>Welcome</WelcomeSign>
             <LoginForm />
-            <Button>Log In</Button>
+            <Button>
+              <Link href="/storefront">Log In</Link>
+              </Button>
           </LoginContent>
         </LoginBox>
       </Fullscreen>
