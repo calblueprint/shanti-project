@@ -25,7 +25,7 @@ export default function App() {
             <LoginForm />
             <Button>
               <Link href="/storefront">Log In</Link>
-              </Button>
+            </Button>
           </LoginContent>
         </LoginBox>
       </Fullscreen>

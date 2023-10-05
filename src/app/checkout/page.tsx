@@ -1,8 +1,7 @@
 export default function Checkout() {
-    return (
-      <main>
-        <div>Checkout</div>
-      </main>
-    );
-  }
-  
+  return (
+    <main>
+      <div>Checkout</div>
+    </main>
+  );
+}
