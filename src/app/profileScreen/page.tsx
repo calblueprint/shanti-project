@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default function Profile() {
   return (
     <main>
@@ -7,6 +8,8 @@ export default function Profile() {
   );
 }
 =======
+=======
+>>>>>>> 22db8ee5f1602e4c6c766b86d5cb474c7b6dd5fa
 'use client';
 import { LogOutButton, GlobalStyle } from './style';
 import { createClient } from '@supabase/supabase-js';
@@ -27,4 +30,7 @@ async function signOut() {
   );
   const { error } = await supabase.auth.signOut();
 }
+<<<<<<< HEAD
 >>>>>>> 22db8ee (refactor:changed folder name)
+=======
+>>>>>>> 22db8ee5f1602e4c6c766b86d5cb474c7b6dd5fa
