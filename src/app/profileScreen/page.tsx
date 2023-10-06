@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-export default function Profile() {
-  return (
-    <main>
-      <div>Profile</div>
-    </main>
-  );
-}
-=======
 'use client';
 import { LogOutButton, GlobalStyle } from './style';
 import { createClient } from '@supabase/supabase-js';
@@ -27,4 +18,4 @@ async function signOut() {
   );
   const { error } = await supabase.auth.signOut();
 }
->>>>>>> 22db8ee (refactor:changed folder name)
+
