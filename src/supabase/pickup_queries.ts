@@ -49,22 +49,3 @@ async function fetchPickupTimesByUUID(uuid: string): Promise<PostgrestSingleResp
 }
 
 
-// async function addPickupTime(pickupData: Schedule): Promise<PostgrestSingleResponse<Schedule>[] | null> {
-//   try {
-//     const { data: insertedPickupTime, error } = await supabase
-//       .from('Pickup_Times')
-//       .insert([pickupData])
-//       .single();
-
-//     if (error) {
-//       console.error('Error inserting pickup time:', error);
-//     }
-
-//     return insertedPickupTime;
-//   } catch (error) {
-//     console.error('Error:', error);
-//     throw error;
-//   }
-// }
-
-

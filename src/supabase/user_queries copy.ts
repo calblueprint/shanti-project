@@ -50,24 +50,6 @@ async function fetchUserByUUID(uuid: string): Promise<PostgrestSingleResponse<an
 }
 
 
-// async function insertUser(userData: Omit<User, 'user_id'>): Promise<PostgrestSingleResponse<User>[] | null> {
-//   try {
-//     const { data, error } = await supabase
-//       .from('Users')
-//       .insert([userData])
-//       .select();
-
-//     if (error) {
-//       console.error('Error inserting data:', error);
-//       return null;
-//     }
-
-//     return data;
-//   } catch (error) {
-//     console.error('Error:', error);
-//     throw error;
-//   }
-// }
 
 
 async function addUserAddress(
