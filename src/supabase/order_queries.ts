@@ -1,5 +1,13 @@
-import { PostgrestSingleResponse, PostgrestError, createClient } from '@supabase/supabase-js';
-import { Order } from '../../types/schema';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
+//
+
+import {
+  PostgrestSingleResponse,
+  PostgrestError,
+  createClient,
+} from '@supabase/supabase-js';
+import { Order } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
 const supabaseUrl = 'YOUR_SUPABASE_URL';
@@ -8,9 +16,9 @@ const supabaseApiKey = 'YOUR_SUPABASE_API_KEY';
 // Initialize the Supabase client
 const supabase = createClient(supabaseUrl, supabaseApiKey);
 
-
-
-async function fetchOrders(): Promise<PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }>{
+async function fetchOrders(): Promise<
+  PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }
+> {
   try {
     const { data: orders, error } = await supabase
       .from('Order') // Update to the "Order" table
@@ -29,7 +37,9 @@ async function fetchOrders(): Promise<PostgrestSingleResponse<Order[]> | { data:
   }
 }
 
-async function fetchOrderByUUID(uuid: string): Promise<PostgrestSingleResponse<Order>> {
+async function fetchOrderByUUID(
+  uuid: string,
+): Promise<PostgrestSingleResponse<Order>> {
   try {
     const { data: order, error } = await supabase
       .from('Order') // Update to the "Order" table
@@ -48,7 +58,11 @@ async function fetchOrderByUUID(uuid: string): Promise<PostgrestSingleResponse<O
   }
 }
 
-async function getOrdersByUserId(userId: string): Promise<PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }> {
+async function getOrdersByUserId(
+  userId: string,
+): Promise<
+  PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }
+> {
   try {
     const { data: orders, error } = await supabase
       .from('Order')
@@ -69,7 +83,9 @@ async function getOrdersByUserId(userId: string): Promise<PostgrestSingleRespons
 }
 
 // Function to get an order by its ID
-async function getOrderById(orderId: string): Promise<PostgrestSingleResponse<Order>> {
+async function getOrderById(
+  orderId: string,
+): Promise<PostgrestSingleResponse<Order>> {
   try {
     const { data: order, error } = await supabase
       .from('Order')
@@ -88,7 +104,9 @@ async function getOrderById(orderId: string): Promise<PostgrestSingleResponse<Or
   }
 }
 
-async function toggleOrderProgress(orderId: string): Promise<PostgrestSingleResponse<Order>> {
+async function toggleOrderProgress(
+  orderId: string,
+): Promise<PostgrestSingleResponse<Order>> {
   try {
     // Fetch the order by ID to get its current "approved" value
     const { data: currentOrder, error: fetchError } = await supabase
@@ -142,4 +160,3 @@ async function updateAllOrdersProgressToTrue(): Promise<boolean | string> {
     return 'Update failed'; // Return an error message if an exception occurs
   }
 }
-

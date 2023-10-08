@@ -1,5 +1,13 @@
-import { PostgrestSingleResponse, PostgrestError, createClient } from '@supabase/supabase-js';
-import { Schedule } from '../../types/schema';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
+//
+
+import {
+  PostgrestSingleResponse,
+  PostgrestError,
+  createClient,
+} from '@supabase/supabase-js';
+import { Schedule } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
 const supabaseUrl = 'YOUR_SUPABASE_URL';
@@ -8,9 +16,9 @@ const supabaseApiKey = 'YOUR_SUPABASE_API_KEY';
 // Initialize the Supabase client
 const supabase = createClient(supabaseUrl, supabaseApiKey);
 
-
-
-async function fetchData(): Promise<PostgrestSingleResponse<Schedule[]> | { data: never[]; error: PostgrestError }> {
+async function fetchData(): Promise<
+  PostgrestSingleResponse<Schedule[]> | { data: never[]; error: PostgrestError }
+> {
   try {
     const { data: pickupTimes, error } = await supabase
       .from('Pickup_Times')
@@ -29,7 +37,9 @@ async function fetchData(): Promise<PostgrestSingleResponse<Schedule[]> | { data
   }
 }
 
-async function fetchPickupTimesByUUID(uuid: string): Promise<PostgrestSingleResponse<any>> {
+async function fetchPickupTimesByUUID(
+  uuid: string,
+): Promise<PostgrestSingleResponse<unknown>> {
   try {
     const { data: pickupTimes, error } = await supabase
       .from('Pickup_Times')
@@ -47,5 +57,3 @@ async function fetchPickupTimesByUUID(uuid: string): Promise<PostgrestSingleResp
     throw error;
   }
 }
-
-
