@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import supabase from '../createClient';
 
 export const handleSignUp = async (email: string, password: string) => {

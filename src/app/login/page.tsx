@@ -20,7 +20,6 @@ import {
   signOut,
 } from '../../api/supabase/auth/auth';
 
-
 export default function App() {
   return (
     <main>
