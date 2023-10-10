@@ -1,18 +1,18 @@
 export const buttons = [
   {
     name: 'All',
-    value: 'all',
+    value: 'All',
   },
   {
-    name: 'Fire',
-    value: 'fire',
+    name: 'Dog',
+    value: 'Dog',
   },
   {
-    name: 'Normal',
-    value: 'normal',
+    name: 'Cat',
+    value: 'Cat',
   },
   {
-    name: 'Electric',
-    value: 'eletric',
+    name: 'Misc.',
+    value: 'Misc.',
   },
 ];

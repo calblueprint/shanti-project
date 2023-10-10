@@ -1,49 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import './styles.css';
-import { buttons } from './data';
-import { getPokemon, filterPokemon } from '../services/services';
+'use client';
+import { getProduct, filterProduct } from './helperFunction';
+import React from 'react';
+import { useState } from 'react';
+import { buttons } from './data.js';
+import { GlobalStyle, ButtonsContainer } from './styles';
+import ProductButtons from './productButtons';
 
-export function getPokemon() {
-  const pokemonList = pokemons;
-  return pokemonList;
-}
-
-export function filterPokemon(pokeType) {
-  let filtredPokemon = getPokemon().filter(type => type.tipo === pokeType);
-  return filtredPokemon;
-}
-
-//Dog, Cat, Supplies
+//https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
-  const [filtredPokemon, setFiltredProducts] = useState(null);
-  useEffect(() => {
-    setFiltredProducts(getPokemon());
-  }, []);
-
-  function handlePokemon(e) {
-    let typePokemon = e.target.value;
-    typePokemon !== 'all'
-      ? setFiltredPokemon(filterPokemon(typePokemon))
-      : setFiltredPokemon(getPokemon());
-  }
+  const [filtredProduct, setFiltredProducts] = useState(null);
+  const [isClicked, setisClicked] = useState(false);
 
   return (
-    <>
-      {buttons &&
-        buttons.map((type, index) => (
-          <>
-            <button key={index} value={type.value} onClick={handlePokemon}>
-              {type.name}
-            </button>
-          </>
+    <main>
+      <GlobalStyle />
+      <ButtonsContainer>
+        {buttons.map((type, index) => (
+          <ProductButtons
+            key={index}
+            value={type.value}
+            setFiltredProducts={setFiltredProducts}
+            content={type.name}
+          ></ProductButtons>
         ))}
-
-      {filtredPokemon &&
-        filtredPokemon.map(type => (
-          <ul key={type.id}>
-            <li>{type.nome}</li>
-          </ul>
-        ))}
-    </>
+      </ButtonsContainer>
+    </main>
   );
 }
