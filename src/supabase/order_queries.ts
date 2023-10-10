@@ -10,13 +10,13 @@ import {
 import { Order } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
-const supabaseUrl = 'YOUR_SUPABASE_URL';
-const supabaseApiKey = 'YOUR_SUPABASE_API_KEY';
+const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co'
+const supabaseApiKey = process.env.SUPABASE_KEY
 
 // Initialize the Supabase client
-const supabase = createClient(supabaseUrl, supabaseApiKey);
+const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
 
-async function fetchOrders(): Promise<
+export async function fetchOrders(): Promise<
   PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }
 > {
   try {
@@ -37,7 +37,7 @@ async function fetchOrders(): Promise<
   }
 }
 
-async function fetchOrderByUUID(
+export async function fetchOrderByUUID(
   uuid: string,
 ): Promise<PostgrestSingleResponse<Order>> {
   try {
@@ -58,7 +58,7 @@ async function fetchOrderByUUID(
   }
 }
 
-async function getOrdersByUserId(
+export  async function getOrdersByUserId(
   userId: string,
 ): Promise<
   PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }
@@ -83,7 +83,7 @@ async function getOrdersByUserId(
 }
 
 // Function to get an order by its ID
-async function getOrderById(
+export async function getOrderById(
   orderId: string,
 ): Promise<PostgrestSingleResponse<Order>> {
   try {
@@ -104,7 +104,7 @@ async function getOrderById(
   }
 }
 
-async function toggleOrderProgress(
+export async function toggleOrderProgress(
   orderId: string,
 ): Promise<PostgrestSingleResponse<Order>> {
   try {
@@ -142,7 +142,7 @@ async function toggleOrderProgress(
   }
 }
 
-async function updateAllOrdersProgressToTrue(): Promise<boolean | string> {
+export async function updateAllOrdersProgressToTrue(): Promise<boolean | string> {
   try {
     // Update all orders to set "approved" to true
     const { error: updateError } = await supabase

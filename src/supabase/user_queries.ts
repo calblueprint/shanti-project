@@ -10,13 +10,13 @@ import {
 import { User } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
-const supabaseUrl = 'YOUR_SUPABASE_URL';
-const supabaseApiKey = 'YOUR_SUPABASE_API_KEY';
+const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co'
+const supabaseApiKey = process.env.SUPABASEKEY
 
 // Initialize the Supabase client
-const supabase = createClient(supabaseUrl, supabaseApiKey);
+const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
 
-async function fetchData(): Promise<
+export async function fetchData(): Promise<
   PostgrestSingleResponse<User[]> | { data: never[]; error: PostgrestError }
 > {
   try {
@@ -36,7 +36,7 @@ async function fetchData(): Promise<
   }
 }
 
-async function fetchUserByUUID(
+export async function fetchUserByUUID(
   uuid: string,
 ): Promise<PostgrestSingleResponse<unknown>> {
   try {
@@ -57,7 +57,7 @@ async function fetchUserByUUID(
   }
 }
 
-async function addUserAddress(
+export async function addUserAddress(
   uuid: string,
   newStreet: string,
   newCity: string,

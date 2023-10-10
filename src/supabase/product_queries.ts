@@ -9,13 +9,13 @@ import {
 import { Product } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
-const supabaseUrl = 'YOUR_SUPABASE_URL';
-const supabaseApiKey = 'YOUR_SUPABASE_API_KEY';
+const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co'
+const supabaseApiKey = process.env.SUPABASE_KEY
 
 // Initialize the Supabase client
-const supabase = createClient(supabaseUrl, supabaseApiKey);
+const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
 
-async function fetchProducts(): Promise<
+export async function fetchProducts(): Promise<
   PostgrestSingleResponse<Product[]> | { data: never[]; error: PostgrestError }
 > {
   try {
@@ -36,7 +36,7 @@ async function fetchProducts(): Promise<
   }
 }
 
-async function fetchProductByName(
+export async function fetchProductByName(
   productName: string,
 ): Promise<PostgrestSingleResponse<Product>> {
   try {

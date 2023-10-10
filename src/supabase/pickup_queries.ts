@@ -10,13 +10,14 @@ import {
 import { Schedule } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
-const supabaseUrl = 'YOUR_SUPABASE_URL';
-const supabaseApiKey = 'YOUR_SUPABASE_API_KEY';
+const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co'
+const supabaseApiKey = process.env.SUPABASE_KEY
 
 // Initialize the Supabase client
-const supabase = createClient(supabaseUrl, supabaseApiKey);
+const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
 
-async function fetchData(): Promise<
+
+export async function fetchData(): Promise<
   PostgrestSingleResponse<Schedule[]> | { data: never[]; error: PostgrestError }
 > {
   try {
@@ -37,7 +38,7 @@ async function fetchData(): Promise<
   }
 }
 
-async function fetchPickupTimesByUUID(
+export async function fetchPickupTimesByUUID(
   uuid: string,
 ): Promise<PostgrestSingleResponse<unknown>> {
   try {
