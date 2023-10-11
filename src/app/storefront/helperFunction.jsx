@@ -15,15 +15,14 @@ const supabase = createClient(
 );
 
 export async function getProduct() {
-  let { data, error } = await supabase.from('Product').select('*');
-
+  let { data, error } = await supabase.from('product').select('*');
   console.log(data);
   return data;
 }
 
 export async function filterProduct(productType) {
   const { data, error } = await supabase
-    .from('Product')
+    .from('product')
     .select('*')
     .eq('category', productType);
 

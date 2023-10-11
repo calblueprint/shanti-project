@@ -21,8 +21,8 @@ export default function InputFields(props: {
   } = props;
   const [inputValue, setInputValue] = useState('');
 
-  const handleChange = (e: { target: { value: any } }) => {
-    const {value} = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
     setInputValue(value);
 
     if (isPassword) {

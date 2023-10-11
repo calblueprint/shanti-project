@@ -35,7 +35,7 @@ export default function App() {
       <ButtonsContainer>
         {buttons.map((type, index) => (
           <ProductButtons
-            key={type.name}
+            key={index}
             value={type.value}
             setFiltredProducts={setFiltredProducts}
             content={type.name}
