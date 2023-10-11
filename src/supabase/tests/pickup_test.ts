@@ -1,10 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import {
-  fetchPickupData,
-  fetchPickupTimesByUUID,
-} from '../pickup_queries'; // Replace './your-module' with the actual path to your module
+import { fetchPickupData, fetchPickupTimesByUUID } from '../pickup_queries'; // Replace './your-module' with the actual path to your module
 
 // Test fetching data
 export async function testFetchPickupData() {

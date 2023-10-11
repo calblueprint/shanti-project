@@ -2,9 +2,9 @@
 //
 
 import {
-  fetchUserData, 
-  fetchUserByUUID, 
-  addUserAddress
+  fetchUserData,
+  fetchUserByUUID,
+  addUserAddress,
 } from '../user_queries';
 
 export async function testFetchUserData() {
@@ -39,4 +39,3 @@ export async function testAddUserAddress() {
     console.error('Test Add User Address Error:', error);
   }
 }
-

@@ -9,8 +9,8 @@ import {
 import { Order } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
-const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co'
-const supabaseApiKey = process.env.SUPABASE_KEY
+const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co';
+const supabaseApiKey = process.env.SUPABASE_KEY;
 
 // Initialize the Supabase client
 const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
@@ -57,7 +57,7 @@ export async function fetchOrderByUUID(
   }
 }
 
-export  async function getOrdersByUserId(
+export async function getOrdersByUserId(
   userId: string,
 ): Promise<
   PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }
@@ -141,7 +141,9 @@ export async function toggleOrderProgress(
   }
 }
 
-export async function updateAllOrdersProgressToTrue(): Promise<boolean | string> {
+export async function updateAllOrdersProgressToTrue(): Promise<
+  boolean | string
+> {
   try {
     // Update all orders to set "approved" to true
     const { error: updateError } = await supabase

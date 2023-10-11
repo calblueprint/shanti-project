@@ -1,10 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import {
-  fetchProducts,
-  fetchProductByID,
-} from '../product_queries'; // Replace './your-module' with the actual path to your module
+import { fetchProducts, fetchProductByID } from '../product_queries'; // Replace './your-module' with the actual path to your module
 
 // Test fetching all products
 export async function testFetchProducts() {
