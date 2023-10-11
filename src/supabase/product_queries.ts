@@ -36,14 +36,14 @@ export async function fetchProducts(): Promise<
   }
 }
 
-export async function fetchProductByName(
-  productName: string,
+export async function fetchProductByID(
+  productId: string,
 ): Promise<PostgrestSingleResponse<Product>> {
   try {
     const { data: product, error } = await supabase
       .from('Product')
       .select('*')
-      .eq('name', productName)
+      .eq('product_id', productId)
       .single();
 
     if (error) {

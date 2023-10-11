@@ -1,8 +1,15 @@
-import {fetchData, fetchUserByUUID, addUserAddress} from '../user_queries';
+/* eslint-disable no-console */
+//
 
-export async function testFetchData() {
+import {
+  fetchUserData, 
+  fetchUserByUUID, 
+  addUserAddress
+} from '../user_queries';
+
+export async function testFetchUserData() {
   try {
-    const result = await fetchData();
+    const result = await fetchUserData();
     console.log('Fetch Data Result:', result);
   } catch (error) {
     console.error('Test Fetch Data Error:', error);
@@ -33,7 +40,3 @@ export async function testAddUserAddress() {
   }
 }
 
-// Call the test functions
-testFetchData();
-testFetchUserByUUID();
-testAddUserAddress();

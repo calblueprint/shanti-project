@@ -11,12 +11,12 @@ import { User } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
 const supabaseUrl = 'https://raqpvvgsmwarxhaialcz.supabase.co'
-const supabaseApiKey = process.env.SUPABASEKEY
+const supabaseApiKey = process.env.SUPABASE_KEY
 
 // Initialize the Supabase client
 const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
 
-export async function fetchData(): Promise<
+export async function fetchUserData(): Promise<
   PostgrestSingleResponse<User[]> | { data: never[]; error: PostgrestError }
 > {
   try {

@@ -17,7 +17,7 @@ const supabaseApiKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseApiKey ?? '');
 
 
-export async function fetchData(): Promise<
+export async function fetchPickupData(): Promise<
   PostgrestSingleResponse<Schedule[]> | { data: never[]; error: PostgrestError }
 > {
   try {
