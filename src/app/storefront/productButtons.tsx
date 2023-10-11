@@ -1,8 +1,9 @@
 'use client';
+
+import React, { useState } from 'react';
 import { Button, Label, IndividualContainer } from './styles';
 import { getProduct, filterProduct } from './helperFunction';
-import React from 'react';
-import { useState } from 'react';
+
 export default function ProductButtons(props: {
   key: number;
   value: string;
@@ -15,7 +16,7 @@ export default function ProductButtons(props: {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     setIsClicked(!IsClicked);
-    let category = e.currentTarget.value;
+    const category = e.currentTarget.value;
     console.log(category);
     category != 'All'
       ? setFiltredProducts(await filterProduct(category))

@@ -1,7 +1,8 @@
 'use client';
 
-import { FormHeaders, Input } from '../app/login/styles';
 import { useState } from 'react';
+import { FormHeaders, Input } from '../app/login/styles';
+
 export default function InputFields(props: {
   text: string;
   placeholder: string;
@@ -21,7 +22,7 @@ export default function InputFields(props: {
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: { target: { value: any } }) => {
-    const value = e.target.value;
+    const {value} = e.target;
     setInputValue(value);
 
     if (isPassword) {

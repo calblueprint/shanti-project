@@ -23,7 +23,7 @@ export default function LoginForm(props: {
         placeholder="************"
         changeUserName={changeUserName}
         changePassword={changePassword}
-        isPassword={true}
+        isPassword
       />
     </div>
   );
