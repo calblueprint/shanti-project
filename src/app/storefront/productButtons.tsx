@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import React, { useState } from 'react';
 import { Button, Label, IndividualContainer } from './styles';
@@ -12,27 +12,30 @@ export default function ProductButtons(props: {
 }) {
   const { key, value, content, setFiltredProducts } = props;
   const [IsClicked, setIsClicked] = useState(false);
+
   async function applyFilter(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     setIsClicked(!IsClicked);
     const category = e.currentTarget.value;
     console.log(category);
-    category != 'All'
-      ? setFiltredProducts(await filterProduct(category))
-      : setFiltredProducts(await getProduct());
+
+    if (category !== 'All') {
+      setFiltredProducts(await filterProduct(category));
+    } else {
+      setFiltredProducts(await getProduct());
+    }
   }
-  {
-    return (
-      <IndividualContainer>
-        <Button
-          isClicked={IsClicked}
-          key={key}
-          value={value}
-          onClick={e => applyFilter(e)}
-        />
-        <Label isClicked={IsClicked}>{content}</Label>
-      </IndividualContainer>
-    );
-  }
+
+  return (
+    <IndividualContainer>
+      <Button
+        isClicked={IsClicked}
+        key={key}
+        value={value}
+        onClick={e => applyFilter(e)}
+      />
+      <Label isClicked={IsClicked}>{content}</Label>
+    </IndividualContainer>
+  );
 }
