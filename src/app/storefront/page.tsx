@@ -6,6 +6,15 @@ import { getProduct, filterProduct } from './helperFunction';
 import { GlobalStyle, ButtonsContainer } from './styles';
 import ProductButtons from './productButtons';
 
+interface Product {
+  description: string;
+  category: string;
+  quantity: number;
+  photo: string;
+  product_id: number;
+  name: string;
+  updated_at: Date;
+}
 // https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
   const buttons = [
@@ -30,7 +39,7 @@ export default function App() {
       count: 3,
     },
   ];
-  const [filtredProduct, setFiltredProducts] = useState(null);
+  const [filtredProduct, setFiltredProducts] = useState<null | Product[]>(null);
   const [isClicked, setisClicked] = useState(false);
 
   return (
