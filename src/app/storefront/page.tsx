@@ -1,9 +1,7 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import ShoppingCartImage from './Shopping_Cart_01.png';
-import UserProfileImage from './User_01.png';
+import Link from 'next/link';
 import { GlobalStyle, Button } from './styles';
 
 function handleCheckoutClick() {
@@ -18,13 +16,11 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <Button onClick={handleCheckoutClick}>
-        <Image src={ShoppingCartImage} alt="Cart" />
-        <div>Cart</div>
+      <Button>
+        <Link href="/checkout">Cart</Link>
       </Button>
-      <Button onClick={handleProfileClick}>
-        <Image src={UserProfileImage} alt="Profile" />
-        <div>Profile</div>
+      <Button>
+        <Link href="/profileScreen">Profile</Link>
       </Button>
     </main>
   );
