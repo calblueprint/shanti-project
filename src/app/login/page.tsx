@@ -8,7 +8,7 @@ import {
   signOut,
 } from '../../api/supabase/auth/auth';
 
-export default function App() {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
