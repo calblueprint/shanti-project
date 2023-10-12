@@ -4,14 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { GlobalStyle, Button } from './styles';
 
-function handleCheckoutClick() {
-  window.location.href = '/checkout';
-}
-
-function handleProfileClick() {
-  window.location.href = '/profileScreen';
-}
-
 export default function App() {
   return (
     <main>
