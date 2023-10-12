@@ -12,18 +12,22 @@ export default function App() {
     {
       name: 'All',
       value: 'All',
+      count: 0,
     },
     {
       name: 'Dog',
       value: 'Dog',
+      count: 1,
     },
     {
       name: 'Cat',
       value: 'Cat',
+      count: 2,
     },
     {
       name: 'Misc.',
       value: 'Misc.',
+      count: 3,
     },
   ];
   const [filtredProduct, setFiltredProducts] = useState(null);
@@ -35,7 +39,7 @@ export default function App() {
       <ButtonsContainer>
         {buttons.map((type, index) => (
           <ProductButtons
-            key={index}
+            key={type.count}
             value={type.value}
             setFiltredProducts={setFiltredProducts}
             content={type.name}

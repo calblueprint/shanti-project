@@ -3,8 +3,8 @@
 import InputFields from './InputFields';
 
 export default function LoginForm(props: {
-  changeUserName: Function;
-  changePassword: Function;
+  changeUserName: (newUsername: string) => void;
+  changePassword: (newPassword: string) => void;
 }) {
   const { changeUserName, changePassword } = props;
   return (

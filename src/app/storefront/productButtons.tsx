@@ -1,13 +1,24 @@
 // 'use client';
 
 import React, { useState } from 'react';
+
 import { Button, Label, IndividualContainer } from './styles';
+
 import { getProduct, filterProduct } from './helperFunction';
 
+interface Product {
+  description: string;
+  category: string;
+  quantity: number;
+  photo: string;
+  product_id: number;
+  name: string;
+  updated_at: Date;
+}
 export default function ProductButtons(props: {
   key: number;
   value: string;
-  setFiltredProducts: Function;
+  setFiltredProducts: (category: Product[]) => void;
   content: string;
 }) {
   const { key, value, content, setFiltredProducts } = props;
@@ -21,9 +32,15 @@ export default function ProductButtons(props: {
     console.log(category);
 
     if (category !== 'All') {
-      setFiltredProducts(await filterProduct(category));
+      const products = await filterProduct(category);
+      if (products !== null) {
+        setFiltredProducts(products);
+      }
     } else {
-      setFiltredProducts(await getProduct());
+      const products = await getProduct();
+      if (products !== null) {
+        setFiltredProducts(products);
+      }
     }
   }
 
