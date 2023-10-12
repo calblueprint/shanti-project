@@ -7,7 +7,8 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const Button = styled.button`
-  margin: 10px;
+  margin-top: 30px;
+  margin-right: 25px;
   color: black;
   text-align: center;
   font-family: sans-serif;
@@ -15,8 +16,8 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: normal;
   line-height: normal;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   background: transparent;
   border: transparent;
   float: right;
