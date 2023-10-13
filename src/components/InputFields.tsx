@@ -7,8 +7,8 @@ export default function InputFields(props: {
   text: string;
   placeholder: string;
   inputType: string;
-  changeUserName: Function;
-  changePassword: Function;
+  changeUserName: (newUsername: string) => void;
+  changePassword: (newPassword: string) => void;
   isPassword: boolean;
 }) {
   const {
