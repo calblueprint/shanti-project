@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
+
 import { createClient } from '@supabase/supabase-js';
+
 dotenv.config();
 if (
   !process.env.NEXT_PUBLIC_SUPABASE_URL ||
@@ -15,18 +17,17 @@ const supabase = createClient(
 );
 
 export async function getProduct() {
-  let { data, error } = await supabase.from('product').select('*');
-  console.log(data);
+  const { data } = await supabase.from('product').select('*');
+  // console.log(data);
   return data;
 }
 
 export async function filterProduct(productType) {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from('product')
     .select('*')
     .eq('category', productType);
-
-  console.log(data);
+  // console.log(data);
 
   return data;
 }
