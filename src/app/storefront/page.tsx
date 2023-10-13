@@ -1,6 +1,5 @@
 'use client';
 
-
 import React, { useState } from 'react';
 
 import { GlobalStyle, ButtonsContainer } from './styles';
@@ -39,13 +38,13 @@ export default function App() {
       count: 3,
     },
   ];
-  const [ , setFilteredProducts] = useState<null | Product[]>(null);
+  const [, setFilteredProducts] = useState<null | Product[]>(null);
 
   return (
     <main>
       <GlobalStyle />
       <ButtonsContainer>
-        {buttons.map((type) => (
+        {buttons.map(type => (
           <ProductButtons
             key={type.count}
             value={type.value}
