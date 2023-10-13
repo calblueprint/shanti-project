@@ -2,7 +2,6 @@
 
 
 import React, { useState } from 'react';
-import { getProduct, filterProduct } from './helperFunction';
 
 import { GlobalStyle, ButtonsContainer } from './styles';
 import ProductButtons from './productButtons';
@@ -40,18 +39,17 @@ export default function App() {
       count: 3,
     },
   ];
-  const [filtredProduct, setFiltredProducts] = useState<null | Product[]>(null);
-  const [isClicked, setisClicked] = useState(false);
+  const [ , setFilteredProducts] = useState<null | Product[]>(null);
 
   return (
     <main>
       <GlobalStyle />
       <ButtonsContainer>
-        {buttons.map((type, index) => (
+        {buttons.map((type) => (
           <ProductButtons
             key={type.count}
             value={type.value}
-            setFiltredProducts={setFiltredProducts}
+            setFiltredProducts={setFilteredProducts}
             content={type.name}
           />
         ))}
