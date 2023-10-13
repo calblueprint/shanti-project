@@ -26,5 +26,7 @@ export async function filterProduct(productType) {
     .select('*')
     .eq('category', productType);
 
+  console.log(data);
+
   return data;
 }
