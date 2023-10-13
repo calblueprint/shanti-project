@@ -1,39 +1,41 @@
 'use client';
 
 import { useState } from 'react';
+import LoginForm from '../../components/LoginForm';
 
 import {
-  handleSignUp,
-  signInWithEmail,
-  signOut,
-} from '../../api/supabase/auth/auth';
+  GlobalStyle,
+  Fullscreen,
+  Img,
+  LoginBox,
+  LoginContent,
+  WelcomeSign,
+  Button,
+} from './styles';
 
-export default function Login() {
+import { handleSignUp, signInWithEmail } from '../../api/supabase/auth/auth';
+
+export default function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   return (
-    <>
-      <input
-        name="email"
-        onChange={e => setEmail(e.target.value)}
-        value={email}
-      />
-      <input
-        type="password"
-        name="password"
-        onChange={e => setPassword(e.target.value)}
-        value={password}
-      />
-      <button type="button" onClick={() => handleSignUp(email, password)}>
-        Sign up
-      </button>
-      <button type="button" onClick={() => signInWithEmail(email, password)}>
-        Sign in
-      </button>
-      <button type="button" onClick={signOut}>
-        Sign out
-      </button>
-    </>
+    <main>
+      <GlobalStyle />
+      <Fullscreen>
+        <Img />
+        <LoginBox>
+          <LoginContent>
+            <WelcomeSign>Welcome</WelcomeSign>
+            <LoginForm changeUserName={setEmail} changePassword={setPassword} />
+            <Button onClick={() => signInWithEmail(email, password)}>
+              Log In
+            </Button>
+            <button type="button" onClick={() => handleSignUp(email, password)}>
+              Sign up
+            </button>
+          </LoginContent>
+        </LoginBox>
+      </Fullscreen>
+    </main>
   );
 }
