@@ -10,8 +10,8 @@ import {
 import { User } from '../schema/schema';
 
 // Replace these with your Supabase project URL and API key
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseApiKey = process.env.SUPABASE_KEY;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseApiKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 // Initialize the Supabase client
 const supabase = createClient(supabaseUrl ?? '', supabaseApiKey ?? '');
