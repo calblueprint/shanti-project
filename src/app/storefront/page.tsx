@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 
-import { GlobalStyle, ButtonsContainer } from './styles';
+import Link from 'next/link';
+import { GlobalStyle, ButtonsContainer, IconButtons } from './styles';
 import ProductButtons from './productButtons';
 
 interface Product {
@@ -42,6 +43,13 @@ export default function App() {
 
   return (
     <main>
+      <GlobalStyle />
+      <IconButtons>
+        <Link href="/checkout">Cart</Link>
+      </IconButtons>
+      <IconButtons>
+        <Link href="/profileScreen">Profile</Link>
+      </IconButtons>
       <GlobalStyle />
       <ButtonsContainer>
         {buttons.map(type => (
