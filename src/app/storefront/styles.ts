@@ -42,3 +42,20 @@ export const ButtonsContainer = styled.div`
   flex-direction: row;
   align-items: center;
 `;
+export const IconButtons = styled.button`
+  margin-top: 30px;
+  margin-right: 25px;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  width: 70px;
+  height: 40px;
+  background: black;
+  border: transparent;
+  border-radius: 5px;
+  float: right;
+`;

@@ -29,7 +29,7 @@ export default function ProductButtons(props: {
   ) {
     setIsClicked(!IsClicked);
     const category = e.currentTarget.value;
-    console.log(category);
+    // console.log(category);
 
     if (category !== 'All') {
       const products = await filterProduct(category);
@@ -50,7 +50,9 @@ export default function ProductButtons(props: {
         isClicked={IsClicked}
         key={key}
         value={value}
-        onClick={e => applyFilter(e)}
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+          applyFilter(e)
+        }
       />
       <Label isClicked={IsClicked}>{content}</Label>
     </IndividualContainer>
