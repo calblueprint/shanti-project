@@ -94,12 +94,13 @@ export const ItemButtons = styled.button`
 export const StorefrontWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-evenly;
   padding: 30px;
 `;
 
 export const StorefrontItem = styled.div`
-  width: calc(25% - 30px);
+  width: calc(25% - 40px);
   margin-bottom: 50px;
 `;
 
