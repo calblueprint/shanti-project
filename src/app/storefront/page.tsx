@@ -1,10 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-
 import Link from 'next/link';
-import { GlobalStyle, ButtonsContainer, IconButtons } from './styles';
+import StorefrontItems from './storefrontItems';
 import ProductButtons from './productButtons';
+
+import {
+  GlobalStyle,
+  ButtonsContainer,
+  NavButton,
+  Img,
+  StickyHeader,
+} from './styles';
 
 interface Product {
   description: string;
@@ -34,8 +41,8 @@ export default function App() {
       count: 2,
     },
     {
-      name: 'Misc.',
-      value: 'Misc.',
+      name: 'Other',
+      value: 'Other',
       count: 3,
     },
   ];
@@ -44,23 +51,26 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <IconButtons>
-        <Link href="/checkout">Cart</Link>
-      </IconButtons>
-      <IconButtons>
-        <Link href="/profileScreen">Profile</Link>
-      </IconButtons>
-      <GlobalStyle />
-      <ButtonsContainer>
-        {buttons.map(type => (
-          <ProductButtons
-            key={type.count}
-            value={type.value}
-            setFiltredProducts={setFilteredProducts}
-            content={type.name}
-          />
-        ))}
-      </ButtonsContainer>
+      <StickyHeader>
+        <Img />
+        <NavButton>
+          <Link href="/checkout">Cart</Link>
+        </NavButton>
+        <NavButton>
+          <Link href="/profileScreen">Profile</Link>
+        </NavButton>
+        <ButtonsContainer>
+          {buttons.map(type => (
+            <ProductButtons
+              key={type.count}
+              value={type.value}
+              setFiltredProducts={setFilteredProducts}
+              content={type.name}
+            />
+          ))}
+        </ButtonsContainer>
+      </StickyHeader>
+      <StorefrontItems />
     </main>
   );
 }
