@@ -7,7 +7,7 @@ import {
   PostgrestError,
   createClient,
 } from '@supabase/supabase-js';
-import { User } from '../schema/schema';
+import { User } from '../../../schema/schema';
 
 // Replace these with your Supabase project URL and API key
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

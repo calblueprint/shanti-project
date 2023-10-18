@@ -3,7 +3,8 @@ import {
   testFetchUserData,
   testFetchUserByUUID,
   testAddUserAddress,
-} from '../supabase/tests/user_test';
+} from '../api/supabase/queries/tests/user_test';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
   testFetchOrderByUUID,
   testFetchOrders,
@@ -11,15 +12,15 @@ import {
   testToggleOrderProgress,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   testUpdateAllOrdersProgressToTrue,
-} from '../supabase/tests/order_test';
+} from '../api/supabase/queries/tests/order_test';
 import {
   testFetchProducts,
   testFetchProductByName,
-} from '../supabase/tests/product_test';
+} from '../api/supabase/queries/tests/product_test';
 import {
   testFetchPickupData,
   testFetchPickupTimesByUUID,
-} from '../supabase/tests/pickup_test';
+} from '../api/supabase/queries/tests/pickup_test';
 
 export default function Checkout() {
   testFetchUserData();
