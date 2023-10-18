@@ -33,15 +33,11 @@ export default function ProductButtons(props: {
 
     if (category !== 'All') {
       const products = await filterProduct(category);
-      // delete later; used for debugging
-      console.log(products);
       if (products !== null) {
         setFiltredProducts(products);
       }
     } else {
       const products = await getProduct();
-      // delete later; used for debugging
-      console.log(products);
       if (products !== null) {
         setFiltredProducts(products);
       }

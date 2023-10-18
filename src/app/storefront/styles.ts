@@ -13,7 +13,7 @@ export const StickyHeader = styled.div`
   position: fixed;
   background-color: lightblue;
   width: 1470px;
-  height: 218px;
+  height: 210px;
 `;
 export const Button = styled.button<props>`
   background-color: ${props => (props.isClicked ? '#00507f' : '#C7E1FF')};
@@ -27,7 +27,8 @@ export const Button = styled.button<props>`
 export const Label = styled.p<props>`
   color: ${props => (props.isClicked ? '#00507f' : '#000')};
   text-align: center;
-  font-family: Inter;
+  font-family: 'Public Sans', sans-serif;
+  padding-top: 5px;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -92,14 +93,18 @@ export const ItemButtons = styled.button`
 
 export const StorefrontWrapper = styled.div`
   display: flex;
-  padding-top: 300px;
-  padding-left: 50px;
-  padding-right: 50px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding: 30px;
 `;
 
 export const StorefrontItem = styled.div`
-  width: calc(25% - 20px);
+  width: calc(25% - 30px);
   margin-bottom: 50px;
+`;
+
+export const ShopAllText = styled.h1`
+  padding-top: 230px;
+  padding-left: 50px;
+  font-family: 'Public Sans', sans-serif;
 `;

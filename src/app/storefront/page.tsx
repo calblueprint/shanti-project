@@ -11,6 +11,7 @@ import {
   NavButton,
   Img,
   StickyHeader,
+  ShopAllText,
 } from './styles';
 
 interface Product {
@@ -70,6 +71,7 @@ export default function App() {
           ))}
         </ButtonsContainer>
       </StickyHeader>
+      <ShopAllText>Shop All</ShopAllText>
       <StorefrontItems />
     </main>
   );

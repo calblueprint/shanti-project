@@ -23,7 +23,7 @@ function Storefront() {
         const productsData = (await getProduct()) as Product[];
         setProducts(productsData);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        // console.error('Error fetching products:', error);
       }
     }
 
@@ -35,11 +35,13 @@ function Storefront() {
       {products.map(product => (
         <StorefrontItem key={product.product_id}>
           <ItemButtons>
-            <img src={product.photo} alt={product.name} />
-            <p>{product.description}</p>
-            <p>Category: {product.category}</p>
+            <img
+              src={product.photo}
+              alt={product.name}
+              style={{ width: '250px', height: '250px' }}
+            />
           </ItemButtons>
-          <h3>{product.name}</h3>
+          <p style={{ paddingTop: '10px' }}>{product.name}</p>
         </StorefrontItem>
       ))}
     </StorefrontWrapper>
