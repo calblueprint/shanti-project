@@ -21,15 +21,14 @@ export async function fetchProducts(): Promise<
   try {
     const { data: products, error } = await supabase
       .from('Product')
-      .select('*')
-      .single();
+      .select('*');
 
     if (error) {
       console.error('Error fetching data:', error);
       return { data: [], error };
     }
 
-    return products;
+    return { data: products } as PostgrestSingleResponse<Product[]>;
   } catch (error) {
     console.error('Error:', error);
     throw error;

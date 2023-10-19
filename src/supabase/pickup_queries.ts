@@ -22,15 +22,14 @@ export async function fetchPickupData(): Promise<
   try {
     const { data: pickupTimes, error } = await supabase
       .from('Pickup_Times')
-      .select('*')
-      .single();
+      .select('*');
 
     if (error) {
       console.error('Error fetching data:', error);
       return { data: [], error };
     }
 
-    return pickupTimes;
+    return { data: pickupTimes } as PostgrestSingleResponse<Schedule[]>;
   } catch (error) {
     console.error('Error:', error);
     throw error;
