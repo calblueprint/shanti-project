@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
-
-import { getProduct } from './helperFunction';
 
 interface Product {
   description: string;
@@ -14,21 +12,8 @@ interface Product {
   updated_at: Date;
 }
 
-function Storefront() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const productsData = (await getProduct()) as Product[];
-        setProducts(productsData);
-      } catch (error) {
-        // console.error('Error fetching products:', error);
-      }
-    }
-
-    fetchProducts();
-  }, []);
+export default function Storefront(props: { products: Product[] }) {
+  const { products } = props;
 
   return (
     <StorefrontWrapper>
@@ -47,5 +32,3 @@ function Storefront() {
     </StorefrontWrapper>
   );
 }
-
-export default Storefront;

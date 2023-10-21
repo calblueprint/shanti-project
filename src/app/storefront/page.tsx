@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import StorefrontItems from './storefrontItems';
+import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
 
 import {
@@ -13,6 +13,7 @@ import {
   StickyHeader,
   ShopAllText,
 } from './styles';
+import { getProduct } from './helperFunction';
 
 interface Product {
   description: string;
@@ -47,7 +48,20 @@ export default function App() {
       count: 3,
     },
   ];
-  const [, setFilteredProducts] = useState<null | Product[]>(null);
+  const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const data = (await getProduct()) as Product[];
+        setFilteredProducts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   return (
     <main>
@@ -72,7 +86,7 @@ export default function App() {
         </ButtonsContainer>
       </StickyHeader>
       <ShopAllText>Shop All</ShopAllText>
-      <StorefrontItems />
+      <Storefront products={FilteredProducts} />
     </main>
   );
 }
