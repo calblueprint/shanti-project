@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import Link from 'next/link';
 import {
   testFetchUserData,
@@ -24,16 +26,16 @@ import {
 
 export default function Checkout() {
   testFetchUserData();
-  testFetchUserByUUID();
-  testAddUserAddress();
-  testFetchOrderByUUID();
-  testFetchOrders();
-  testGetOrderById();
-  testToggleOrderProgress();
-  testFetchProducts();
-  testFetchProductByName();
-  testFetchPickupData();
-  testFetchPickupTimesByUUID();
+  // testFetchUserByUUID();
+  // testAddUserAddress();
+  // testFetchOrderByUUID();
+  // testFetchOrders();
+  // testGetOrderById();
+  // testToggleOrderProgress();
+  // testFetchProducts();
+  // testFetchProductByName();
+  // testFetchPickupData();
+  // testFetchPickupTimesByUUID();
   // testUpdateAllOrdersProgressToTrue();
 
   return (
