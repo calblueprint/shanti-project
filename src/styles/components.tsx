@@ -1,5 +1,3 @@
-const COMPONENTS = {
-
-};
+const COMPONENTS = {};
 
 export default COMPONENTS;

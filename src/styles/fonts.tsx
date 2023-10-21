@@ -1,5 +1,3 @@
-const FONTS = {
-
-};
+const FONTS = {};
 
 export default FONTS;
