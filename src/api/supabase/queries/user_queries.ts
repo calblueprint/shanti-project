@@ -106,7 +106,7 @@ export async function updateCartForUser(
 ): Promise<PostgrestSingleResponse<User[]>> {
   try {
     const { data: users, error } = await supabase
-      .from<User>('users') // Specify the User type for type safety
+      .from('users') // Specify the User type for type safety
       .upsert([
         {
           userId,
