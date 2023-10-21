@@ -11,7 +11,6 @@ export type User = {
   city: string[];
   zipcode: string[];
   cart_items: Record<string, number>; // JSONB with item as key and quantity as value
-
 };
 
 export type Order = {

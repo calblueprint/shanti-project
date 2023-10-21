@@ -18,9 +18,7 @@ export async function fetchAllCarts(): Promise<
   PostgrestSingleResponse<Cart[]> | { data: never[]; error: PostgrestError }
 > {
   try {
-    const { data: carts, error } = await supabase
-      .from('Cart')
-      .select('*');
+    const { data: carts, error } = await supabase.from('Cart').select('*');
 
     if (error) {
       console.error('Error fetching carts:', error);
@@ -43,7 +41,8 @@ export async function fetchCartByUserId(
     const { data: carts, error } = await supabase
       .from('Cart')
       .select('*')
-      .eq('user_id', userId).single();
+      .eq('user_id', userId)
+      .single();
 
     if (error) {
       console.error('Error fetching carts for user:', error);
@@ -72,8 +71,7 @@ export async function fetchCartById(
     }
 
     return cart;
-  }
-  catch (error) {
+  } catch (error) {
     console.error('Error:', error);
     throw error;
   }
@@ -103,4 +101,3 @@ export async function updateCartByUserId(
     throw error;
   }
 }
-

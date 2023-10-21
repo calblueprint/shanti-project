@@ -1,9 +1,6 @@
-import { Offcanvas, Stack } from "react-bootstrap"
-import { useEffect, useState } from "react"
-import { useShoppingCart } from "../../app/context/ShoppingCartContext"
-import CartItem from "./CartItem"
-import { fetchProducts } from "../../supabase/product_queries"
-import { Product } from "../../schema/schema"
+import { Offcanvas, Stack } from 'react-bootstrap';
+import { useShoppingCart } from '../../app/context/ShoppingCartContext';
+import CartItem from './CartItem';
 
 
 type ShoppingCartProps = {
@@ -21,16 +18,17 @@ export default function ShoppingCart({ isOpen }: ShoppingCartProps) {
       <Offcanvas.Body>
         <Stack gap={3}>
           {cartItems.map(item => (
-            <CartItem key={item.id} {...item} />
+            <CartItem productId={0} key={item.id} {...item} />
           ))}
           <div className="ms-auto fw-bold fs-5">
-            Total{" "}
-            {
-              cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0)
-            }
+            Total{' '}
+            {cartItems.reduce(
+              (total, cartItem) => total + cartItem.quantity,
+              0,
+            )}
           </div>
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>
-  )
+  );
 }

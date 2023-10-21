@@ -1,39 +1,41 @@
-import { Button, Card } from "react-bootstrap"
-import { useEffect, useState } from "react"
-import { useShoppingCart } from "../../app/context/ShoppingCartContext"
-import { Product } from "../../schema/schema"
-import {fetchProductByID} from "../../supabase/product_queries"
+/* eslint-disable no-console */
+import { Button, Card } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { useShoppingCart } from '../../app/context/ShoppingCartContext';
+import { Product } from '../../schema/schema';
+import { fetchProductByID } from '../../supabase/product_queries';
+
 // eslint-disable-next-line import/prefer-default-export
 export function StoreItem({ id }: { id: number }) {
-  const [storeItems, setStoreItems] = useState<Product | null>(null)
+  const [storeItems, setStoreItems] = useState<Product | null>(null);
 
   useEffect(() => {
     async function fetchStoreItems() {
-      const { data, error } = await fetchProductByID(id)
+      const { data, error } = await fetchProductByID(id);
       if (error) {
-        console.error(error)
-        return
+        console.error(error);
+        return;
       }
-      setStoreItems(data)
+      setStoreItems(data);
     }
-    fetchStoreItems()
-  }, [id])
+    fetchStoreItems();
+  }, [id]);
 
   const {
     getItemQuantity,
     increaseCartQuantity,
     decreaseCartQuantity,
     removeFromCart,
-  } = useShoppingCart()
-  const quantity = getItemQuantity(id)
+  } = useShoppingCart();
+  const quantity = getItemQuantity(id);
 
   return (
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={storeItems?.imgUrl || "https://via.placeholder.com/300"}
+        src={storeItems?.imgUrl || 'https://via.placeholder.com/300'}
         height="200px"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: 'cover' }}
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
@@ -48,11 +50,11 @@ export function StoreItem({ id }: { id: number }) {
           ) : (
             <div
               className="d-flex align-items-center flex-column"
-              style={{ gap: ".5rem" }}
+              style={{ gap: '.5rem' }}
             >
               <div
                 className="d-flex align-items-center justify-content-center"
-                style={{ gap: ".5rem" }}
+                style={{ gap: '.5rem' }}
               >
                 <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
                 <div>
@@ -72,5 +74,5 @@ export function StoreItem({ id }: { id: number }) {
         </div>
       </Card.Body>
     </Card>
-  )
+  );
 }

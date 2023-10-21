@@ -20,22 +20,19 @@ export async function fetchUserData(): Promise<
   PostgrestSingleResponse<User[]> | { data: never[]; error: PostgrestError }
 > {
   try {
-    const { data: users, error } = await supabase
-      .from('users')
-      .select('*');
+    const { data: users, error } = await supabase.from('users').select('*');
 
     if (error) {
       console.error('Error fetching data:', error);
       return { data: [], error };
     }
-    
+
     return { data: users } as PostgrestSingleResponse<User[]>;
   } catch (error) {
     console.error('Error:', error);
     throw error;
   }
 }
-
 
 export async function fetchUserByUUID(
   uuid: string,
@@ -103,8 +100,10 @@ export async function addUserAddress(
   }
 }
 
-
-export async function updateCartForUser(userId: string, newCartData: Record<string, number>): Promise<PostgrestSingleResponse<User[]>> {
+export async function updateCartForUser(
+  userId: string,
+  newCartData: Record<string, number>,
+): Promise<PostgrestSingleResponse<User[]>> {
   try {
     const { data: users, error } = await supabase
       .from<User>('users') // Specify the User type for type safety
@@ -112,7 +111,7 @@ export async function updateCartForUser(userId: string, newCartData: Record<stri
         {
           userId,
           cart_items: newCartData, // Update the 'cart_items' field with new cart data
-        }
+        },
       ]);
 
     if (error) {
@@ -127,7 +126,9 @@ export async function updateCartForUser(userId: string, newCartData: Record<stri
   }
 }
 
-export async function getCartForUser(userId: string): Promise<PostgrestSingleResponse<Record<string, number>>> {
+export async function getCartForUser(
+  userId: string,
+): Promise<PostgrestSingleResponse<Record<string, number>>> {
   try {
     const { data: user, error } = await supabase
       .from('users')
@@ -141,10 +142,11 @@ export async function getCartForUser(userId: string): Promise<PostgrestSingleRes
     }
 
     if (user) {
-      return { data: user.cart_items } as PostgrestSingleResponse<Record<string, number>>;
-    } 
-      throw new Error('User not found');
-    
+      return { data: user.cart_items } as PostgrestSingleResponse<
+        Record<string, number>
+      >;
+    }
+    throw new Error('User not found');
   } catch (error) {
     console.error('Error:', error);
     throw error;
