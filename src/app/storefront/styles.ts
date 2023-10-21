@@ -11,10 +11,12 @@ interface props {
 
 export const StickyHeader = styled.div`
   position: fixed;
-  background-color: lightblue;
+  background-color: var(--Light-Periwinkle, #f4f7ff);
+  filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1));
   width: 1470px;
   height: 210px;
 `;
+
 export const Button = styled.button<props>`
   background-color: ${props => (props.isClicked ? '#00507f' : '#C7E1FF')};
 

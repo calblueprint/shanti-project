@@ -56,7 +56,7 @@ export default function App() {
         const data = (await getProduct()) as Product[];
         setFilteredProducts(data);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
 
