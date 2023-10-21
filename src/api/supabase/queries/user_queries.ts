@@ -20,16 +20,14 @@ export async function fetchUserData(): Promise<
   PostgrestSingleResponse<User[]> | { data: never[]; error: PostgrestError }
 > {
   try {
-    const { data: users, error } = await supabase
-      .from('Users')
-      .select('*')
-      .single();
+    const { data: users, error } = await supabase.from('users').select('*');
 
     if (error) {
       console.error('Error fetching data:', error);
       return { data: [], error };
     }
-    return users;
+
+    return { data: users } as PostgrestSingleResponse<User[]>;
   } catch (error) {
     console.error('Error:', error);
     throw error;
