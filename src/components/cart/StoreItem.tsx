@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useShoppingCart } from '../../app/context/ShoppingCartContext';
 import { Product } from '../../schema/schema';
-import { fetchProductByID } from '../../supabase/product_queries';
+import { fetchProductByID } from '../../api/supabase/queries/product_queries';
 
 // eslint-disable-next-line import/prefer-default-export
 export function StoreItem({ id }: { id: number }) {

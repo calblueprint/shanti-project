@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import ShoppingCart from '../../components/cart/ShoppingCart';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { updateCartForUser } from '../../supabase/user_queries';
+import { updateCartForUser } from '../../api/supabase/queries/user_queries';
+
 
 type ShoppingCartProviderProps = {
   children: ReactNode;

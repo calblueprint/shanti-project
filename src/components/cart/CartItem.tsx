@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Stack } from 'react-bootstrap';
 import { Product } from '../../schema/schema';
-import { fetchProducts } from '../../supabase/product_queries';
+import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { useShoppingCart } from '../../app/context/ShoppingCartContext';
 // or import { Button } from "@/app/login/styles" if you have set up the alias correctly
 
