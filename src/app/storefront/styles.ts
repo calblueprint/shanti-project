@@ -11,10 +11,12 @@ interface props {
 
 export const StickyHeader = styled.div`
   position: fixed;
-  background-color: lightblue;
+  background-color: var(--Light-Periwinkle, #f4f7ff);
+  filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1));
   width: 1470px;
   height: 210px;
 `;
+
 export const Button = styled.button<props>`
   background-color: ${props => (props.isClicked ? '#00507f' : '#C7E1FF')};
 
@@ -94,12 +96,13 @@ export const ItemButtons = styled.button`
 export const StorefrontWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-evenly;
   padding: 30px;
 `;
 
 export const StorefrontItem = styled.div`
-  width: calc(25% - 30px);
+  width: calc(25% - 40px);
   margin-bottom: 50px;
 `;
 
