@@ -3,8 +3,11 @@
 import { useRouter } from "next/navigation";
 import supabase from "@/api/supabase/createClient";
 import { Button } from "../login/styles";
+import { User } from "@/schema/schema";
 
-const { data: { user } } = await supabase.auth.getUser();
+const { data: { user } } = async (): Promise<User> => {
+  await supabase.auth.getUser()
+};
 console.log(user);
 const userDelivery = user;
 const { data, error } = await supabase
