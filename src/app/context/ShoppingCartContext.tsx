@@ -1,10 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from "react"
 import ShoppingCart from "../../components/cart/ShoppingCart"
 import  useLocalStorage from "../hooks/useLocalStorage"
-
+import {updateCartForUser} from "../../supabase/user_queries"
 type ShoppingCartProviderProps = {
   children: ReactNode
 }
+
+const userID = 1
 
 type CartItem = {
   id: number
@@ -58,6 +60,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         })
       
     })
+
+    updateCartForUser(userID, cartItems)
   }
   function decreaseCartQuantity(id: number) {
     setCartItems(currItems => {

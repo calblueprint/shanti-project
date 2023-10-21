@@ -102,3 +102,51 @@ export async function addUserAddress(
     throw error;
   }
 }
+
+
+export async function updateCartForUser(userId: string, newCartData: Record<string, number>): Promise<PostgrestSingleResponse<User[]>> {
+  try {
+    const { data: users, error } = await supabase
+      .from<User>('users') // Specify the User type for type safety
+      .upsert([
+        {
+          userId,
+          cart_items: newCartData, // Update the 'cart_items' field with new cart data
+        }
+      ]);
+
+    if (error) {
+      console.error('Error updating cart for user:', error);
+      throw error;
+    }
+
+    return { data: users } as PostgrestSingleResponse<User[]>;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+export async function getCartForUser(userId: string): Promise<PostgrestSingleResponse<Record<string, number>>> {
+  try {
+    const { data: user, error } = await supabase
+      .from('users')
+      .select('cart_items') // Select only the 'cart_items' field
+      .eq('user_id', userId)
+      .single();
+
+    if (error) {
+      console.error('Error fetching cart for user:', error);
+      throw error;
+    }
+
+    if (user) {
+      return { data: user.cart_items } as PostgrestSingleResponse<Record<string, number>>;
+    } 
+      throw new Error('User not found');
+    
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}

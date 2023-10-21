@@ -24,7 +24,7 @@ import {
 } from '../supabase/tests/pickup_test';
 
 export default function Checkout() {
-  testFetchUserData();
+  // testFetchUserData();
   // testFetchUserByUUID();
   // testAddUserAddress();
   // testFetchOrderByUUID();
@@ -39,7 +39,7 @@ export default function Checkout() {
 
   return (
     <main>
-      <Link href="/login">Login</Link>
+      <Link href="/pages">Store</Link>
     </main>
   );
 }

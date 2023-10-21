@@ -1,8 +1,9 @@
 import { Col, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
-import { StoreItem } from "../components/cart/StoreItem"
-import {fetchProducts} from "../supabase/product_queries"
-import {Product} from "../schema/schema"
+import { StoreItem } from "../../components/cart/StoreItem"
+import {fetchProducts} from "../../supabase/product_queries"
+import {Product} from "../../schema/schema"
+
 // eslint-disable-next-line import/prefer-default-export
 export function Store() {
 
