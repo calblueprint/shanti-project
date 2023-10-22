@@ -4,34 +4,45 @@ import { useRouter } from "next/navigation";
 import supabase from "@/api/supabase/createClient";
 import { Button } from "../login/styles";
 import { User } from "@/schema/schema";
+import { useEffect } from "react";
 
-const { data: { user } } = async (): Promise<User> => {
-  await supabase.auth.getUser()
-};
-console.log(user);
-const userDelivery = user;
-const { data, error } = await supabase
-  .from('profiles')
-  .select('delivery_enabled')
-  .eq('user_id', user?.id)
+// console.log( user);
+
+// const userDelivery = async () => {
+// const { data, error } = await supabase
+// .from('profiles')
+// .select()
+// .eq('user_id', user?.id)
+// .single()
+// }
+
 
 export default function Checkout() {
   const router = useRouter();
-
-  const checkDelivery = () => {
-    if (userDelivery) {
-      router.push('/delivery');
-    } else {
-      router.push('/pickup');
+  useEffect(() => {
+    const getCurrentUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      return user
     }
-  };
+    getCurrentUser();
+  }, [])
+  
+
+
+  // const checkDelivery = () => {
+  //   if (data) {
+  //     router.push('/delivery');
+  //   } else {
+  //     router.push('/pickup');
+  //   }
+  // };
 
   return (
     <main>
-      <Button onClick={(checkDelivery)}>
+      {/* <Button onClick={(checkDelivery)}>
               Checkout
-      </Button>
-      {/* <div>Checkout</div> */}
+      </Button> */}
+      <div>Checkout</div>
     </main>
   );
 }

@@ -21,7 +21,7 @@ export async function fetchUserData(): Promise<
 > {
   try {
     const { data: users, error } = await supabase
-      .from('Users')
+      .from('profiles')
       .select('*')
       .single();
 
@@ -36,12 +36,21 @@ export async function fetchUserData(): Promise<
   }
 }
 
+// export async function fetchUserDelivery(
+//   uuid: string
+// ) {
+//   const { error } = await supabase
+//   .from('profiles')
+//   .select('delivery_enabled')
+//   .eq('user_id', uuid)
+// }
+
 export async function fetchUserByUUID(
   uuid: string,
 ): Promise<PostgrestSingleResponse<unknown>> {
   try {
     const { data: user, error } = await supabase
-      .from('Users')
+      .from('profiles')
       .select('*')
       .eq('user_id', uuid)
       .single();
@@ -65,7 +74,7 @@ export async function addUserAddress(
 ): Promise<PostgrestSingleResponse<unknown>> {
   try {
     const { data: existingUser, error: selectError } = await supabase
-      .from('Users')
+      .from('profiles')
       .select('street, city, zipcode')
       .eq('user_id', uuid)
       .single();
@@ -81,7 +90,7 @@ export async function addUserAddress(
     const updatedZipcode = [...(existingUser?.zipcode || []), newZipcode];
 
     const { data, error } = await supabase
-      .from('Users')
+      .from('profiles')
       .update({
         street: updatedStreet,
         city: updatedCity,
