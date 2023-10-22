@@ -34,7 +34,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/api/supabase/supabase/tests"  ],
   "exclude": [
     "node_modules"
   ]

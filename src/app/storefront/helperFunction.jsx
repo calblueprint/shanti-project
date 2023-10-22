@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+
 import { createClient } from '@supabase/supabase-js';
 
 dotenv.config();
@@ -26,7 +27,6 @@ export async function filterProduct(productType) {
     .from('product')
     .select('*')
     .eq('category', productType);
-
   // console.log(data);
 
   return data;

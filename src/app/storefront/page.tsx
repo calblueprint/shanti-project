@@ -1,9 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
-
-import { GlobalStyle, ButtonsContainer } from './styles';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
+
+import {
+  GlobalStyle,
+  ButtonsContainer,
+  NavButton,
+  Img,
+  StickyHeader,
+  ShopAllText,
+} from './styles';
+import { getProduct } from './helperFunction';
 
 interface Product {
   description: string;
@@ -33,26 +43,50 @@ export default function App() {
       count: 2,
     },
     {
-      name: 'Misc.',
-      value: 'Misc.',
+      name: 'Other',
+      value: 'Other',
       count: 3,
     },
   ];
-  const [, setFilteredProducts] = useState<null | Product[]>(null);
+  const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const data = (await getProduct()) as Product[];
+        setFilteredProducts(data);
+      } catch (error) {
+        // console.log(error);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   return (
     <main>
       <GlobalStyle />
-      <ButtonsContainer>
-        {buttons.map(type => (
-          <ProductButtons
-            key={type.count}
-            value={type.value}
-            setFiltredProducts={setFilteredProducts}
-            content={type.name}
-          />
-        ))}
-      </ButtonsContainer>
+      <StickyHeader>
+        <Img />
+        <NavButton>
+          <Link href="/checkout">Cart</Link>
+        </NavButton>
+        <NavButton>
+          <Link href="/profileScreen">Profile</Link>
+        </NavButton>
+        <ButtonsContainer>
+          {buttons.map(type => (
+            <ProductButtons
+              key={type.count}
+              value={type.value}
+              setFiltredProducts={setFilteredProducts}
+              content={type.name}
+            />
+          ))}
+        </ButtonsContainer>
+      </StickyHeader>
+      <ShopAllText>Shop All</ShopAllText>
+      <Storefront products={FilteredProducts} />
     </main>
   );
 }
