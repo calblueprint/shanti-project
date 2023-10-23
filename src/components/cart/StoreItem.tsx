@@ -27,8 +27,8 @@ export function StoreItem({ id }: { id: number }) {
     decreaseCartQuantity,
     removeFromCart,
   } = useShoppingCart();
+  // const quantity1 = increaseCartQuantity(id);
   const quantity = getItemQuantity(id);
-
   return (
     <Card className="h-100">
       <Card.Img
