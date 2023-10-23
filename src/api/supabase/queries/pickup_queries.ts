@@ -21,7 +21,7 @@ export async function fetchPickupData(): Promise<
 > {
   try {
     const { data: pickupTimes, error } = await supabase
-      .from('Pickup_Times')
+      .from('pickup_times')
       .select('*');
 
     if (error) {
@@ -41,7 +41,7 @@ export async function fetchPickupTimesByUUID(
 ): Promise<PostgrestSingleResponse<unknown>> {
   try {
     const { data: pickupTimes, error } = await supabase
-      .from('Pickup_Times')
+      .from('pickup_times')
       .select('*')
       .eq('id', uuid)
       .single();

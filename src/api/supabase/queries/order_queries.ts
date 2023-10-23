@@ -20,7 +20,7 @@ export async function fetchOrders(): Promise<
 > {
   try {
     const { data: orders, error } = await supabase
-      .from('Order') // Update to the "Order" table
+      .from('order') // Update to the "Order" table
       .select('*');
 
     if (error) {
@@ -40,7 +40,7 @@ export async function fetchOrderByUUID(
 ): Promise<PostgrestSingleResponse<Order>> {
   try {
     const { data: order, error } = await supabase
-      .from('Order') // Update to the "Order" table
+      .from('order') // Update to the "Order" table
       .select('*')
       .eq('id', uuid)
       .single();
@@ -63,7 +63,7 @@ export async function getOrdersByUserId(
 > {
   try {
     const { data: orders, error } = await supabase
-      .from('Order')
+      .from('order')
       .select('*')
       .eq('user_id', userId)
       .single();

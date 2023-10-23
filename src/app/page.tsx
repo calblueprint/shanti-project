@@ -31,7 +31,7 @@ export default function Checkout() {
   // testFetchOrders();
   // testGetOrderById();
   // testToggleOrderProgress();
-  // testFetchProducts();
+  testFetchProducts();
   // testFetchProductByName();
   // testFetchPickupData();
   // testFetchPickupTimesByUUID();
@@ -39,7 +39,7 @@ export default function Checkout() {
 
   return (
     <main>
-      <Link href="/pages">Store</Link>
+      <Link href="/store">Store</Link>
     </main>
   );
 }
