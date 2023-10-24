@@ -3,7 +3,9 @@
 import { LogOutButton, GlobalStyle } from './style';
 
 import { signOut } from '../../api/supabase/auth/auth';
-import NavBar from '@/components/NavBar';
+
+import NavBar from '../../components/NavBar';
+
 export default function Profile() {
   return (
     <main>

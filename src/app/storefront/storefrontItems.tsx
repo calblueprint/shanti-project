@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
-import NavBar from './../../components/NavBar';
+
 interface Product {
   description: string;
   category: string;

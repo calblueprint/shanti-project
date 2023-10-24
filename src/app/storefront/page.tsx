@@ -1,15 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
-import NavBar from '@/components/NavBar';
+import NavBar from '../../components/NavBar';
 import {
   GlobalStyle,
   ButtonsContainer,
-  NavButton,
-  Img,
   StickyHeader,
   ShopAllText,
 } from './styles';

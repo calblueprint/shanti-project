@@ -1,8 +1,8 @@
+import styled, { createGlobalStyle } from 'styled-components';
+
 const COMPONENTS = {};
 
 export default COMPONENTS;
-
-import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -29,5 +29,5 @@ export const ButtonsDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding-top: 20px;
+  padding-top: 15px;
 `;
