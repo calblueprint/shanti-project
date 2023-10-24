@@ -16,7 +16,7 @@ export const NavBarComp = styled.nav`
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
-  height: 150px;
+  height: 200px;
   padding-top: 20px;
 
   width: 100%;

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
-
+import NavBar from '@/components/NavBar';
 import {
   GlobalStyle,
   ButtonsContainer,
@@ -67,13 +67,7 @@ export default function App() {
     <main>
       <GlobalStyle />
       <StickyHeader>
-        <Img />
-        <NavButton>
-          <Link href="/checkout">Cart</Link>
-        </NavButton>
-        <NavButton>
-          <Link href="/profileScreen">Profile</Link>
-        </NavButton>
+        <NavBar />
         <ButtonsContainer>
           {buttons.map(type => (
             <ProductButtons
