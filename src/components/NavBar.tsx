@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-import { NavBarComp, ButtonsDiv } from "../styles/components";
+import { NavBarComp, ButtonsDiv } from '../styles/components';
 
 export default function NavBar() {
   return (
