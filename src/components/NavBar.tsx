@@ -22,13 +22,13 @@ export default function NavBar() {
           <Image
             src="/images/Profile.png"
             alt="logo pic"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
           />
         </Link>
 
         <Link href="../checkout">
-          <Image src="/images/Cart.png" alt="logo pic" width={50} height={50} />
+          <Image src="/images/Cart.png" alt="logo pic" width={30} height={40} />
         </Link>
       </ButtonsDiv>
     </NavBarComp>
