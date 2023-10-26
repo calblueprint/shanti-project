@@ -36,24 +36,14 @@ export async function fetchUserData(): Promise<
   }
 }
 
-// export async function fetchUserDelivery(
-//   uuid: string
-// ) {
-//   const { error } = await supabase
-//   .from('profiles')
-//   .select('delivery_enabled')
-//   .eq('user_id', uuid)
-// }
-
 export async function fetchDeliveryByUUID(
   uuid: string,
-): Promise<boolean> {
+) {
   try {
     const { data, error } = await supabase
       .from('profiles')
-      // .select('delivery_allowed')
-      .select('*')
-      // .eq('user_id', uuid)
+      .select('delivery_allowed')
+      .eq('user_id', uuid)
       .single();
 
     if (error) {

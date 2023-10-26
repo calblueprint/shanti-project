@@ -43,7 +43,6 @@ export default function Checkout() {
         return;
 
       const data = await fetchUserByUUID(sessionData.session.user.id as string);
-      
 
       setDeliveryEnabled(data);
     })();
@@ -62,7 +61,12 @@ export default function Checkout() {
     // });
     const router = useRouter();
     const checkDelivery = () => {
-      
+      if (data) {
+        router.push("/delivery")
+      }
+      else {
+        router.push("/pickup")
+      }
     }
   return (
     <main>
