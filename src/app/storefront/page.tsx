@@ -4,25 +4,13 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import StorefrontItems from './storefrontItems';
 import ProductButtons from './productButtons';
+import { Product } from '../../schema/schema';
+import COMPONENTS from '../../styles/components';
 
-import {
-  GlobalStyle,
-  ButtonsContainer,
-  NavButton,
-  Img,
-  StickyHeader,
-  ShopAllText,
-} from './styles';
+import { ButtonsContainer, ShopAllText } from './styles';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+const { GlobalStyle, StickyHeader, Logo, NavButton } = COMPONENTS;
+
 // https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
   const buttons = [
@@ -53,7 +41,7 @@ export default function App() {
     <main>
       <GlobalStyle />
       <StickyHeader>
-        <Img />
+        <Logo />
         <NavButton>
           <Link href="/checkout">Cart</Link>
         </NavButton>
