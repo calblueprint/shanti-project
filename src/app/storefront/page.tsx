@@ -1,10 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
-
-import Link from 'next/link';
-import { GlobalStyle, ButtonsContainer, IconButtons } from './styles';
+import React, { useEffect, useState } from 'react';
+import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
+import NavBar from '../../components/NavBar';
+import {
+  GlobalStyle,
+  ButtonsContainer,
+  StickyHeader,
+  ShopAllText,
+} from './styles';
+import { getProduct } from './helperFunction';
 
 interface Product {
   description: string;
@@ -34,33 +40,44 @@ export default function App() {
       count: 2,
     },
     {
-      name: 'Misc.',
-      value: 'Misc.',
+      name: 'Other',
+      value: 'Other',
       count: 3,
     },
   ];
-  const [, setFilteredProducts] = useState<null | Product[]>(null);
+  const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const data = (await getProduct()) as Product[];
+        setFilteredProducts(data);
+      } catch (error) {
+        // console.log(error);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   return (
     <main>
       <GlobalStyle />
-      <IconButtons>
-        <Link href="/checkout">Cart</Link>
-      </IconButtons>
-      <IconButtons>
-        <Link href="/profileScreen">Profile</Link>
-      </IconButtons>
-      <GlobalStyle />
-      <ButtonsContainer>
-        {buttons.map(type => (
-          <ProductButtons
-            key={type.count}
-            value={type.value}
-            setFiltredProducts={setFilteredProducts}
-            content={type.name}
-          />
-        ))}
-      </ButtonsContainer>
+      <StickyHeader>
+        <NavBar />
+        <ButtonsContainer>
+          {buttons.map(type => (
+            <ProductButtons
+              key={type.count}
+              value={type.value}
+              setFiltredProducts={setFilteredProducts}
+              content={type.name}
+            />
+          ))}
+        </ButtonsContainer>
+      </StickyHeader>
+      <ShopAllText>Shop All</ShopAllText>
+      <Storefront products={FilteredProducts} />
     </main>
   );
 }

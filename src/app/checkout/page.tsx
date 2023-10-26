@@ -7,6 +7,10 @@ import { Button } from "../login/styles";
 import { User } from "@/schema/schema";
 import { fetchUserByUUID } from "@/api/supabase/queries/user_queries";
 
+import NavBar from '../../components/NavBar';
+
+'use client';
+
 export default function Checkout() {
   const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
   useEffect(() => {
@@ -38,6 +42,7 @@ export default function Checkout() {
     }
   return (
     <main>
+      <NavBar />
       <Button onClick={(checkDelivery)}>
               Checkout
       </Button>

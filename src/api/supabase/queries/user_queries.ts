@@ -29,7 +29,8 @@ export async function fetchUserData(): Promise<
       console.error('Error fetching data:', error);
       return { data: [], error };
     }
-    return users;
+
+    return { data: users } as PostgrestSingleResponse<User[]>;
   } catch (error) {
     console.error('Error:', error);
     throw error;

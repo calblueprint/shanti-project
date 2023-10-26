@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import Link from 'next/link';
 import {
   testFetchUserData,
   testFetchUserByUUID,
   testAddUserAddress,
 } from '../api/supabase/queries/tests/user_test';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
   testFetchOrderByUUID,
   testFetchOrders,
   testGetOrderById,
   testToggleOrderProgress,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   testUpdateAllOrdersProgressToTrue,
 } from '../api/supabase/queries/tests/order_test';
 import {
@@ -23,16 +25,16 @@ import {
 
 export default function Checkout() {
   testFetchUserData();
-  testFetchUserByUUID();
-  testAddUserAddress();
-  testFetchOrderByUUID();
-  testFetchOrders();
-  testGetOrderById();
-  testToggleOrderProgress();
-  testFetchProducts();
-  testFetchProductByName();
-  testFetchPickupData();
-  testFetchPickupTimesByUUID();
+  // testFetchUserByUUID();
+  // testAddUserAddress();
+  // testFetchOrderByUUID();
+  // testFetchOrders();
+  // testGetOrderById();
+  // testToggleOrderProgress();
+  // testFetchProducts();
+  // testFetchProductByName();
+  // testFetchPickupData();
+  // testFetchPickupTimesByUUID();
   // testUpdateAllOrdersProgressToTrue();
 
   return (
