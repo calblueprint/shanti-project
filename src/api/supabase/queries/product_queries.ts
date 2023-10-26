@@ -20,7 +20,7 @@ export async function fetchProducts(): Promise<
 > {
   try {
     const { data: products, error } = await supabase
-      .from('Product')
+      .from('product')
       .select('*');
 
     if (error) {
@@ -40,7 +40,7 @@ export async function fetchProductByID(
 ): Promise<PostgrestSingleResponse<Product>> {
   try {
     const { data: product, error } = await supabase
-      .from('Product')
+      .from('product')
       .select('*')
       .eq('product_id', productId)
       .single();

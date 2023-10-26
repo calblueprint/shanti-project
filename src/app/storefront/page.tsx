@@ -5,11 +5,14 @@ import Link from 'next/link';
 import StorefrontItems from './storefrontItems';
 import ProductButtons from './productButtons';
 import { Product } from '../../schema/schema';
-import COMPONENTS from '../../styles/components';
+import {
+  GlobalStyle,
+  StickyHeader,
+  Logo,
+  NavButton,
+} from '../../styles/components';
 
 import { ButtonsContainer, ShopAllText } from './styles';
-
-const { GlobalStyle, StickyHeader, Logo, NavButton } = COMPONENTS;
 
 // https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
