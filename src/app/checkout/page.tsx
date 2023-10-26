@@ -43,8 +43,7 @@ export default function Checkout() {
         return;
 
       const data = await fetchUserByUUID(sessionData.session.user.id as string);
-
-      setDeliveryEnabled(data);
+      setDeliveryEnabled(data.delivery_allowed);
     })();
   }, []);
     // const getCurrentUser: Promise<string | undefined> = async () => {
@@ -61,7 +60,7 @@ export default function Checkout() {
     // });
     const router = useRouter();
     const checkDelivery = () => {
-      if (data) {
+      if (deliveryEnabled) {
         router.push("/delivery")
       }
       else {
