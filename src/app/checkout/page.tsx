@@ -41,7 +41,6 @@ export default function Checkout() {
       <Button onClick={(checkDelivery)}>
               Checkout
       </Button>
-      {/* <div>Checkout</div> */}
     </main>
   );
 }
