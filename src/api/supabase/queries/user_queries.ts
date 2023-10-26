@@ -36,27 +36,6 @@ export async function fetchUserData(): Promise<
   }
 }
 
-export async function fetchDeliveryByUUID(
-  uuid: string,
-) {
-  try {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('delivery_allowed')
-      .eq('user_id', uuid)
-      .single();
-
-    if (error) {
-      console.error('Error fetching user data:', error);
-    }
-
-    return data;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
-
 export async function fetchUserByUUID(
   uuid: string,
 ) {
