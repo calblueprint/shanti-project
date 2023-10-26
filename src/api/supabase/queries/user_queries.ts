@@ -45,6 +45,27 @@ export async function fetchUserData(): Promise<
 //   .eq('user_id', uuid)
 // }
 
+export async function fetchDeliveryByUUID(
+  uuid: string,
+): Promise<boolean | null> {
+  try {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('delivery_allowed')
+      .eq('user_id', uuid)
+      .single();
+
+    if (error) {
+      console.error('Error fetching user data:', error);
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
 export async function fetchUserByUUID(
   uuid: string,
 ): Promise<PostgrestSingleResponse<unknown>> {
