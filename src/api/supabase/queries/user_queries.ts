@@ -47,12 +47,13 @@ export async function fetchUserData(): Promise<
 
 export async function fetchDeliveryByUUID(
   uuid: string,
-): Promise<boolean | null> {
+): Promise<boolean> {
   try {
     const { data, error } = await supabase
       .from('profiles')
-      .select('delivery_allowed')
-      .eq('user_id', uuid)
+      // .select('delivery_allowed')
+      .select('*')
+      // .eq('user_id', uuid)
       .single();
 
     if (error) {
