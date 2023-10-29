@@ -1,15 +1,15 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import supabase from "@/api/supabase/createClient";
-import { Button } from "../login/styles";
-import { User } from "@/schema/schema";
-import { fetchUserByUUID } from "@/api/supabase/queries/user_queries";
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import supabase from '@/api/supabase/createClient';
+import { Button } from '../login/styles';
+import { User } from '@/schema/schema';
+import { fetchUserByUUID } from '@/api/supabase/queries/user_queries';
 
 import NavBar from '../../components/NavBar';
 
-'use client';
+('use client');
 
 export default function Checkout() {
   const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
@@ -31,21 +31,18 @@ export default function Checkout() {
     })();
   }, []);
 
-    const router = useRouter();
-    const checkDelivery = () => {
-      if (deliveryEnabled) {
-        router.push("/delivery")
-      }
-      else {
-        router.push("/pickup")
-      }
+  const router = useRouter();
+  const checkDelivery = () => {
+    if (deliveryEnabled) {
+      router.push('/delivery');
+    } else {
+      router.push('/pickup');
     }
+  };
   return (
     <main>
       <NavBar />
-      <Button onClick={(checkDelivery)}>
-              Checkout
-      </Button>
+      <Button onClick={checkDelivery}>Checkout</Button>
     </main>
   );
 }

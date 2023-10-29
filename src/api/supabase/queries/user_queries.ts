@@ -37,9 +37,7 @@ export async function fetchUserData(): Promise<
   }
 }
 
-export async function fetchUserByUUID(
-  uuid: string,
-) {
+export async function fetchUserByUUID(uuid: string) {
   try {
     const { data: user, error } = await supabase
       .from('profiles')
