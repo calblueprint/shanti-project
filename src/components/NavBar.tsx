@@ -26,7 +26,6 @@ export default function NavBar() {
             height={40}
           />
         </Link>
-
         <Link href="../checkout">
           <Image src="/images/Cart.png" alt="logo pic" width={30} height={40} />
         </Link>

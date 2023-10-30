@@ -20,3 +20,9 @@ export const LogOutButton = styled.button`
   width: 300px;
   height: 50px;
 `;
+
+import { ToastContainer } from 'react-toastify';
+
+export const PopUp = styled(ToastContainer)`
+  transform: translate(-150px, 250px);
+`;
