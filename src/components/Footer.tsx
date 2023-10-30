@@ -1,6 +1,7 @@
 import Location from './Location';
 
 import { FooterDiv, ContactDiv } from '../styles/components';
+
 export default function Logo() {
   return (
     <main>
