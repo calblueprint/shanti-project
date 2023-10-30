@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
   }
+
 `;
 interface props {
   isClicked: boolean;
@@ -14,7 +15,7 @@ export const StickyHeader = styled.div`
   background-color: var(--Light-Periwinkle, #f4f7ff);
   filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1));
   width: 1470px;
-  height: 210px;
+  height: 10px;
 `;
 
 export const Button = styled.button<props>`
@@ -69,7 +70,6 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
-
   transform: translate(0px, -180px);
 `;
 export const NavButton = styled.button`
@@ -113,4 +113,5 @@ export const ShopAllText = styled.h1`
   padding-top: 230px;
   padding-left: 50px;
   font-family: 'Public Sans', sans-serif;
+  color: black;
 `;

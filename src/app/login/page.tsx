@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+
 import LoginForm from '../../components/LoginForm';
+
+import Image from 'next/image';
 
 import {
   GlobalStyle,
   Fullscreen,
-  Img,
   LoginBox,
   LoginContent,
   WelcomeSign,
@@ -22,7 +24,12 @@ export default function App() {
     <main>
       <GlobalStyle />
       <Fullscreen>
-        <Img />
+        <Image
+          src="/images/ShantiLogo.png"
+          alt="logo pic"
+          width={125}
+          height={70}
+        />
         <LoginBox>
           <LoginContent>
             <WelcomeSign>Welcome</WelcomeSign>

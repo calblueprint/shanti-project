@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
 import NavBar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 import {
   GlobalStyle,
   ButtonsContainer,
@@ -78,6 +79,7 @@ export default function App() {
       </StickyHeader>
       <ShopAllText>Shop All</ShopAllText>
       <Storefront products={FilteredProducts} />
+      <Footer />
     </main>
   );
 }
