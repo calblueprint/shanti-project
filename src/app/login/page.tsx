@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 
-import LoginForm from '../../components/LoginForm';
-
 import Image from 'next/image';
+import LoginForm from '../../components/LoginForm';
 
 import {
   GlobalStyle,

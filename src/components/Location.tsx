@@ -1,9 +1,9 @@
 import { LocationDiv, Addie } from '../styles/components';
 
 export default function Logo(props: {
-  District: String;
-  Address: String;
-  Phone: String;
+  District: string;
+  Address: string;
+  Phone: string;
 }) {
   const { District, Address, Phone } = props;
 
