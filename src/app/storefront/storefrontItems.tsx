@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
-
 import { getProduct } from './helperFunction';
+import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
 
 import { Product } from '../../schema/schema';
 

@@ -1,18 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import StorefrontItems from './storefrontItems';
+import React, { useEffect, useState } from 'react';
+import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
-import { Product } from '../../schema/schema';
-import {
-  GlobalStyle,
-  StickyHeader,
-  Logo,
-  NavButton,
-} from '../../styles/components';
-
+import { GlobalStyle } from '../../styles/components';
+import NavBar from '../../components/NavBar';
 import { ButtonsContainer, ShopAllText } from './styles';
+import { getProduct } from './helperFunction';
+import { Product } from '../../schema/schema';
 
 // https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
@@ -38,32 +33,37 @@ export default function App() {
       count: 3,
     },
   ];
-  const [, setFilteredProducts] = useState<null | Product[]>(null);
+  const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const data = (await getProduct()) as Product[];
+        setFilteredProducts(data);
+      } catch (error) {
+        // console.log(error);
+      }
+    }
+
+    fetchProducts();
+  }, []);
 
   return (
     <main>
       <GlobalStyle />
-      <StickyHeader>
-        <Logo />
-        <NavButton>
-          <Link href="/checkout">Cart</Link>
-        </NavButton>
-        <NavButton>
-          <Link href="/profileScreen">Profile</Link>
-        </NavButton>
-        <ButtonsContainer>
-          {buttons.map(type => (
-            <ProductButtons
-              key={type.count}
-              value={type.value}
-              setFiltredProducts={setFilteredProducts}
-              content={type.name}
-            />
-          ))}
-        </ButtonsContainer>
-      </StickyHeader>
+      <NavBar />
+      <ButtonsContainer>
+        {buttons.map(type => (
+          <ProductButtons
+            key={type.count}
+            value={type.value}
+            setFiltredProducts={setFilteredProducts}
+            content={type.name}
+          />
+        ))}
+      </ButtonsContainer>
       <ShopAllText>Shop All</ShopAllText>
-      <StorefrontItems />
+      <Storefront products={FilteredProducts} />
     </main>
   );
 }

@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const BackButton = styled.button`
-  padding-top: 210px;
+  display: flex;
+  padding-top: 230px;
   padding-left: 30px;
-  width: 70px;
+  width: 100px;
   height: 40px;
   background-color: transparent;
   border-color: transparent;
+  font-size: 15px;
 `;
 
 export const DescriptionContainer = styled.div`
@@ -30,26 +32,35 @@ export const TextContainer = styled.div`
   height: 350px;
 `;
 
-export const ButtonsContainer = styled.div`
+export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 450px;
   height: 50px;
-  border-radius: 30px;
-  padding: 30px;
+  margin-top: 20px;
 `;
 
-export const QuantityButton = styled.button`
+export const QuantityButton = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   width: 165px;
   height: 50px;
   border-radius: 8px;
   background-color: ${COLORS.white};
-  border-color: ${COLORS.navy};
-  font-family: Public Sans;
+  border: 2px solid ${COLORS.navy};
+  color: ${COLORS.navy};
+`;
+
+export const PlusMinusButton = styled.button`
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-color: transparent;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
   color: ${COLORS.navy};
 `;
 export const AddToCartButton = styled.button`

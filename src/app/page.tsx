@@ -6,7 +6,6 @@ import {
   testFetchUserByUUID,
   testAddUserAddress,
 } from '../api/supabase/queries/tests/user_test';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
   testFetchOrderByUUID,
   testFetchOrders,
