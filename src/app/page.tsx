@@ -1,45 +1,37 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useRouter } from 'next/router'
+import { Container } from "react-bootstrap"
+import { Home } from "./pages/Home"
+import Store from "./pages/Store"
+import { About } from "./pages/About"
+import Navbar from "../components/cart/Navbar"
+import { ShoppingCartProvider } from "./context/ShoppingCartContext copy"
 
-import Link from 'next/link';
-import {
-  testFetchUserData,
-  testFetchUserByUUID,
-  testAddUserAddress,
-} from '../api/supabase/queries/tests/user_test';
-import {
-  testFetchOrderByUUID,
-  testFetchOrders,
-  testGetOrderById,
-  testToggleOrderProgress,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  testUpdateAllOrdersProgressToTrue,
-} from '../api/supabase/queries/tests/order_test';
-import {
-  testFetchProducts,
-  testFetchProductByName,
-} from '../api/supabase/queries/tests/product_test';
-import {
-  testFetchPickupData,
-  testFetchPickupTimesByUUID,
-} from '../api/supabase/queries/tests/pickup_test';
+function App() {
+  const router = useRouter();
 
-export default function Checkout() {
-  // testFetchUserData();
-  // testFetchUserByUUID();
-  // testAddUserAddress();
-  // testFetchOrderByUUID();
-  // testFetchOrders();
-  // testGetOrderById();
-  // testToggleOrderProgress();
-  testFetchProducts();
-  // testFetchProductByName();
-  // testFetchPickupData();
-  // testFetchPickupTimesByUUID();
-  // testUpdateAllOrdersProgressToTrue();
+  let Component;
+  switch (router.pathname) {
+    case '/':
+      Component = Home;
+      break;
+    case '/store':
+      Component = Store;
+      break;
+    case '/about':
+      Component = About;
+      break;
+    default:
+      Component = Home;
+  }
 
   return (
-    <main>
-      <Link href="/store">Store</Link>
-    </main>
-  );
+    <ShoppingCartProvider>
+      <Navbar />
+      <Container className="mb-4">
+        <Component />
+      </Container>
+    </ShoppingCartProvider>
+  )
 }
+
+export default App;

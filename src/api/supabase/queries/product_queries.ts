@@ -39,6 +39,7 @@ export async function fetchProductByID(
   productId: number,
 ): Promise<PostgrestSingleResponse<Product>> {
   try {
+    // console.log('productId:', productId);
     const { data: product, error } = await supabase
       .from('product')
       .select('*')

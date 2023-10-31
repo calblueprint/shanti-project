@@ -5,7 +5,7 @@ import { Col, Row } from "react-bootstrap";
 import { StoreItem } from "../../components/cart/StoreItem";
 import { fetchProducts } from "../../api/supabase/queries/product_queries";
 import { Product } from "../../schema/schema";
-import { ShoppingCartProvider } from "../context/ShoppingCartContext";
+import { ShoppingCartProvider } from "../context/ShoppingCartContext copy";
 
 export default function Store() {
   const [storeItems, setStoreItems] = useState<Product[]>([]);

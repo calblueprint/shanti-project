@@ -1,3 +1,6 @@
+"use client";
+
+
 import { createContext, ReactNode, useContext, useState } from 'react';
 import ShoppingCart from '../../components/cart/ShoppingCart';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -8,7 +11,7 @@ type ShoppingCartProviderProps = {
 };
 
 // TODO: get this from the user
-const userID = '1';
+const userID = '726543df-8e1a-4c6d-a2c6-326e94eb0a0a';
 
 type CartItem = {
   id: number;
@@ -25,6 +28,8 @@ type ShoppingCartContext = {
   cartQuantity: number;
   cartItems: CartItem[];
 };
+
+
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 

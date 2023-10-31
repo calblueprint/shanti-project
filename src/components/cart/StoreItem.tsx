@@ -1,16 +1,22 @@
+"use client";
+
 /* eslint-disable no-console */
 import { Button, Card } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { useShoppingCart } from '../../app/context/ShoppingCartContext';
+import { useShoppingCart } from '../../app/context/ShoppingCartContext copy';
 import { Product } from '../../schema/schema';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
 
 // eslint-disable-next-line import/prefer-default-export
 export function StoreItem({ id }: { id: number }) {
   const [storeItems, setStoreItems] = useState<Product | null>(null);
-
+  // console.log(id);
+  // console.log("Hello");
   useEffect(() => {
     async function fetchStoreItems() {
+      // console.log(id);
+      // console.log("Hello");
+
       const { data, error } = await fetchProductByID(id);
       if (error) {
         console.error(error);
@@ -33,7 +39,7 @@ export function StoreItem({ id }: { id: number }) {
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={storeItems?.imgUrl || 'https://via.placeholder.com/300'}
+        src={storeItems?.photo || 'https://via.placeholder.com/300'}
         height="200px"
         style={{ objectFit: 'cover' }}
       />
