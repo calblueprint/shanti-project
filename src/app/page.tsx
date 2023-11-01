@@ -2,9 +2,7 @@
 
 import Link from 'next/link';
 import {
-  testFetchUserData,
-  testFetchUserByUUID,
-  testAddUserAddress,
+  fullCartTest
 } from '../api/supabase/queries/tests/user_test';
 import {
   testFetchOrderByUUID,
@@ -24,19 +22,7 @@ import {
 } from '../api/supabase/queries/tests/pickup_test';
 
 export default function Checkout() {
-  testFetchUserData();
-  // testFetchUserByUUID();
-  // testAddUserAddress();
-  // testFetchOrderByUUID();
-  // testFetchOrders();
-  // testGetOrderById();
-  // testToggleOrderProgress();
-  // testFetchProducts();
-  // testFetchProductByName();
-  // testFetchPickupData();
-  // testFetchPickupTimesByUUID();
-  // testUpdateAllOrdersProgressToTrue();
-
+  fullCartTest();
   return (
     <main>
       <Link href="/login">Login</Link>

@@ -4,38 +4,87 @@
 import {
   fetchUserData,
   fetchUserByUUID,
-  addUserAddress,
+  fetchUserCart,
+  incrementCartItemByOne,
+  decrementCartItemByOne,
+  decrementCartItem,
 } from '../user_queries';
 
-export async function testFetchUserData() {
+export async function runFetchUserData() {
   try {
     const result = await fetchUserData();
-    console.log('Fetch Data Result:', result);
+    console.log('fetchUserData Result:', result);
   } catch (error) {
-    console.error('Test Fetch Data Error:', error);
+    console.error('Error in fetchUserData:', error);
   }
 }
 
-export async function testFetchUserByUUID() {
-  const uuid = '3b4a1317-b9ea-4cbd-95d7-e959aa80d1ea'; // Replace with a valid user ID
+export async function runFetchUserByUUID() {
+  const testUUID = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
   try {
-    const result = await fetchUserByUUID(uuid);
-    console.log('Fetch User by UUID Result:', result);
+    const result = await fetchUserByUUID(testUUID);
+    console.log('fetchUserByUUID Result:', result);
   } catch (error) {
-    console.error('Test Fetch User by UUID Error:', error);
+    console.error('Error in fetchUserByUUID:', error);
   }
 }
 
-export async function testAddUserAddress() {
-  const uuid = '3b4a1317-b9ea-4cbd-95d7-e959aa80d1ea'; // Replace with a valid user ID
-  const newStreet = '123 New Street';
-  const newCity = 'New City';
-  const newZipcode = '12345';
-
+export async function runFetchUserCart() {
+  const testUserId = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
   try {
-    const result = await addUserAddress(uuid, newStreet, newCity, newZipcode);
-    console.log('Add User Address Result:', result);
+    const result = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result:', result);
   } catch (error) {
-    console.error('Test Add User Address Error:', error);
+    console.error('Error in fetchUserCart:', error);
   }
 }
+
+export async function runIncrementCartItemByOne() {
+  const testUserId = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
+  const testItemId = '10';
+  try {
+    await incrementCartItemByOne(testUserId, testItemId);
+    const result = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_1:', result);
+    console.log('incrementCartItemByOne executed successfully.');
+  } catch (error) {
+    console.error('Error in incrementCartItemByOne:', error);
+  }
+}
+
+export async function runDecrementCartItemByOne() {
+  const testUserId = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
+  const testItemId = '10';
+  try {
+    await decrementCartItemByOne(testUserId, testItemId);
+    const result = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_1:', result);
+    console.log('incrementCartItemByOne executed successfully.');
+  } catch (error) {
+    console.error('Error in incrementCartItemByOne:', error);
+  }
+}
+
+export async function fullCartTest() {
+  const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
+  const testItemId = '10';
+  try {
+    const result = await fetchUserByUUID(testUserId);
+    console.log('fetchUserData Result:', result);
+    await incrementCartItemByOne(testUserId, testItemId);
+    await incrementCartItemByOne(testUserId, testItemId);
+    await incrementCartItemByOne(testUserId, testItemId);
+    let result_1 = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_1:', result_1);
+    // await decrementCartItemByOne(testUserId, testItemId);
+    result_1 = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_2:', result_1);
+    // await decrementCartItem(testUserId, testItemId, 6);
+
+    // result = await fetchUserCart(testUserId);
+    // console.log('fetchUserCart Result_2:', result);
+  } catch (error) {
+    console.error('Error in incrementCartItemByOne:', error);
+  }
+}
+
