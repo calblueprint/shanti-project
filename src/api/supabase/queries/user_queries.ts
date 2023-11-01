@@ -63,7 +63,7 @@ export async function updateCart(userId: string, currentCart: Record<string, num
   console.log(currentCart);
   const  { data, error } = await supabase
     .from('users')
-    .update({ cart: currentCart })
+    .update({ "cart": currentCart })
     .eq('user_id', userId);
 
   if (error) {
