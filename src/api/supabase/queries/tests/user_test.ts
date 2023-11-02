@@ -37,11 +37,11 @@ export async function fullFavItemTest() {
     const result = await fetchUserByUUID(testUserId);
     console.log('fetchUserData Result:', result);
     addToFavorites(testUserId, testItemId);
-    let result_1 = await fetchFavoriteItems(testUserId);
-    console.log('fetchFavoriteItems Result:', result_1);
+    let result1 = await fetchFavoriteItems(testUserId);
+    console.log('fetchFavoriteItems Result:', result1);
     removeFromFavorites(testUserId, testItemId);
-    result_1 = await fetchFavoriteItems(testUserId);
-    console.log('fetchFavoriteItems Result:', result_1);
+    result1 = await fetchFavoriteItems(testUserId);
+    console.log('fetchFavoriteItems Result:', result1);
     
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
