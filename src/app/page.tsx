@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+'use client';
+
+import React, { useEffect } from 'react';
 import Link from 'next/link';
-import {
-  fullCartTest
-} from '../api/supabase/queries/tests/user_test';
+import { fullCartTest } from '../api/supabase/queries/tests/user_test';
 import {
   testFetchOrderByUUID,
   testFetchOrders,
@@ -21,8 +22,17 @@ import {
   testFetchPickupTimesByUUID,
 } from '../api/supabase/queries/tests/pickup_test';
 
-export default function Checkout() {
-  fullCartTest();
+export const revalidate = 10;
+
+export default async function Checkout() {
+  useEffect(() => {
+    async function testEverything() {
+      await fullCartTest();
+    }
+    testEverything();
+  });
+
+  // await fullCartTest();
   return (
     <main>
       <Link href="/login">Login</Link>

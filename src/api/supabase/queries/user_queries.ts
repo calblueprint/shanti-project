@@ -16,79 +16,87 @@ const supabaseApiKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 // Initialize the Supabase client
 const supabase = createClient(supabaseUrl ?? '', supabaseApiKey ?? '');
 
-export async function fetchUserData() 
-  {
-    const { data , error }: {data:User[] | null, error: PostgrestError| null} = await supabase.from('profiles').select('*');
+export async function fetchUserData() {
+  const { data, error }: { data: User[] | null; error: PostgrestError | null } =
+    await supabase.from('profiles').select('*');
 
-    if (error) {
-      throw new Error(`An error occured when trying to read profiles: ${error}`);
-    } else {
-      return data;
-    }
+  if (error) {
+    throw new Error(`An error occured when trying to read profiles: ${error}`);
+  } else {
+    return data;
+  }
 }
 
-export async function fetchUserByUUID(
-  uuid: string,
+export async function fetchUserByUUID(uuid: string) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('user_id', uuid)
+    .single();
+  if (error) {
+    throw new Error(`An error occured when trying to read profiles: ${error}`);
+  } else {
+    return data;
+  }
+}
+
+export async function fetchUserCart(
+  userId: string,
+): Promise<Record<string, number>> {
+  const { data, error }: { data: User | null; error: PostgrestError | null } =
+    await supabase.from('profiles').select('*').eq('user_id', userId).single();
+
+  if (error) {
+    throw new Error(
+      `An error occurred when trying to fetch the cart: ${error.message}`,
+    );
+  } else if (!data) {
+    throw new Error('No user found with the specified user_id.');
+  }
+
+  return data.cart;
+}
+
+export async function updateCart(
+  userId: string,
+  currentCart: Record<string, number>,
 ) {
 
-    const { data , error }: {data:User | null, error: PostgrestError| null} = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', uuid)
-      .single();
-
-      if (error) {
-        throw new Error(`An error occured when trying to read profiles: ${error}`);
-      } else {
-        return data;
-      }
-  }
-
-  export async function fetchUserCart(userId: string): Promise<Record<string, number>> {
-    const { data, error }: { data: User | null, error: PostgrestError | null } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', userId).single();
-  
-    if (error) {
-      throw new Error(`An error occurred when trying to fetch the cart: ${error.message}`);
-    } else if (!data) {
-      throw new Error("No user found with the specified user_id.");
-    }
-  
-    return data.cart;
-  }
-
-export async function updateCart(userId: string, currentCart: Record<string, number>) {
-  console.log(currentCart);
-  const  { data, error } = await supabase
-    .from('users')
-    .update({ "cart": currentCart })
+  const { data, error } = await supabase
+    .from('profiles')
+    .update({ cart: currentCart })
     .eq('user_id', userId);
 
   if (error) {
-    throw new Error(`An error occurred when trying to update the cart: ${error.message}`);
-  } 
+    throw new Error(
+      `An error occurred when trying to update the cart: ${error.message}`,
+    );
+  }
 }
 
-export async function incrementCartItem(userId: string, itemId: string, n: number) {
+export async function incrementCartItem(
+  userId: string,
+  itemId: string,
+  n: number,
+) {
+
   // First, fetch the current cart for the user
-  const { data, error }: { data: User | null, error: PostgrestError | null } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('user_id', userId).single();
+  const { data, error }: { data: User | null; error: PostgrestError | null } =
+    await supabase.from('profiles').select('*').eq('user_id', userId).single();
 
   if (error) {
-    throw new Error(`An error occurred when trying to fetch the cart: ${error.message}`);
+    throw new Error(
+      `An error occurred when trying to fetch the cart: ${error.message}`,
+    );
   } else if (!data) {
-    throw new Error("No user found with the specified user_id.");
+    throw new Error('No user found with the specified user_id.');
   }
   // console.log(data);
   const currentCart = data.cart;
-  console.log(currentCart);
+
   // Increment the item's quantity by n or set it to n if not present
   currentCart[itemId] = (currentCart[itemId] || 0) + n;
-  console.log(currentCart);
+  // console.log(currentCart);
   // Use the updateCart function to update the cart in the database
   await updateCart(userId, currentCart);
 }
@@ -97,17 +105,21 @@ export async function incrementCartItemByOne(userId: string, itemId: string) {
   return incrementCartItem(userId, itemId, 1);
 }
 
-export async function decrementCartItem(userId: string, itemId: string, n: number) {
+export async function decrementCartItem(
+  userId: string,
+  itemId: string,
+  n: number,
+) {
   // First, fetch the current cart for the user
-  const { data, error }: { data: User[] | null, error: PostgrestError | null } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('user_id', userId);
+  const { data, error }: { data: User[] | null; error: PostgrestError | null } =
+    await supabase.from('profiles').select('*').eq('user_id', userId);
 
   if (error) {
-    throw new Error(`An error occurred when trying to fetch the cart: ${error.message}`);
+    throw new Error(
+      `An error occurred when trying to fetch the cart: ${error.message}`,
+    );
   } else if (!data || data.length === 0) {
-    throw new Error("No user found with the specified user_id.");
+    throw new Error('No user found with the specified user_id.');
   }
 
   const currentCart = data[0].cart;
@@ -128,9 +140,6 @@ export async function decrementCartItem(userId: string, itemId: string, n: numbe
 export async function decrementCartItemByOne(userId: string, itemId: string) {
   return decrementCartItem(userId, itemId, 1);
 }
-
-
-
 
 // export async function addUserAddress(
 //   uuid: string,
