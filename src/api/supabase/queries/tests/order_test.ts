@@ -75,7 +75,6 @@ export async function testUpdateAllOrdersProgressToTrue() {
   }
 }
 
-
 export async function fullOrderTest() {
   const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
   try {

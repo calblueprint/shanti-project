@@ -161,46 +161,43 @@ export async function updateAllOrdersProgressToTrue(): Promise<
   }
 }
 
-
 export async function createOrder(userId: string) {
   // Fetch the user's cart
   const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', userId)
-      .single();
+    .from('profiles')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
 
   if (error) {
-      throw new Error(`Error fetching user's cart: ${error.message}`);
+    throw new Error(`Error fetching user's cart: ${error.message}`);
   }
 
   if (!data) {
-      throw new Error('User not found.');
+    throw new Error('User not found.');
   }
 
   // Extract user's cart
   const userCart = data.cart;
   console.log('userCart:', userCart);
   // Create a new order with user's cart
-  const { error: orderError } = await supabase
-      .from('order')
-      .insert({
-          user_id: userId,
-          order_cart: userCart,  // Assuming cart in the order table is designed to accept the same structure as cart_items in users table
-          pickup_time: null
-      });
+  const { error: orderError } = await supabase.from('order').insert({
+    user_id: userId,
+    order_cart: userCart, // Assuming cart in the order table is designed to accept the same structure as cart_items in users table
+    pickup_time: null,
+  });
 
   if (orderError) {
-      throw new Error(`Error creating order: ${orderError.message}`);
+    throw new Error(`Error creating order: ${orderError.message}`);
   }
 
   // Reset user's cart to an empty object
   const { error: resetCartError } = await supabase
-      .from('profiles')
-      .update({ cart: {} })
-      .eq('user_id', userId);
+    .from('profiles')
+    .update({ cart: {} })
+    .eq('user_id', userId);
 
   if (resetCartError) {
-      throw new Error(`Error resetting user's cart: ${resetCartError.message}`);
+    throw new Error(`Error resetting user's cart: ${resetCartError.message}`);
   }
 }
