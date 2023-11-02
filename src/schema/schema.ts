@@ -35,4 +35,3 @@ export type Product = {
   photo: string; // text null;
   updated_at: string; // timestamp with time zone not null default now();
 };
-

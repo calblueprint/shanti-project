@@ -61,7 +61,6 @@ export async function updateCart(
   userId: string,
   currentCart: Record<string, number>,
 ) {
-
   const { data, error } = await supabase
     .from('profiles')
     .update({ cart: currentCart })
@@ -79,7 +78,6 @@ export async function incrementCartItem(
   itemId: string,
   n: number,
 ) {
-
   // First, fetch the current cart for the user
   const { data, error }: { data: User | null; error: PostgrestError | null } =
     await supabase.from('profiles').select('*').eq('user_id', userId).single();

@@ -75,15 +75,15 @@ export async function fullCartTest() {
     await incrementCartItemByOne(testUserId, testItemId);
     await incrementCartItemByOne(testUserId, testItemId);
     await incrementCartItemByOne(testUserId, testItemId);
-    let result_1 = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_1:', result_1);
+    let result1 = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_1:', result1);
     await decrementCartItemByOne(testUserId, testItemId);
-    result_1 = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_2:', result_1);
+    result1 = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_2:', result1);
     await decrementCartItem(testUserId, testItemId, 6);
 
-    const result_3 = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_3:', result_3);
+    const result3 = await fetchUserCart(testUserId);
+    console.log('fetchUserCart Result_3:', result3);
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
   }
