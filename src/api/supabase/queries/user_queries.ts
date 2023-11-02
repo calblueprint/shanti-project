@@ -55,18 +55,22 @@ export async function fetchUserByUUID(
   }
 }
 
-export async function fetchFavoriteItems(userId: string): Promise<Record<string, number>> {
+export async function fetchFavoriteItems(
+  userId: string,
+): Promise<Record<string, number>> {
   // Fetch fav_items for the specified user
   const { data, error } = await supabase
-      .from('profiles')
-      .select('fav_items')
-      .eq('user_id', userId)
-      .single();
+    .from('profiles')
+    .select('fav_items')
+    .eq('user_id', userId)
+    .single();
 
   if (error) {
-      throw new Error(`An error occurred when trying to fetch favorite items: ${error.message}`);
+    throw new Error(
+      `An error occurred when trying to fetch favorite items: ${error.message}`,
+    );
   } else if (!data) {
-      throw new Error("No user found with the specified user_id.");
+    throw new Error('No user found with the specified user_id.');
   }
 
   return data.fav_items;
@@ -75,28 +79,32 @@ export async function fetchFavoriteItems(userId: string): Promise<Record<string,
 export async function addToFavorites(userId: string, productId: string) {
   // First, fetch the current fav_items for the user
   const { data, error } = await supabase
-      .from('profiles')
-      .select('fav_items')
-      .eq('user_id', userId)
-      .single();
+    .from('profiles')
+    .select('fav_items')
+    .eq('user_id', userId)
+    .single();
 
   if (error) {
-      throw new Error(`An error occurred when trying to fetch the user's favorite items: ${error.message}`);
+    throw new Error(
+      `An error occurred when trying to fetch the user's favorite items: ${error.message}`,
+    );
   }
 
   const currentFavItems = data?.fav_items || {};
 
   // Add the product to fav_items or update its quantity
-  currentFavItems[productId] = (currentFavItems[productId] || 0);
+  currentFavItems[productId] = currentFavItems[productId] || 0;
 
   // Now update the user's fav_items in the database
   const updateResponse = await supabase
-      .from('profiles')
-      .update({ fav_items: currentFavItems })
-      .eq('user_id', userId);
+    .from('profiles')
+    .update({ fav_items: currentFavItems })
+    .eq('user_id', userId);
 
   if (updateResponse.error) {
-      throw new Error(`An error occurred when trying to update the user's favorite items: ${updateResponse.error.message}`);
+    throw new Error(
+      `An error occurred when trying to update the user's favorite items: ${updateResponse.error.message}`,
+    );
   }
 }
 
@@ -104,13 +112,15 @@ export async function addToFavorites(userId: string, productId: string) {
 export async function removeFromFavorites(userId: string, productId: string) {
   // First, fetch the current fav_items for the user
   const { data, error } = await supabase
-      .from('profiles')
-      .select('fav_items')
-      .eq('user_id', userId)
-      .single();
+    .from('profiles')
+    .select('fav_items')
+    .eq('user_id', userId)
+    .single();
 
   if (error) {
-      throw new Error(`An error occurred when trying to fetch the user's favorite items: ${error.message}`);
+    throw new Error(
+      `An error occurred when trying to fetch the user's favorite items: ${error.message}`,
+    );
   }
 
   const currentFavItems = data?.fav_items || {};
@@ -120,11 +130,13 @@ export async function removeFromFavorites(userId: string, productId: string) {
   console.log(currentFavItems);
   // Now update the user's fav_items in the database
   const updateResponse = await supabase
-      .from('profiles')
-      .update({ fav_items: currentFavItems })
-      .eq('user_id', userId);
+    .from('profiles')
+    .update({ fav_items: currentFavItems })
+    .eq('user_id', userId);
 
   if (updateResponse.error) {
-      throw new Error(`An error occurred when trying to update the user's favorite items: ${updateResponse.error.message}`);
+    throw new Error(
+      `An error occurred when trying to update the user's favorite items: ${updateResponse.error.message}`,
+    );
   }
 }

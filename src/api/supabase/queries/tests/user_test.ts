@@ -28,8 +28,6 @@ export async function runFetchUserByUUID() {
   }
 }
 
-
-
 export async function fullFavItemTest() {
   const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
   const testItemId = '10';
@@ -42,7 +40,6 @@ export async function fullFavItemTest() {
     removeFromFavorites(testUserId, testItemId);
     result1 = await fetchFavoriteItems(testUserId);
     console.log('fetchFavoriteItems Result:', result1);
-    
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
   }

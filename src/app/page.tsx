@@ -5,9 +5,7 @@
 import React, { useEffect } from 'react';
 
 import Link from 'next/link';
-import {
-  fullFavItemTest
-} from '../api/supabase/queries/tests/user_test';
+import { fullFavItemTest } from '../api/supabase/queries/tests/user_test';
 import {
   testFetchOrderByUUID,
   testFetchOrders,
@@ -46,7 +44,6 @@ export default function Checkout() {
   });
 
   return (
-    
     <main>
       <Link href="/login">Login</Link>
     </main>
