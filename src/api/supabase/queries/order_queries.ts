@@ -160,3 +160,48 @@ export async function updateAllOrdersProgressToTrue(): Promise<
     return 'Update failed'; // Return an error message if an exception occurs
   }
 }
+
+
+export async function createOrder(userId: string) {
+  // Fetch the user's cart
+  const { data: user, error: userError } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('user_id', userId)
+      .single();
+
+  if (userError) {
+      throw new Error(`Error fetching user's cart: ${userError.message}`);
+  }
+
+  if (!user) {
+      throw new Error('User not found.');
+  }
+
+  // Extract user's cart
+  const userCart = user.cart;
+
+  // Create a new order with user's cart
+  const { error: orderError } = await supabase
+      .from('orders')
+      .insert({
+          user_id: userId,
+          cart: userCart,  // Assuming cart in the order table is designed to accept the same structure as cart_items in users table
+          status: null,
+          pickup_time: null
+      });
+
+  if (orderError) {
+      throw new Error(`Error creating order: ${orderError.message}`);
+  }
+
+  // Reset user's cart to an empty object
+  const { error: resetCartError } = await supabase
+      .from('users')
+      .update({ cart_items: {} })
+      .eq('user_id', userId);
+
+  if (resetCartError) {
+      throw new Error(`Error resetting user's cart: ${resetCartError.message}`);
+  }
+}

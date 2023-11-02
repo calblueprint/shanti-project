@@ -8,6 +8,7 @@ import {
   getOrderById,
   toggleOrderProgress,
   updateAllOrdersProgressToTrue,
+  createOrder,
 } from '../order_queries'; // Replace './your-module' with the actual path to your module
 
 // Test fetching all orders
@@ -71,5 +72,15 @@ export async function testUpdateAllOrdersProgressToTrue() {
     console.log('Update All Orders Progress Result:', result);
   } catch (error) {
     console.error('Test Update All Orders Progress Error:', error);
+  }
+}
+
+
+export async function fullOrderTest() {
+  const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
+  try {
+    createOrder(testUserId);
+  } catch (error) {
+    console.error('Error in incrementCartItemByOne:', error);
   }
 }
