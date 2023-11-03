@@ -33,8 +33,6 @@ export async function testFetchOrderByUUID() {
   }
 }
 
-
-
 // Test fetching an order by ID
 export async function testGetOrderById() {
   const orderId = '2'; // Replace with a valid order ID
