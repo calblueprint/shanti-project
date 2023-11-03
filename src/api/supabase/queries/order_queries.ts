@@ -20,7 +20,7 @@ export async function fetchOrders(): Promise<
 > {
   try {
     const { data: orders, error } = await supabase
-      .from('Order') // Update to the "Order" table
+      .from('order') // Update to the "Order" table
       .select('*');
 
     if (error) {
@@ -40,7 +40,7 @@ export async function fetchOrderByUUID(
 ): Promise<PostgrestSingleResponse<Order>> {
   try {
     const { data: order, error } = await supabase
-      .from('Order') // Update to the "Order" table
+      .from('order') // Update to the "Order" table
       .select('*')
       .eq('id', uuid)
       .single();
@@ -56,37 +56,13 @@ export async function fetchOrderByUUID(
   }
 }
 
-export async function getOrdersByUserId(
-  userId: string,
-): Promise<
-  PostgrestSingleResponse<Order[]> | { data: never[]; error: PostgrestError }
-> {
-  try {
-    const { data: orders, error } = await supabase
-      .from('Order')
-      .select('*')
-      .eq('user_id', userId)
-      .single();
-
-    if (error) {
-      console.error('Error fetching orders:', error);
-      return { data: [], error };
-    }
-
-    return orders;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
-
 // Function to get an order by its ID
 export async function getOrderById(
   orderId: string,
 ): Promise<PostgrestSingleResponse<Order>> {
   try {
     const { data: order, error } = await supabase
-      .from('Order')
+      .from('order')
       .select('*')
       .eq('id', orderId)
       .single();
@@ -108,7 +84,7 @@ export async function toggleOrderProgress(
   try {
     // Fetch the order by ID to get its current "approved" value
     const { data: currentOrder, error: fetchError } = await supabase
-      .from('Order')
+      .from('order')
       .select('approved')
       .eq('id', orderId)
       .single();
@@ -123,7 +99,7 @@ export async function toggleOrderProgress(
 
     // Update the order with the new "approved" value
     const { data: updatedOrder, error: updateError } = await supabase
-      .from('Order')
+      .from('order')
       .update({ approved: updatedApprovedValue })
       .eq('id', orderId)
       .single();
@@ -146,7 +122,7 @@ export async function updateAllOrdersProgressToTrue(): Promise<
   try {
     // Update all orders to set "approved" to true
     const { error: updateError } = await supabase
-      .from('Order')
+      .from('order')
       .update({ approved: true });
 
     if (updateError) {
@@ -200,4 +176,34 @@ export async function createOrder(userId: string) {
   if (resetCartError) {
     throw new Error(`Error resetting user's cart: ${resetCartError.message}`);
   }
+}
+
+function sortOrdersByCreated(orders: Order[]) {
+  return orders.sort(
+    (a, b) =>
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+  );
+}
+
+export async function fetchOrdersByUserId(userId: string) {
+  const { data, error } = await supabase
+    .from('order')
+    .select('*')
+    .eq('user_id', userId);
+
+  if (error) {
+    throw new Error(`Error fetching orders for user: ${error.message}`);
+  }
+
+  return data || [];
+}
+
+export async function fetchOrdersByUserIdSorted(userId: string) {
+  const orders = await fetchOrdersByUserId(userId);
+  return sortOrdersByCreated(orders);
+}
+
+export async function fetchNOrdersByUserIdSorted(userId: string, n: number) {
+  const orders = await fetchOrdersByUserId(userId);
+  return sortOrdersByCreated(orders).slice(0, n);
 }

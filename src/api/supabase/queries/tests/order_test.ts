@@ -4,11 +4,12 @@
 import {
   fetchOrders,
   fetchOrderByUUID,
-  getOrdersByUserId,
   getOrderById,
   toggleOrderProgress,
   updateAllOrdersProgressToTrue,
-  createOrder,
+  fetchOrdersByUserId,
+  fetchNOrdersByUserIdSorted,
+  fetchOrdersByUserIdSorted,
 } from '../order_queries'; // Replace './your-module' with the actual path to your module
 
 // Test fetching all orders
@@ -32,16 +33,7 @@ export async function testFetchOrderByUUID() {
   }
 }
 
-// Test fetching orders by user ID
-export async function testGetOrdersByUserId() {
-  const userId = '3b4a1317-b9ea-4cbd-95d7-e959aa80d1ea'; // Replace with a valid user ID
-  try {
-    const result = await getOrdersByUserId(userId);
-    console.log('Get Orders by User ID Result:', result);
-  } catch (error) {
-    console.error('Test Get Orders by User ID Error:', error);
-  }
-}
+
 
 // Test fetching an order by ID
 export async function testGetOrderById() {
@@ -78,7 +70,13 @@ export async function testUpdateAllOrdersProgressToTrue() {
 export async function fullOrderTest() {
   const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
   try {
-    createOrder(testUserId);
+    // createOrder(testUserId);
+    const orders = await fetchOrdersByUserId(testUserId);
+    console.log(orders);
+    const sortedOrders = await fetchOrdersByUserIdSorted(testUserId);
+    console.log(sortedOrders);
+    const nOrders = await fetchNOrdersByUserIdSorted(testUserId, 2);
+    console.log(nOrders);
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
   }
