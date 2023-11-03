@@ -34,9 +34,7 @@ export async function fetchUserData(): Promise<
   }
 }
 
-export async function fetchUserByUUID(
-  uuid: string,
-): Promise<PostgrestSingleResponse<unknown>> {
+export async function fetchUserByUUID(uuid: string) {
   try {
     const { data: user, error } = await supabase
       .from('profiles')
