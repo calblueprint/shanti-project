@@ -44,9 +44,9 @@ export async function runIncrementCartItemByOne() {
   const testItemId = '10';
   try {
     await incrementCartItemByOne(testUserId, testItemId);
-    const result = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_1:', result);
-    console.log('incrementCartItemByOne executed successfully.');
+    // const result = await fetchUserCart(testUserId);
+    // console.log('fetchUserCart Result_1:', result);
+    // console.log('incrementCartItemByOne executed successfully.');
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
   }
@@ -57,9 +57,9 @@ export async function runDecrementCartItemByOne() {
   const testItemId = '10';
   try {
     await decrementCartItemByOne(testUserId, testItemId);
-    const result = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_1:', result);
-    console.log('incrementCartItemByOne executed successfully.');
+    // const result = await fetchUserCart(testUserId);
+    // console.log('fetchUserCart Result_1:', result);
+    // console.log('incrementCartItemByOne executed successfully.');
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
   }
@@ -70,20 +70,20 @@ export async function fullCartTest() {
   const testItemId = '10';
   try {
     const result = await fetchUserByUUID(testUserId);
-    console.log('fetchUserData Result:', result);
+    // console.log('fetchUserData Result:', result);
 
     await incrementCartItemByOne(testUserId, testItemId);
     await incrementCartItemByOne(testUserId, testItemId);
     await incrementCartItemByOne(testUserId, testItemId);
-    let result1 = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_1:', result1);
+    const result1 = await fetchUserCart(testUserId);
+    // console.log('fetchUserCart Result_1:', result1);
     await decrementCartItemByOne(testUserId, testItemId);
-    result1 = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_2:', result1);
+    // result1 = await fetchUserCart(testUserId);
+    // console.log('fetchUserCart Result_2:', result1);
     await decrementCartItem(testUserId, testItemId, 6);
 
-    const result3 = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result_3:', result3);
+    // const result3 = await fetchUserCart(testUserId);
+    // console.log('fetchUserCart Result_3:', result3);
   } catch (error) {
     console.error('Error in incrementCartItemByOne:', error);
   }
