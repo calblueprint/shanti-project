@@ -13,7 +13,7 @@ import {
 export async function runFetchUserData() {
   try {
     const result = await fetchUserData();
-    console.log('fetchUserData Result:', result);
+    // console.log('fetchUserData Result:', result);
   } catch (error) {
     console.error('Error in fetchUserData:', error);
   }
@@ -23,7 +23,7 @@ export async function runFetchUserByUUID() {
   const testUUID = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
   try {
     const result = await fetchUserByUUID(testUUID);
-    console.log('fetchUserByUUID Result:', result);
+    // console.log('fetchUserByUUID Result:', result);
   } catch (error) {
     console.error('Error in fetchUserByUUID:', error);
   }
@@ -33,7 +33,7 @@ export async function runFetchUserCart() {
   const testUserId = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
   try {
     const result = await fetchUserCart(testUserId);
-    console.log('fetchUserCart Result:', result);
+    // console.log('fetchUserCart Result:', result);
   } catch (error) {
     console.error('Error in fetchUserCart:', error);
   }
