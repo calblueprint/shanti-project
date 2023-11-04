@@ -89,12 +89,12 @@ export async function incrementCartItem(
   } else if (!data) {
     throw new Error('No user found with the specified user_id.');
   }
-  // console.log(data);
+ 
   const currentCart = data.cart;
 
   // Increment the item's quantity by n or set it to n if not present
   currentCart[itemId] = (currentCart[itemId] || 0) + n;
-  // console.log(currentCart);
+
   // Use the updateCart function to update the cart in the database
   await updateCart(userId, currentCart);
 }
@@ -153,7 +153,6 @@ export async function decrementCartItemByOne(userId: string, itemId: string) {
 //       .single();
 
 //     if (selectError) {
-//       console.error('Error selecting user data:', selectError);
 //       throw selectError;
 //     }
 
@@ -173,13 +172,10 @@ export async function decrementCartItemByOne(userId: string, itemId: string) {
 //       .single();
 
 //     if (error) {
-//       console.error('Error updating user data:', error);
 //       throw error;
 //     }
 
 //     return { data, error: null, status: 200, statusText: 'OK', count: 1 };
 //   } catch (error) {
-//     console.error('Error:', error);
-//     throw error;
 //   }
 // }
