@@ -35,9 +35,7 @@ export async function fetchProducts(): Promise<
   }
 }
 
-export async function fetchProductByID(
-  productId: number,
-): Promise<PostgrestSingleResponse<Product>> {
+export async function fetchProductByID(productId: number) {
   try {
     const { data: product, error } = await supabase
       .from('product')

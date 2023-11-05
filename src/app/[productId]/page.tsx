@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { PostgrestSingleResponse } from '@supabase/supabase-js';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
 import {
   BackButton,
@@ -21,7 +20,7 @@ export default function ItemDisplay({
 }: {
   params: { productId: number };
 }) {
-  const [Item, setItem] = useState<PostgrestSingleResponse<Product>>();
+  const [Item, setItem] = useState<Product>();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -29,6 +28,10 @@ export default function ItemDisplay({
         const response = await fetchProductByID(params.productId);
         if (response) {
           setItem(response);
+          console.log('response');
+          console.log(response);
+          console.log('item');
+          console.log(Item);
         }
       } catch (error) {
         // console.error(error);
@@ -36,7 +39,7 @@ export default function ItemDisplay({
     }
 
     fetchProducts();
-  }, []);
+  }, [params.productId]);
 
   return (
     <main>
