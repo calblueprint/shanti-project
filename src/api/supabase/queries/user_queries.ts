@@ -20,7 +20,10 @@ export async function fetchUserData(): Promise<
   PostgrestSingleResponse<User[]> | { data: never[]; error: PostgrestError }
 > {
   try {
-    const { data: users, error } = await supabase.from('users').select('*');
+    const { data: users, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .single();
 
     if (error) {
       console.error('Error fetching data:', error);
@@ -34,12 +37,10 @@ export async function fetchUserData(): Promise<
   }
 }
 
-export async function fetchUserByUUID(
-  uuid: string,
-): Promise<PostgrestSingleResponse<unknown>> {
+export async function fetchUserByUUID(uuid: string) {
   try {
     const { data: user, error } = await supabase
-      .from('Users')
+      .from('profiles')
       .select('*')
       .eq('user_id', uuid)
       .single();
@@ -63,7 +64,7 @@ export async function addUserAddress(
 ): Promise<PostgrestSingleResponse<unknown>> {
   try {
     const { data: existingUser, error: selectError } = await supabase
-      .from('Users')
+      .from('profiles')
       .select('street, city, zipcode')
       .eq('user_id', uuid)
       .single();
@@ -79,7 +80,7 @@ export async function addUserAddress(
     const updatedZipcode = [...(existingUser?.zipcode || []), newZipcode];
 
     const { data, error } = await supabase
-      .from('Users')
+      .from('profiles')
       .update({
         street: updatedStreet,
         city: updatedCity,
