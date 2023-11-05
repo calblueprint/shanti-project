@@ -28,10 +28,6 @@ export default function ItemDisplay({
         const response = await fetchProductByID(params.productId);
         if (response) {
           setItem(response);
-          console.log('response');
-          console.log(response);
-          console.log('item');
-          console.log(Item);
         }
       } catch (error) {
         // console.error(error);
