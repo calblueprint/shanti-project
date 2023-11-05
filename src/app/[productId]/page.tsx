@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { PostgrestSingleResponse } from '@supabase/supabase-js';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
 import {
   BackButton,
@@ -20,14 +21,13 @@ export default function ItemDisplay({
 }: {
   params: { productId: number };
 }) {
-  const [Item, setItem] = useState<Product | undefined>(undefined);
+  const [Item, setItem] = useState<PostgrestSingleResponse<Product>>();
 
   useEffect(() => {
     async function fetchProducts() {
       try {
         const response = await fetchProductByID(params.productId);
         if (response) {
-          // not sure why this is erroring b/c it still outputs the product?
           setItem(response);
         }
       } catch (error) {
