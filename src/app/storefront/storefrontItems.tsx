@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { getProduct } from './helperFunction';
 import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
 
 import { Product } from '../../schema/schema';
 
-function Storefront() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const productsData = (await getProduct()) as Product[];
-        setProducts(productsData);
-      } catch (error) {
-        // console.error('Error fetching products:', error);
-      }
-    }
-
-    fetchProducts();
-  }, []);
-
+function Storefront({ products }: { products: Product[] }) {
   return (
     <StorefrontWrapper>
       {products.map(product => (
