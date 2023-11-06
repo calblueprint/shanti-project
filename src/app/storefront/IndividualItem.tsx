@@ -32,9 +32,8 @@ export default function IndividualItem(props: { product: Product }) {
       }
     }
   }
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+
+  fetchProducts();
 
   async function clickFunction() {
     setIsFavorite(!isFavorite);
