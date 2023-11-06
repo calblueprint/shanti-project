@@ -1,30 +1,26 @@
 import React from 'react';
-
+import Link from 'next/link';
 import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
 
-export default function Storefront(props: { products: Product[] }) {
-  const { products } = props;
-
+function Storefront({ products }: { products: Product[] }) {
   return (
     <StorefrontWrapper>
       {products.map(product => (
         <StorefrontItem key={product.product_id}>
           <ItemButtons>
-            <img
-              src={product.photo}
-              alt={product.name}
-              style={{ width: '250px', height: '250px' }}
-            />
+            <Link
+              href={{
+                pathname: `/${product.product_id}`,
+              }}
+            >
+              <img
+                src={product.photo}
+                alt={product.name}
+                style={{ width: '250px', height: '250px' }}
+              />
+            </Link>
           </ItemButtons>
           <p style={{ paddingTop: '10px' }}>{product.name}</p>
         </StorefrontItem>
@@ -32,3 +28,5 @@ export default function Storefront(props: { products: Product[] }) {
     </StorefrontWrapper>
   );
 }
+
+export default Storefront;

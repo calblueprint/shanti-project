@@ -1,5 +1,4 @@
 import Image from 'next/image';
-
 import Link from 'next/link';
 import React from 'react';
 
@@ -11,7 +10,7 @@ export default function NavBar() {
       <Link href="../storefront">
         <Image
           src="/images/ShantiLogo.png"
-          alt="logo pic"
+          alt="Shanti Logo"
           width={125}
           height={70}
         />
@@ -21,14 +20,19 @@ export default function NavBar() {
         <Link href="../profileScreen">
           <Image
             src="/images/Profile.png"
-            alt="logo pic"
+            alt="Profile icon"
             width={40}
             height={40}
           />
         </Link>
 
         <Link href="../checkout">
-          <Image src="/images/Cart.png" alt="logo pic" width={30} height={40} />
+          <Image
+            src="/images/Cart.png"
+            alt="Cart icon"
+            width={30}
+            height={40}
+          />
         </Link>
       </ButtonsDiv>
     </NavBarComp>

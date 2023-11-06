@@ -4,38 +4,43 @@
 import {
   fetchUserData,
   fetchUserByUUID,
-  addUserAddress,
+  fetchFavoriteItems,
+  addToFavorites,
+  removeFromFavorites,
 } from '../user_queries';
 
-export async function testFetchUserData() {
+export async function runFetchUserData() {
   try {
     const result = await fetchUserData();
-    console.log('Fetch Data Result:', result);
+    console.log('fetchUserData Result:', result);
   } catch (error) {
-    console.error('Test Fetch Data Error:', error);
+    console.error('Error in fetchUserData:', error);
   }
 }
 
-export async function testFetchUserByUUID() {
-  const uuid = '3b4a1317-b9ea-4cbd-95d7-e959aa80d1ea'; // Replace with a valid user ID
+export async function runFetchUserByUUID() {
+  const testUUID = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
   try {
-    const result = await fetchUserByUUID(uuid);
-    console.log('Fetch User by UUID Result:', result);
+    const result = await fetchUserByUUID(testUUID);
+    console.log('fetchUserByUUID Result:', result);
   } catch (error) {
-    console.error('Test Fetch User by UUID Error:', error);
+    console.error('Error in fetchUserByUUID:', error);
   }
 }
 
-export async function testAddUserAddress() {
-  const uuid = '3b4a1317-b9ea-4cbd-95d7-e959aa80d1ea'; // Replace with a valid user ID
-  const newStreet = '123 New Street';
-  const newCity = 'New City';
-  const newZipcode = '12345';
-
+export async function fullFavItemTest() {
+  const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
+  const testItemId = '10';
   try {
-    const result = await addUserAddress(uuid, newStreet, newCity, newZipcode);
-    console.log('Add User Address Result:', result);
+    const result = await fetchUserByUUID(testUserId);
+    console.log('fetchUserData Result:', result);
+    addToFavorites(testUserId, testItemId);
+    let result1 = await fetchFavoriteItems(testUserId);
+    console.log('fetchFavoriteItems Result:', result1);
+    removeFromFavorites(testUserId, testItemId);
+    result1 = await fetchFavoriteItems(testUserId);
+    console.log('fetchFavoriteItems Result:', result1);
   } catch (error) {
-    console.error('Test Add User Address Error:', error);
+    console.error('Error in incrementCartItemByOne:', error);
   }
 }

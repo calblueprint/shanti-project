@@ -3,24 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
+import { GlobalStyle } from '../../styles/components';
 import NavBar from '../../components/NavBar';
-import {
-  GlobalStyle,
-  ButtonsContainer,
-  StickyHeader,
-  ShopAllText,
-} from './styles';
+import { ButtonsContainer, ShopAllText } from './styles';
 import { getProduct } from './helperFunction';
+import { Product } from '../../schema/schema';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
 // https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
   const buttons = [
@@ -63,19 +51,17 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <StickyHeader>
-        <NavBar />
-        <ButtonsContainer>
-          {buttons.map(type => (
-            <ProductButtons
-              key={type.count}
-              value={type.value}
-              setFiltredProducts={setFilteredProducts}
-              content={type.name}
-            />
-          ))}
-        </ButtonsContainer>
-      </StickyHeader>
+      <NavBar />
+      <ButtonsContainer>
+        {buttons.map(type => (
+          <ProductButtons
+            key={type.count}
+            value={type.value}
+            setFiltredProducts={setFilteredProducts}
+            content={type.name}
+          />
+        ))}
+      </ButtonsContainer>
       <ShopAllText>Shop All</ShopAllText>
       <Storefront products={FilteredProducts} />
     </main>
