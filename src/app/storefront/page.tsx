@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
+
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import {
@@ -12,16 +13,7 @@ import {
   ShopAllText,
 } from './styles';
 import { getProduct } from './helperFunction';
-
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
 
 export default function App() {
   const buttons = [
@@ -64,19 +56,17 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <StickyHeader>
-        <NavBar />
-        <ButtonsContainer>
-          {buttons.map(type => (
-            <ProductButtons
-              key={type.count}
-              value={type.value}
-              setFiltredProducts={setFilteredProducts}
-              content={type.name}
-            />
-          ))}
-        </ButtonsContainer>
-      </StickyHeader>
+      <NavBar />
+      <ButtonsContainer>
+        {buttons.map(type => (
+          <ProductButtons
+            key={type.count}
+            value={type.value}
+            setFiltredProducts={setFilteredProducts}
+            content={type.name}
+          />
+        ))}
+      </ButtonsContainer>
       <ShopAllText>Shop All</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />

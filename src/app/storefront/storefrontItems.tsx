@@ -4,19 +4,9 @@ import { StorefrontWrapper } from './styles';
 
 import IndividualItem from './IndividualItem';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
 
-export default function Storefront(props: { products: Product[] }) {
-  const { products } = props;
-
+function Storefront({ products }: { products: Product[] }) {
   return (
     <StorefrontWrapper>
       {products.map(productVal => (
@@ -25,3 +15,5 @@ export default function Storefront(props: { products: Product[] }) {
     </StorefrontWrapper>
   );
 }
+
+export default Storefront;

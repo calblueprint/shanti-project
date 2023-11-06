@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+'use client';
+
+import React, { useEffect } from 'react';
+
 import Link from 'next/link';
-import {
-  testFetchUserData,
-  testFetchUserByUUID,
-  testAddUserAddress,
-} from '../api/supabase/queries/tests/user_test';
+import { fullFavItemTest } from '../api/supabase/queries/tests/user_test';
 import {
   testFetchOrderByUUID,
   testFetchOrders,
@@ -24,7 +24,7 @@ import {
 } from '../api/supabase/queries/tests/pickup_test';
 
 export default function Checkout() {
-  testFetchUserData();
+  // testFetchUserData();
   // testFetchUserByUUID();
   // testAddUserAddress();
   // testFetchOrderByUUID();
@@ -36,6 +36,12 @@ export default function Checkout() {
   // testFetchPickupData();
   // testFetchPickupTimesByUUID();
   // testUpdateAllOrdersProgressToTrue();
+  useEffect(() => {
+    async function testEverything() {
+      await fullFavItemTest();
+    }
+    testEverything();
+  });
 
   return (
     <main>

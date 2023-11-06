@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled,{createGlobalStyle} from 'styled-components';
 
 import { Heart } from 'react-feather';
 
@@ -24,7 +24,6 @@ export const StickyHeader = styled.div`
 
 export const Button = styled.button<props>`
   background-color: ${props => (props.isClicked ? '#00507f' : '#C7E1FF')};
-
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -56,14 +55,6 @@ export const ItemContainer = styled.div`
   flex-direction: row;
 `;
 
-export const Img = styled.div`
-  background-color: yellow;
-  float: left;
-  height: 50px;
-  width: 110px;
-  margin: 20px;
-`;
-
 export const ButtonsContainer = styled.div`
   margin-left: 400px;
   margin-right: 400px;
@@ -73,6 +64,7 @@ export const ButtonsContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: absolute;
   z-index: 5;
   transform: translate(0px, -180px);
 `;
