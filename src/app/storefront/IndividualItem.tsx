@@ -1,11 +1,10 @@
+import React, { useState, useEffect } from 'react';
 import {
   StorefrontItem,
   ItemButtons,
   HeartIcon,
   HeartContainer,
 } from './styles';
-
-import React, { useState, useEffect } from 'react';
 
 import { getUserInfo, arrayOfFavorites } from './helperFunction';
 
@@ -22,18 +21,16 @@ interface Product {
 export default function IndividualItem(props: { product: Product }) {
   const { product } = props;
   const [isFavorite, setIsFavorite] = useState(true);
-  const [Favorites, setFavorites] = useState<Product[]>([]);
-  async function fetchProducts() {
-    try {
-      const data = (await arrayOfFavorites()) as Product[];
-      for (let i = 0; i < data.length; i++) {
-        var ith_product = data[i];
 
-        if (product.product_id == ith_product.product_id) {
-          setIsFavorite(!isFavorite);
-        }
+  async function fetchProducts() {
+    const data = (await arrayOfFavorites()) as Product[];
+    for (let i = 0; i < data.length; i += 1) {
+      const ithProduct = data[i];
+
+      if (product.product_id === ithProduct.product_id) {
+        setIsFavorite(!isFavorite);
       }
-    } catch (error) {}
+    }
   }
   useEffect(() => {
     fetchProducts();

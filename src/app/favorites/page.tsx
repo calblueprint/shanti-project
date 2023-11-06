@@ -2,9 +2,9 @@
 
 import { ArrowLeft } from 'react-feather';
 
-import { arrayOfFavorites, getUserInfo } from '../storefront/helperFunction';
-
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { arrayOfFavorites, getUserInfo } from '../storefront/helperFunction';
 
 import {
   FavoriteDiv,
@@ -18,8 +18,6 @@ import {
 } from '../profileScreen/style';
 
 import NavBar from '../../components/NavBar';
-
-import { useState, useEffect } from 'react';
 
 interface Product {
   description: string;
@@ -35,10 +33,8 @@ export default function FavoritesPage() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
   const router = useRouter();
   async function fetchProducts() {
-    try {
-      const data = (await arrayOfFavorites()) as Product[];
-      setFavorites(data);
-    } catch (error) {}
+    const data = (await arrayOfFavorites()) as Product[];
+    setFavorites(data);
   }
   useEffect(() => {
     fetchProducts();
@@ -46,11 +42,9 @@ export default function FavoritesPage() {
 
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
-
     getUserInfo(fav, false);
     const data = (await arrayOfFavorites()) as Product[];
     setFavorites(data);
-    console.log(Favorites);
   }
 
   return (

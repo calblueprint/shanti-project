@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { StorefrontWrapper } from './styles';
+
+import IndividualItem from './IndividualItem';
 
 interface Product {
   description: string;
@@ -12,15 +14,13 @@ interface Product {
   updated_at: Date;
 }
 
-import IndividualItem from './IndividualItem';
-
 export default function Storefront(props: { products: Product[] }) {
   const { products } = props;
 
   return (
     <StorefrontWrapper>
       {products.map(productVal => (
-        <IndividualItem product={productVal} />
+        <IndividualItem product={productVal} key={productVal.product_id} />
       ))}
     </StorefrontWrapper>
   );
