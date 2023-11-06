@@ -5,8 +5,7 @@ import {
   fetchUserData,
   
 } from '../user_queries';
-
-export async function runFetchUserData() {
+async default function runFetchUserData() {
   
     const result = await fetchUserData();
   
