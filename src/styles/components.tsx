@@ -4,6 +4,11 @@ import COLORS from './colors';
 export const GlobalStyle = createGlobalStyle`
   body {
     background: white;
+    color:black;
+  }
+  span{
+  
+    color:black;
   }
 `;
 
