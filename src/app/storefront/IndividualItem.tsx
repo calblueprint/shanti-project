@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import {
   StorefrontItem,
   ItemButtons,
   HeartIcon,
   HeartContainer,
 } from './styles';
-import { Link } from 'react-router-dom
 
 import { getUserInfo, arrayOfFavorites } from './helperFunction';
-import { useRouter } from 'next/navigation';
-
-
 
 interface Product {
   description: string;
@@ -38,8 +37,9 @@ export default function IndividualItem(props: { product: Product }) {
     }
   }
 
-  fetchProducts();
-  //<Link href={{pathname: `/${product.product_id}`,}}>
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   async function clickFunction() {
     setIsFavorite(!isFavorite);
@@ -49,15 +49,14 @@ export default function IndividualItem(props: { product: Product }) {
   return (
     <div>
       <StorefrontItem key={product.product_id}>
-   
-          <ItemButtons onClick = {()=>router.push('/${product.product_id}')}>
-            <img
-              src={product.photo}
-              alt={product.name}
-              style={{ width: '250px', height: '250px' }}
-            />
-          </ItemButtons>
-        
+        <ItemButtons onClick={() => router.push(`/${product.product_id}`)}>
+          <img
+            src={product.photo}
+            alt={product.name}
+            style={{ width: '250px', height: '250px' }}
+          />
+        </ItemButtons>
+
         <HeartContainer onClick={() => clickFunction()}>
           <HeartIcon isClicked={!isFavorite} />
         </HeartContainer>

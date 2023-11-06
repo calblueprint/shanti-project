@@ -1,8 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-<<<<<<< HEAD
-=======
 import COLORS from './colors';
->>>>>>> 23cf0264dcc59309dacdd055b7ab54dbc5a3b784
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -52,11 +49,8 @@ export const NavBarComp = styled.nav`
   padding-right: 30px;
   height: 140px;
   padding-top: 20px;
-<<<<<<< HEAD
-=======
   z-index: 1;
   position: absolute;
->>>>>>> 23cf0264dcc59309dacdd055b7ab54dbc5a3b784
   width: 100%;
   background: var(--Light-Periwinkle, #f4f7ff);
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
