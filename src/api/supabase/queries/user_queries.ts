@@ -89,7 +89,7 @@ export async function incrementCartItem(
   } else if (!data) {
     throw new Error('No user found with the specified user_id.');
   }
- 
+
   const currentCart = data.cart;
 
   // Increment the item's quantity by n or set it to n if not present
