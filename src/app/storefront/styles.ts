@@ -1,8 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+import { Heart } from 'react-feather';
+
 export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
+    color:black;
   }
 
 `;
@@ -16,6 +19,7 @@ export const StickyHeader = styled.div`
   filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1));
   width: 1470px;
   height: 10px;
+  z-index: 2;
 `;
 
 export const Button = styled.button<props>`
@@ -114,4 +118,17 @@ export const ShopAllText = styled.h1`
   padding-left: 50px;
   font-family: 'Public Sans', sans-serif;
   color: black;
+`;
+
+export const HeartIcon = styled(Heart)<props>`
+  color: ${props => (props.isClicked ? 'red' : 'black')};
+  width: 30px;
+  height: 30px;
+  fill: ${props => (props.isClicked ? 'red' : '#c7ddff')};
+`;
+
+export const HeartContainer = styled.button`
+  transform: translate(245px, -280px);
+  background-color: transparent;
+  border: none;
 `;

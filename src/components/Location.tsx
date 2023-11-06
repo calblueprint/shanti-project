@@ -1,6 +1,6 @@
 import { LocationDiv, Addie } from '../styles/components';
 
-export default function Logo(props: {
+export default function Location(props: {
   District: string;
   Address: string;
   Phone: string;

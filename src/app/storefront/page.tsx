@@ -22,7 +22,7 @@ interface Product {
   name: string;
   updated_at: Date;
 }
-// https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
+
 export default function App() {
   const buttons = [
     {

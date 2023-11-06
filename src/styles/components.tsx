@@ -12,11 +12,12 @@ export const NavBarComp = styled.nav`
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
-  height: 180px;
+  height: 140px;
   padding-top: 20px;
   width: 100%;
   background: var(--Light-Periwinkle, #f4f7ff);
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 `;
 
 export const ButtonsDiv = styled.div`
@@ -59,7 +60,7 @@ export const FooterDiv = styled.div`
   display: flex;
   flex-direction: row;
   color: black;
-  width: 90%;
+  width: 1290px;
   padding-left: 10px;
   padding-top: 40px;
   margin-left: 70px;

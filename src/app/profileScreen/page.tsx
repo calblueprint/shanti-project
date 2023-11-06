@@ -1,7 +1,8 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
+
 import { toast } from 'react-toastify';
+
 import NavBar from '../../components/NavBar';
 
 import { LogOutButton, GlobalStyle, PopUp } from './style';
@@ -31,6 +32,10 @@ export default function Profile() {
       <GlobalStyle />
       <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
       <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
+      <LogOutButton onClick={() => router.push('/favorites')}>
+        Favorites
+      </LogOutButton>
+
       <Footer />
     </main>
   );
