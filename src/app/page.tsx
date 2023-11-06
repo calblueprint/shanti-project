@@ -4,7 +4,6 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { fullCartTest } from '../api/supabase/queries/tests/user_test';
 import {
   testFetchOrderByUUID,
   testFetchOrders,
