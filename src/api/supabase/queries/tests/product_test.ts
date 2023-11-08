@@ -15,7 +15,7 @@ export async function testFetchProducts() {
 
 // Test fetching a product by name
 export async function testFetchProductByName() {
-  const productId = '1'; // Replace with a valid product name
+  const productId = 1; // Replace with a valid product name
   try {
     const result = await fetchProductByID(productId);
     console.log('Fetch Product by Name Result:', result);

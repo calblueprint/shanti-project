@@ -6,15 +6,8 @@ import { Button, Label, IndividualContainer } from './styles';
 
 import { getProduct, filterProduct } from './helperFunction';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
+
 export default function ProductButtons(props: {
   key: number;
   value: string;

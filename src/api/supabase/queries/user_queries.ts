@@ -28,6 +28,7 @@ export async function updateCart(
 
   currentCart: Record<string, number>,
 ) {
+  
   const { error } = await supabase
     .from('profiles')
     .update({ cart: currentCart })
@@ -59,7 +60,7 @@ export async function decrementCartItem(
   n: number,
 ) {
 
-  const currentCart = await fetchUserCart(userId);
+  const currentCart = await fetchUserCart();
 
   if (currentCart[itemId]) {
     currentCart[itemId] -= n;
@@ -69,14 +70,14 @@ export async function decrementCartItem(
     }
   }
 
-  await updateCart(userId, currentCart);
+  await updateCart(currentCart);
 }
 
 export async function incrementCartItemByOne(userId: string, itemId: string) {
-  await incrementCartItem(userId, itemId, 1);
+  await incrementCartItem(itemId, 1);
 }
 
 export async function decrementCartItemByOne(userId: string, itemId: string) {
-  await decrementCartItem(userId, itemId, 1);
+  await decrementCartItem(itemId, 1);
 }
 

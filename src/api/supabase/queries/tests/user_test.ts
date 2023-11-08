@@ -8,13 +8,13 @@ import {
 
 
 
-export async function testFetchUserByUUID() {
-  const uuid = '3b4a1317-b9ea-4cbd-95d7-e959aa80d1ea'; // Replace with a valid user ID
+export async function runFetchUserByUUID() {
+  const testUUID = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
   try {
     const result = await fetchUserByUUID();
     console.log('Fetch User by UUID Result:', result);
   } catch (error) {
-    console.error('Test Fetch User by UUID Error:', error);
+    console.error('Error in fetchUserByUUID:', error);
   }
 }
 
