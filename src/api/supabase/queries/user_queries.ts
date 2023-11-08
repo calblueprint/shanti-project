@@ -13,6 +13,7 @@ export async function fetchUserByUUID(): Promise<User> {
   if (error) {
     throw new Error(`Error fetching user: ${error.message}`);
   }
+
   return data.user.user_metadata as User;
 }
 

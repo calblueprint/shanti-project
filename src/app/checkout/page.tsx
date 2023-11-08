@@ -23,7 +23,7 @@ export default function Checkout() {
       )
         return;
 
-      const data = await fetchUserByUUID(sessionData.session.user.id as string);
+      const data = await fetchUserByUUID();
       setDeliveryEnabled(data.delivery_allowed);
     })();
   }, []);
