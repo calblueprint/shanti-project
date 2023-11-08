@@ -22,7 +22,6 @@ import {
   testFetchPickupTimesByUUID,
 } from '../api/supabase/queries/tests/pickup_test';
 
-
 export default function Home() {
   return (
     <main>

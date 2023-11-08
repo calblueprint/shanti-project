@@ -2,11 +2,7 @@
 /* eslint-disable no-console */
 //
 
-import {
-  fetchUserByUUID,
-} from '../user_queries';
-
-
+import { fetchUserByUUID } from '../user_queries';
 
 export async function runFetchUserByUUID() {
   const testUUID = 'aeaf5f6c-a8bc-41b8-9850-5fb11e1b6dea';
@@ -17,4 +13,3 @@ export async function runFetchUserByUUID() {
     console.error('Error in fetchUserByUUID:', error);
   }
 }
-

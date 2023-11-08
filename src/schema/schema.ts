@@ -5,10 +5,11 @@ export type User = {
   first_name: string;
   last_name: string;
   pet_information: string;
-  order_option: boolean;
+  delivery_allowed: boolean;
   created_at: string; // timestamp with time zone not null default now();
   address_id: string; // UUID
   cart: Record<string, number>; // JSONB with item as key and quantity as value
+  fav_items: Record<string, number>; // JSONB with item as key and quantity as value
 };
 
 export type Order = {
