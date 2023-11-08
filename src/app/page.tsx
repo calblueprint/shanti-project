@@ -4,34 +4,8 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import {
-  testFetchOrderByUUID,
-  testFetchOrders,
-  testGetOrderById,
-  testToggleOrderProgress,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  testUpdateAllOrdersProgressToTrue,
-} from '../api/supabase/queries/tests/order_test';
-import {
-  testFetchProducts,
-  testFetchProductByName,
-} from '../api/supabase/queries/tests/product_test';
-import {
-  testFetchPickupData,
-  testFetchPickupTimesByUUID,
-} from '../api/supabase/queries/tests/pickup_test';
 
-export const revalidate = 10;
-
-export default async function Checkout() {
-  // useEffect(() => {
-  //   async function testEverything() {
-  //     await fullCartTest();
-  //   }
-  //   testEverything();
-  // });
-
-  // await fullCartTest();
+export default function Home() {
   return (
     <main>
       <Link href="/login">Login</Link>

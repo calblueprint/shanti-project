@@ -6,7 +6,7 @@ export type User = {
   last_name: string;
   pet_information: string;
   order_option: boolean;
-  creaed_at: string; // timestamp with time zone not null default now();
+  created_at: string; // timestamp with time zone not null default now();
   address_id: string; // UUID
   cart: Record<string, number>; // JSONB with item as key and quantity as value
 };
