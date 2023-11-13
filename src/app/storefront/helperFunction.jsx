@@ -85,3 +85,26 @@ export async function arrayOfFavorites() {
 
   return FavArray;
 }
+
+export async function totalNumberOfItemsInCart() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { data, error } = await supabase
+    .from('profiles')
+    .select()
+    .eq('user_id', user.id);
+
+  const CurrUserCart = data[0].cart;
+
+  const itemNumb = Object.values(CurrUserCart);
+
+  let sum = 0;
+
+  for (let i = 0; i < itemNumb.length; i++) {
+    sum = sum + itemNumb[i];
+  }
+
+  return sum;
+}

@@ -56,12 +56,11 @@ export default function IndividualItem(props: { product: Product }) {
             style={{ width: '250px', height: '250px' }}
           />
         </ItemButtons>
-
         <HeartContainer onClick={() => clickFunction()}>
           <HeartIcon isClicked={!isFavorite} />
         </HeartContainer>
       </StorefrontItem>
-      <p style={{ paddingTop: '10px' }}>{product.name}</p>
+      <p style={{ transform: 'translateY( -80px)' }}>{product.name}</p>
     </div>
   );
 }

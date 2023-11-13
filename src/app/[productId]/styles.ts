@@ -76,3 +76,11 @@ export const AddToCartButton = styled.button`
   color: ${COLORS.white};
   border-color: transparent;
 `;
+
+import { ToastContainer } from 'react-toastify';
+
+export const ToastPopUP = styled(ToastContainer)`
+  position: fixed;
+
+  transform: translatey(130px);
+`;

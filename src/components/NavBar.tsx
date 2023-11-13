@@ -1,12 +1,38 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { NavBarComp, ButtonsDiv } from '../styles/components';
+import { totalNumberOfItemsInCart } from '../app/storefront/helperFunction';
 
-export default function NavBar() {
+import {
+  NavBarComp,
+  ButtonsDiv,
+  CartTotalCircle,
+  UserProfileIcon,
+  ShoppingCartIcon,
+} from '../styles/components';
+
+export default function NavBar({ ...rest }) {
+  const [data, setData] = useState(0);
+  const [isZero, setIsZero] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setData(await totalNumberOfItemsInCart());
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const changeData = async () => {
+      if (data > 0) {
+        setIsZero(false);
+      }
+    };
+    changeData();
+  }, [data]);
+
   return (
-    <NavBarComp>
+    <NavBarComp {...rest}>
       <Link href="../storefront">
         <Image
           src="/images/ShantiLogo.png"
@@ -18,20 +44,13 @@ export default function NavBar() {
 
       <ButtonsDiv>
         <Link href="../profileScreen">
-          <Image
-            src="/images/Profile.png"
-            alt="Profile icon"
-            width={40}
-            height={40}
-          />
+          <UserProfileIcon />
+          <p>User</p>
         </Link>
         <Link href="../checkout">
-          <Image
-            src="/images/Cart.png"
-            alt="Cart icon"
-            width={30}
-            height={40}
-          />
+          <ShoppingCartIcon />
+          <p>Cart</p>
+          <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
         </Link>
       </ButtonsDiv>
     </NavBarComp>

@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
 
-import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import {
   GlobalStyle,
   ButtonsContainer,
-  StickyHeader,
+  NavBarZeroIndex,
   ShopAllText,
 } from './styles';
 import { getProduct } from './helperFunction';
@@ -56,7 +55,7 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <NavBar />
+      <NavBarZeroIndex />
       <ButtonsContainer>
         {buttons.map(type => (
           <ProductButtons

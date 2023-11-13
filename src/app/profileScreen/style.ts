@@ -4,10 +4,16 @@ import { ToastContainer } from 'react-toastify';
 
 import { Heart } from 'react-feather';
 
+import NavBar from '../../components/NavBar';
+
+import Footer from '../../components/Footer';
+
 export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
     color: black;
+    overflow: visible;
+    
   }
 `;
 
@@ -24,7 +30,10 @@ export const LogOutButton = styled.button`
   border-radius: 5px;
   width: 300px;
   height: 50px;
+  z-index: 1000;
+  transform: translateY(200px);
 `;
+/*transform: translateY(200px);*/
 
 export const PopUp = styled(ToastContainer)`
   transform: translate(-150px, 250px);
@@ -80,7 +89,21 @@ export const HeartIcon = styled(Heart)`
   fill: red;
 `;
 
+export const NavBarZeroIndex = styled(NavBar)`
+  z-index: 0;
+  position: fixed;
+  margin-bottom: 100px;
+`;
+
+export const FooterMoved = styled(Footer)`
+  transform: translateY(300px);
+`;
+
 export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
+`;
+
+export const NavBarMovedUP = styled(NavBar)`
+  position: static;
 `;

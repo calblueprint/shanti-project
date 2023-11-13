@@ -2,9 +2,9 @@ import Location from './Location';
 
 import { FooterDiv, ContactDiv } from '../styles/components';
 
-export default function Footer() {
+export default function Footer({ ...rest }) {
   return (
-    <main>
+    <main {...rest}>
       <FooterDiv>
         <ContactDiv>
           <h1>Contact Us</h1>

@@ -6,7 +6,13 @@ import { toast } from 'react-toastify';
 
 import NavBar from '../../components/NavBar';
 
-import { LogOutButton, GlobalStyle, PopUp } from './style';
+import {
+  LogOutButton,
+  GlobalStyle,
+  PopUp,
+  NavBarZeroIndex,
+  FooterMoved,
+} from './style';
 
 import { signOut } from '../../api/supabase/auth/auth';
 
@@ -29,15 +35,14 @@ export default function Profile() {
 
   return (
     <main>
-      <NavBar />
+      <NavBarZeroIndex />
       <GlobalStyle />
       <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
       <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
       <LogOutButton onClick={() => router.push('/favorites')}>
         Favorites
       </LogOutButton>
-
-      <Footer />
+      <FooterMoved />
     </main>
   );
 }

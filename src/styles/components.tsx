@@ -1,9 +1,17 @@
 import styled, { createGlobalStyle } from 'styled-components';
+
 import COLORS from './colors';
+
+import { User, ShoppingCart } from 'react-feather';
 
 export const GlobalStyle = createGlobalStyle`
   body {
     background: white;
+    color:black;
+  }
+  span{
+  
+    color:black;
   }
 `;
 
@@ -39,6 +47,7 @@ export const NavButton = styled.button`
   border: transparent;
   border-radius: 5px;
   float: right;
+  z-index: 101;
 `;
 
 export const NavBarComp = styled.nav`
@@ -49,12 +58,12 @@ export const NavBarComp = styled.nav`
   padding-right: 30px;
   height: 140px;
   padding-top: 20px;
-  z-index: 1;
-  position: absolute;
+  position: fixed;
+
   width: 100%;
   background: var(--Light-Periwinkle, #f4f7ff);
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 100;
 `;
 
 export const ButtonsDiv = styled.div`
@@ -109,4 +118,23 @@ export const FooterDiv = styled.div`
 export const Addie = styled.p`
   margin-top: 30px;
   margin-bottom: 30px;
+`;
+
+export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
+  width: 20px;
+  height: 20px;
+  background: var(--Marine-Blue, #333286);
+  border-radius: 50%;
+  text-align: center;
+  transform: translate(19px, -58px);
+  color: white;
+  display: ${props => (props.$isZero ? 'none' : 'content')};
+`;
+
+export const UserProfileIcon = styled(User)`
+  margin-left: 5px;
+`;
+
+export const ShoppingCartIcon = styled(ShoppingCart)`
+  margin-left: 3px;
 `;

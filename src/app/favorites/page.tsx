@@ -15,6 +15,7 @@ import {
   Backtext,
   HeartIcon,
   TransparentButton,
+  NavBarMovedUP,
 } from '../profileScreen/style';
 
 import NavBar from '../../components/NavBar';
@@ -49,8 +50,8 @@ export default function FavoritesPage() {
 
   return (
     <div>
+      <NavBarMovedUP />
       <GlobalStyle />
-      <NavBar />
       <OutterBox>
         <BackDiv onClick={() => router.push('/profileScreen')}>
           <ArrowLeft />

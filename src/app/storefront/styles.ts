@@ -2,6 +2,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { Heart } from 'react-feather';
 
+import NavBar from '../../components/NavBar';
+
 export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
@@ -43,7 +45,6 @@ export const Label = styled.p<props>`
 
 export const IndividualContainer = styled.div`
   width: 200px;
-  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,10 +64,10 @@ export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: fixed;
   align-items: center;
-  position: absolute;
-  z-index: 5;
-  transform: translate(0px, -180px);
+  z-index: 1100;
+  transform: translate(0px, -30px);
 `;
 export const NavButton = styled.button`
   margin-top: 30px;
@@ -117,10 +118,14 @@ export const HeartIcon = styled(Heart)<props>`
   width: 30px;
   height: 30px;
   fill: ${props => (props.isClicked ? 'red' : '#c7ddff')};
+  position: relative;
 `;
 
 export const HeartContainer = styled.button`
   transform: translate(245px, -280px);
+  position: relative;
   background-color: transparent;
   border: none;
 `;
+
+export const NavBarZeroIndex = styled(NavBar)``;

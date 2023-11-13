@@ -4,11 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
+
 import {
   BackButton,
   ImageContainer,
   TextContainer,
   DescriptionContainer,
+  ToastPopUP,
 } from './styles';
 import { GlobalStyle } from '../../styles/components';
 import NavBar from '../../components/NavBar';
@@ -40,7 +42,14 @@ export default function ItemDisplay({
   return (
     <main>
       <GlobalStyle />
+
       <NavBar />
+      <ToastPopUP
+        position="top-right"
+        autoClose={500}
+        limit={1}
+        hideProgressBar
+      />
       <BackButton>
         <Link href="/storefront">
           <Image
