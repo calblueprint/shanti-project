@@ -21,8 +21,7 @@ export default function Buttons() {
   };
 
   // used hyphen instead of dash for display
-  const notify = () =>
-    toast('you have added ' + quantity + ' items to the cart!');
+  const notify = () => toast(`you have added ${quantity} items to the cart!`);
 
   return (
     <ButtonsWrapper>

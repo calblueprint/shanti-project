@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 import COLORS from '../../styles/colors';
 
 export const BackButton = styled.button`
@@ -76,8 +77,6 @@ export const AddToCartButton = styled.button`
   color: ${COLORS.white};
   border-color: transparent;
 `;
-
-import { ToastContainer } from 'react-toastify';
 
 export const ToastPopUP = styled(ToastContainer)`
   position: fixed;

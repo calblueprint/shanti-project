@@ -1,8 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import COLORS from './colors';
-
 import { User, ShoppingCart } from 'react-feather';
+import COLORS from './colors';
 
 export const GlobalStyle = createGlobalStyle`
   body {

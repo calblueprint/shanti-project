@@ -33,7 +33,7 @@ export const LogOutButton = styled.button`
   z-index: 1000;
   transform: translateY(200px);
 `;
-/*transform: translateY(200px);*/
+/* transform: translateY(200px); */
 
 export const PopUp = styled(ToastContainer)`
   transform: translate(-150px, 250px);
