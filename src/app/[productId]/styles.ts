@@ -80,6 +80,7 @@ export const AddToCartButton = styled.button`
 
 export const ToastPopUP = styled(ToastContainer)`
   position: fixed;
+  z-index: 100;
 
   transform: translatey(130px);
 `;

@@ -26,18 +26,14 @@ export default function IndividualItem(props: { product: Product }) {
   const [isFavorite, setIsFavorite] = useState(true);
   const router = useRouter();
 
-  async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[];
-    for (let i = 0; i < data.length; i += 1) {
-      const ithProduct = data[i];
+  useEffect(() => {
+    async function fetchProducts() {
+      const data = (await arrayOfFavorites()) as Product[];
 
-      if (product.product_id === ithProduct.product_id) {
-        setIsFavorite(!isFavorite);
+      if (data.find(item => item.product_id === product.product_id)) {
+        setIsFavorite(false);
       }
     }
-  }
-
-  useEffect(() => {
     fetchProducts();
   });
 

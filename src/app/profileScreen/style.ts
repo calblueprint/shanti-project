@@ -37,6 +37,7 @@ export const LogOutButton = styled.button`
 
 export const PopUp = styled(ToastContainer)`
   transform: translate(-150px, 250px);
+  position: fixed;
 `;
 
 export const FavoriteDiv = styled.div`
