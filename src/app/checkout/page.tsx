@@ -7,7 +7,6 @@ import { fetchUserByUUID } from '@/api/supabase/queries/user_queries';
 import { Button } from '../login/styles';
 
 import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
 
 export default function Checkout() {
   const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);

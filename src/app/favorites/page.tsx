@@ -18,8 +18,6 @@ import {
   NavBarMovedUP,
 } from '../profileScreen/style';
 
-import NavBar from '../../components/NavBar';
-
 interface Product {
   description: string;
   category: string;
@@ -44,7 +42,7 @@ export default function FavoritesPage() {
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
     getUserInfo(fav, false);
-    setFavorites(Favorites.filter(Prod => Prod.product_id != fav.product_id));
+    setFavorites(Favorites.filter(Prod => Prod.product_id !== fav.product_id));
   }
 
   return (

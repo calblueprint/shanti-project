@@ -4,8 +4,6 @@ import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
-import NavBar from '../../components/NavBar';
-
 import {
   LogOutButton,
   GlobalStyle,
@@ -17,8 +15,6 @@ import {
 import { signOut } from '../../api/supabase/auth/auth';
 
 import 'react-toastify/dist/ReactToastify.css';
-
-import Footer from '../../components/Footer';
 
 export default function Profile() {
   const router = useRouter();

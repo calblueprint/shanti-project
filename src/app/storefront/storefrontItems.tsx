@@ -6,7 +6,7 @@ import IndividualItem from './IndividualItem';
 
 import { Product } from '../../schema/schema';
 
-import { arrayOfFavorites } from '../storefront/helperFunction';
+import { arrayOfFavorites } from './helperFunction';
 
 function Storefront({ products }: { products: Product[] }) {
   const [Favorites, setFavorites] = useState<Product[]>([]);
@@ -17,9 +17,6 @@ function Storefront({ products }: { products: Product[] }) {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  console.log('favorites');
-  console.log(Favorites);
 
   return (
     <StorefrontWrapper>
