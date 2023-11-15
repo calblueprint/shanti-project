@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   BackButton,

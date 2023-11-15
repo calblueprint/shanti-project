@@ -44,8 +44,7 @@ export default function FavoritesPage() {
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
     getUserInfo(fav, false);
-    const data = (await arrayOfFavorites()) as Product[];
-    setFavorites(data);
+    setFavorites(Favorites.filter(Prod => Prod.product_id != fav.product_id));
   }
 
   return (

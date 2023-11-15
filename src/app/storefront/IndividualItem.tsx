@@ -9,38 +9,30 @@ import {
   HeartContainer,
 } from './styles';
 
-import { getUserInfo, arrayOfFavorites } from './helperFunction';
+import { getUserInfo } from './helperFunction';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
 
-export default function IndividualItem(props: { product: Product }) {
-  const { product } = props;
+export default function IndividualItem(props: {
+  product: Product;
+  products: Product[];
+}) {
+  const { product, products } = props;
   const [isFavorite, setIsFavorite] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     async function fetchProducts() {
-      const data = (await arrayOfFavorites()) as Product[];
-
-      if (data.find(item => item.product_id === product.product_id)) {
+      if (products.find(item => item.product_id === product.product_id)) {
         setIsFavorite(false);
       }
     }
     fetchProducts();
-  });
+  }, [products]);
 
   async function clickFunction() {
     setIsFavorite(!isFavorite);
     getUserInfo(product, isFavorite);
-    arrayOfFavorites();
   }
   return (
     <div>

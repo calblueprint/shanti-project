@@ -63,9 +63,10 @@ export async function arrayOfFavorites() {
   const { data, error } = await supabase
     .from('profiles')
     .select()
-    .eq('user_id', user.id);
+    .eq('user_id', user.id)
+    .single();
 
-  const CurrUserFavoriteItems = data[0].fav_items;
+  const CurrUserFavoriteItems = data.fav_items;
 
   const Favkey = Object.keys(CurrUserFavoriteItems);
 
@@ -76,10 +77,11 @@ export async function arrayOfFavorites() {
     const { data, error } = await supabase
       .from('product')
       .select()
-      .eq('product_id', key);
+      .eq('product_id', key)
+      .single();
 
-    if (data[0] != undefined) {
-      FavArray.push(data[0]);
+    if (data != undefined) {
+      FavArray.push(data);
     }
   }
 
