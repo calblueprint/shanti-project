@@ -99,7 +99,7 @@ export async function arrayOfFavorites() {
 
     const { data: productData, error: productError } = await supabase
       .from('product')
-      .select();
+      .select('*');
 
     if (productData !== null && productData !== undefined) {
       const FavArray = productData.filter(product =>
