@@ -47,7 +47,7 @@ export default function NavBar({ ...rest }) {
           <UserProfileIcon />
           <p>User</p>
         </Link>
-        <Link href="../checkout">
+        <Link href="../cart">
           <ShoppingCartIcon />
           <p>Cart</p>
           <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
