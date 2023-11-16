@@ -1,17 +1,44 @@
 'use client';
 
-import { LogOutButton, GlobalStyle } from './style';
+import { useRouter } from 'next/navigation';
+
+import { toast } from 'react-toastify';
+
+import {
+  LogOutButton,
+  GlobalStyle,
+  PopUp,
+  NavBarZeroIndex,
+  FooterMoved,
+} from './styles';
 
 import { signOut } from '../../api/supabase/auth/auth';
 
-import NavBar from '../../components/NavBar';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile() {
+  const router = useRouter();
+
+  const showToastMessage = () => {
+    signOut();
+    toast("You've been Logged Out! Redirecting...", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setTimeout(() => {
+      router.push('/login');
+    }, 3000);
+  };
+
   return (
     <main>
-      <NavBar />
+      <NavBarZeroIndex />
       <GlobalStyle />
-      <LogOutButton onClick={() => signOut()}>Sign Out</LogOutButton>
+      <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
+      <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
+      <LogOutButton onClick={() => router.push('/favorites')}>
+        Favorites
+      </LogOutButton>
+      <FooterMoved />
     </main>
   );
 }

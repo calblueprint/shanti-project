@@ -4,7 +4,10 @@ import React, { useState } from 'react';
 
 import { Button, Label, IndividualContainer } from './styles';
 
-import { getProduct, filterProduct } from './helperFunction';
+import {
+  getProduct,
+  filterProduct,
+} from '../../api/supabase/queries/user_queries';
 
 import { Product } from '../../schema/schema';
 
@@ -22,8 +25,6 @@ export default function ProductButtons(props: {
   ) {
     setIsClicked(!IsClicked);
     const category = e.currentTarget.value;
-    // console.log(category);
-
     if (category !== 'All') {
       const products = await filterProduct(category);
       if (products !== null) {
