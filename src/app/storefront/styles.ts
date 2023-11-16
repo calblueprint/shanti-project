@@ -5,6 +5,7 @@ interface props {
 }
 
 export const Button = styled.button<props>`
+  // position: sticky;
   background-color: ${props => (props.isClicked ? '#00507f' : '#C7E1FF')};
   border-radius: 50%;
   width: 50px;
@@ -38,6 +39,7 @@ export const ItemContainer = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
+  position: sticky;
   margin-left: 400px;
   margin-right: 400px;
   width: 600px;
@@ -46,7 +48,7 @@ export const ButtonsContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  // position: absolute;
   z-index: 5;
 `;
 

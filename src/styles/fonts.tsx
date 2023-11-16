@@ -1,3 +1,4 @@
+// import React from 'react-native';
 import styled from 'styled-components/native';
 
 export const Heading1 = styled.Text`

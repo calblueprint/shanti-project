@@ -50,7 +50,7 @@ export const NavBarComp = styled.nav`
   height: 200px;
   padding-top: 20px;
   z-index: 1;
-  position: absolute;
+  position: sticky;
   width: 100%;
   background: var(--Light-Periwinkle, #f4f7ff);
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
