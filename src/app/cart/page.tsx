@@ -47,12 +47,12 @@ interface Product {
   updated_at: Date;
 }
 
-export default function FavoritesPage() {
-  const [Favorites, setFavorites] = useState<Product[]>([]);
+export default function OrderPage() {
+  const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
   async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[];
-    setFavorites(data);
+    const data = (await arrayOfFavorites()) as Product[]; //change the function to grab the cartItems as products
+    setCart(data);
   }
   useEffect(() => {
     fetchProducts();
@@ -61,7 +61,7 @@ export default function FavoritesPage() {
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
     getUserInfo(fav, false);
-    setFavorites(Favorites.filter(Prod => Prod.product_id !== fav.product_id));
+    setCart(Cart.filter(Prod => Prod.product_id !== fav.product_id));
   }
 
   return (
@@ -76,16 +76,16 @@ export default function FavoritesPage() {
           </BackDiv>
           <h1>Cart</h1>
           <OutterFavoriteDiv>
-            {Favorites.map(favorite => (
-              <FavoriteDiv key={favorite.product_id}>
+            {Cart.map(cart => (
+              <FavoriteDiv key={cart.product_id}>
                 <img
-                  src={favorite.photo}
-                  alt={favorite.name}
+                  src={cart.photo}
+                  alt={cart.name}
                   style={{ width: '150px', height: '150px' }}
                 />
                 <LabelBox>
-                  <Label>{favorite.name}</Label>
-                  <p>Category: {favorite.category}</p>
+                  <Label>{cart.name}</Label>
+                  <p>Category: {cart.category}</p>
                 </LabelBox>
                 <Buttons />
                 <TransparentButton
@@ -102,10 +102,10 @@ export default function FavoritesPage() {
             <HeaderShiftLeft>Order Summary</HeaderShiftLeft>
             <Qty>Qty.</Qty>
             <OrderSummaryDiv>
-              {Favorites.map(favorite => (
-                <ItemSummaryDiv key={favorite.product_id}>
-                  <PShiftLeft>{favorite.name}</PShiftLeft>
-                  <PShiftRight>{favorite.quantity}</PShiftRight>
+              {Cart.map(cart => (
+                <ItemSummaryDiv key={cart.product_id}>
+                  <PShiftLeft>{cart.name}</PShiftLeft>
+                  <PShiftRight>{cart.quantity}</PShiftRight>
                 </ItemSummaryDiv>
               ))}
             </OrderSummaryDiv>
