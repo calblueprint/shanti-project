@@ -51,7 +51,7 @@ export default function OrderPage() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
   async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[]; //change the function to grab the cartItems as products
+    const data = (await arrayOfFavorites()) as Product[]; // change the function to grab the cartItems as products
     setCart(data);
   }
   useEffect(() => {
@@ -89,7 +89,7 @@ export default function OrderPage() {
                 </LabelBox>
                 <Buttons />
                 <TransparentButton
-                //{onClick={() => clickFunctions({ fav: favorite })}} <- change to remove item entirely
+                // {onClick={() => clickFunctions({ fav: favorite })}} <- change to remove item entirely
                 >
                   <TrashIcon />
                 </TransparentButton>
@@ -112,7 +112,7 @@ export default function OrderPage() {
             <OrderTotalDiv>
               <HeaderShiftLeft>Order Total</HeaderShiftLeft>
               <HeaderShiftRight
-              //change with the actual cart total
+              // change with the actual cart total
               >
                 10
               </HeaderShiftRight>
@@ -120,7 +120,7 @@ export default function OrderPage() {
           </WhiteBackgroundDiv>
 
           <CheckoutButton
-          //Add Checkout Function by using onClick
+          // Add Checkout Function by using onClick
           >
             Check Out
           </CheckoutButton>

@@ -1,8 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import COLORS from '../../styles/colors';
-
 import { Trash2 } from 'react-feather';
+import COLORS from '../../styles/colors';
 
 import NavBar from '../../components/NavBar';
 
