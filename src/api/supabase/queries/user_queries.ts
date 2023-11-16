@@ -7,9 +7,7 @@ import {
   PostgrestError,
   createClient,
 } from '@supabase/supabase-js';
-import { User } from '../../../schema/schema';
-
-import { Product } from '../../../schema/schema';
+import { User, Product } from '../../../schema/schema';
 
 // Replace these with your Supabase project URL and API key
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -55,18 +53,18 @@ export async function fetchUserByUUID(uuid: string) {
   }
 }
 
-export async function getUserInfo(product: Product, isFav: Boolean) {
+export async function getUserInfo(product: Product, isFav: boolean) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (user != null) {
-    const { data, error } = await supabase
+  if (user !== null) {
+    const { data } = await supabase
       .from('profiles')
       .select()
       .eq('user_id', user.id);
 
-    if (data != null) {
+    if (data !== null) {
       const CurrUserFavoriteItems = data[0].fav_items;
 
       if (isFav) {
@@ -88,66 +86,30 @@ export async function arrayOfFavorites() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (user != null) {
-    const { data, error } = await supabase
+  if (user !== null) {
+    const { data: userProfileData, error: userProfileError } = await supabase
       .from('profiles')
       .select()
       .eq('user_id', user.id)
       .single();
 
-    const CurrUserFavoriteItems = data.fav_items;
+    const CurrUserFavoriteItems = userProfileData.fav_items;
 
     const Favkey = Object.keys(CurrUserFavoriteItems);
 
-    var FavArray = [];
+    const { data: productData, error: productError } = await supabase
+      .from('product')
+      .select();
 
-    for (let i = 0; i < Favkey.length; i++) {
-      let key = Favkey[i];
-      const { data, error } = await supabase
-        .from('product')
-        .select()
-        .eq('product_id', key)
-        .single();
+    if (productData !== null && productData !== undefined) {
+      const FavArray = productData.filter(product =>
+        Favkey.includes(String(product.product_id)),
+      );
 
-      if (data != undefined) {
-        FavArray.push(data);
-      }
-    }
-
-    return FavArray;
-  }
-}
-
-export async function totalNumberOfItemsInCart() {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user != null) {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select()
-      .eq('user_id', user.id)
-      .single();
-
-    if (data != null) {
-      const CurrUserCart = data.cart;
-      console.log(CurrUserCart);
-      if (CurrUserCart == null || CurrUserCart.length == 0) {
-        return 0;
-      } else {
-        const itemNumb = Object.values(CurrUserCart) as number[];
-
-        let sum = 0;
-
-        for (let i = 0; i < itemNumb.length; i++) {
-          sum = sum + itemNumb[i];
-        }
-
-        return sum;
-      }
+      return FavArray;
     }
   }
+  return [];
 }
 
 export async function getProduct() {
@@ -155,10 +117,43 @@ export async function getProduct() {
   return data;
 }
 
-export async function filterProduct(productType: String) {
+export async function filterProduct(productType: string) {
   const { data } = await supabase
     .from('product')
     .select('*')
     .eq('category', productType);
   return data;
+}
+
+export async function totalNumberOfItemsInCart() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user !== null) {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select()
+      .eq('user_id', user.id)
+      .single();
+
+    if (data !== null) {
+      const CurrUserCart = data.cart;
+
+      if (CurrUserCart === null || CurrUserCart === undefined) {
+        return 0;
+      }
+
+      const itemNumb = Object.values(CurrUserCart) as number[];
+
+      let sum = 0;
+
+      for (let i = 0; i < itemNumb.length; i += 1) {
+        sum += itemNumb[i];
+      }
+
+      return sum;
+    }
+  }
+  return 0;
 }

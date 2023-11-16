@@ -9,7 +9,7 @@ import {
   HeartContainer,
 } from './styles';
 
-import { getUserInfo } from './helperFunction';
+import { getUserInfo } from '../../api/supabase/queries/user_queries';
 
 import { Product } from '../../schema/schema';
 
