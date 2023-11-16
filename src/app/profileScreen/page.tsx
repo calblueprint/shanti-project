@@ -10,7 +10,7 @@ import {
   PopUp,
   NavBarZeroIndex,
   FooterMoved,
-} from './style';
+} from './styles';
 
 import { signOut } from '../../api/supabase/auth/auth';
 

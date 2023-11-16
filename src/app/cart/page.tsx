@@ -33,7 +33,7 @@ import {
   RightColumnDiv,
   Qty,
   PShiftRight,
-} from './style';
+} from './styles';
 
 import Buttons from './Buttons';
 

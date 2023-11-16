@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ButtonsWrapper, QuantityButton, PlusMinusButton } from './style';
+import { ButtonsWrapper, QuantityButton, PlusMinusButton } from './styles';
 
 export default function Buttons() {
   const [quantity, setQuantity] = useState<number>(1);

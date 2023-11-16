@@ -19,7 +19,7 @@ import {
   HeartIcon,
   TransparentButton,
   NavBarMovedUP,
-} from '../profileScreen/style';
+} from '../profileScreen/styles';
 
 interface Product {
   description: string;
