@@ -70,7 +70,7 @@ export default function OrderPage() {
       <GlobalStyle />
       <PageDiv>
         <ForceColumnDiv>
-          <BackDiv onClick={() => router.push('/profileScreen')}>
+          <BackDiv onClick={() => router.push('/storefront')}>
             <ArrowLeft />
             <Backtext>Back</Backtext>
           </BackDiv>
