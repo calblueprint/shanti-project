@@ -11,7 +11,7 @@ import {
   NavBarZeroIndex,
   ShopAllText,
 } from './styles';
-import { getProduct } from './helperFunction';
+import { getProduct } from '../../api/supabase/queries/user_queries';
 import { Product } from '../../schema/schema';
 
 export default function App() {

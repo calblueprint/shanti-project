@@ -4,7 +4,10 @@ import { ArrowLeft } from 'react-feather';
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { arrayOfFavorites, getUserInfo } from '../storefront/helperFunction';
+import {
+  arrayOfFavorites,
+  getUserInfo,
+} from '../../api/supabase/queries/user_queries';
 
 import {
   FavoriteDiv,

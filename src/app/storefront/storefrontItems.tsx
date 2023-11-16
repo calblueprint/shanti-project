@@ -6,7 +6,7 @@ import IndividualItem from './IndividualItem';
 
 import { Product } from '../../schema/schema';
 
-import { arrayOfFavorites } from './helperFunction';
+import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
 
 function Storefront({ products }: { products: Product[] }) {
   const [Favorites, setFavorites] = useState<Product[]>([]);
