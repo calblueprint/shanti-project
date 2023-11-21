@@ -1,18 +1,6 @@
 import styled from 'styled-components';
-import { Public_Sans } from 'next/font/google';
+import NavBar from '../../components/NavBar';
 import COLORS from '../../styles/colors';
-
-const publicSans700 = Public_Sans({
-  weight: '700',
-  style: 'normal',
-  subsets: ['latin'],
-});
-
-const publicSans400 = Public_Sans({
-  weight: '700',
-  style: 'normal',
-  subsets: ['latin'],
-});
 
 export const DeliveryContainer = styled.div`
   margin-left: 80px;
@@ -24,7 +12,6 @@ export const DeliveryContainer = styled.div`
 `;
 
 export const PublicSans700Text = styled.div`
-  font-family: ${publicSans700};
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -36,7 +23,6 @@ export const OrderSummaryText = styled.div`
   text-align: left;
   width: 285px;
   height: 35px;
-  font-family: ${publicSans700};
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -47,7 +33,6 @@ export const QtyText = styled.div`
   margin-top: 30px;
   margin-right: 20px;
   margin-bottom: 5px;
-  font-family: ${publicSans400};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -55,14 +40,12 @@ export const QtyText = styled.div`
 `;
 
 export const ItemText = styled.div`
-  font-family: ${publicSans400};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 `;
 
 export const QuantityText = styled.div`
-  font-family: ${publicSans400};
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -148,9 +131,12 @@ export const OrderButton = styled.button`
   background: ${COLORS.navy};
   border-radius: 8px;
   color: ${COLORS.white};
-  font-family: ${publicSans700};
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+`;
+
+export const NavBarMovedUP = styled(NavBar)`
+  position: static;
 `;

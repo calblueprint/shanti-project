@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import NavBar from '../../components/NavBar';
 import BackButton from '../../components/BackButton';
 import { GlobalStyle } from '../../styles/components';
 import {
@@ -19,13 +18,15 @@ import {
   ItemQuantityContainer,
   ItemQuantityRow,
   TotalContainer,
+  NavBarMovedUP,
 } from './styles';
 
 export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <NavBar />
+
+      <NavBarMovedUP />
       <BackButton />
       <DeliveryContainer>
         <InformationContainer>

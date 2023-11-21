@@ -1,8 +1,28 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
+import { Heart } from 'react-feather';
+
+import NavBar from '../../components/NavBar';
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background:white;
+    color:black;
+  }
+
+`;
 interface props {
   isClicked: boolean;
 }
+
+export const StickyHeader = styled.div`
+  position: fixed;
+  background-color: var(--Light-Periwinkle, #f4f7ff);
+  filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1));
+  width: 1470px;
+  height: 10px;
+  z-index: 2;
+`;
 
 export const Button = styled.button<props>`
   // position: sticky;
@@ -26,7 +46,6 @@ export const Label = styled.p<props>`
 
 export const IndividualContainer = styled.div`
   width: 200px;
-  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,17 +58,35 @@ export const ItemContainer = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
-  // position: sticky;
   margin-left: 400px;
   margin-right: 400px;
   width: 600px;
-  // height: 230px;
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: fixed;
   align-items: center;
-  position: absolute;
-  z-index: 10;
+  z-index: 1100;
+  transform: translate(0px, -30px);
+`;
+
+export const NavButton = styled.button`
+  margin-top: 30px;
+  margin-right: 25px;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  width: 70px;
+  height: 40px;
+  background: black;
+  border: transparent;
+  border-radius: 5px;
+  float: right;
 `;
 
 export const ItemButtons = styled.button`
@@ -75,4 +112,22 @@ export const ShopAllText = styled.h1`
   padding-top: 230px;
   padding-left: 50px;
   font-family: 'Public Sans', sans-serif;
+  color: black;
 `;
+
+export const HeartIcon = styled(Heart)<props>`
+  color: ${props => (props.isClicked ? 'red' : 'black')};
+  width: 30px;
+  height: 30px;
+  fill: ${props => (props.isClicked ? 'red' : '#c7ddff')};
+  position: relative;
+`;
+
+export const HeartContainer = styled.button`
+  transform: translate(245px, -280px);
+  position: relative;
+  background-color: transparent;
+  border: none;
+`;
+
+export const NavBarZeroIndex = styled(NavBar)``;
