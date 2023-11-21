@@ -15,15 +15,12 @@ const publicSans400 = Public_Sans({
 });
 
 export const DeliveryContainer = styled.div`
-  margin-top: 50px;
   margin-left: 80px;
-  width: 1300px;
-  height: 500px;
+  margin-right: 80px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  border: 2px solid black;
 `;
 
 export const PublicSans700Text = styled.div`
@@ -33,8 +30,23 @@ export const PublicSans700Text = styled.div`
   line-height: normal;
 `;
 
+export const OrderSummaryText = styled.div`
+  margin-top: 27px;
+  margin-left: 30px;
+  text-align: left;
+  width: 285px;
+  height: 35px;
+  font-family: ${publicSans700};
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-size: 30px;
+`;
+
 export const QtyText = styled.div`
-  margin: 30px;
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-bottom: 5px;
   font-family: ${publicSans400};
   font-style: normal;
   font-weight: 400;
@@ -60,7 +72,6 @@ export const QuantityText = styled.div`
 export const InformationContainer = styled.div`
   width: 730px;
   height: 400px;
-  border: 2px solid black;
 `;
 
 export const InformationText = styled.div`
@@ -87,7 +98,7 @@ export const OrderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 export const OrderSummary = styled.div`
@@ -109,7 +120,6 @@ export const ItemQuantityContainer = styled.div`
   overflow-y: auto;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${COLORS.neutralGrey};
 `;
 
 export const ItemQuantityRow = styled.div`

@@ -2,11 +2,13 @@
 
 import React from 'react';
 import NavBar from '../../components/NavBar';
+import BackButton from '../../components/BackButton';
 import { GlobalStyle } from '../../styles/components';
 import {
   DeliveryContainer,
   OrderContainer,
   OrderSummary,
+  OrderSummaryText,
   OrderButton,
   InformationContainer,
   InformationText,
@@ -24,6 +26,7 @@ export default function App() {
     <main>
       <GlobalStyle />
       <NavBar />
+      <BackButton />
       <DeliveryContainer>
         <InformationContainer>
           <PublicSans700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
@@ -36,15 +39,7 @@ export default function App() {
         </InformationContainer>
         <OrderContainer>
           <OrderSummary>
-            <PublicSans700Text
-              style={{
-                marginTop: '27px',
-                fontSize: '30px',
-                textAlign: 'center',
-              }}
-            >
-              Order Summary
-            </PublicSans700Text>
+            <OrderSummaryText>Order Summary</OrderSummaryText>
             <QtyText>Qty.</QtyText>
             <ItemQuantityContainer>
               <ItemQuantityRow>

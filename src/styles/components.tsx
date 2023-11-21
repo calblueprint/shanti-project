@@ -47,7 +47,7 @@ export const NavBarComp = styled.nav`
   justify-content: space-between;
   padding-left: 30px;
   padding-right: 30px;
-  height: 200px;
+  height: 140px;
   padding-top: 20px;
   z-index: 1;
   position: sticky;
@@ -62,4 +62,14 @@ export const ButtonsDiv = styled.div`
   flex-direction: row;
   justify-content: space-around;
   padding-top: 15px;
+`;
+
+export const BackDiv = styled.button`
+  display: flex;
+  color: black;
+  background-color: transparent;
+  border: transparent;
+  align-items: center;
+  margin-left: 81px;
+  margin-top: 55px;
 `;

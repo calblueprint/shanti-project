@@ -21,7 +21,7 @@ export default function NavBar() {
           <Image
             src="/images/Profile.png"
             alt="Profile icon"
-            width={40}
+            width={35}
             height={40}
           />
         </Link>
@@ -30,7 +30,7 @@ export default function NavBar() {
           <Image
             src="/images/Cart.png"
             alt="Cart icon"
-            width={30}
+            width={25}
             height={40}
           />
         </Link>

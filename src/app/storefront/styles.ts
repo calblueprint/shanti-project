@@ -39,17 +39,17 @@ export const ItemContainer = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
-  position: sticky;
+  // position: sticky;
   margin-left: 400px;
   margin-right: 400px;
   width: 600px;
-  height: 230px;
+  // height: 230px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // position: absolute;
-  z-index: 5;
+  position: absolute;
+  z-index: 10;
 `;
 
 export const ItemButtons = styled.button`
