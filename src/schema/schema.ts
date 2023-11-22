@@ -7,7 +7,7 @@ export type User = {
   pet_information: string;
   delivery_allowed: boolean;
   created_at: Date; // timestamp of when record was created
-  cart_id: string; // UUID
+  cart_id: number; // UUID
   address_id: string; // UUID
 };
 

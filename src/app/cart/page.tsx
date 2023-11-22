@@ -58,6 +58,7 @@ export default function OrderPage() {
     fetchProducts();
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
     getUserInfo(fav, false);

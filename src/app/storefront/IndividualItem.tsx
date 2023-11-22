@@ -28,6 +28,7 @@ export default function IndividualItem(props: {
       }
     }
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
   async function clickFunction() {
