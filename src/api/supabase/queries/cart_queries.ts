@@ -1,6 +1,6 @@
 import supabase from '../createClient';
 
-import { fetchUser } from './user_queries';
+import fetchUser from './user_queries';
 
 // define cart item type
 export type CartItem = {
@@ -42,7 +42,7 @@ export async function fetchCart(): Promise<CartItem[]> {
   return fetchedProducts;
 }
 
-export async function updateCart(cartID: number, productIDArray: number[]) {
+async function updateCart(cartID: number, productIDArray: number[]) {
   await supabase
     .from('order')
     .update({ product_id_array: productIDArray })
