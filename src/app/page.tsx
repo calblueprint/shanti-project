@@ -25,7 +25,6 @@ import {
 
 export default function Checkout() {
   // testFetchUserData();
-  // testFetchUserByUUID();
   // testAddUserAddress();
   // testFetchOrderByUUID();
   // testFetchOrders();

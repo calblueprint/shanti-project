@@ -1,5 +1,5 @@
 export type User = {
-  user_id: string; // UUID
+  id: string; // UUID
   email: string;
   password: string;
   first_name: string;
@@ -9,6 +9,7 @@ export type User = {
   created_at: Date; // timestamp of when record was created
   cart_id: number; // UUID
   address_id: string; // UUID
+  fav_items: Record<string, number>; // JSONB with item as key and quantity as value
 };
 
 export type Order = {
