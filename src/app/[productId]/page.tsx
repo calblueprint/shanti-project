@@ -76,7 +76,7 @@ export default function ItemDisplay({
             {Item?.category}
           </h4>
           <Buttons />
-          <p style={{ paddingTop: '50px' }}>Product ID: {Item?.product_id}</p>
+          <p style={{ paddingTop: '50px' }}>Product ID: {Item?.id}</p>
           <p style={{ paddingTop: '20px' }}>Product Details:</p>
           <p>{Item?.description}</p>
         </TextContainer>

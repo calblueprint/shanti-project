@@ -42,7 +42,7 @@ export default function App() {
   const [CategoryWord, setCategoryWord] = useState('All');
 
   const [IsClickedButton, setIsClickedButton] = useState<boolean[]>([
-    false,
+    true,
     false,
     false,
     false,
