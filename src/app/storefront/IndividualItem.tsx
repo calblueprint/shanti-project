@@ -23,7 +23,7 @@ export default function IndividualItem(props: {
 
   useEffect(() => {
     async function fetchProducts() {
-      if (products.find(item => item.product_id === product.product_id)) {
+      if (products.find(item => item.id === product.id)) {
         setIsFavorite(false);
       }
     }
@@ -36,8 +36,8 @@ export default function IndividualItem(props: {
   }
   return (
     <div>
-      <StorefrontItem key={product.product_id}>
-        <ItemButtons onClick={() => router.push(`/${product.product_id}`)}>
+      <StorefrontItem key={product.id}>
+        <ItemButtons onClick={() => router.push(`/${product.id}`)}>
           <img
             src={product.photo}
             alt={product.name}

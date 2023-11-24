@@ -31,7 +31,6 @@ export const LogOutButton = styled.button`
   width: 300px;
   height: 50px;
   z-index: 1000;
-  transform: translateY(200px);
 `;
 /* transform: translateY(200px); */
 
@@ -58,7 +57,7 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 350px;
+  height: 500px;
   overflow: scroll;
   margin-top: 10px;
 `;
@@ -97,7 +96,7 @@ export const NavBarZeroIndex = styled(NavBar)`
 `;
 
 export const FooterMoved = styled(Footer)`
-  transform: translateY(300px);
+  transform: translateY(50px);
 `;
 
 export const TransparentButton = styled.button`

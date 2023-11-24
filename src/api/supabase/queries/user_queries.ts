@@ -39,7 +39,7 @@ export async function fetchUserByUUID(uuid: string) {
     const { data: user, error } = await supabase
       .from('profiles')
       .select('*')
-      .eq('user_id', uuid)
+      .eq('id', uuid)
       .single();
 
     if (error) {
@@ -62,21 +62,22 @@ export async function getUserInfo(product: Product, isFav: boolean) {
     const { data } = await supabase
       .from('profiles')
       .select()
-      .eq('user_id', user.id);
+      .eq('id', user.id)
+      .single();
 
     if (data !== null) {
-      const CurrUserFavoriteItems = data[0].fav_items;
+      const CurrUserFavoriteItems = data.fav_items;
 
       if (isFav) {
-        CurrUserFavoriteItems[product.product_id] = 1;
+        CurrUserFavoriteItems[product.id] = 1;
       } else {
-        delete CurrUserFavoriteItems[product.product_id];
+        delete CurrUserFavoriteItems[product.id];
       }
 
       const { error } = await supabase
         .from('profiles')
         .update({ fav_items: CurrUserFavoriteItems })
-        .eq('user_id', user.id);
+        .eq('id', user.id);
     }
   }
 }
@@ -90,23 +91,25 @@ export async function arrayOfFavorites() {
     const { data: userProfileData, error: userProfileError } = await supabase
       .from('profiles')
       .select()
-      .eq('user_id', user.id)
+      .eq('id', user.id)
       .single();
 
-    const CurrUserFavoriteItems = userProfileData.fav_items;
+    if (userProfileData !== null) {
+      const CurrUserFavoriteItems = userProfileData.fav_items;
 
-    const Favkey = Object.keys(CurrUserFavoriteItems);
+      const Favkey = Object.keys(CurrUserFavoriteItems);
 
-    const { data: productData, error: productError } = await supabase
-      .from('product')
-      .select('*');
+      const { data: productData, error: productError } = await supabase
+        .from('product')
+        .select('*');
 
-    if (productData !== null && productData !== undefined) {
-      const FavArray = productData.filter(product =>
-        Favkey.includes(String(product.product_id)),
-      );
+      if (productData !== null && productData !== undefined) {
+        const FavArray = productData.filter(product =>
+          Favkey.includes(String(product.id)),
+        );
 
-      return FavArray;
+        return FavArray;
+      }
     }
   }
   return [];
@@ -134,7 +137,7 @@ export async function totalNumberOfItemsInCart() {
     const { data, error } = await supabase
       .from('profiles')
       .select()
-      .eq('user_id', user.id)
+      .eq('id', user.id)
       .single();
 
     if (data !== null) {
