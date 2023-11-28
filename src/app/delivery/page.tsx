@@ -3,6 +3,7 @@
 import React from 'react';
 import BackButton from '../../components/BackButton';
 import { GlobalStyle } from '../../styles/components';
+import { Normal700Text } from '../../styles/fonts';
 import {
   DeliveryContainer,
   OrderContainer,
@@ -11,7 +12,6 @@ import {
   OrderButton,
   InformationContainer,
   InformationText,
-  PublicSans700Text,
   ItemText,
   QtyText,
   QuantityText,
@@ -30,12 +30,12 @@ export default function App() {
       <BackButton />
       <DeliveryContainer>
         <InformationContainer>
-          <PublicSans700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
+          <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
             Shipping
-          </PublicSans700Text>
-          <PublicSans700Text>Name</PublicSans700Text>
+          </Normal700Text>
+          <Normal700Text>Name</Normal700Text>
           <InformationText>Ethan Auyeung</InformationText>
-          <PublicSans700Text>Address</PublicSans700Text>
+          <Normal700Text>Address</Normal700Text>
           <InformationText>123 Telegraph Ave</InformationText>
         </InformationContainer>
         <OrderContainer>

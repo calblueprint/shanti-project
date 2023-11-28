@@ -11,12 +11,6 @@ export const DeliveryContainer = styled.div`
   align-items: center;
 `;
 
-export const PublicSans700Text = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-`;
-
 export const OrderSummaryText = styled.div`
   margin-top: 27px;
   margin-left: 30px;
