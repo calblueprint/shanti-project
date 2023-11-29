@@ -4,10 +4,7 @@ import { ArrowLeft } from 'react-feather';
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import {
-  arrayOfFavorites,
-  addOrRemoveProductFromFavorite,
-} from '../../api/supabase/queries/user_queries';
+import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
 
 import {
   FavoriteDiv,
@@ -49,12 +46,6 @@ export default function OrderPage() {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  async function clickFunctions(props: { fav: Product }) {
-    const { fav } = props;
-    addOrRemoveProductFromFavorite(fav, false);
-    setCart(Cart.filter(Prod => Prod.id !== fav.id));
-  }
 
   return (
     <div>

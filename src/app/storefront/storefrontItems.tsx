@@ -20,8 +20,12 @@ function Storefront({ products }: { products: Product[] }) {
 
   return (
     <StorefrontWrapper>
-      {products.map((productVal, index) => (
-        <IndividualItem products={Favorites} product={productVal} key={index} />
+      {products.map(productVal => (
+        <IndividualItem
+          products={Favorites}
+          product={productVal}
+          key={productVal.id}
+        />
       ))}
     </StorefrontWrapper>
   );
