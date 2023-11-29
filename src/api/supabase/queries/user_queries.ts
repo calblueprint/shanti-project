@@ -95,7 +95,6 @@ export async function addOrRemoveProductFromFavorite(
       } else {
         delete CurrUserFavoriteItems[product.id];
       }
-      console.log(isFav);
 
       const { error } = await supabase
         .from('profiles')
@@ -115,8 +114,7 @@ export async function arrayOfFavorites() {
   } = await supabase.auth.getUser();
 
   if (user !== null && user !== undefined) {
-    const { data: userProfileData, error: userProfileError } =
-      await fetchUserByUUID(user.id);
+    const userProfileData = await fetchUserByUUID(user.id);
 
     if (userProfileData !== null && userProfileData !== undefined) {
       const CurrUserFavoriteItems = userProfileData.fav_items;

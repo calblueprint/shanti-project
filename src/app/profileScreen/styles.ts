@@ -83,10 +83,10 @@ export const Backtext = styled.p`
 `;
 
 export const HeartIcon = styled(Heart)`
-  color: red;
+  color: #333286;
   width: 30px;
   height: 30px;
-  fill: red;
+  fill: #333286;
 `;
 
 export const NavBarZeroIndex = styled(NavBar)`

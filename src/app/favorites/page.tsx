@@ -36,7 +36,7 @@ export default function FavoritesPage() {
 
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
-    addOrRemoveProductFromFavorite(fav, true);
+    addOrRemoveProductFromFavorite(fav, false);
     setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
   }
 
