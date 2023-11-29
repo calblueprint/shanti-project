@@ -31,12 +31,12 @@ export default function IndividualItem(props: {
   }, [products]);
 
   async function clickFunction() {
+    addOrRemoveProductFromFavorite(product, !IsFavorite);
     setIsFavorite(!IsFavorite);
-    addOrRemoveProductFromFavorite(product, IsFavorite);
   }
   return (
     <div>
-      <StorefrontItem key={product.id}>
+      <StorefrontItem>
         <ItemButtons onClick={() => router.push(`/${product.id}`)}>
           <img
             src={product.photo}

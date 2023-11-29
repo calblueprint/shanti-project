@@ -53,6 +53,23 @@ export async function fetchUserByUUID(uuid: string) {
   }
 }
 
+export async function getProduct() {
+  try {
+    const { data: products, error } = await supabase
+      .from('product')
+      .select('*');
+
+    if (error || products === null || products === undefined) {
+      console.error('Error fetching product data:', error);
+    }
+
+    return products;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
 /**
  * addOrRemoveProductFromFavorite is a function that adds or removes from the user's profiles -> fav_items column based on the state of the heart button.
  * @param product: product object to add/remove to user's favorites
@@ -78,6 +95,7 @@ export async function addOrRemoveProductFromFavorite(
       } else {
         delete CurrUserFavoriteItems[product.id];
       }
+      console.log(isFav);
 
       const { error } = await supabase
         .from('profiles')
@@ -117,23 +135,6 @@ export async function arrayOfFavorites() {
     }
   }
   return [];
-}
-
-export async function getProduct() {
-  try {
-    const { data: products, error } = await supabase
-      .from('product')
-      .select('*');
-
-    if (error || products === null || products === undefined) {
-      console.error('Error fetching product data:', error);
-    }
-
-    return products;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
 }
 
 export async function filterProduct(productType: string) {
