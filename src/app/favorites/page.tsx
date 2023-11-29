@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import {
   arrayOfFavorites,
-  getUserInfo,
+  addOrRemoveProductFromFavorite,
 } from '../../api/supabase/queries/user_queries';
 
 import {
@@ -36,7 +36,7 @@ export default function FavoritesPage() {
 
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
-    getUserInfo(fav, false);
+    addOrRemoveProductFromFavorite(fav, true);
     setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
   }
 

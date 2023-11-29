@@ -114,10 +114,10 @@ export const ShopAllText = styled.h1`
 `;
 
 export const HeartIcon = styled(Heart)<props>`
-  color: ${props => (props.isClicked ? 'red' : 'black')};
+  color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
-  fill: ${props => (props.isClicked ? 'red' : '#c7ddff')};
+  fill: ${props => (props.isClicked ? '#333286' : 'none')};
   position: relative;
 `;
 
