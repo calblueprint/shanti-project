@@ -11,7 +11,7 @@ import {
   NavBarZeroIndex,
   ShopAllText,
 } from './styles';
-import { getProduct } from '../../api/supabase/queries/user_queries';
+import { getProduct } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
 export default function App() {
@@ -39,6 +39,15 @@ export default function App() {
   ];
   const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
+  const [CategoryWord, setCategoryWord] = useState('All');
+
+  const [IsClickedButton, setIsClickedButton] = useState<boolean[]>([
+    true,
+    false,
+    false,
+    false,
+  ]);
+
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -57,16 +66,20 @@ export default function App() {
       <GlobalStyle />
       <NavBarZeroIndex />
       <ButtonsContainer>
-        {buttons.map(type => (
+        {buttons.map((type, index) => (
           <ProductButtons
             key={type.count}
             value={type.value}
             setFiltredProducts={setFilteredProducts}
             content={type.name}
+            setIsClickedButton={setIsClickedButton}
+            IsClickedButton={IsClickedButton}
+            setCategoryWord={setCategoryWord}
+            index={index}
           />
         ))}
       </ButtonsContainer>
-      <ShopAllText>Shop All</ShopAllText>
+      <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />
     </main>

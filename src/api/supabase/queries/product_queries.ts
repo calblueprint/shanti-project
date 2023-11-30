@@ -40,7 +40,7 @@ export async function fetchProductByID(productId: number) {
     const { data: product, error } = await supabase
       .from('product')
       .select('*')
-      .eq('product_id', productId)
+      .eq('id', productId)
       .single();
 
     if (error) {
@@ -52,4 +52,67 @@ export async function fetchProductByID(productId: number) {
     console.error('Error:', error);
     throw error;
   }
+}
+
+/**
+ *
+ * @returns the number of items stored within the cart if there is no items then returns 0
+ */
+
+export async function totalNumberOfItemsInCart() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user !== null) {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select()
+      .eq('id', user.id)
+      .single();
+
+    if (data !== null) {
+      const CurrUserCart = data.cart;
+
+      if (CurrUserCart === null || CurrUserCart === undefined) {
+        return 0;
+      }
+
+      const itemNumb = Object.values(CurrUserCart) as number[];
+
+      let sum = 0;
+
+      for (let i = 0; i < itemNumb.length; i += 1) {
+        sum += itemNumb[i];
+      }
+
+      return sum;
+    }
+  }
+  return 0;
+}
+
+export async function getProduct() {
+  try {
+    const { data: products, error } = await supabase
+      .from('product')
+      .select('*');
+
+    if (error || products === null || products === undefined) {
+      console.error('Error fetching product data:', error);
+    }
+
+    return products;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+export async function filterProduct(productType: string) {
+  const { data } = await supabase
+    .from('product')
+    .select('*')
+    .eq('category', productType);
+  return data;
 }

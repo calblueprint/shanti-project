@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import {
   arrayOfFavorites,
-  getUserInfo,
+  addOrRemoveProductFromFavorite,
 } from '../../api/supabase/queries/user_queries';
 
 import {
@@ -21,15 +21,7 @@ import {
   NavBarMovedUP,
 } from '../profileScreen/styles';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
 
 export default function FavoritesPage() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
@@ -44,8 +36,8 @@ export default function FavoritesPage() {
 
   async function clickFunctions(props: { fav: Product }) {
     const { fav } = props;
-    getUserInfo(fav, false);
-    setFavorites(Favorites.filter(Prod => Prod.product_id !== fav.product_id));
+    addOrRemoveProductFromFavorite(fav, false);
+    setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
   }
 
   return (
@@ -60,7 +52,7 @@ export default function FavoritesPage() {
         <h1>Favorites</h1>
         <OutterFavoriteDiv>
           {Favorites.map(favorite => (
-            <FavoriteDiv key={favorite.product_id}>
+            <FavoriteDiv key={favorite.id}>
               <img
                 src={favorite.photo}
                 alt={favorite.name}

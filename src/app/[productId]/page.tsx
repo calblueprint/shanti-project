@@ -67,7 +67,7 @@ export default function ItemDisplay({
           <img
             src={Item?.photo}
             alt={Item?.name}
-            style={{ width: '600px', height: '600px' }}
+            style={{ width: '350px', height: '350px' }}
           />
         </ImageContainer>
         <TextContainer>
@@ -76,7 +76,7 @@ export default function ItemDisplay({
             {Item?.category}
           </h4>
           <Buttons />
-          <p style={{ paddingTop: '50px' }}>Product ID: {Item?.product_id}</p>
+          <p style={{ paddingTop: '50px' }}>Product ID: {Item?.id}</p>
           <p style={{ paddingTop: '20px' }}>Product Details:</p>
           <p>{Item?.description}</p>
         </TextContainer>
