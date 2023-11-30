@@ -15,6 +15,15 @@ export const GlobalStyle = createGlobalStyle`
     
   }
 `;
+
+export const PickupContainer = styled.div`
+  width: 515px;
+  height: 500flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 24px;
+`;
+
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;

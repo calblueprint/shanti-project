@@ -29,7 +29,10 @@ import {
   RightColumnDiv,
   Qty,
   PShiftRight,
+  PickupContent,
+  PickupContainer,
 } from './styles';
+import PickupForm from '@/components/PickupForm';
 // import { OrderSummary } from "./styles";
 
 interface Product {
@@ -59,11 +62,14 @@ export default function Pickup() {
       <GlobalStyle />
       <PageDiv>
         <ForceColumnDiv>
-          <BackDiv onClick={() => router.push('/storefront')}>
+          <BackDiv onClick={() => router.push('/cart')}>
             <ArrowLeft />
             <Backtext>Back</Backtext>
           </BackDiv>
+          <PickupContainer>
           <h1>Pick Up</h1>
+          <PickupForm />
+          </PickupContainer>
           <OutterFavoriteDiv>
             {Cart.map(cart => (
               <FavoriteDiv key={cart.product_id}>
@@ -76,9 +82,7 @@ export default function Pickup() {
                   <Label>{cart.name}</Label>
                   <p>Category: {cart.category}</p>
                 </LabelBox>
-                <TransparentButton
-                // {onClick={() => clickFunctions({ fav: favorite })}} <- change to remove item entirely
-                >
+                <TransparentButton                >
                   <TrashIcon />
                 </TransparentButton>
               </FavoriteDiv>
