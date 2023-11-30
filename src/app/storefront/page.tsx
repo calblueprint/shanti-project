@@ -11,7 +11,7 @@ import {
   NavBarZeroIndex,
   ShopAllText,
 } from './styles';
-import { getProduct } from '../../api/supabase/queries/product_queries';
+import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
 export default function App() {
@@ -49,16 +49,16 @@ export default function App() {
   ]);
 
   useEffect(() => {
-    async function fetchProducts() {
+    async function fetchAllProducts() {
       try {
-        const data = (await getProduct()) as Product[];
+        const data = (await fetchProducts()) as Product[];
         setFilteredProducts(data);
       } catch (error) {
         // console.log(error);
       }
     }
 
-    fetchProducts();
+    fetchAllProducts();
   }, []);
 
   return (

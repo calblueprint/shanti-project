@@ -11,7 +11,7 @@ export async function fetchProducts(): Promise<Product[]> {
   return products;
 }
 
-export async function fetchProductById(productId: number): Promise<Product> {
+export async function fetchProductByID(productId: number): Promise<Product> {
   const { data: product, error } = await supabase
     .from('product')
     .select('*')

@@ -4,7 +4,7 @@
 
 import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
-import { fetchProductById } from './product_queries';
+import { fetchProductByID } from './product_queries';
 
 export async function fetchUser(): Promise<User> {
   const {
@@ -92,7 +92,7 @@ export async function arrayOfFavorites(): Promise<Product[]> {
     return [];
   }
   const arrayOfProducts = await Promise.all(
-    favItems.map(item => fetchProductById(item)),
+    favItems.map(item => fetchProductByID(item)),
   );
 
   return arrayOfProducts;
