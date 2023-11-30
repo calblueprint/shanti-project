@@ -7,8 +7,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 // import { fullFavItemTest } from '../api/supabase/queries/tests/user_test';
 
-
-
 export default function Checkout() {
   // testFetchUserData();
   // testAddUserAddress();
