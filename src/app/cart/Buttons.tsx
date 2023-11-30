@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import {
-  ButtonsWrapper,
-  AddToCartButton,
-  QuantityButton,
-  PlusMinusButton,
-} from './styles';
+
+import { ButtonsWrapper, QuantityButton, PlusMinusButton } from './styles';
 
 export default function Buttons() {
   const [quantity, setQuantity] = useState<number>(1);
@@ -21,7 +16,6 @@ export default function Buttons() {
   };
 
   // used hyphen instead of dash for display
-  const notify = () => toast(`you have added ${quantity} items to the cart!`);
 
   return (
     <ButtonsWrapper>
@@ -34,8 +28,6 @@ export default function Buttons() {
           +
         </PlusMinusButton>
       </QuantityButton>
-
-      <AddToCartButton onClick={notify}>Add to cart</AddToCartButton>
     </ButtonsWrapper>
   );
 }

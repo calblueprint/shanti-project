@@ -1,29 +1,31 @@
-import React from 'react';
-import Link from 'next/link';
-import { StorefrontWrapper, StorefrontItem, ItemButtons } from './styles';
+import React, { useState, useEffect } from 'react';
+
+import { StorefrontWrapper } from './styles';
+
+import IndividualItem from './IndividualItem';
 
 import { Product } from '../../schema/schema';
 
+import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
+
 function Storefront({ products }: { products: Product[] }) {
+  const [Favorites, setFavorites] = useState<Product[]>([]);
+  async function fetchProducts() {
+    const data = (await arrayOfFavorites()) as Product[];
+    setFavorites(data);
+  }
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <StorefrontWrapper>
-      {products.map(product => (
-        <StorefrontItem key={product.product_id}>
-          <ItemButtons>
-            <Link
-              href={{
-                pathname: `/${product.product_id}`,
-              }}
-            >
-              <img
-                src={product.photo}
-                alt={product.name}
-                style={{ width: '250px', height: '250px' }}
-              />
-            </Link>
-          </ItemButtons>
-          <p style={{ paddingTop: '10px' }}>{product.name}</p>
-        </StorefrontItem>
+      {products.map(productVal => (
+        <IndividualItem
+          products={Favorites}
+          product={productVal}
+          key={productVal.product_id}
+        />
       ))}
     </StorefrontWrapper>
   );

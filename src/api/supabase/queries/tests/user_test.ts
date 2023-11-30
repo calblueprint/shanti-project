@@ -1,13 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import {
-  fetchUserData,
-  fetchUserByUUID,
-  fetchFavoriteItems,
-  addToFavorites,
-  removeFromFavorites,
-} from '../user_queries';
+import { fetchUserData, fetchUserByUUID } from '../user_queries';
 
 export async function runFetchUserData() {
   try {
@@ -25,22 +19,5 @@ export async function runFetchUserByUUID() {
     console.log('fetchUserByUUID Result:', result);
   } catch (error) {
     console.error('Error in fetchUserByUUID:', error);
-  }
-}
-
-export async function fullFavItemTest() {
-  const testUserId = '4a934844-76fa-4a1a-80d7-fa00597398e1';
-  const testItemId = '10';
-  try {
-    const result = await fetchUserByUUID(testUserId);
-    console.log('fetchUserData Result:', result);
-    addToFavorites(testUserId, testItemId);
-    let result1 = await fetchFavoriteItems(testUserId);
-    console.log('fetchFavoriteItems Result:', result1);
-    removeFromFavorites(testUserId, testItemId);
-    result1 = await fetchFavoriteItems(testUserId);
-    console.log('fetchFavoriteItems Result:', result1);
-  } catch (error) {
-    console.error('Error in incrementCartItemByOne:', error);
   }
 }

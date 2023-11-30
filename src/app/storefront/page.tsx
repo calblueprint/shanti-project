@@ -3,13 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
-import { GlobalStyle } from '../../styles/components';
-import NavBar from '../../components/NavBar';
-import { ButtonsContainer, ShopAllText } from './styles';
-import { getProduct } from './helperFunction';
+
+import Footer from '../../components/Footer';
+import {
+  GlobalStyle,
+  ButtonsContainer,
+  NavBarZeroIndex,
+  ShopAllText,
+} from './styles';
+import { getProduct } from '../../api/supabase/queries/user_queries';
 import { Product } from '../../schema/schema';
 
-// https://codesandbox.io/s/filter-with-react-button-r5x4i?file=/src/App.js
 export default function App() {
   const buttons = [
     {
@@ -51,7 +55,7 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <NavBar />
+      <NavBarZeroIndex />
       <ButtonsContainer>
         {buttons.map(type => (
           <ProductButtons
@@ -64,6 +68,7 @@ export default function App() {
       </ButtonsContainer>
       <ShopAllText>Shop All</ShopAllText>
       <Storefront products={FilteredProducts} />
+      <Footer />
     </main>
   );
 }

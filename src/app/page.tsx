@@ -5,7 +5,7 @@
 import React, { useEffect } from 'react';
 
 import Link from 'next/link';
-import { fullFavItemTest } from '../api/supabase/queries/tests/user_test';
+// import { fullFavItemTest } from '../api/supabase/queries/tests/user_test';
 import {
   testFetchOrderByUUID,
   testFetchOrders,
@@ -36,12 +36,12 @@ export default function Checkout() {
   // testFetchPickupData();
   // testFetchPickupTimesByUUID();
   // testUpdateAllOrdersProgressToTrue();
-  useEffect(() => {
-    async function testEverything() {
-      await fullFavItemTest();
-    }
-    testEverything();
-  });
+  // useEffect(() => {
+  //   async function testEverything() {
+  //     await arrayOfFavorites();
+  //   }
+  //   testEverything();
+  // });
 
   return (
     <main>
