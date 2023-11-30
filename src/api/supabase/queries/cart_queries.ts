@@ -1,6 +1,6 @@
 import supabase from '../createClient';
 
-import {fetchUser} from './user_queries';
+import { fetchUser } from './user_queries';
 
 // define cart item type
 export type CartItem = {
@@ -78,7 +78,6 @@ export async function addToCart(productID: number, quantity: number) {
   }
 }
 
-
 export async function decreaseFromCart(productID: number, quantity: number) {
   const items = await fetchCart();
   const existingItem = items.find(item => item.product_id === productID);
@@ -99,19 +98,13 @@ export async function decreaseFromCart(productID: number, quantity: number) {
       const index = productIdArray.indexOf(existingItem.id);
       productIdArray.splice(index, 1);
       updateCart(cartID, productIdArray);
-    } else {
-      await supabase
-        .from('cart_items')
-        .update({ quantity: newQuantity })
-        .match({ id: existingItem.id });
     }
   }
 }
 
-export async function removeCartItem(cartItemID: number) {
-  decreaseFromCart(cartItemID, Infinity);
+export async function removeCartItem(productID: number) {
+  decreaseFromCart(productID, Infinity);
 }
-
 
 export async function clearCart() {
   const user = await fetchUser();

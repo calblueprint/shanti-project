@@ -47,16 +47,6 @@ export default function OrderPage() {
     fetchProducts();
   }, []);
 
-<<<<<<< HEAD
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async function clickFunctions(props: { fav: Product }) {
-    const { fav } = props;
-    getUserInfo(fav, false);
-    setCart(Cart.filter(Prod => Prod.product_id !== fav.product_id));
-  }
-
-=======
->>>>>>> 8ddceb846eb2cb5fbc2fd2bd6922908ba78018df
   return (
     <div>
       <NavBarMovedUP />
