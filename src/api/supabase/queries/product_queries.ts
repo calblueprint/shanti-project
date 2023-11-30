@@ -91,3 +91,28 @@ export async function totalNumberOfItemsInCart() {
   }
   return 0;
 }
+
+export async function getProduct() {
+  try {
+    const { data: products, error } = await supabase
+      .from('product')
+      .select('*');
+
+    if (error || products === null || products === undefined) {
+      console.error('Error fetching product data:', error);
+    }
+
+    return products;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+export async function filterProduct(productType: string) {
+  const { data } = await supabase
+    .from('product')
+    .select('*')
+    .eq('category', productType);
+  return data;
+}

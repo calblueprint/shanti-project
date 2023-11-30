@@ -7,8 +7,9 @@ export type User = {
   pet_information: string;
   delivery_allowed: boolean;
   created_at: Date; // timestamp of when record was created
-  cart_id: string; // UUID
+  cart_id: number; // UUID
   address_id: string; // UUID
+  fav_items: Record<string, number>; // JSONB with item as key and quantity as value
 };
 
 export type Order = {

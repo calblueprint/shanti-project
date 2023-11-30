@@ -17,14 +17,16 @@ export const DescriptionContainer = styled.div`
   display: flex;
   margin: 50px;
   width: 1440px;
-  height: 800px;
+  height: 400px;
 `;
 
 export const ImageContainer = styled.div`
   margin: 50px;
-  width: 666px;
-  height: 666px;
+  width: 350px;
+  height: 350 px;
   flex-shrink: 0;
+  margin-left: 200px;
+  margin-right: 200px;
 `;
 
 export const TextContainer = styled.div`

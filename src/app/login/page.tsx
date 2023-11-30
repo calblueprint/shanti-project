@@ -37,9 +37,6 @@ export default function App() {
             <Button onClick={() => signInWithEmail(email, password)}>
               Log In
             </Button>
-            <button type="button" onClick={() => handleSignUp(email, password)}>
-              Sign up
-            </button>
           </LoginContent>
         </LoginBox>
       </Fullscreen>

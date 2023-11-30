@@ -7,7 +7,7 @@ import { Button, Label, IndividualContainer } from './styles';
 import {
   getProduct,
   filterProduct,
-} from '../../api/supabase/queries/user_queries';
+} from '../../api/supabase/queries/product_queries';
 
 import { Product } from '../../schema/schema';
 

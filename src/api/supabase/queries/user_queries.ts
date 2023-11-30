@@ -9,6 +9,8 @@ import {
 } from '@supabase/supabase-js';
 import { User, Product } from '../../../schema/schema';
 
+import { getProduct } from './product_queries';
+
 // Replace these with your Supabase project URL and API key
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseApiKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -34,6 +36,32 @@ export async function fetchUserData(): Promise<
   }
 }
 
+export async function fetchUser(): Promise<User> {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  if (error) {
+    throw new Error(`Error fetching user: ${error.message}`);
+  }
+
+  if (user !== null) {
+    const { data, error: error1 } = await supabase
+      .from('profiles')
+      .select()
+      .eq('id', user.id)
+      .single();
+
+    if (error1) {
+      throw new Error(`Error fetching user: ${error1.message}`);
+    }
+
+    return data as User;
+  }
+
+  throw new Error('User is null');
+}
+
 export async function fetchUserByUUID(uuid: string) {
   try {
     const { data: user, error } = await supabase
@@ -53,23 +81,6 @@ export async function fetchUserByUUID(uuid: string) {
   }
 }
 
-export async function getProduct() {
-  try {
-    const { data: products, error } = await supabase
-      .from('product')
-      .select('*');
-
-    if (error || products === null || products === undefined) {
-      console.error('Error fetching product data:', error);
-    }
-
-    return products;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
-
 /**
  * addOrRemoveProductFromFavorite is a function that adds or removes from the user's profiles -> fav_items column based on the state of the heart button.
  * @param product: product object to add/remove to user's favorites
@@ -80,65 +91,42 @@ export async function addOrRemoveProductFromFavorite(
   product: Product,
   isFav: boolean,
 ) {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const specificUser = await fetchUser();
 
-  if (user !== null && user !== undefined) {
-    const specificUser = await fetchUserByUUID(user.id);
+  const CurrUserFavoriteItems = specificUser.fav_items;
 
-    if (specificUser !== null && specificUser !== undefined) {
-      const CurrUserFavoriteItems = specificUser.fav_items;
-
-      if (isFav) {
-        CurrUserFavoriteItems[product.id] = 1;
-      } else {
-        delete CurrUserFavoriteItems[product.id];
-      }
-
-      const { error } = await supabase
-        .from('profiles')
-        .update({ fav_items: CurrUserFavoriteItems })
-        .eq('id', user.id);
-    }
+  if (isFav) {
+    CurrUserFavoriteItems[product.id] = 1;
+  } else {
+    delete CurrUserFavoriteItems[product.id];
   }
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({ fav_items: CurrUserFavoriteItems })
+    .eq('id', specificUser.id);
 }
+
 /**
  * arrayOfFavorites grabs the users favorite items from profiles->fav_items where each fav_item is being tracked by the product_id stored as a string and matches those product_id to the proper product object and stores the product object in an array.
  * @returns an array of product objects
  */
 
 export async function arrayOfFavorites() {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const specificUser = await fetchUser();
 
-  if (user !== null && user !== undefined) {
-    const userProfileData = await fetchUserByUUID(user.id);
+  const CurrUserFavoriteItems = specificUser.fav_items;
 
-    if (userProfileData !== null && userProfileData !== undefined) {
-      const CurrUserFavoriteItems = userProfileData.fav_items;
+  const Favkey = Object.keys(CurrUserFavoriteItems);
 
-      const Favkey = Object.keys(CurrUserFavoriteItems);
+  const productData = await getProduct();
 
-      const productData = await getProduct();
+  if (productData !== null && productData !== undefined) {
+    const FavArray = productData.filter(product =>
+      Favkey.includes(String(product.id)),
+    );
 
-      if (productData !== null && productData !== undefined) {
-        const FavArray = productData.filter(product =>
-          Favkey.includes(String(product.id)),
-        );
-
-        return FavArray;
-      }
-    }
+    return FavArray;
   }
   return [];
-}
-
-export async function filterProduct(productType: string) {
-  const { data } = await supabase
-    .from('product')
-    .select('*')
-    .eq('category', productType);
-  return data;
 }
