@@ -18,7 +18,6 @@ import {
   BackDiv,
   GlobalStyle,
   Backtext,
-  TrashIcon,
   TransparentButton,
   NavBarMovedUP,
   PageDiv,
@@ -33,7 +32,6 @@ import {
   PickupContent,
   PickupContainer,
 } from './styles';
-// import { OrderSummary } from "./styles";
 
 interface Product {
   description: string;
@@ -87,9 +85,6 @@ export default function Pickup() {
                   <Label>{cart.name}</Label>
                   <p>Category: {cart.category}</p>
                 </LabelBox>
-                <TransparentButton                >
-                  <TrashIcon />
-                </TransparentButton>
               </FavoriteDiv>
             ))}
           </OutterFavoriteDiv>
@@ -116,9 +111,7 @@ export default function Pickup() {
             </OrderTotalDiv>
           </WhiteBackgroundDiv>
 
-          <CheckoutButton
-          // Add Checkout Function by using onClick
-          >
+          <CheckoutButton onClick={() => router.push('/confirmation')}>
             Place Order
           </CheckoutButton>
         </RightColumnDiv>

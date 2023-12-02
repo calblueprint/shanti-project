@@ -38,13 +38,33 @@ export async function fetchPickupData(): Promise<
 
 export async function fetchPickupTimesByUUID(
   uuid: string,
-): Promise<PostgrestSingleResponse<unknown>> {
+) {
   try {
     const { data: pickupTimes, error } = await supabase
       .from('Pickup_Times')
       .select('*')
       .eq('id', uuid)
       .single();
+
+    if (error) {
+      console.error('Error fetching user data:', error);
+    }
+
+    return pickupTimes;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+export async function fetchRecentPickupTimes(
+  uuid: string,
+): Promise<PostgrestSingleResponse<unknown>> {
+  try {
+    const { data: pickupTimes, error } = await supabase
+      .from('Pickup_Times')
+      .select('*')
+      .limit(2)
 
     if (error) {
       console.error('Error fetching user data:', error);
