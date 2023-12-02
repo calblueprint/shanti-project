@@ -39,6 +39,29 @@ export const PickupContent = styled.div`
   padding-left: 20px;
 `;
 
+export const PickupTimeButton = styled.button`
+background: ${COLORS.lightGrey};
+
+height: 124px;
+width: 242px;
+margin-top: 20px;
+margin-right: 31px;
+margin-bottom:20px;
+
+border: none;
+border-radius: 5px;
+
+color: black;
+text-align: center;
+font-family: "Public Sans";
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+`;
+
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -189,7 +212,7 @@ export const CheckoutButton = styled.button`
 
   color: var(--White, #fff);
   text-align: center;
-  font-family: Public Sans;
+  font-family: "Public Sans";
   font-size: 20px;
   font-style: normal;
   font-weight: 700;

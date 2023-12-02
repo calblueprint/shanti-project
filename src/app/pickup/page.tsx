@@ -6,6 +6,7 @@ import { arrayOfFavorites } from "@/api/supabase/queries/user_queries";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Normal700Text } from '@/styles/fonts';
+import { fetchRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import {
   FavoriteDiv,
   HeaderShiftLeft,
@@ -18,7 +19,6 @@ import {
   BackDiv,
   GlobalStyle,
   Backtext,
-  TransparentButton,
   NavBarMovedUP,
   PageDiv,
   Label,
@@ -31,6 +31,7 @@ import {
   PShiftRight,
   PickupContent,
   PickupContainer,
+  PickupTimeButton,
 } from './styles';
 
 interface Product {
@@ -43,15 +44,32 @@ interface Product {
   updated_at: Date;
 }
 
+interface PickupTime {
+  id: number;
+  date: Date;
+  start_time: Date;
+  end_time: Date;
+  day_of_week: string;
+}
+
 export default function Pickup() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
+  const [Times, setTimes] = useState<PickupTime>();
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[]; // change the function to grab the cartItems as products
     setCart(data);
   }
   useEffect(() => {
     fetchProducts();
+  }, []);
+
+  async function fetchTimes() {
+    const data = (await fetchRecentPickupTimes as unknown as PickupTime); // change the function to grab the cartItems as products
+    setTimes(data);
+  }
+  useEffect(() => {
+    fetchTimes();
   }, []);
 
   return (
@@ -72,22 +90,10 @@ export default function Pickup() {
           <PickupContent>Ethan Auyeung</PickupContent>
           <Normal700Text>Phone Number</Normal700Text>
           <PickupContent>+1 123-456-7890</PickupContent>
+          <PickupTimeButton> {} </PickupTimeButton>
+          <PickupTimeButton>Time</PickupTimeButton>
+          <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
-          <OutterFavoriteDiv>
-            {Cart.map(cart => (
-              <FavoriteDiv key={cart.product_id}>
-                <img
-                  src={cart.photo}
-                  alt={cart.name}
-                  style={{ width: '150px', height: '150px' }}
-                />
-                <LabelBox>
-                  <Label>{cart.name}</Label>
-                  <p>Category: {cart.category}</p>
-                </LabelBox>
-              </FavoriteDiv>
-            ))}
-          </OutterFavoriteDiv>
         </ForceColumnDiv>
         <RightColumnDiv>
           <WhiteBackgroundDiv>
@@ -111,7 +117,7 @@ export default function Pickup() {
             </OrderTotalDiv>
           </WhiteBackgroundDiv>
 
-          <CheckoutButton onClick={() => router.push('/confirmation')}>
+          <CheckoutButton onClick={() => router.push('/orderConfirmationPickUp')}>
             Place Order
           </CheckoutButton>
         </RightColumnDiv>

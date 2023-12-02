@@ -4,9 +4,12 @@ import { User, ShoppingCart } from 'react-feather';
 import COLORS from './colors';
 
 export const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap'); 
+
   body {
     background: white;
     color:black;
+    font-family: 'Public Sans', sans-serif;
   }
   span{
   

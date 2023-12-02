@@ -58,13 +58,12 @@ export async function fetchPickupTimesByUUID(
 }
 
 export async function fetchRecentPickupTimes(
-  uuid: string,
-): Promise<PostgrestSingleResponse<unknown>> {
+) {
   try {
     const { data: pickupTimes, error } = await supabase
       .from('Pickup_Times')
       .select('*')
-      .limit(2)
+      .limit(1)
 
     if (error) {
       console.error('Error fetching user data:', error);
