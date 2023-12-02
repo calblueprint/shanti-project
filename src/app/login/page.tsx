@@ -1,15 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-
 import Image from 'next/image';
-
 import supabase from '@/api/supabase/createClient';
-
 import LoginForm from '../../components/LoginForm';
+import { GlobalStyle } from '../../styles/components';
 
 import {
-  GlobalStyle,
   Fullscreen,
   LoginBox,
   LoginContent,

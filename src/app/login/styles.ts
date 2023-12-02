@@ -1,11 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import COLORS from '../../styles/colors';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-  }
-`;
 
 export const LoginBox = styled.div`
   display: flex;
@@ -69,11 +63,11 @@ export const FormHeaders = styled.p`
 `;
 
 export const ErrorMessage = styled.div`
-  margin-top: 10px;
-  margin-bottom: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 420px;
   color: ${COLORS.darkRed};
-  text-align: right;
+  text-align: left;
   font-size: 13px;
   font-style: normal;
   font-weight: 300;
