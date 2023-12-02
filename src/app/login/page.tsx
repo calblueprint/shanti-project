@@ -18,7 +18,7 @@ import {
   ErrorMessage,
 } from './styles';
 
-import { handleSignUp, signInWithEmail } from '../../api/supabase/auth/auth';
+import { signInWithEmail } from '../../api/supabase/auth/auth';
 
 export default function App() {
   const [email, setEmail] = useState('');

@@ -8,7 +8,7 @@ import {
   LogOutButton,
   GlobalStyle,
   PopUp,
-  NavBarZeroIndex,
+  NavBarMovedUP,
   FooterMoved,
 } from './styles';
 
@@ -31,7 +31,7 @@ export default function Profile() {
 
   return (
     <main>
-      <NavBarZeroIndex />
+      <NavBarMovedUP />
       <GlobalStyle />
       <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
       <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
