@@ -94,16 +94,13 @@ export default function OrderPage() {
             </OrderSummaryDiv>
             <OrderTotalDiv>
               <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-              <HeaderShiftRight
-              // change with the actual cart total
-              >
-                10
-              </HeaderShiftRight>
+              <HeaderShiftRight>10</HeaderShiftRight>
             </OrderTotalDiv>
           </WhiteBackgroundDiv>
 
           <CheckoutButton
-          // Add Checkout Function by using onClick
+            // Add Checkout Function by using onClick
+            onClick={() => router.push('/orderConfirmationPickUp')}
           >
             Check Out
           </CheckoutButton>
