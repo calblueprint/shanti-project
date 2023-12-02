@@ -6,6 +6,10 @@ import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
 
+/**
+ * fetchUser is a function that fetches the user data from the database and returns the user object.
+ * @returns a user object
+ */
 export async function fetchUser(): Promise<User> {
   const {
     data: { user },
@@ -32,6 +36,11 @@ export async function fetchUser(): Promise<User> {
   throw new Error('User is null');
 }
 
+/**
+ * fetchUserByUUID is a function that fetches the user data from the database and returns the user object.
+ * @param uuid: a string that is the user's uuid
+ * @returns a user object
+ */
 export async function fetchUserByUUID(uuid: string) {
   try {
     const { data: user, error } = await supabase

@@ -9,6 +9,11 @@ export type CartItem = {
   quantity: number;
 };
 
+/**
+ * get cart item by id
+ * @param number - cart item id
+ * @returns Promise<CartItem> - A CartItem object.
+ */
 export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
   const { data, error } = await supabase
     .from('cart_items')
@@ -21,6 +26,10 @@ export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
   return data;
 }
 
+/**
+ * get cart items in a user's cart
+ * @returns Promise<CartItem[]> - An array of CartItem objects.
+ */
 export async function fetchCart(): Promise<CartItem[]> {
   const user = await fetchUser();
   const cartID = user.cart_id;
@@ -42,6 +51,11 @@ export async function fetchCart(): Promise<CartItem[]> {
   return fetchedProducts;
 }
 
+/**
+ * update cart
+ * @param cartID - cart id
+ * @param cartIDArray - cart id array
+ */
 async function updateCart(cartID: number, cartIDArray: number[]) {
   await supabase
     .from('order')
@@ -49,6 +63,11 @@ async function updateCart(cartID: number, cartIDArray: number[]) {
     .match({ id: cartID });
 }
 
+/**
+ * add product to cart
+ * @param productID - product id
+ * @param quantity - quantity of product
+ */
 export async function addToCart(productID: number, quantity: number) {
   const items = await fetchCart();
 
@@ -78,6 +97,11 @@ export async function addToCart(productID: number, quantity: number) {
   }
 }
 
+/**
+ * decrease quantity of product in cart
+ * @param productID - product id
+ * @param quantity - quantity of product
+ */
 export async function decreaseFromCart(productID: number, quantity: number) {
   const items = await fetchCart();
   const existingItem = items.find(item => item.product_id === productID);
@@ -102,10 +126,17 @@ export async function decreaseFromCart(productID: number, quantity: number) {
   }
 }
 
+/**
+ * remove product from cart
+ * @param productID - product id
+ */
 export async function removeCartItem(productID: number) {
   decreaseFromCart(productID, Infinity);
 }
 
+/**
+ * clear cart
+ */
 export async function clearCart() {
   const user = await fetchUser();
   const cartID = user.cart_id;

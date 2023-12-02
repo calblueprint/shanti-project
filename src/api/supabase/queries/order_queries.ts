@@ -5,8 +5,10 @@ import { Order } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import supabase from '../createClient';
 
-// Replace these with your Supabase project URL and API key
-
+/**
+ * Fetches all orders from the database.
+ * @returns Promise<Order[]> - An array of Order objects.
+ */
 export async function getOrderById(orderId: number): Promise<Order> {
   const { data: order, error } = await supabase
     .from('order') // Update to the "Order" table
@@ -19,28 +21,12 @@ export async function getOrderById(orderId: number): Promise<Order> {
   return order;
 }
 
-export async function getOrdersByUserId(): Promise<Order[]> {
-  const user = await fetchUser();
-  const userId = user.id;
-
-  const { data: orders, error } = await supabase
-    .from('order')
-    .select('*')
-    .eq('user_id', userId);
-
-  if (error) {
-    throw new Error(`Error fetching orders: ${error.message}`);
-  }
-  return orders;
-}
-
+/**
+ * creates a new order for the user
+ */
 export async function createOrder() {
-  // Fetch the user's cart
   const user = await fetchUser();
 
-  // Extract user's cart
-
-  // Create a new order
   const { data: order, error } = await supabase
     .from('order')
     .insert({ user_id: user.id })
@@ -50,13 +36,17 @@ export async function createOrder() {
     throw new Error(`Error creating order: ${error.message}`);
   }
 
-  // Update the user's cart
   await supabase
     .from('users')
     .update({ cart_id: order.id })
     .match({ id: user.id });
 }
 
+/**
+ * gets all orders by user id and sorted it by creation data
+ * @param Order[] - An array of Order objects.
+ * @returns Promise<Order[]> - An array of Order objects.
+ */
 function sortOrdersByCreated(orders: Order[]): Order[] {
   return orders.sort(
     (a, b) =>
@@ -64,6 +54,11 @@ function sortOrdersByCreated(orders: Order[]): Order[] {
   );
 }
 
+/**
+ * gets all orders by user id and sorted it by creation data
+ * @param Order[] - An array of Order objects.
+ * @returns Promise<Order[]> - An array of Order objects.
+ */
 export async function fetchOrdersByUser(): Promise<Order[]> {
   const user = await fetchUser();
   const userId = user.id;
@@ -79,11 +74,21 @@ export async function fetchOrdersByUser(): Promise<Order[]> {
   return data;
 }
 
+/**
+ * gets all orders by user id and sorted it by creation data
+ * @param Order[] - An array of Order objects.
+ * @returns Promise<Order[]> - An array of Order objects.
+ */
 export async function fetchOrdersByUserIdSorted(): Promise<Order[]> {
   const orders = await fetchOrdersByUser();
   return sortOrdersByCreated(orders);
 }
 
+/**
+ * gets all orders by user id and sorted it by creation data and get the first n orders
+ * @param Order[] - An array of Order objects.
+ * @returns Promise<Order[]> - An array of Order objects.
+ */
 export async function fetchNOrdersByUserIdSorted(n: number): Promise<Order[]> {
   const orders = await fetchOrdersByUser();
   return sortOrdersByCreated(orders).slice(0, n);
