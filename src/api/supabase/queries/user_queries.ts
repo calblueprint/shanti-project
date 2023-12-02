@@ -2,40 +2,14 @@
 /* eslint-disable no-console */
 //
 
-import {
-  PostgrestSingleResponse,
-  PostgrestError,
-  createClient,
-} from '@supabase/supabase-js';
+import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
+import { fetchProductByID } from './product_queries';
 
-import { getProduct } from './product_queries';
-
-// Replace these with your Supabase project URL and API key
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseApiKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-// Initialize the Supabase client
-const supabase = createClient(supabaseUrl ?? '', supabaseApiKey ?? '');
-
-export async function fetchUserData(): Promise<
-  PostgrestSingleResponse<User[]> | { data: never[]; error: PostgrestError }
-> {
-  try {
-    const { data: users, error } = await supabase.from('profiles').select('*');
-
-    if (error) {
-      console.error('Error fetching data:', error);
-      return { data: [], error };
-    }
-
-    return { data: users } as PostgrestSingleResponse<User[]>;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
-
+/**
+ * fetchUser is a function that fetches the user data from the database and returns the user object.
+ * @returns a user object
+ */
 export async function fetchUser(): Promise<User> {
   const {
     data: { user },
@@ -62,6 +36,11 @@ export async function fetchUser(): Promise<User> {
   throw new Error('User is null');
 }
 
+/**
+ * fetchUserByUUID is a function that fetches the user data from the database and returns the user object.
+ * @param uuid: a string that is the user's uuid
+ * @returns a user object
+ */
 export async function fetchUserByUUID(uuid: string) {
   try {
     const { data: user, error } = await supabase
@@ -91,20 +70,23 @@ export async function addOrRemoveProductFromFavorite(
   product: Product,
   isFav: boolean,
 ) {
-  const specificUser = await fetchUser();
+  const user = await fetchUser();
 
-  const CurrUserFavoriteItems = specificUser.fav_items;
+  const favItems = user.fav_items;
+
+  const productID = product.id;
 
   if (isFav) {
-    CurrUserFavoriteItems[product.id] = 1;
+    favItems.push();
   } else {
-    delete CurrUserFavoriteItems[product.id];
+    const index = favItems.indexOf(productID);
+    favItems.splice(index, 1);
   }
 
-  const { error } = await supabase
+  await supabase
     .from('profiles')
-    .update({ fav_items: CurrUserFavoriteItems })
-    .eq('id', specificUser.id);
+    .update({ fav_items: favItems })
+    .match({ id: user.id });
 }
 
 /**
@@ -112,21 +94,15 @@ export async function addOrRemoveProductFromFavorite(
  * @returns an array of product objects
  */
 
-export async function arrayOfFavorites() {
-  const specificUser = await fetchUser();
-
-  const CurrUserFavoriteItems = specificUser.fav_items;
-
-  const Favkey = Object.keys(CurrUserFavoriteItems);
-
-  const productData = await getProduct();
-
-  if (productData !== null && productData !== undefined) {
-    const FavArray = productData.filter(product =>
-      Favkey.includes(String(product.id)),
-    );
-
-    return FavArray;
+export async function arrayOfFavorites(): Promise<Product[]> {
+  const user = await fetchUser();
+  const favItems = user.fav_items;
+  if (favItems.length === 0) {
+    return [];
   }
-  return [];
+  const arrayOfProducts = await Promise.all(
+    favItems.map(item => fetchProductByID(item)),
+  );
+
+  return arrayOfProducts;
 }

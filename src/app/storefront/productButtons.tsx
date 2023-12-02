@@ -5,7 +5,7 @@ import React from 'react';
 import { Button, Label, IndividualContainer } from './styles';
 
 import {
-  getProduct,
+  fetchProducts,
   filterProduct,
 } from '../../api/supabase/queries/product_queries';
 
@@ -91,7 +91,7 @@ export default function ProductButtons(props: {
         setFiltredProducts(products);
       }
     } else {
-      const products = await getProduct();
+      const products = await fetchProducts();
       if (products !== null) {
         setFiltredProducts(products);
       }
