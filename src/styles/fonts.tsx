@@ -15,3 +15,9 @@ export const Heading4 = styled.div`
   font-weight: 400;
   line-height: normal;
 `;
+
+export const Normal700Text = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;

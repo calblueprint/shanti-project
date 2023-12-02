@@ -48,7 +48,7 @@ export const BackDiv = styled.button`
   margin-top: 25px;
 `;
 
-export const OutterBox = styled.div`
+export const OtterBox = styled.div`
   width: 900px;
   margin-left: 300px;
 `;

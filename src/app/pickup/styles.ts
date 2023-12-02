@@ -17,11 +17,26 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const PickupContainer = styled.div`
-  width: 515px;
-  height: 500flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 24px;
+  width: 730px;
+  height: 400px;
+  padding-left: 22px;
+`;
+
+export const PickupContent = styled.div`
+  width: 730px;
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  border: 1px solid ${COLORS.neutralGrey};
+  background: ${COLORS.lightGrey};
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 20px;
 `;
 
 export const FavoriteDiv = styled.div`
@@ -66,14 +81,6 @@ export const Backtext = styled.p`
   padding-top: 5px;
 `;
 
-export const TrashIcon = styled(Trash2)`
-  width: 30px;
-  height: 30px;
-  color: black;
-  margin-right: 30px;
-  margin-top: 28px;
-`;
-
 export const NavBarZeroIndex = styled(NavBar)`
   z-index: 0;
   position: fixed;
@@ -102,27 +109,27 @@ export const ButtonsWrapper = styled.div`
   margin-top: 20px;
 `;
 
-export const QuantityButton = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 165px;
-  height: 50px;
-  border-radius: 8px;
-  background-color: ${COLORS.white};
-  border: 2px solid ${COLORS.navy};
-  color: ${COLORS.navy};
+export const QtyText = styled.div`
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: right;
 `;
 
-export const PlusMinusButton = styled.button`
-  width: 25px;
-  height: 25px;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border-color: transparent;
-  font-size: 20px;
-  color: ${COLORS.navy};
+export const ItemText = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const QuantityText = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: right;
 `;
 
 export const Label = styled.p`
@@ -192,6 +199,21 @@ export const CheckoutButton = styled.button`
 export const Qty = styled.p`
   width: 100%;
   padding-left: 290px;
+`;
+
+export const OrderButton = styled.button`
+  margin-top: 26px;
+  width: 350px;
+  height: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  background: ${COLORS.navy};
+  border-radius: 8px;
+  color: ${COLORS.white};
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 export const RightColumnDiv = styled.div`

@@ -5,6 +5,7 @@ import { ArrowLeft } from 'react-feather';
 import { arrayOfFavorites } from "@/api/supabase/queries/user_queries";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { Normal700Text } from '@/styles/fonts';
 import {
   FavoriteDiv,
   HeaderShiftLeft,
@@ -32,7 +33,6 @@ import {
   PickupContent,
   PickupContainer,
 } from './styles';
-import PickupForm from '@/components/PickupForm';
 // import { OrderSummary } from "./styles";
 
 interface Product {
@@ -67,8 +67,13 @@ export default function Pickup() {
             <Backtext>Back</Backtext>
           </BackDiv>
           <PickupContainer>
-          <h1>Pick Up</h1>
-          <PickupForm />
+          <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
+            Pick Up
+          </Normal700Text>
+          <Normal700Text>Name</Normal700Text>
+          <PickupContent>Ethan Auyeung</PickupContent>
+          <Normal700Text>Phone Number</Normal700Text>
+          <PickupContent>+1 123-456-7890</PickupContent>
           </PickupContainer>
           <OutterFavoriteDiv>
             {Cart.map(cart => (
@@ -114,7 +119,7 @@ export default function Pickup() {
           <CheckoutButton
           // Add Checkout Function by using onClick
           >
-            Check Out
+            Place Order
           </CheckoutButton>
         </RightColumnDiv>
       </PageDiv>
