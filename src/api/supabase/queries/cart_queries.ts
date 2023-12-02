@@ -1,6 +1,8 @@
 import supabase from '../createClient';
 
 import { fetchUser } from './user_queries';
+import { Product } from '../../../schema/schema';
+import { fetchProductByID } from './product_queries';
 
 // define cart item type
 export type CartItem = {
@@ -44,6 +46,17 @@ export async function fetchCart(): Promise<CartItem[]> {
   const products = data.product_id_array;
   const productPromises = products.map(async (productID: number) => {
     const product = await fetchCartItem(productID);
+    return product;
+  });
+  const fetchedProducts = await Promise.all(productPromises);
+
+  return fetchedProducts;
+}
+
+export async function fetchCartItems(): Promise<Product[]> {
+  const cart = await fetchCart();
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
     return product;
   });
   const fetchedProducts = await Promise.all(productPromises);
