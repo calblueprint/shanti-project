@@ -15,7 +15,7 @@ import {
   Button,
 } from './styles';
 
-import { handleSignUp, signInWithEmail } from '../../api/supabase/auth/auth';
+import { signInWithEmail } from '../../api/supabase/auth/auth';
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -37,9 +37,6 @@ export default function App() {
             <Button onClick={() => signInWithEmail(email, password)}>
               Log In
             </Button>
-            <button type="button" onClick={() => handleSignUp(email, password)}>
-              Sign up
-            </button>
           </LoginContent>
         </LoginBox>
       </Fullscreen>

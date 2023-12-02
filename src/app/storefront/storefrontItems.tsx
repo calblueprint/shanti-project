@@ -24,7 +24,7 @@ function Storefront({ products }: { products: Product[] }) {
         <IndividualItem
           products={Favorites}
           product={productVal}
-          key={productVal.product_id}
+          key={productVal.id}
         />
       ))}
     </StorefrontWrapper>

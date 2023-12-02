@@ -24,17 +24,16 @@ export const StickyHeader = styled.div`
   z-index: 2;
 `;
 
-export const Button = styled.button<props>`
-  // position: sticky;
-  background-color: ${props => (props.isClicked ? '#00507f' : '#C7E1FF')};
+export const Button = styled.button<{ $pickColor?: boolean }>`
+  background-color: ${props => (props.$pickColor ? '#00507f' : '#C7E1FF')};
   border-radius: 50%;
   width: 50px;
   height: 50px;
   border: transparent;
 `;
 
-export const Label = styled.p<props>`
-  color: ${props => (props.isClicked ? '#00507f' : '#000')};
+export const Label = styled.p<{ $pickColor?: boolean }>`
+  color: ${props => (props.$pickColor ? '#00507f' : '#000')};
   text-align: center;
   font-family: 'Public Sans', sans-serif;
   padding-top: 5px;
@@ -116,10 +115,10 @@ export const ShopAllText = styled.h1`
 `;
 
 export const HeartIcon = styled(Heart)<props>`
-  color: ${props => (props.isClicked ? 'red' : 'black')};
+  color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
-  fill: ${props => (props.isClicked ? 'red' : '#c7ddff')};
+  fill: ${props => (props.isClicked ? '#333286' : 'none')};
   position: relative;
 `;
 
