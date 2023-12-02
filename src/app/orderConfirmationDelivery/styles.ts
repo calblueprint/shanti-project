@@ -1,12 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { ToastContainer } from 'react-toastify';
-
 import { Heart } from 'react-feather';
 
 import NavBar from '../../components/NavBar';
-
-import Footer from '../../components/Footer';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -17,33 +13,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const LogOutButton = styled.button`
-  background: #00507f;
-  color: #fff;
-  text-align: center;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  border: transparent;
-  border-radius: 5px;
-  width: 300px;
-  height: 50px;
-  z-index: 1000;
-`;
-/* transform: translateY(200px); */
-
-export const PopUp = styled(ToastContainer)`
-  transform: translate(-150px, 250px);
-  position: fixed;
-`;
-
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: start;
-  justify-content: space-around;
+  justify-content: space-start;
   width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
@@ -52,14 +26,18 @@ export const FavoriteDiv = styled.div`
 export const OutterFavoriteDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
   height: 500px;
-  overflow: scroll;
   margin-top: 10px;
+`;
+
+export const ScrollDiv = styled.div`
+  overflow: scroll;
+  width: 100%;
 `;
 
 export const BackDiv = styled.button`
@@ -71,6 +49,7 @@ export const BackDiv = styled.button`
   border: transparent;
   margin-bottom: 25px;
   margin-top: 25px;
+  margin-left: 25px;
 `;
 
 export const OutterBox = styled.div`
@@ -79,7 +58,14 @@ export const OutterBox = styled.div`
 `;
 
 export const Backtext = styled.p`
-  padding-top: 5px;
+  color: var(--Black, #101010);
+
+  /* Body 1 - Bold, button */
+  font-family: Public Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
 export const HeartIcon = styled(Heart)`
@@ -89,16 +75,6 @@ export const HeartIcon = styled(Heart)`
   fill: #333286;
 `;
 
-export const NavBarZeroIndex = styled(NavBar)`
-  z-index: 0;
-  position: fixed;
-  margin-bottom: 100px;
-`;
-
-export const FooterMoved = styled(Footer)`
-  transform: translateY(50px);
-`;
-
 export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
@@ -106,4 +82,50 @@ export const TransparentButton = styled.button`
 
 export const NavBarMovedUP = styled(NavBar)`
   position: static;
+`;
+
+export const Label = styled.p`
+  margin-top: 20px;
+`;
+
+export const LabelBox = styled.div`
+  width: 150px;
+  height: 100%;
+`;
+
+export const HeaderText = styled.h3`
+  color: var(--Black, #101010);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 45px;
+  color: var(--Black, #101010);
+  font-family: Public Sans;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+export const AddressText = styled.p`
+  color: var(--Black, #101010);
+  font-family: Public Sans;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 20px;
+  margin-left: 45px;
+`;
+
+export const DateText = styled.p`
+  color: var(--Black, #101010);
+  margin-top: 20px;
+  margin-left: 45px;
+
+  font-family: Public Sans;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
 `;

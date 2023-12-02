@@ -9,7 +9,7 @@ import {
   HeartContainer,
 } from './styles';
 
-import { getUserInfo } from '../../api/supabase/queries/user_queries';
+import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
 
 import { Product } from '../../schema/schema';
 
@@ -18,26 +18,26 @@ export default function IndividualItem(props: {
   products: Product[];
 }) {
   const { product, products } = props;
-  const [isFavorite, setIsFavorite] = useState(true);
+  const [IsFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     async function fetchProducts() {
-      if (products.find(item => item.product_id === product.product_id)) {
-        setIsFavorite(false);
+      if (products.find(item => item.id === product.id)) {
+        setIsFavorite(true);
       }
     }
     fetchProducts();
   }, [products]);
 
   async function clickFunction() {
-    setIsFavorite(!isFavorite);
-    getUserInfo(product, isFavorite);
+    addOrRemoveProductFromFavorite(product, !IsFavorite);
+    setIsFavorite(!IsFavorite);
   }
   return (
     <div>
-      <StorefrontItem key={product.product_id}>
-        <ItemButtons onClick={() => router.push(`/${product.product_id}`)}>
+      <StorefrontItem>
+        <ItemButtons onClick={() => router.push(`/${product.id}`)}>
           <img
             src={product.photo}
             alt={product.name}
@@ -45,7 +45,7 @@ export default function IndividualItem(props: {
           />
         </ItemButtons>
         <HeartContainer onClick={() => clickFunction()}>
-          <HeartIcon isClicked={!isFavorite} />
+          <HeartIcon isClicked={IsFavorite} />
         </HeartContainer>
       </StorefrontItem>
       <p style={{ transform: 'translateY( -80px)' }}>{product.name}</p>

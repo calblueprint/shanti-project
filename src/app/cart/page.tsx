@@ -4,10 +4,7 @@ import { ArrowLeft } from 'react-feather';
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import {
-  arrayOfFavorites,
-  getUserInfo,
-} from '../../api/supabase/queries/user_queries';
+import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
 
 import {
   FavoriteDiv,
@@ -37,15 +34,7 @@ import {
 
 import Buttons from './Buttons';
 
-interface Product {
-  description: string;
-  category: string;
-  quantity: number;
-  photo: string;
-  product_id: number;
-  name: string;
-  updated_at: Date;
-}
+import { Product } from '../../schema/schema';
 
 export default function OrderPage() {
   const [Cart, setCart] = useState<Product[]>([]);
@@ -57,12 +46,6 @@ export default function OrderPage() {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  async function clickFunctions(props: { fav: Product }) {
-    const { fav } = props;
-    getUserInfo(fav, false);
-    setCart(Cart.filter(Prod => Prod.product_id !== fav.product_id));
-  }
 
   return (
     <div>
@@ -77,7 +60,7 @@ export default function OrderPage() {
           <h1>Cart</h1>
           <OutterFavoriteDiv>
             {Cart.map(cart => (
-              <FavoriteDiv key={cart.product_id}>
+              <FavoriteDiv key={cart.id}>
                 <img
                   src={cart.photo}
                   alt={cart.name}
@@ -103,7 +86,7 @@ export default function OrderPage() {
             <Qty>Qty.</Qty>
             <OrderSummaryDiv>
               {Cart.map(cart => (
-                <ItemSummaryDiv key={cart.product_id}>
+                <ItemSummaryDiv key={cart.id}>
                   <PShiftLeft>{cart.name}</PShiftLeft>
                   <PShiftRight>{cart.quantity}</PShiftRight>
                 </ItemSummaryDiv>
@@ -111,16 +94,13 @@ export default function OrderPage() {
             </OrderSummaryDiv>
             <OrderTotalDiv>
               <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-              <HeaderShiftRight
-              // change with the actual cart total
-              >
-                10
-              </HeaderShiftRight>
+              <HeaderShiftRight>10</HeaderShiftRight>
             </OrderTotalDiv>
           </WhiteBackgroundDiv>
 
           <CheckoutButton
-          // Add Checkout Function by using onClick
+            // Add Checkout Function by using onClick
+            onClick={() => router.push('/orderConfirmationPickUp')}
           >
             Check Out
           </CheckoutButton>
