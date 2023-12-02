@@ -60,7 +60,7 @@ export const Input = styled.input`
 
 export const FormHeaders = styled.p`
   color: ${COLORS.black};
-  font-size: 15px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
