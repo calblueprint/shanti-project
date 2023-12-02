@@ -5,8 +5,8 @@ import COLORS from './colors';
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    background: white;
-    color:black;
+    background: ${COLORS.offWhite};
+    color: ${COLORS.black};
   }
   span{
   
@@ -42,7 +42,7 @@ export const NavButton = styled.button`
   line-height: normal;
   width: 70px;
   height: 40px;
-  background: black;
+  background: ${COLORS.black};
   border: transparent;
   border-radius: 5px;
   float: right;
@@ -60,7 +60,7 @@ export const NavBarComp = styled.nav`
   position: fixed;
 
   width: 100%;
-  background: var(--Light-Periwinkle, #f4f7ff);
+  background: ${COLORS.lightPeriwinkle};
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
   z-index: 100;
 `;
@@ -81,7 +81,7 @@ export const LocationDiv = styled.div`
   height: 250px;
   margin-right: 60px;
 
-  color: var(--Black, #101010);
+  color: ${COLORS.black};
 
   font-family: Public Sans;
   font-style: normal;
@@ -93,7 +93,7 @@ export const ContactDiv = styled.div`
   height: 250px;
   margin-right: 130px;
   margin-left: 30px;
-  color: var(--Black, #101010);
+  color: ${COLORS.black};
   text-align: center;
   font-family: Public Sans;
   font-size: 20px;
@@ -122,7 +122,7 @@ export const Addie = styled.p`
 export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
   width: 20px;
   height: 20px;
-  background: var(--Marine-Blue, #333286);
+  background: ${COLORS.marineBlue};
   border-radius: 50%;
   text-align: center;
   transform: translate(19px, -58px);
