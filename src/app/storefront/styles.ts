@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 `;
+
 interface props {
   isClicked: boolean;
 }
