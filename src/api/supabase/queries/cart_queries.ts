@@ -22,7 +22,7 @@ export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
     .select('*')
     .eq('id', cartItemID)
     .single();
-
+  console.log;
   if (error) {
     throw new Error(`Error fetching cart item: ${error.message}`);
   }
@@ -139,6 +139,11 @@ export async function decreaseFromCart(productID: number, quantity: number) {
       const index = productIdArray.indexOf(existingItem.id);
       productIdArray.splice(index, 1);
       updateCart(cartID, productIdArray);
+    } else {
+      await supabase
+        .from('order_product')
+        .update({ quantity: newQuantity })
+        .eq('id', existingItem.id);
     }
   }
 }
@@ -171,3 +176,21 @@ export async function totalNumberOfItemsInCart(): Promise<number> {
   }
   return cart.reduce((acc, item) => acc + item.quantity, 0);
 }
+
+export async function fetchCartItemsWithQuantity(): Promise<
+  ProductWithQuantity[]
+> {
+  const cart = await fetchCart();
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
+    return { name: product.name, quantity: item.quantity };
+  });
+
+  const fetchedProducts = await Promise.all(productPromises);
+
+  return fetchedProducts;
+}
+export type ProductWithQuantity = {
+  name: string;
+  quantity: number;
+};

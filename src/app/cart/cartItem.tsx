@@ -16,10 +16,19 @@ import {
 import Buttons from './Buttons';
 
 import { Product } from '../../schema/schema';
+import { fetchCartItems } from '../../api/supabase/queries/cart_queries';
 
-export default function CartItem(props: { cartItemProduct: Product }) {
-  const router = useRouter();
-  const { cartItemProduct } = props;
+export default function CartItem(props: {
+  cartItemProduct: Product;
+
+  setCartObject: (category: Product[]) => void;
+}) {
+  const { cartItemProduct, setCartObject } = props;
+  //   async function clickFunction() {
+  //     removeCartItem(cartItemProduct.id);
+  //     const data = (await fetchCartItems()) as Product[];
+  //     setCartObject(data);
+  //   }
 
   return (
     <div>

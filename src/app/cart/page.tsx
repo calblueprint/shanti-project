@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import {
   fetchCartItems,
-  removeCartItem,
+  fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
   fetchCart,
 } from '../../api/supabase/queries/cart_queries';
@@ -41,16 +41,15 @@ import Buttons from './Buttons';
 
 import { Product } from '../../schema/schema';
 
-export type CartItem = {
-  id: number;
-  product_id: number;
+export type ProductWithQuantity = {
+  name: string;
   quantity: number;
 };
 
 export default function OrderPage() {
   const [cartObject, setCartObject] = useState<Product[]>([]);
   const [numberOfItems, setNumberOfItems] = useState(0);
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<ProductWithQuantity[]>([]);
 
   const router = useRouter();
 
@@ -61,8 +60,7 @@ export default function OrderPage() {
       totalNumberOfItemsInCart();
       setNumberOfItems(await totalNumberOfItemsInCart());
 
-      setCart(await fetchCart());
-      console.log(cart);
+      setCart(await fetchCartItemsWithQuantity());
     }
 
     fetchProducts();
@@ -81,7 +79,10 @@ export default function OrderPage() {
           <h1>Cart</h1>
           <OutterFavoriteDiv>
             {cartObject.map(cartItem => (
-              <CartItem cartItemProduct={cartItem} />
+              <CartItem
+                cartItemProduct={cartItem}
+                setCartObject={setCartObject}
+              />
             ))}
           </OutterFavoriteDiv>
         </ForceColumnDiv>
@@ -91,7 +92,7 @@ export default function OrderPage() {
             <Qty>Qty.</Qty>
             <OrderSummaryDiv>
               {cart.map(cartItem => (
-                <ItemSummaryDiv key={cartItem.id}>
+                <ItemSummaryDiv>
                   <PShiftLeft>{cartItem.name}</PShiftLeft>
                   <PShiftRight>{cartItem.quantity}</PShiftRight>
                 </ItemSummaryDiv>
