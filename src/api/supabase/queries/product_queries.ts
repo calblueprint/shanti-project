@@ -35,17 +35,6 @@ export async function fetchProductByID(productId: number): Promise<Product> {
 }
 
 /**
- * @returns the number of items stored within the cart if there is no items then returns 0
- */
-
-export async function totalNumberOfItemsInCart(): Promise<number> {
-  const cart = await fetchCart();
-  if (cart.length === 0) {
-    return 0;
-  }
-  return cart.reduce((acc, item) => acc + item.quantity, 0);
-}
-/**
  * @param productType
  * @returns the products that match the productType
  */

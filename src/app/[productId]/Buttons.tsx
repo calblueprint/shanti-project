@@ -7,16 +7,24 @@ import {
   PlusMinusButton,
 } from './styles';
 
-export default function Buttons() {
+import {
+  decreaseFromCart,
+  addToCart,
+} from '../../api/supabase/queries/cart_queries';
+
+export default function Buttons(props: { productNumber: number }) {
   const [quantity, setQuantity] = useState<number>(1);
+  const { productNumber } = props;
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
+    addToCart(productNumber, quantity);
   };
 
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+      decreaseFromCart(productNumber, quantity);
     }
   };
 

@@ -1,6 +1,8 @@
 import supabase from '../createClient';
 
 import { fetchUser } from './user_queries';
+import { Product } from '../../../schema/schema';
+import { fetchProductByID } from './product_queries';
 
 // define cart item type
 export type CartItem = {
@@ -16,10 +18,11 @@ export type CartItem = {
  */
 export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
   const { data, error } = await supabase
-    .from('cart_items')
+    .from('order_product')
     .select('*')
-    .match({ id: cartItemID })
+    .eq('id', cartItemID)
     .single();
+
   if (error) {
     throw new Error(`Error fetching cart item: ${error.message}`);
   }
@@ -41,13 +44,27 @@ export async function fetchCart(): Promise<CartItem[]> {
   if (error) {
     throw new Error(`Error fetching cart: ${error.message}`);
   }
-  const products = data.product_id_array;
-  const productPromises = products.map(async (productID: number) => {
-    const product = await fetchCartItem(productID);
+  const products = data.order_product_id_array;
+  if (products !== null && products !== undefined) {
+    const productPromises = products.map(async (productID: number) => {
+      const product = await fetchCartItem(productID);
+      return product;
+    });
+    const fetchedProducts = await Promise.all(productPromises);
+    return fetchedProducts;
+  }
+
+  return [] as CartItem[];
+}
+
+export async function fetchCartItems(): Promise<Product[]> {
+  const cart = await fetchCart();
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
     return product;
   });
   const fetchedProducts = await Promise.all(productPromises);
-
+  console.log('fetchCartItems:', fetchedProducts);
   return fetchedProducts;
 }
 
@@ -59,7 +76,7 @@ export async function fetchCart(): Promise<CartItem[]> {
 async function updateCart(cartID: number, cartIDArray: number[]) {
   await supabase
     .from('order')
-    .update({ cart_id_array: cartIDArray })
+    .update({ order_product_id_array: cartIDArray })
     .match({ id: cartID });
 }
 
@@ -76,12 +93,12 @@ export async function addToCart(productID: number, quantity: number) {
   if (existingItem) {
     const newQuantity = existingItem.quantity + quantity;
     await supabase
-      .from('cart_items')
+      .from('order_product')
       .update({ quantity: newQuantity })
       .match({ id: existingItem.id });
   } else {
     const { data, error } = await supabase
-      .from('cart_items')
+      .from('order_product')
       .insert([{ product_id: productID, quantity }])
       .select('*')
       .single();
@@ -109,7 +126,7 @@ export async function decreaseFromCart(productID: number, quantity: number) {
     const newQuantity = existingItem.quantity - quantity;
     if (newQuantity <= 0) {
       await supabase
-        .from('cart_items')
+        .from('order_product')
         .delete()
         .match({ id: existingItem.id })
         .select('*')
@@ -141,4 +158,16 @@ export async function clearCart() {
   const user = await fetchUser();
   const cartID = user.cart_id;
   updateCart(cartID, []);
+}
+
+/**
+ * @returns the number of items stored within the cart if there is no items then returns 0
+ */
+
+export async function totalNumberOfItemsInCart(): Promise<number> {
+  const cart = await fetchCart();
+  if (cart.length === 0 || cart === null || cart === null) {
+    return 0;
+  }
+  return cart.reduce((acc, item) => acc + item.quantity, 0);
 }

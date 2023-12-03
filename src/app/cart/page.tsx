@@ -1,10 +1,15 @@
 'use client';
 
 import { ArrowLeft } from 'react-feather';
-
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
+import {
+  fetchCartItems,
+  removeCartItem,
+  totalNumberOfItemsInCart,
+  fetchCart,
+} from '../../api/supabase/queries/cart_queries';
+import CartItem from './cartItem';
 
 import {
   FavoriteDiv,
@@ -36,16 +41,32 @@ import Buttons from './Buttons';
 
 import { Product } from '../../schema/schema';
 
+export type CartItem = {
+  id: number;
+  product_id: number;
+  quantity: number;
+};
+
 export default function OrderPage() {
-  const [Cart, setCart] = useState<Product[]>([]);
+  const [cartObject, setCartObject] = useState<Product[]>([]);
+  const [numberOfItems, setNumberOfItems] = useState(0);
+  const [cart, setCart] = useState<CartItem[]>([]);
+
   const router = useRouter();
-  async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[]; // change the function to grab the cartItems as products
-    setCart(data);
-  }
+
   useEffect(() => {
+    async function fetchProducts() {
+      const data = (await fetchCartItems()) as Product[]; // change the function to grab the cartItems as products
+      setCartObject(data);
+      totalNumberOfItemsInCart();
+      setNumberOfItems(await totalNumberOfItemsInCart());
+
+      setCart(await fetchCart());
+      console.log(cart);
+    }
+
     fetchProducts();
-  }, []);
+  }, [cartObject]);
 
   return (
     <div>
@@ -59,24 +80,8 @@ export default function OrderPage() {
           </BackDiv>
           <h1>Cart</h1>
           <OutterFavoriteDiv>
-            {Cart.map(cart => (
-              <FavoriteDiv key={cart.id}>
-                <img
-                  src={cart.photo}
-                  alt={cart.name}
-                  style={{ width: '150px', height: '150px' }}
-                />
-                <LabelBox>
-                  <Label>{cart.name}</Label>
-                  <p>Category: {cart.category}</p>
-                </LabelBox>
-                <Buttons />
-                <TransparentButton
-                // {onClick={() => clickFunctions({ fav: favorite })}} <- change to remove item entirely
-                >
-                  <TrashIcon />
-                </TransparentButton>
-              </FavoriteDiv>
+            {cartObject.map(cartItem => (
+              <CartItem cartItemProduct={cartItem} />
             ))}
           </OutterFavoriteDiv>
         </ForceColumnDiv>
@@ -85,16 +90,16 @@ export default function OrderPage() {
             <HeaderShiftLeft>Order Summary</HeaderShiftLeft>
             <Qty>Qty.</Qty>
             <OrderSummaryDiv>
-              {Cart.map(cart => (
-                <ItemSummaryDiv key={cart.id}>
-                  <PShiftLeft>{cart.name}</PShiftLeft>
-                  <PShiftRight>{cart.quantity}</PShiftRight>
+              {cart.map(cartItem => (
+                <ItemSummaryDiv key={cartItem.id}>
+                  <PShiftLeft>{cartItem.name}</PShiftLeft>
+                  <PShiftRight>{cartItem.quantity}</PShiftRight>
                 </ItemSummaryDiv>
               ))}
             </OrderSummaryDiv>
             <OrderTotalDiv>
               <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-              <HeaderShiftRight>10</HeaderShiftRight>
+              <HeaderShiftRight>{numberOfItems}</HeaderShiftRight>
             </OrderTotalDiv>
           </WhiteBackgroundDiv>
 

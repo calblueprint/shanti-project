@@ -28,6 +28,7 @@ export default function ItemDisplay({
   useEffect(() => {
     async function fetchProducts() {
       try {
+        console.log(params.productId);
         const response = await fetchProductByID(params.productId);
         if (response) {
           setItem(response);
@@ -75,7 +76,7 @@ export default function ItemDisplay({
           <h4 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             {Item?.category}
           </h4>
-          <Buttons />
+          <Buttons productNumber={params.productId} />
           <p style={{ paddingTop: '50px' }}>Product ID: {Item?.id}</p>
           <p style={{ paddingTop: '20px' }}>Product Details:</p>
           <p>{Item?.description}</p>
