@@ -88,12 +88,11 @@ export const OrderSummary = styled.div`
 `;
 
 export const ItemQuantityContainer = styled.div`
-  margin-top: 100px
+  padding-top: 200px
   width: 300px;
-  height: 152px;
+  height: 170px;
   display: flex;
   flex-direction: column;
-  // use overflow-y if we want to implement scroll bar
   overflow-y: auto;
   align-items: center;
   justify-content: center;

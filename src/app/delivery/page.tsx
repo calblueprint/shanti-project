@@ -1,9 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import BackButton from '../../components/BackButton';
 import { GlobalStyle } from '../../styles/components';
 import { Normal700Text } from '../../styles/fonts';
+import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
+import { OrderProduct } from '../../schema/schema';
+import ItemRows from './itemRows';
 import {
   DeliveryContainer,
   OrderContainer,
@@ -15,13 +18,24 @@ import {
   ItemText,
   QtyText,
   QuantityText,
-  ItemQuantityContainer,
   ItemQuantityRow,
   TotalContainer,
   NavBarMovedUP,
 } from './styles';
 
 export default function App() {
+  const [OrderProducts, setOrderProducts] = useState<OrderProduct[]>([]);
+  async function fetchOrderProducts() {
+    try {
+      const data = (await fetchRecentOrderProducts()) as OrderProduct[];
+      setOrderProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  fetchOrderProducts();
+
   return (
     <main>
       <GlobalStyle />
@@ -42,22 +56,7 @@ export default function App() {
           <OrderSummary>
             <OrderSummaryText>Order Summary</OrderSummaryText>
             <QtyText>Qty.</QtyText>
-            <ItemQuantityContainer>
-              <ItemQuantityRow>
-                <ItemText>Plush Toy</ItemText>
-                <QuantityText>1</QuantityText>
-              </ItemQuantityRow>
-              <ItemQuantityRow>
-                <ItemText>Item C</ItemText>
-                <QuantityText>2</QuantityText>
-              </ItemQuantityRow>
-            </ItemQuantityContainer>
-            <TotalContainer>
-              <ItemQuantityRow style={{ marginTop: '23px' }}>
-                <ItemText>Order Total</ItemText>
-                <QuantityText>3</QuantityText>
-              </ItemQuantityRow>
-            </TotalContainer>
+            <ItemRows products={OrderProducts} />
           </OrderSummary>
           <OrderButton>Place Order</OrderButton>
         </OrderContainer>

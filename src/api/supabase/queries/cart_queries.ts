@@ -32,22 +32,35 @@ export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
  */
 export async function fetchCart(): Promise<CartItem[]> {
   const user = await fetchUser();
+
+  // Check if the user has a cart_id
+  if (!user.cart_id) {
+    throw new Error('User does not have a cart.');
+  }
+
   const cartID = user.cart_id;
   const { data, error } = await supabase
     .from('order')
     .select('*')
     .match({ id: cartID })
     .single();
+
   if (error) {
     throw new Error(`Error fetching cart: ${error.message}`);
   }
+
+  // Check if data is null (cart not found)
+  if (!data) {
+    throw new Error('Cart not found.');
+  }
+
   const products = data.product_id_array;
   const productPromises = products.map(async (productID: number) => {
     const product = await fetchCartItem(productID);
     return product;
   });
-  const fetchedProducts = await Promise.all(productPromises);
 
+  const fetchedProducts = await Promise.all(productPromises);
   return fetchedProducts;
 }
 
