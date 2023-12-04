@@ -4,9 +4,12 @@ import { User, ShoppingCart } from 'react-feather';
 import COLORS from './colors';
 
 export const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap'); 
+  
   body {
     background: ${COLORS.offWhite};
     color: ${COLORS.black};
+    font-family: 'Public Sans', sans-serif;
   }
   span{
   
@@ -71,6 +74,17 @@ export const ButtonsDiv = styled.div`
   flex-direction: row;
   justify-content: space-around;
   padding-top: 15px;
+`;
+
+export const BackDiv = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  background-color: transparent;
+  border: transparent;
+  margin-left: 80px;
+  margin-top: 55px;
 `;
 
 export const LocationDiv = styled.div`
