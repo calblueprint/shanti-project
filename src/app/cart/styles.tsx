@@ -20,7 +20,7 @@ export const FavoriteDiv = styled.div`
   flex-direction: row;
   align-items: start;
   justify-content: space-around;
-  width: 100%;
+  width: 1000px;
   margin-bottom: 50px;
   margin-top: 30px;
 `;
@@ -30,9 +30,8 @@ export const OutterFavoriteDiv = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-
-  width: 800px;
-  height: 500px;
+  width: 1000px;
+  height: 700px;
   overflow: scroll;
   margin-top: 10px;
 `;
@@ -81,7 +80,7 @@ export const TransparentButton = styled.button`
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
-  position: static;
+  position: relative;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -156,7 +155,7 @@ export const OrderTotalDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const ForceColumnDiv = styled.div`
+export const LeftColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 50px;
@@ -188,7 +187,7 @@ export const Qty = styled.p`
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 150px;
+  margin-left: 200px;
   margin-top: 100px;
 `;
 

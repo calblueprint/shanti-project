@@ -70,6 +70,11 @@ export default function ProductButtons(props: {
           tempArray[0] = true;
           setCategoryWord('All');
           setIsClickedButton(tempArray);
+          const products = await fetchProducts();
+          if (products !== null) {
+            setFiltredProducts(products);
+          }
+          return;
         } else {
           const arrayOfFalse = [false, false, false, false];
           arrayOfFalse[ind] = true;

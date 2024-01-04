@@ -67,7 +67,7 @@ export const ButtonsContainer = styled.div`
   position: fixed;
   align-items: center;
   z-index: 1100;
-  transform: translate(0px, -30px);
+  transform: translate(180px, -30px);
 `;
 export const NavButton = styled.button`
   margin-top: 30px;

@@ -10,8 +10,8 @@ export const LoginBox = styled.div`
   flex-direction: column;
   width: 500px;
   height: 420px;
-  margin-left: 450px;
-  margin-top: 80px;
+  margin-left: 650px;
+  margin-top: 120px;
   border: 1px solid #b3b3b3;
 `;
 

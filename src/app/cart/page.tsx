@@ -31,7 +31,7 @@ import {
   LabelBox,
   CheckoutButton,
   ItemSummaryDiv,
-  ForceColumnDiv,
+  LeftColumnDiv,
   RightColumnDiv,
   Qty,
   PShiftRight,
@@ -71,7 +71,7 @@ export default function OrderPage() {
       <NavBarMovedUP />
       <GlobalStyle />
       <PageDiv>
-        <ForceColumnDiv>
+        <LeftColumnDiv>
           <BackDiv onClick={() => router.push('/storefront')}>
             <ArrowLeft />
             <Backtext>Back</Backtext>
@@ -85,7 +85,7 @@ export default function OrderPage() {
               />
             ))}
           </OutterFavoriteDiv>
-        </ForceColumnDiv>
+        </LeftColumnDiv>
         <RightColumnDiv>
           <WhiteBackgroundDiv>
             <HeaderShiftLeft>Order Summary</HeaderShiftLeft>

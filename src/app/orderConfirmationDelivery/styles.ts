@@ -54,7 +54,7 @@ export const BackDiv = styled.button`
 
 export const OutterBox = styled.div`
   width: 900px;
-  margin-left: 300px;
+  margin-left: 500px;
 `;
 
 export const Backtext = styled.p`

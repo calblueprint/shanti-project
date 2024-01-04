@@ -31,7 +31,7 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 500px;
+  height: 700px;
   margin-top: 10px;
 `;
 
@@ -54,7 +54,7 @@ export const BackDiv = styled.button`
 
 export const OutterBox = styled.div`
   width: 900px;
-  margin-left: 300px;
+  margin-left: 500px;
 `;
 
 export const Backtext = styled.p`
