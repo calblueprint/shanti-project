@@ -1,8 +1,6 @@
 'use client';
 
-import { ArrowLeft } from 'react-feather';
-import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { removeCartItem } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -15,8 +13,7 @@ import {
 
 import Buttons from './Buttons';
 
-import { Product, ProductWithQuantity } from '../../schema/schema';
-import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
+import { ProductWithQuantity } from '../../schema/schema';
 
 export default function CartItem(props: {
   cartItemProduct: ProductWithQuantity;

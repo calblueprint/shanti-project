@@ -23,7 +23,6 @@ export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
     .eq('id', cartItemID)
     .single();
   if (error) {
-    console.log(data);
     throw new Error(`Error fetching cart item: ${error.message}`);
   }
   return data;
@@ -49,7 +48,6 @@ export async function fetchCart(): Promise<CartItem[]> {
     .limit(1);
 
   if (error) {
-    console.log(data);
     throw new Error(`Error fetching cart: ${error.message}`);
   }
   const products = data[0].order_product_id_array;
@@ -72,7 +70,7 @@ export async function fetchCartItems(): Promise<Product[]> {
     return product;
   });
   const fetchedProducts = await Promise.all(productPromises);
-  console.log('fetchCartItems:', fetchedProducts);
+
   return fetchedProducts;
 }
 

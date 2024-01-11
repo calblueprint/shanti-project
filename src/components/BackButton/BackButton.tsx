@@ -1,17 +1,11 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { BackDiv } from './styles';
+import { BackDiv, ImageWithSize } from './styles';
 
 export default function BackButton() {
   return (
     <Link href="/storefront">
       <BackDiv>
-        <Image
-          src="/images/Arrow_Left_MD.png"
-          alt="Back Arrow"
-          width={23}
-          height={23}
-        />
+        <ImageWithSize src="/images/Arrow_Left_MD.png" alt="Back Arrow" />
         <p>Back</p>
       </BackDiv>
     </Link>

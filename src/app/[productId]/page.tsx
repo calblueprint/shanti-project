@@ -28,7 +28,6 @@ export default function ItemDisplay({
   useEffect(() => {
     async function fetchProducts() {
       try {
-        console.log(params.productId);
         const response = await fetchProductByID(params.productId);
         if (response) {
           setItem(response);

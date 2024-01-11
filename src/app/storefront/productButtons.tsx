@@ -60,6 +60,7 @@ export default function ProductButtons(props: {
     // which button is clicked
 
     const category = e.currentTarget.value;
+    const productItem = await fetchProducts();
 
     for (let i = 0; i < buttons.length; i += 1) {
       if (buttons[i].value === category) {
@@ -70,17 +71,16 @@ export default function ProductButtons(props: {
           tempArray[0] = true;
           setCategoryWord('All');
           setIsClickedButton(tempArray);
-          const products = await fetchProducts();
-          if (products !== null) {
-            setFiltredProducts(products);
+
+          if (productItem !== null) {
+            setFiltredProducts(productItem);
           }
           return;
-        } else {
-          const arrayOfFalse = [false, false, false, false];
-          arrayOfFalse[ind] = true;
-          setCategoryWord(buttons[i].value);
-          setIsClickedButton(arrayOfFalse);
         }
+        const arrayOfFalse = [false, false, false, false];
+        arrayOfFalse[ind] = true;
+        setCategoryWord(buttons[i].value);
+        setIsClickedButton(arrayOfFalse);
 
         break;
       }

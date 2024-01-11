@@ -1,6 +1,5 @@
 import { Product } from '../../../schema/schema';
 import supabase from '../createClient';
-import { fetchCart } from './cart_queries';
 
 /**
  * Fetches all products from the database.

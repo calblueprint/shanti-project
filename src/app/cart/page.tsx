@@ -3,16 +3,14 @@
 import { ArrowLeft } from 'react-feather';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+
 import {
-  fetchCartItems,
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
-  fetchCart,
 } from '../../api/supabase/queries/cart_queries';
 import CartItem from './cartItem';
 
 import {
-  FavoriteDiv,
   HeaderShiftLeft,
   OrderSummaryDiv,
   OutterFavoriteDiv,
@@ -23,12 +21,8 @@ import {
   BackDiv,
   GlobalStyle,
   Backtext,
-  TrashIcon,
-  TransparentButton,
   NavBarMovedUP,
   PageDiv,
-  Label,
-  LabelBox,
   CheckoutButton,
   ItemSummaryDiv,
   LeftColumnDiv,
@@ -37,10 +31,7 @@ import {
   PShiftRight,
 } from './styles';
 
-import Buttons from './Buttons';
-
-import { Product, ProductWithQuantity } from '../../schema/schema';
-import { Carlito } from 'next/font/google';
+import { ProductWithQuantity } from '../../schema/schema';
 
 export default function OrderPage() {
   const [numberOfItems, setNumberOfItems] = useState(0);
@@ -71,6 +62,7 @@ export default function OrderPage() {
           <OutterFavoriteDiv>
             {cart.map(cartItem => (
               <CartItem
+                key={cartItem.id}
                 cartItemProduct={cartItem}
                 setCart={setCart}
                 cart={cart}
@@ -86,7 +78,7 @@ export default function OrderPage() {
             <Qty>Qty.</Qty>
             <OrderSummaryDiv>
               {cart.map(cartItem => (
-                <ItemSummaryDiv>
+                <ItemSummaryDiv key={cartItem.id}>
                   <PShiftLeft>{cartItem.name}</PShiftLeft>
                   <PShiftRight>{cartItem.quantity}</PShiftRight>
                 </ItemSummaryDiv>

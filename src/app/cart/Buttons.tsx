@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { ButtonsWrapper, QuantityButton, PlusMinusButton } from './styles';
 
@@ -21,7 +21,7 @@ export default function Buttons(props: {
 }) {
   const {
     productNumber,
-    quantity,
+
     setNumberOfItems,
     numberOfItems,
     count,
@@ -35,7 +35,7 @@ export default function Buttons(props: {
     addToCart(productNumber, 1);
     setNumberOfItems(numberOfItems + 1);
     const indexOfItem = cart.findIndex(item => item.id === productNumber);
-    cart[indexOfItem].quantity = cart[indexOfItem].quantity + 1;
+    cart[indexOfItem].quantity += 1;
     setCart(cart);
   };
 
@@ -45,7 +45,7 @@ export default function Buttons(props: {
       decreaseFromCart(productNumber, 1);
       setNumberOfItems(numberOfItems - 1);
       const indexOfItem = cart.findIndex(item => item.id === productNumber);
-      cart[indexOfItem].quantity = cart[indexOfItem].quantity - 1;
+      cart[indexOfItem].quantity -= 1;
       setCart(cart);
     }
   };

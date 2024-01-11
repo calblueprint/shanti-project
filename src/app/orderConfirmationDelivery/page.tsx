@@ -28,7 +28,7 @@ import { Product } from '../../schema/schema';
 export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
-  
+
   useEffect(() => {
     async function fetchProducts() {
       const data = (await fetchCartItems()) as Product[];

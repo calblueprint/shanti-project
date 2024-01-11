@@ -15,23 +15,15 @@ import {
   OrderButton,
   InformationContainer,
   InformationText,
-  ItemText,
   QtyText,
-  QuantityText,
-  ItemQuantityRow,
-  TotalContainer,
   NavBarMovedUP,
 } from './styles';
 
 export default function App() {
   const [OrderProducts, setOrderProducts] = useState<OrderProduct[]>([]);
   async function fetchOrderProducts() {
-    try {
-      const data = (await fetchRecentOrderProducts()) as OrderProduct[];
-      setOrderProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = (await fetchRecentOrderProducts()) as OrderProduct[];
+    setOrderProducts(data);
   }
 
   fetchOrderProducts();
