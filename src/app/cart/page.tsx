@@ -39,15 +39,10 @@ import {
 
 import Buttons from './Buttons';
 
-import { Product } from '../../schema/schema';
-
-export type ProductWithQuantity = {
-  name: string;
-  quantity: number;
-};
+import { Product, ProductWithQuantity } from '../../schema/schema';
+import { Carlito } from 'next/font/google';
 
 export default function OrderPage() {
-  const [cartObject, setCartObject] = useState<Product[]>([]);
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [cart, setCart] = useState<ProductWithQuantity[]>([]);
 
@@ -55,16 +50,12 @@ export default function OrderPage() {
 
   useEffect(() => {
     async function fetchProducts() {
-      const data = (await fetchCartItems()) as Product[]; // change the function to grab the cartItems as products
-      setCartObject(data);
-      totalNumberOfItemsInCart();
       setNumberOfItems(await totalNumberOfItemsInCart());
-
       setCart(await fetchCartItemsWithQuantity());
     }
 
     fetchProducts();
-  }, [cartObject]);
+  }, []);
 
   return (
     <div>
@@ -78,10 +69,13 @@ export default function OrderPage() {
           </BackDiv>
           <h1>Cart</h1>
           <OutterFavoriteDiv>
-            {cartObject.map(cartItem => (
+            {cart.map(cartItem => (
               <CartItem
                 cartItemProduct={cartItem}
-                setCartObject={setCartObject}
+                setCart={setCart}
+                cart={cart}
+                setNumberOfItems={setNumberOfItems}
+                numberOfItems={numberOfItems}
               />
             ))}
           </OutterFavoriteDiv>

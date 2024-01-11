@@ -4,9 +4,9 @@ import { ToastContainer } from 'react-toastify';
 
 import { Heart } from 'react-feather';
 
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 
-import Footer from '../../components/Footer';
+import Footer from '../../components/FooterFolder/Footer';
 
 export const GlobalStyle = createGlobalStyle`
   body {

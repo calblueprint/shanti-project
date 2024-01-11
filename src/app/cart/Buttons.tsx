@@ -7,19 +7,46 @@ import {
   addToCart,
 } from '../../api/supabase/queries/cart_queries';
 
-export default function Buttons(props: { productNumber: number }) {
-  const [quantity, setQuantity] = useState<number>(1);
-  const { productNumber } = props;
+import { ProductWithQuantity } from '../../schema/schema';
+
+export default function Buttons(props: {
+  productNumber: number;
+  quantity: number;
+  setNumberOfItems: (count: number) => void;
+  numberOfItems: number;
+  count: number;
+  setCount: (count: number) => void;
+  cart: ProductWithQuantity[];
+  setCart: (category: ProductWithQuantity[]) => void;
+}) {
+  const {
+    productNumber,
+    quantity,
+    setNumberOfItems,
+    numberOfItems,
+    count,
+    setCount,
+    cart,
+    setCart,
+  } = props;
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    setCount(count + 1);
     addToCart(productNumber, 1);
+    setNumberOfItems(numberOfItems + 1);
+    const indexOfItem = cart.findIndex(item => item.id === productNumber);
+    cart[indexOfItem].quantity = cart[indexOfItem].quantity + 1;
+    setCart(cart);
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    if (count > 1) {
+      setCount(count - 1);
       decreaseFromCart(productNumber, 1);
+      setNumberOfItems(numberOfItems - 1);
+      const indexOfItem = cart.findIndex(item => item.id === productNumber);
+      cart[indexOfItem].quantity = cart[indexOfItem].quantity - 1;
+      setCart(cart);
     }
   };
 
@@ -31,7 +58,7 @@ export default function Buttons(props: { productNumber: number }) {
         <PlusMinusButton type="button" onClick={decreaseQuantity}>
           –
         </PlusMinusButton>
-        <span>{quantity}</span>
+        <span>{count}</span>
         <PlusMinusButton type="button" onClick={increaseQuantity}>
           +
         </PlusMinusButton>

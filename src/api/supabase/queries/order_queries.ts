@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import { Order } from '../../../schema/schema';
+import { Order, OrderProduct } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import supabase from '../createClient';
 
@@ -92,4 +92,36 @@ export async function fetchOrdersByUserIdSorted(): Promise<Order[]> {
 export async function fetchNOrdersByUserIdSorted(n: number): Promise<Order[]> {
   const orders = await fetchOrdersByUser();
   return sortOrdersByCreated(orders).slice(0, n);
+}
+
+export async function fetchOrderProductById(
+  productId: number,
+): Promise<OrderProduct> {
+  const { data: orderProduct, error } = await supabase
+    .from('order_product')
+    .select('*')
+    .eq('id', productId)
+    .single();
+  if (error) {
+    throw new Error(`Error fetching order product: ${error.message}`);
+  }
+  return orderProduct;
+}
+
+export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
+  const order = await fetchNOrdersByUserIdSorted(1);
+  const orderProductIds = order[0].order_product_id_array;
+
+  const orderProducts = await Promise.all(
+    orderProductIds.map(async orderProductId => {
+      try {
+        const orderProduct = await fetchOrderProductById(orderProductId);
+        return orderProduct;
+      } catch (error) {
+        throw new Error(`Error fetching order product array.`);
+      }
+    }),
+  );
+
+  return orderProducts;
 }

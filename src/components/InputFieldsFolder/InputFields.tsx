@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FormHeaders, Input } from '../app/login/styles';
+import { FormHeaders, Input } from './styles';
 
 export default function InputFields(props: {
   text: string;

@@ -1,6 +1,6 @@
 'use client';
 
-import InputFields from './InputFields';
+import InputFields from '../InputFieldsFolder/InputFields';
 
 export default function LoginForm(props: {
   changeUserName: (newUsername: string) => void;
@@ -12,7 +12,7 @@ export default function LoginForm(props: {
       <InputFields
         inputType="text"
         text="Email address"
-        placeholder="thisisanemail@email.com"
+        placeholder="Enter Email"
         changeUserName={changeUserName}
         changePassword={changePassword}
         isPassword={false}
@@ -20,7 +20,7 @@ export default function LoginForm(props: {
       <InputFields
         inputType="password"
         text="Password"
-        placeholder="************"
+        placeholder="Enter Password"
         changeUserName={changeUserName}
         changePassword={changePassword}
         isPassword

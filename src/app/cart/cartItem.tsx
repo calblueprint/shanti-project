@@ -15,20 +15,28 @@ import {
 
 import Buttons from './Buttons';
 
-import { Product } from '../../schema/schema';
-import { fetchCartItems } from '../../api/supabase/queries/cart_queries';
+import { Product, ProductWithQuantity } from '../../schema/schema';
+import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
 
 export default function CartItem(props: {
-  cartItemProduct: Product;
-
-  setCartObject: (category: Product[]) => void;
+  cartItemProduct: ProductWithQuantity;
+  cart: ProductWithQuantity[];
+  setCart: (category: ProductWithQuantity[]) => void;
+  setNumberOfItems: (count: number) => void;
+  numberOfItems: number;
 }) {
-  const { cartItemProduct, setCartObject } = props;
-  //   async function clickFunction() {
-  //     removeCartItem(cartItemProduct.id);
-  //     const data = (await fetchCartItems()) as Product[];
-  //     setCartObject(data);
-  //   }
+  const { cartItemProduct, setCart, cart, setNumberOfItems, numberOfItems } =
+    props;
+  const [count, setCount] = useState<number>(cartItemProduct.quantity);
+  async function removeProduct() {
+    setNumberOfItems(numberOfItems - count);
+
+    const tempCart = cart.filter(
+      cartItem => cartItem.id !== cartItemProduct.id,
+    ) as ProductWithQuantity[];
+    setCart(tempCart);
+    removeCartItem(cartItemProduct.id);
+  }
 
   return (
     <div>
@@ -42,8 +50,17 @@ export default function CartItem(props: {
           <Label>{cartItemProduct.name}</Label>
           <p>Category: {cartItemProduct.category}</p>
         </LabelBox>
-        <Buttons productNumber={cartItemProduct.id} />
-        <TransparentButton onClick={() => removeCartItem(cartItemProduct.id)}>
+        <Buttons
+          productNumber={cartItemProduct.id}
+          quantity={cartItemProduct.quantity}
+          setNumberOfItems={setNumberOfItems}
+          numberOfItems={numberOfItems}
+          count={count}
+          setCount={setCount}
+          setCart={setCart}
+          cart={cart}
+        />
+        <TransparentButton onClick={() => removeProduct()}>
           <TrashIcon />
         </TransparentButton>
       </FavoriteDiv>

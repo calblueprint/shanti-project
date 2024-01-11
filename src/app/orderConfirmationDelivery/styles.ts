@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { Heart } from 'react-feather';
 
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 
 export const GlobalStyle = createGlobalStyle`
   body {

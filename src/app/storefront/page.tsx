@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 import ProductButtons from './productButtons';
 
-import Footer from '../../components/Footer';
+import Footer from '../../components/FooterFolder/Footer';
 import {
   GlobalStyle,
   ButtonsContainer,

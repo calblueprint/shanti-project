@@ -14,7 +14,7 @@ import {
   ToastPopUP,
 } from './styles';
 import { GlobalStyle } from '../../styles/components';
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 import { Product } from '../../schema/schema';
 import Buttons from './Buttons';
 

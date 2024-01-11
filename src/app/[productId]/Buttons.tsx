@@ -18,18 +18,21 @@ export default function Buttons(props: { productNumber: number }) {
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
-    addToCart(productNumber, quantity);
   };
 
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      decreaseFromCart(productNumber, quantity);
     }
   };
 
   // used hyphen instead of dash for display
-  const notify = () => toast(`you have added ${quantity} items to the cart!`);
+  const changeCart = () => {
+    addToCart(productNumber, quantity);
+    toast(
+      `you have added ${quantity} items to the cart!`,
+    );
+  };
 
   return (
     <ButtonsWrapper>
@@ -43,7 +46,7 @@ export default function Buttons(props: { productNumber: number }) {
         </PlusMinusButton>
       </QuantityButton>
 
-      <AddToCartButton onClick={notify}>Add to cart</AddToCartButton>
+      <AddToCartButton onClick={changeCart}>Add to cart</AddToCartButton>
     </ButtonsWrapper>
   );
 }

@@ -1,10 +1,6 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
+import COLORS from '../../styles/colors';
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-  }
-`;
 export const LoginBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,13 +14,13 @@ export const LoginBox = styled.div`
 export const LoginContent = styled.div`
   margin-left: 40px;
   margin-top: 30px;
+  text-color: black;
 `;
 
 export const Button = styled.button`
-  margin-top: 40px;
-  color: #fff;
+  margin-top: 60px;
+  color: ${COLORS.white};
   text-align: center;
-  font-family: Inter;
   font-size: 17px;
   font-style: normal;
   font-weight: 500;
@@ -32,32 +28,34 @@ export const Button = styled.button`
   width: 420px;
   height: 40px;
   border-radius: 8px;
-  background: #000;
+  background: ${COLORS.navy};
   border: transparent;
+  z-index: 1;
 `;
 
 export const WelcomeSign = styled.div`
-  color: #000;
-  font-family: Inter;
+  color: ${COLORS.navy};
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  margin-bottom: 30px;
+  padding-bottom: 10px;
 `;
 
 export const Input = styled.input`
-  background: #d9d9d9;
-  border: transparent;
+  background: ${COLORS.white};
+  stroke-width: 1px;
+  color: ${COLORS.black};
+
+  stroke: ${COLORS.navy};
   width: 420px;
   height: 40px;
   padding-left: 10px;
 `;
 
 export const FormHeaders = styled.p`
-  color: #000;
-  font-family: Inter;
-  font-size: 15px;
+  color: ${COLORS.black};
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -65,15 +63,21 @@ export const FormHeaders = styled.p`
   margin-bottom: 10px;
 `;
 
-export const Fullscreen = styled.div`
-  width: 100 %;
-  height: 100 %;
+export const ErrorMessage = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 420px;
+  color: ${COLORS.darkRed};
+  text-align: left;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  z-index: 0;
+  position: fixed;
 `;
-export const Img = styled.div`
-  background-color: yellow;
-  align-self: flex - start;
-  justify-self: flex - start;
-  height: 50px;
-  width: 110px;
-  margin: 20px;
+
+export const Fullscreen = styled.div`
+  width: 1440px;
+  height: 800px;
 `;

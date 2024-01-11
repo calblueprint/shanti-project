@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { Heart } from 'react-feather';
 
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 `;
+
 interface props {
   isClicked: boolean;
 }
@@ -60,7 +61,7 @@ export const ButtonsContainer = styled.div`
   margin-left: 400px;
   margin-right: 400px;
   width: 600px;
-  height: 230px;
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -69,6 +70,7 @@ export const ButtonsContainer = styled.div`
   z-index: 1100;
   transform: translate(180px, -30px);
 `;
+
 export const NavButton = styled.button`
   margin-top: 30px;
   margin-right: 25px;
