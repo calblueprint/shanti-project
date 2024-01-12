@@ -4,6 +4,8 @@ import React from 'react';
 
 import { Button, Label, IndividualContainer } from './styles';
 
+import { buttons } from './buttonValues';
+
 import {
   fetchProducts,
   filterProduct,
@@ -31,28 +33,6 @@ export default function ProductButtons(props: {
     setCategoryWord,
     index,
   } = props;
-  const buttons = [
-    {
-      name: 'All',
-      value: 'All',
-      count: 0,
-    },
-    {
-      name: 'Dog',
-      value: 'Dog',
-      count: 1,
-    },
-    {
-      name: 'Cat',
-      value: 'Cat',
-      count: 2,
-    },
-    {
-      name: 'Other',
-      value: 'Other',
-      count: 3,
-    },
-  ];
 
   async function applyFilter(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -60,6 +40,7 @@ export default function ProductButtons(props: {
     // which button is clicked
 
     const category = e.currentTarget.value;
+    const productItem = await fetchProducts();
 
     for (let i = 0; i < buttons.length; i += 1) {
       if (buttons[i].value === category) {
@@ -70,12 +51,16 @@ export default function ProductButtons(props: {
           tempArray[0] = true;
           setCategoryWord('All');
           setIsClickedButton(tempArray);
-        } else {
-          const arrayOfFalse = [false, false, false, false];
-          arrayOfFalse[ind] = true;
-          setCategoryWord(buttons[i].value);
-          setIsClickedButton(arrayOfFalse);
+
+          if (productItem !== null) {
+            setFiltredProducts(productItem);
+          }
+          return;
         }
+        const arrayOfFalse = [false, false, false, false];
+        arrayOfFalse[ind] = true;
+        setCategoryWord(buttons[i].value);
+        setIsClickedButton(arrayOfFalse);
 
         break;
       }

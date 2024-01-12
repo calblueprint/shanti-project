@@ -1,6 +1,6 @@
 import Location from './Location';
 
-import { FooterDiv, ContactDiv } from '../styles/components';
+import { FooterDiv, ContactDiv } from './styles';
 
 export default function Footer({ ...rest }) {
   return (

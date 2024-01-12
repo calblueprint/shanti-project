@@ -49,3 +49,11 @@ export type OrderProduct = {
   quantity: number;
   product_id: number;
 };
+
+export type ProductWithQuantity = {
+  name: string;
+  quantity: number; // product quantity within the cart
+  photo: string;
+  id: number;
+  category: string;
+};

@@ -6,7 +6,7 @@ import supabase from '@/api/supabase/createClient';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { Button } from '../login/styles';
 
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 
 export default function Checkout() {
   const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);

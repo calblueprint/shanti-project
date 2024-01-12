@@ -1,6 +1,6 @@
 'use client';
 
-import InputFields from './InputFields';
+import InputFields from '../InputFieldsFolder/InputFields';
 
 export default function LoginForm(props: {
   changeUserName: (newUsername: string) => void;

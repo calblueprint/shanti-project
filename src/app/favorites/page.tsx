@@ -1,9 +1,8 @@
 'use client';
 
-import { ArrowLeft } from 'react-feather';
-
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import BackButton from '../../components/BackButton/BackButton';
+
 import {
   arrayOfFavorites,
   addOrRemoveProductFromFavorite,
@@ -12,20 +11,18 @@ import {
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-  BackDiv,
   GlobalStyle,
   OutterBox,
-  Backtext,
   HeartIcon,
   TransparentButton,
   NavBarMovedUP,
-} from '../profileScreen/styles';
+} from './styles';
 
 import { Product } from '../../schema/schema';
 
 export default function FavoritesPage() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
-  const router = useRouter();
+
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
     setFavorites(data);
@@ -45,10 +42,7 @@ export default function FavoritesPage() {
       <NavBarMovedUP />
       <GlobalStyle />
       <OutterBox>
-        <BackDiv onClick={() => router.push('/profileScreen')}>
-          <ArrowLeft />
-          <Backtext>Back</Backtext>
-        </BackDiv>
+        <BackButton destination="./profileScreen" />
         <h1>Favorites</h1>
         <OutterFavoriteDiv>
           {Favorites.map(favorite => (

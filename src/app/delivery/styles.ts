@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 import COLORS from '../../styles/colors';
 
 export const DeliveryContainer = styled.div`

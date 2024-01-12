@@ -7,8 +7,11 @@ import {
   PlusMinusButton,
 } from './styles';
 
-export default function Buttons() {
+import { addToCart } from '../../api/supabase/queries/cart_queries';
+
+export default function Buttons(props: { productNumber: number }) {
   const [quantity, setQuantity] = useState<number>(1);
+  const { productNumber } = props;
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -21,7 +24,10 @@ export default function Buttons() {
   };
 
   // used hyphen instead of dash for display
-  const notify = () => toast(`you have added ${quantity} items to the cart!`);
+  const changeCart = () => {
+    addToCart(productNumber, quantity);
+    toast(`you have added ${quantity} items to the cart!`);
+  };
 
   return (
     <ButtonsWrapper>
@@ -35,7 +41,7 @@ export default function Buttons() {
         </PlusMinusButton>
       </QuantityButton>
 
-      <AddToCartButton onClick={notify}>Add to cart</AddToCartButton>
+      <AddToCartButton onClick={changeCart}>Add to cart</AddToCartButton>
     </ButtonsWrapper>
   );
 }

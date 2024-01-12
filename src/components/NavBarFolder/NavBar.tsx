@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-import { totalNumberOfItemsInCart } from '../api/supabase/queries/product_queries';
+import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
   NavBarComp,
@@ -10,7 +10,7 @@ import {
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-} from '../styles/components';
+} from './styles';
 
 export default function NavBar({ ...rest }) {
   const [data, setData] = useState(0);
@@ -22,6 +22,7 @@ export default function NavBar({ ...rest }) {
     };
     fetchData();
   }, []);
+
   useEffect(() => {
     const changeData = async () => {
       if (data > 0) {

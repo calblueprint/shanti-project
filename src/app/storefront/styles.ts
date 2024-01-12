@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { Heart } from 'react-feather';
 
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -68,7 +68,7 @@ export const ButtonsContainer = styled.div`
   position: fixed;
   align-items: center;
   z-index: 1100;
-  transform: translate(0px, -30px);
+  transform: translate(180px, -30px);
 `;
 
 export const NavButton = styled.button`
@@ -130,4 +130,6 @@ export const HeartContainer = styled.button`
   border: none;
 `;
 
-export const NavBarZeroIndex = styled(NavBar)``;
+export const NavBarZeroIndex = styled(NavBar)`
+  position: fixed;
+`;

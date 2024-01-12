@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import BackButton from '../../components/BackButton';
+import BackButton from '../../components/BackButton/BackButton';
 import { GlobalStyle } from '../../styles/components';
 import { Normal700Text } from '../../styles/fonts';
 import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
@@ -15,23 +15,15 @@ import {
   OrderButton,
   InformationContainer,
   InformationText,
-  ItemText,
   QtyText,
-  QuantityText,
-  ItemQuantityRow,
-  TotalContainer,
   NavBarMovedUP,
 } from './styles';
 
 export default function App() {
   const [OrderProducts, setOrderProducts] = useState<OrderProduct[]>([]);
   async function fetchOrderProducts() {
-    try {
-      const data = (await fetchRecentOrderProducts()) as OrderProduct[];
-      setOrderProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = (await fetchRecentOrderProducts()) as OrderProduct[];
+    setOrderProducts(data);
   }
 
   fetchOrderProducts();
@@ -41,7 +33,7 @@ export default function App() {
       <GlobalStyle />
 
       <NavBarMovedUP />
-      <BackButton />
+      <BackButton destination="/storefront" />
       <DeliveryContainer>
         <InformationContainer>
           <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>

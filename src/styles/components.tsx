@@ -119,7 +119,7 @@ export const FooterDiv = styled.div`
   display: flex;
   flex-direction: row;
   color: black;
-  width: 1290px;
+  width: 1650px;
   padding-left: 10px;
   padding-top: 40px;
   margin-left: 70px;
