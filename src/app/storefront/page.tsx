@@ -14,29 +14,9 @@ import {
 import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
+import { buttons } from './buttonValues';
+
 export default function App() {
-  const buttons = [
-    {
-      name: 'All',
-      value: 'All',
-      count: 0,
-    },
-    {
-      name: 'Dog',
-      value: 'Dog',
-      count: 1,
-    },
-    {
-      name: 'Cat',
-      value: 'Cat',
-      count: 2,
-    },
-    {
-      name: 'Other',
-      value: 'Other',
-      count: 3,
-    },
-  ];
   const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   const [CategoryWord, setCategoryWord] = useState('All');

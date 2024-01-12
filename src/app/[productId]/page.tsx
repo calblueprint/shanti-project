@@ -1,13 +1,11 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
+import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
-  BackButton,
   ImageContainer,
   TextContainer,
   DescriptionContainer,
@@ -43,7 +41,6 @@ export default function ItemDisplay({
   return (
     <main>
       <GlobalStyle />
-
       <NavBar />
       <ToastPopUP
         position="top-right"
@@ -51,17 +48,7 @@ export default function ItemDisplay({
         limit={1}
         hideProgressBar
       />
-      <BackButton>
-        <Link href="/storefront">
-          <Image
-            src="/images/Arrow_Left_MD.png"
-            alt="Back Arrow"
-            width={20}
-            height={20}
-          />
-          <span style={{ marginLeft: '8px' }}>Back</span>
-        </Link>
-      </BackButton>
+      <BackButton destination="./storefront" />
       <DescriptionContainer>
         <ImageContainer>
           <img

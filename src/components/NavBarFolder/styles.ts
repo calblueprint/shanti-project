@@ -30,7 +30,7 @@ export const NavBarComp = styled.nav`
   padding-right: 30px;
   height: 140px;
   padding-top: 20px;
-  position: fixed;
+  position: relative;
   width: 100%;
   background: ${COLORS.lightPeriwinkle};
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);

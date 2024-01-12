@@ -1,8 +1,10 @@
 'use client';
 
-import { ArrowLeft } from 'react-feather';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import BackButton from '../../components/BackButton/BackButton';
+
+import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 
 import {
   fetchCartItemsWithQuantity,
@@ -11,24 +13,13 @@ import {
 import CartItem from './cartItem';
 
 import {
-  HeaderShiftLeft,
-  OrderSummaryDiv,
   OutterFavoriteDiv,
-  HeaderShiftRight,
-  OrderTotalDiv,
-  PShiftLeft,
-  WhiteBackgroundDiv,
-  BackDiv,
   GlobalStyle,
-  Backtext,
   NavBarMovedUP,
   PageDiv,
   CheckoutButton,
-  ItemSummaryDiv,
   LeftColumnDiv,
   RightColumnDiv,
-  Qty,
-  PShiftRight,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -54,10 +45,7 @@ export default function OrderPage() {
       <GlobalStyle />
       <PageDiv>
         <LeftColumnDiv>
-          <BackDiv onClick={() => router.push('/storefront')}>
-            <ArrowLeft />
-            <Backtext>Back</Backtext>
-          </BackDiv>
+          <BackButton destination="./storefront" />
           <h1>Cart</h1>
           <OutterFavoriteDiv>
             {cart.map(cartItem => (
@@ -73,25 +61,9 @@ export default function OrderPage() {
           </OutterFavoriteDiv>
         </LeftColumnDiv>
         <RightColumnDiv>
-          <WhiteBackgroundDiv>
-            <HeaderShiftLeft>Order Summary</HeaderShiftLeft>
-            <Qty>Qty.</Qty>
-            <OrderSummaryDiv>
-              {cart.map(cartItem => (
-                <ItemSummaryDiv key={cartItem.id}>
-                  <PShiftLeft>{cartItem.name}</PShiftLeft>
-                  <PShiftRight>{cartItem.quantity}</PShiftRight>
-                </ItemSummaryDiv>
-              ))}
-            </OrderSummaryDiv>
-            <OrderTotalDiv>
-              <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-              <HeaderShiftRight>{numberOfItems}</HeaderShiftRight>
-            </OrderTotalDiv>
-          </WhiteBackgroundDiv>
-
+          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
           <CheckoutButton
-            // Add Checkout Function by using onClick
+            // change this function so that the flow makes sense and that there is items within the cart
             onClick={() => router.push('/orderConfirmationPickUp')}
           >
             Check Out

@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { BackDiv, ImageWithSize } from './styles';
+import { ArrowLeft } from 'react-feather';
+import { BackDiv } from './styles';
 
-export default function BackButton() {
+export default function BackButton(props: { destination: string }) {
+  const { destination } = props;
   return (
-    <Link href="/storefront">
+    <Link href={destination}>
       <BackDiv>
-        <ImageWithSize src="/images/Arrow_Left_MD.png" alt="Back Arrow" />
+        <ArrowLeft />
         <p>Back</p>
       </BackDiv>
     </Link>

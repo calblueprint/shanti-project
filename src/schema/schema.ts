@@ -52,7 +52,7 @@ export type OrderProduct = {
 
 export type ProductWithQuantity = {
   name: string;
-  quantity: number;
+  quantity: number; // product quantity within the cart
   photo: string;
   id: number;
   category: string;

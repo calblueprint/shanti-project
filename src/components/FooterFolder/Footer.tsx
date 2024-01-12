@@ -1,4 +1,4 @@
-import Location from '../NavBarFolder/Location';
+import Location from './Location';
 
 import { FooterDiv, ContactDiv } from './styles';
 

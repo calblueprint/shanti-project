@@ -130,4 +130,6 @@ export const HeartContainer = styled.button`
   border: none;
 `;
 
-export const NavBarZeroIndex = styled(NavBar)``;
+export const NavBarZeroIndex = styled(NavBar)`
+  position: fixed;
+`;

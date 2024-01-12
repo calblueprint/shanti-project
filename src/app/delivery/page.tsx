@@ -33,7 +33,7 @@ export default function App() {
       <GlobalStyle />
 
       <NavBarMovedUP />
-      <BackButton />
+      <BackButton destination="/storefront" />
       <DeliveryContainer>
         <InformationContainer>
           <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>

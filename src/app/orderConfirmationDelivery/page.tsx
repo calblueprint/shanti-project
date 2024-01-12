@@ -1,20 +1,16 @@
 'use client';
 
-import { ArrowLeft } from 'react-feather';
-
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import BackButton from '../../components/BackButton/BackButton';
 
 import { fetchCartItems } from '../../api/supabase/queries/cart_queries';
 
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-  BackDiv,
   HeaderText,
   GlobalStyle,
   OutterBox,
-  Backtext,
   Label,
   LabelBox,
   NavBarMovedUP,
@@ -27,7 +23,6 @@ import { Product } from '../../schema/schema';
 
 export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -41,10 +36,7 @@ export default function OrderConfirmationDelivery() {
     <div>
       <NavBarMovedUP />
       <GlobalStyle />
-      <BackDiv onClick={() => router.push('/profileScreen')}>
-        <ArrowLeft />
-        <Backtext>Back to storefront</Backtext>
-      </BackDiv>
+      <BackButton destination="./storefront" />
       <OutterBox>
         <HeaderText>Thank you, Ethan. Your order has been placed.</HeaderText>
         <OutterFavoriteDiv>
