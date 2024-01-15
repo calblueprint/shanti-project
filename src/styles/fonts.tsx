@@ -6,8 +6,14 @@ export const Heading1 = styled.div`
   line-height: normal;
 `;
 
+export const Heading2 = styled.div`
+  font-size: 35px;
+  font-weight: bold;
+  font-style: normal;
+
+`
 export const Heading4 = styled.div`
-  font-size: 15px;
+  font-size: 25px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -18,3 +24,15 @@ export const Normal700Text = styled.div`
   font-weight: 700;
   line-height: normal;
 `;
+
+export const Body2 = styled.div`
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+`;
+
+export const Body3 = styled.div`
+  font-size: 12px;
+  font-style: normal;
+
+`
