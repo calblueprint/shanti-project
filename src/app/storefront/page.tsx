@@ -2,19 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
-import ProductButtons from './productButtons';
 
 import Footer from '../../components/FooterFolder/Footer';
-import {
-  GlobalStyle,
-  ButtonsContainer,
-  NavBarZeroIndex,
-  ShopAllText,
-} from './styles';
+import { GlobalStyle, ShopAllText } from './styles';
 import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
-import { buttons } from './buttonValues';
+import StoreFrontNavBar from './StoreFrontNavBar';
 
 export default function App() {
   const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -44,21 +38,12 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <NavBarZeroIndex />
-      <ButtonsContainer>
-        {buttons.map((type, index) => (
-          <ProductButtons
-            key={type.count}
-            value={type.value}
-            setFiltredProducts={setFilteredProducts}
-            content={type.name}
-            setIsClickedButton={setIsClickedButton}
-            IsClickedButton={IsClickedButton}
-            setCategoryWord={setCategoryWord}
-            index={index}
-          />
-        ))}
-      </ButtonsContainer>
+      <StoreFrontNavBar
+        setFilteredProducts={setFilteredProducts}
+        setIsClickedButton={setIsClickedButton}
+        IsClickedButton={IsClickedButton}
+        setCategoryWord={setCategoryWord}
+      />
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />
