@@ -66,7 +66,7 @@ export default function StoreFrontNavBar(props: {
           <ProductButtons
             key={type.count}
             value={type.value}
-            setFiltredProducts={ setFilteredProducts}
+            setFiltredProducts={setFilteredProducts}
             content={type.name}
             setIsClickedButton={setIsClickedButton}
             IsClickedButton={IsClickedButton}
