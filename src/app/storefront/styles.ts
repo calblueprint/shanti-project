@@ -58,17 +58,13 @@ export const ItemContainer = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
-  margin-left: 400px;
-  margin-right: 400px;
-  width: 600px;
-  height: 200px;
+  margin-left: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: fixed;
+  position: flex;
   align-items: center;
   z-index: 1100;
-  transform: translate(180px, -30px);
 `;
 
 export const NavButton = styled.button`
@@ -109,8 +105,8 @@ export const StorefrontItem = styled.div`
 `;
 
 export const ShopAllText = styled.h1`
-  padding-top: 230px;
-  padding-left: 50px;
+  margin-top: 50px;
+  margin-left: 60px;
   font-family: 'Public Sans', sans-serif;
   color: black;
 `;

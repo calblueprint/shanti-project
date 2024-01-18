@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState, FC } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
@@ -10,11 +10,30 @@ import {
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-} from './styles';
+} from '../../components/NavBarFolder/styles';
 
-export default function NavBar({ ...rest }) {
+import { Product } from '../../schema/schema';
+
+import { ButtonsContainer } from './styles';
+
+import { buttons } from './buttonValues';
+
+import ProductButtons from './productButtons';
+
+export default function StoreFrontNavBar(props: {
+  setFilteredProducts: (category: Product[]) => void;
+  setIsClickedButton: (clicked: boolean[]) => void;
+  IsClickedButton: boolean[];
+  setCategoryWord: (word: string) => void;
+}) {
   const [data, setData] = useState(0);
   const [isZero, setIsZero] = useState(true);
+  const {
+    setFilteredProducts,
+    setIsClickedButton,
+    IsClickedButton,
+    setCategoryWord,
+  } = props;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +52,7 @@ export default function NavBar({ ...rest }) {
   }, [data]);
 
   return (
-    <NavBarComp {...rest}>
+    <NavBarComp>
       <Link href="../storefront">
         <Image
           src="/images/ShantiLogo.png"
@@ -42,6 +61,20 @@ export default function NavBar({ ...rest }) {
           height={70}
         />
       </Link>
+      <ButtonsContainer>
+        {buttons.map((type, index) => (
+          <ProductButtons
+            key={type.count}
+            value={type.value}
+            setFiltredProducts={ setFilteredProducts}
+            content={type.name}
+            setIsClickedButton={setIsClickedButton}
+            IsClickedButton={IsClickedButton}
+            setCategoryWord={setCategoryWord}
+            index={index}
+          />
+        ))}
+      </ButtonsContainer>
 
       <ButtonsDiv>
         <Link href="../profileScreen">

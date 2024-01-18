@@ -64,7 +64,7 @@ export default function OrderPage() {
           <OrderSummary cart={cart} numberOfItems={numberOfItems} />
           <CheckoutButton
             // change this function so that the flow makes sense and that there is items within the cart
-            onClick={() => router.push('/orderConfirmationPickUp')}
+            onClick={() => router.push('/delivery')}
           >
             Check Out
           </CheckoutButton>

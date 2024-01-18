@@ -14,6 +14,8 @@ import {
 import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
+import StoreFrontNavBar from './StoreFrontNavBar';
+
 import { buttons } from './buttonValues';
 
 export default function App() {
@@ -44,21 +46,12 @@ export default function App() {
   return (
     <main>
       <GlobalStyle />
-      <NavBarZeroIndex />
-      <ButtonsContainer>
-        {buttons.map((type, index) => (
-          <ProductButtons
-            key={type.count}
-            value={type.value}
-            setFiltredProducts={setFilteredProducts}
-            content={type.name}
-            setIsClickedButton={setIsClickedButton}
-            IsClickedButton={IsClickedButton}
-            setCategoryWord={setCategoryWord}
-            index={index}
-          />
-        ))}
-      </ButtonsContainer>
+      <StoreFrontNavBar
+        setFilteredProducts={setFilteredProducts}
+        setIsClickedButton={setIsClickedButton}
+        IsClickedButton={IsClickedButton}
+        setCategoryWord={setCategoryWord}
+      />
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />
