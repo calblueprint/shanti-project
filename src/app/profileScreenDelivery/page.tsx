@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { Heading2, Heading4, Body2, Body3} from '@/styles/fonts';
 import supabase from '@/api/supabase/createClient';
-import { addOrRemoveProductFromFavorite, arrayOfFavorites, fetchUser } from '@/api/supabase/queries/user_queries';
+import { addOrRemoveProductFromFavorite, arrayOfFavorites, fetchUser, fetchUserAddress } from '@/api/supabase/queries/user_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -23,14 +23,24 @@ import {
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import { OrderContainer } from '../delivery/styles';
-import { ViewAllDiv } from '@/components/ViewAllButton/styles';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
-import { Product } from '@/schema/schema';
+import { Address, Product, User } from '@/schema/schema';
 import { HeartIcon, TransparentButton } from '../favorites/styles';
 
 export default function Profile() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
+  const [User, setUser] = useState<User>();
+    async function getUser() {
+        const data = await fetchUser();
+        setUser(data);
+
+    }
+    const [UserAddress, setUserAddress] =  useState<Address>();
+    async function getUserAddress() {
+        const data = await fetchUser();
+        const address = await fetchUserAddress(data.id);
+        setUserAddress(address);
+    }
 
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
@@ -38,6 +48,8 @@ export default function Profile() {
   }
   useEffect(() => {
     fetchProducts();
+    getUser();
+    getUserAddress();
   }, []);
 
   async function clickFunctions(props: { fav: Product }) {
@@ -67,9 +79,9 @@ export default function Profile() {
       </HeadingBack>
       <GlobalStyle />
       <AccountDetails>
-        <h1>
+        <Heading4>
           Account Details
-        </h1> 
+        </Heading4> 
         <HeadingSpacing>
         <Body2> 
           Email
@@ -77,7 +89,7 @@ export default function Profile() {
         </HeadingSpacing>
         <TextSpacing>
         <Body3> 
-          ethanauyeung@gmail.com {/* replace with correct user info after */}
+          {User?.email}
         </Body3>
         </TextSpacing>
         <HeadingSpacing>
@@ -87,7 +99,7 @@ export default function Profile() {
         </HeadingSpacing>
         <TextSpacing>
         <Body3> 
-          Ethan Auyeung {/* replace with correct user info after */}
+          {User?.first_name} {User?.last_name}
         </Body3>
         </TextSpacing>
         <HeadingSpacing>
@@ -97,15 +109,16 @@ export default function Profile() {
         </HeadingSpacing>
         <TextSpacing>
         <Body3> 
-          123 Telegraph Ave, Berkeley, 94704 {/* replace with correct user info after */}
+        {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
         </Body3>
         </TextSpacing>
-        <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
+        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
       </AccountDetails>
       <OrderHistory>
       <Heading4> 
         Order History
       </Heading4>
+      <ViewAllButton destination = "./favorites"/>
       </OrderHistory>
       <FavoritesContainer>
       <Heading4> 

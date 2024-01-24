@@ -10,6 +10,7 @@ export const Heading2 = styled.div`
   font-size: 35px;
   font-weight: bold;
   font-style: normal;
+  
 
 `
 export const Heading4 = styled.div`
@@ -17,6 +18,8 @@ export const Heading4 = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-left: 20px;
+  padding-top: 20px;
 `;
 
 export const Normal700Text = styled.div`
@@ -29,10 +32,12 @@ export const Body2 = styled.div`
   font-size: 15px;
   font-weight: bold;
   font-style: normal;
+  padding-left: 20px;
 `;
 
 export const Body3 = styled.div`
   font-size: 12px;
   font-style: normal;
+  padding-left: 20px;
 
 `

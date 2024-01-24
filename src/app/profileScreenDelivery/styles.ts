@@ -16,11 +16,11 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const TextSpacing = styled.div`
-  margin-top: 29px;
+  margin-top: 10px;
 
 `;
 export const HeadingSpacing = styled.div`
-  margin-top: 33px;
+  margin-top: 30px;
 
 `;
 
@@ -33,19 +33,23 @@ export const HeadingBack = styled.div`
 export const AccountDetails = styled.div`
   margin-left: 189px;
   margin-top: 73px;
-  width: 543px;
+  width: 350px;
   height: 290px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-right: 30px;
 `;
 
 export const OrderHistory = styled.div`
   margin-left: 800px;
   margin-top: -291px;
   margin-bottom: 47px;
-  width: 405px;
-  height: 387px;
+  width: 543.4px;
+  height: 343px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -64,17 +68,21 @@ export const LogOutButton = styled.button`
   background: #00507f;
   color: #fff;
   text-align: center;
-  font-family: Inter;
-  font-size: 20px;
+  font-size: 25px;
+  font-family: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 300px;
-  height: 50px;
+  width: 350px;
+  height: 300px;
   z-index: 1000;
-  margin-top: 47px;
+  margin-top: 100px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 `;
 /* transform: translateY(200px); */
 

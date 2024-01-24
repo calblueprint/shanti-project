@@ -41,6 +41,7 @@ export const AccountDetails = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
+  padding-right: 30px;
 `;
 
 export const OrderHistory = styled.div`
@@ -67,17 +68,21 @@ export const LogOutButton = styled.button`
   background: #00507f;
   color: #fff;
   text-align: center;
-  font-family: Inter;
-  font-size: 20px;
+  font-size: 25px;
+  font-family: normal;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   border: transparent;
   border-radius: 5px;
   width: 350px;
-  height: 50px;
+  height: 300px;
   z-index: 1000;
   margin-top: 100px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 `;
 /* transform: translateY(200px); */
 

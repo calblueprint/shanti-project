@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { Heading2, Heading4, Body2, Body3} from '@/styles/fonts';
 import supabase from '@/api/supabase/createClient';
-import { addOrRemoveProductFromFavorite, arrayOfFavorites, fetchUser } from '@/api/supabase/queries/user_queries';
+import { addOrRemoveProductFromFavorite, arrayOfFavorites, fetchUser, fetchUserAddress } from '@/api/supabase/queries/user_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -25,10 +25,22 @@ import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import { OrderContainer } from '../delivery/styles';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
-import { Product } from '@/schema/schema';
+import { Product, User, Address} from '@/schema/schema';
 import {HeartIcon, OutterBox, OutterFavoriteDiv, TransparentButton } from '../favorites/styles';
 
 export default function Profile() {
+    const [User, setUser] = useState<User>();
+    const [UserAddress, setUserAddress] =  useState<Address>();
+    async function getUser() {
+        const data = await fetchUser();
+        setUser(data);
+
+    }
+    async function getUserAddress() {
+        const data = await fetchUser();
+        const address = await fetchUserAddress(data.id);
+        setUserAddress(address);
+    }
     const [Favorites, setFavorites] = useState<Product[]>([]);
 
     async function fetchProducts() {
@@ -37,6 +49,8 @@ export default function Profile() {
     }
     useEffect(() => {
       fetchProducts();
+      getUser();
+      getUserAddress();
     }, []);
   
     async function clickFunctions(props: { fav: Product }) {
@@ -76,7 +90,7 @@ export default function Profile() {
         </HeadingSpacing>
         <TextSpacing>
         <Body3> 
-          ethanauyeung@gmail.com {/* replace with correct user info after */}
+          {User?.email}
         </Body3>
         </TextSpacing>
         <HeadingSpacing>
@@ -86,7 +100,7 @@ export default function Profile() {
         </HeadingSpacing>
         <TextSpacing>
         <Body3> 
-          Ethan Auyeung {/* replace with correct user info after */}
+          {User?.first_name} {User?.last_name}
         </Body3>
         </TextSpacing>
         <HeadingSpacing>
@@ -96,10 +110,10 @@ export default function Profile() {
         </HeadingSpacing>
         <TextSpacing>
         <Body3> 
-          +1 510-123-4567 {/* replace with correct user info after */}
+          +1 510-123-4567 {/* User?.phone */}
         </Body3>
         </TextSpacing>
-        <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
+        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
       </AccountDetails>
       <OrderHistory>
       <Heading4> 

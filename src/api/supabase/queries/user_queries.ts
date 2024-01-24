@@ -106,3 +106,26 @@ export async function arrayOfFavorites(): Promise<Product[]> {
 
   return arrayOfProducts;
 }
+
+/**
+ * fetchUserAddress: Get's a user's address based on their UUID
+ * @param uuid: String containing the uuid of the user
+ */
+ export async function fetchUserAddress(uuid: string) {
+  try {
+    const { data: user, error } = await supabase
+      .from('address')
+      .select('*')
+      .eq('user_id', uuid)
+      .single();
+
+    if (error) {
+      console.error('Error fetching user data:', error);
+    }
+
+    return user;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
