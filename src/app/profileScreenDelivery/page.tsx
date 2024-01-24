@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { Heading2, Heading4, Body2, Body3} from '@/styles/fonts';
 import supabase from '@/api/supabase/createClient';
-import { fetchUser } from '@/api/supabase/queries/user_queries';
+import { addOrRemoveProductFromFavorite, arrayOfFavorites, fetchUser } from '@/api/supabase/queries/user_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -19,31 +19,32 @@ import {
   TextSpacing,
   OrderHistory,
   FavoritesContainer,
+  FavoriteDiv,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import { OrderContainer } from '../delivery/styles';
+import { ViewAllDiv } from '@/components/ViewAllButton/styles';
+import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
+import { Product } from '@/schema/schema';
+import { HeartIcon, TransparentButton } from '../favorites/styles';
 
 export default function Profile() {
-  const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
+  const [Favorites, setFavorites] = useState<Product[]>([]);
+
+  async function fetchProducts() {
+    const data = (await arrayOfFavorites()) as Product[];
+    setFavorites(data);
+  }
   useEffect(() => {
-    (async () => {
-      const { data: sessionData, error } = await supabase.auth.getSession();
-
-      if (error) throw error;
-      if (
-        !sessionData ||
-        !sessionData.session ||
-        !sessionData.session.user ||
-        !sessionData.session.user.id
-      )
-        return;
-
-      const data = await fetchUser();
-      setDeliveryEnabled(data.delivery_allowed);
-    })();
+    fetchProducts();
   }, []);
 
+  async function clickFunctions(props: { fav: Product }) {
+    const { fav } = props;
+    addOrRemoveProductFromFavorite(fav, false);
+    setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
+  }
   const router = useRouter();
   const showToastMessage = () => {
     signOut();
@@ -66,9 +67,9 @@ export default function Profile() {
       </HeadingBack>
       <GlobalStyle />
       <AccountDetails>
-        <Heading4> 
+        <h1>
           Account Details
-        </Heading4>
+        </h1> 
         <HeadingSpacing>
         <Body2> 
           Email
@@ -110,6 +111,22 @@ export default function Profile() {
       <Heading4> 
         Favorites
       </Heading4>
+      <ViewAllButton destination = "./favorites"/>
+          {Favorites.slice(0,2).map(favorite => (
+            <FavoriteDiv key={favorite.id}>
+              <img
+                src={favorite.photo}
+                alt={favorite.name}
+                style={{ width: '75px', height: '75px' }}
+              />
+              <p>{favorite.name}<br></br>Product ID: {favorite.id}</p>
+              <TransparentButton
+                onClick={() => clickFunctions({ fav: favorite })}
+              >
+                <HeartIcon />
+              </TransparentButton>
+            </FavoriteDiv>
+          ))}
       </FavoritesContainer>
       {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
       <LogOutButton onClick={() => router.push('/favorites')}>

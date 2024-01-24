@@ -33,28 +33,31 @@ export const HeadingBack = styled.div`
 export const AccountDetails = styled.div`
   margin-left: 189px;
   margin-top: 73px;
-  box-sizing: border-box;
-  border: 2px solid black;
   width: 543px;
   height: 290px;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const OrderHistory = styled.div`
   margin-left: 800px;
   margin-top: -291px;
   margin-bottom: 47px;
-  box-sizing: border-box;
-  border: 2px solid black; 
   width: 405px;
   height: 387px;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const FavoritesContainer = styled.div`
   margin-left: 800px;
-  box-sizing: border-box;
-  border: 2px solid black;
   width: 543.4px;
   height: 343px;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const LogOutButton = styled.button`
@@ -86,4 +89,15 @@ export const FooterMoved = styled(Footer)`
 
 export const NavBarMovedUP = styled(NavBar)`
   position: relative;
+`;
+
+export const FavoriteDiv = styled.div`
+display: flex;
+flex-direction: row;
+align-items: start;
+justify-content: space-around;
+width: 100%;
+margin-bottom: 50px;
+margin-top: 30px;
+
 `;

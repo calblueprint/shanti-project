@@ -16,11 +16,11 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const TextSpacing = styled.div`
-  margin-top: 29px;
+  margin-top: 10px;
 
 `;
 export const HeadingSpacing = styled.div`
-  margin-top: 33px;
+  margin-top: 30px;
 
 `;
 
@@ -33,28 +33,34 @@ export const HeadingBack = styled.div`
 export const AccountDetails = styled.div`
   margin-left: 189px;
   margin-top: 73px;
-  box-sizing: border-box;
-  border: 2px solid black;
-  width: 543px;
+  width: 350px;
   height: 290px;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 `;
 
 export const OrderHistory = styled.div`
   margin-left: 800px;
   margin-top: -291px;
   margin-bottom: 47px;
-  box-sizing: border-box;
-  border: 2px solid black; 
-  width: 405px;
-  height: 387px;
+  width: 543.4px;
+  height: 343px;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const FavoritesContainer = styled.div`
   margin-left: 800px;
-  box-sizing: border-box;
-  border: 2px solid black;
   width: 543.4px;
   height: 343px;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const LogOutButton = styled.button`
@@ -68,10 +74,10 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 300px;
+  width: 350px;
   height: 50px;
   z-index: 1000;
-  margin-top: 47px;
+  margin-top: 100px;
 `;
 /* transform: translateY(200px); */
 
@@ -86,4 +92,15 @@ export const FooterMoved = styled(Footer)`
 
 export const NavBarMovedUP = styled(NavBar)`
   position: relative;
+`;
+
+export const FavoriteDiv = styled.div`
+display: flex;
+flex-direction: row;
+align-items: start;
+justify-content: space-around;
+width: 100%;
+margin-bottom: 50px;
+margin-top: 30px;
+
 `;
