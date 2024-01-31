@@ -37,13 +37,13 @@ export default function App() {
 
   return (
     <main>
-      <GlobalStyle />
       <StoreFrontNavBar
         setFilteredProducts={setFilteredProducts}
         setIsClickedButton={setIsClickedButton}
         IsClickedButton={IsClickedButton}
         setCategoryWord={setCategoryWord}
       />
+      <GlobalStyle />
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />

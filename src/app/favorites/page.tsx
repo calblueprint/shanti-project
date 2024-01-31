@@ -8,6 +8,8 @@ import {
   addOrRemoveProductFromFavorite,
 } from '../../api/supabase/queries/user_queries';
 
+import NavBar from '../../components/NavBarFolder/NavBar';
+
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
@@ -15,7 +17,6 @@ import {
   OutterBox,
   HeartIcon,
   TransparentButton,
-  NavBarMovedUP,
 } from './styles';
 
 import { Product } from '../../schema/schema';
@@ -39,7 +40,7 @@ export default function FavoritesPage() {
 
   return (
     <div>
-      <NavBarMovedUP />
+      <NavBar />
       <GlobalStyle />
       <OutterBox>
         <BackButton destination="./profileScreen" />

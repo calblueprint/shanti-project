@@ -4,17 +4,16 @@ import React, { useEffect, useState } from 'react';
 
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
+import { Product } from '../../schema/schema';
+
 import {
+  ButtonsContainer,
   NavBarComp,
   ButtonsDiv,
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-} from '../../components/NavBarFolder/styles';
-
-import { Product } from '../../schema/schema';
-
-import { ButtonsContainer } from './styles';
+} from './styles';
 
 import { buttons } from './buttonValues';
 

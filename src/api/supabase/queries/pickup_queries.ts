@@ -7,7 +7,7 @@ import supabase from '../createClient';
  */
 export async function fetchPickupData(): Promise<Pickup[]> {
   const { data: pickupTimes, error } = await supabase
-    .from('Pickup_Times')
+    .from('pickup_times')
     .select('*');
 
   if (error) {
@@ -23,7 +23,7 @@ export async function fetchPickupData(): Promise<Pickup[]> {
  */
 export async function fetchPickupTimesByID(pickupID: string): Promise<Pickup> {
   const { data: pickupTimes, error } = await supabase
-    .from('Pickup_Times')
+    .from('pickup_times')
     .select('*')
     .eq('id', pickupID)
     .single();
@@ -33,4 +33,20 @@ export async function fetchPickupTimesByID(pickupID: string): Promise<Pickup> {
   }
 
   return pickupTimes;
+}
+
+/**
+ *
+ * @returns most recevnt pickup
+ */
+export async function fetchRecentPickupTimes(): Promise<Pickup[]> {
+  const { data: getTimes, error } = await supabase
+    .from('pickup_times')
+    .select('*')
+    .limit(2);
+
+  if (error) {
+    throw new Error(`Error fetching pickup times: ${error.message}`);
+  }
+  return getTimes;
 }
