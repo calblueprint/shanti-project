@@ -19,17 +19,14 @@ export const GlobalStyle = createGlobalStyle`
 
 export const TextSpacing = styled.div`
   margin-top: 10px;
-
 `;
 export const HeadingSpacing = styled.div`
   margin-top: 30px;
-
 `;
 
 export const HeadingBack = styled.div`
   margin-left: 171px;
   margin-top: 41px;
-
 `;
 
 export const AccountDetails = styled.div`
@@ -109,7 +106,6 @@ export const FavoriteDiv = styled.div`
   width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
-
 `;
 
 export const HeartIcon = styled(Heart)`
@@ -121,5 +117,4 @@ export const HeartIcon = styled(Heart)`
 
 export const BackButtonDiv = styled.div`
   margin-bottom: 68px;
-
-`
+`;

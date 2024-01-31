@@ -67,10 +67,9 @@ export const ProfileButton = styled.button`
   height: 40px;
   background-color: transparent;
   border: none;
-`
+`;
 export const ProfileFont = styled.div`
   margin-left: 5px;
   font-size: 18px;
   font-style: normal;
-
-`
+`;

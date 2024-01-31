@@ -26,8 +26,6 @@ import { buttons } from './buttonValues';
 
 import ProductButtons from './productButtons';
 
-
-
 export default function StoreFrontNavBar(props: {
   setFilteredProducts: (category: Product[]) => void;
   setIsClickedButton: (clicked: boolean[]) => void;
@@ -111,9 +109,9 @@ export default function StoreFrontNavBar(props: {
       </ButtonsContainer>
 
       <ButtonsDiv>
-        <ProfileButton onClick = {checkDelivery}>
+        <ProfileButton onClick={checkDelivery}>
           <UserProfileIcon />
-          <ProfileFont>User</ProfileFont> 
+          <ProfileFont>User</ProfileFont>
         </ProfileButton>
         <Link href="../cart">
           <ShoppingCartIcon />

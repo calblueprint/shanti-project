@@ -59,9 +59,9 @@ export type ProductWithQuantity = {
 };
 
 export type Address = {
-  id: number; 
+  id: number;
   created_at: Date;
-  street: string; 
+  street: string;
   city: string;
   zipcode: string;
   user_id: number;

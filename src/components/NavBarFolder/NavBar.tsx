@@ -5,7 +5,6 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -77,16 +76,16 @@ export default function NavBar({ ...rest }) {
       </Link>
 
       <ButtonsDiv>
-        <ProfileButton onClick = {checkDelivery}>
+        <ProfileButton onClick={checkDelivery}>
           <UserProfileIcon />
-          <ProfileFont>User</ProfileFont> 
+          <ProfileFont>User</ProfileFont>
         </ProfileButton>
-        <Link href = "../cart">
-        <ProfileButton>
-          <ShoppingCartIcon />
-          <ProfileFont>Cart</ProfileFont>
-          <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
-        </ProfileButton>
+        <Link href="../cart">
+          <ProfileButton>
+            <ShoppingCartIcon />
+            <ProfileFont>Cart</ProfileFont>
+            <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
+          </ProfileButton>
         </Link>
       </ButtonsDiv>
     </NavBarComp>

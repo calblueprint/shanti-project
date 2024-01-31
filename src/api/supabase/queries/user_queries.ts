@@ -111,7 +111,7 @@ export async function arrayOfFavorites(): Promise<Product[]> {
  * fetchUserAddress: Get's a user's address based on their UUID
  * @param uuid: String containing the uuid of the user
  */
- export async function fetchUserAddress(uuid: string) {
+export async function fetchUserAddress(uuid: string) {
   try {
     const { data: user, error } = await supabase
       .from('address')

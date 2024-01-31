@@ -10,9 +10,7 @@ export const Heading2 = styled.div`
   font-size: 35px;
   font-weight: bold;
   font-style: normal;
-  
-
-`
+`;
 export const Heading4 = styled.div`
   font-size: 25px;
   font-style: normal;
@@ -39,5 +37,4 @@ export const Body3 = styled.div`
   font-size: 12px;
   font-style: normal;
   padding-left: 20px;
-
-`
+`;
