@@ -1,10 +1,9 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { Heart } from 'react-feather';
+import { Heart , User, ShoppingCart } from 'react-feather';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
-import { User, ShoppingCart } from 'react-feather';
 import COLORS from '../../styles/colors';
 
 export const GlobalStyle = createGlobalStyle`

@@ -20,7 +20,7 @@ function PickupButton({
     setIsSelected(!isSelected);
   };
 
-  return <button type="button"></button>;
+  return <button type="button" aria-label="PickUPButtons" />;
 }
 
 export default PickupButton;

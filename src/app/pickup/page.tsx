@@ -32,16 +32,6 @@ import {
   PickupTimeButton,
 } from './styles';
 
-// interface Product {
-//   description: string;
-//   category: string;
-//   quantity: number;
-//   photo: string;
-//   product_id: number;
-//   name: string;
-//   updated_at: Date;
-// }
-
 export default function Pickup() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
@@ -59,8 +49,6 @@ export default function Pickup() {
     async function fetchTimes() {
       const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
       setTimes(data);
-      console.log('print');
-      console.log(data);
     }
     fetchTimes();
   }, []);

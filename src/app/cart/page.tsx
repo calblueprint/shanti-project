@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import BackButton from '../../components/BackButton/BackButton';
 
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
@@ -21,7 +22,6 @@ import {
   RightColumnDiv,
 } from './styles';
 
-import { fetchUser } from '@/api/supabase/queries/user_queries';
 
 import { ProductWithQuantity } from '../../schema/schema';
 

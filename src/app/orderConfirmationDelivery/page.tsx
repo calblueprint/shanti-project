@@ -15,7 +15,6 @@ import {
   OutterBox,
   Label,
   LabelBox,
-  NavBarMovedUP,
   ScrollDiv,
   AddressText,
   DateText,

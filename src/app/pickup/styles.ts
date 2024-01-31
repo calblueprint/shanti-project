@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { Trash2 } from 'react-feather';
+ 
 import COLORS from '../../styles/colors';
 
 import NavBar from '../../components/NavBarFolder/NavBar';

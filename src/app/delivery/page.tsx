@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 import { GlobalStyle } from '../../styles/components';
 import { Normal700Text } from '../../styles/fonts';
@@ -8,7 +9,6 @@ import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queri
 import { OrderProduct } from '../../schema/schema';
 import ItemRows from './itemRows';
 import NavBar from '../../components/NavBarFolder/NavBar';
-import { useRouter } from 'next/navigation';
 import {
   DeliveryContainer,
   OrderContainer,
