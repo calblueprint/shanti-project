@@ -5,6 +5,8 @@ import BackButton from '../../components/BackButton/BackButton';
 
 import { fetchCartItems } from '../../api/supabase/queries/cart_queries';
 
+import NavBar from '../../components/NavBarFolder/NavBar';
+
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
@@ -34,7 +36,7 @@ export default function OrderConfirmationDelivery() {
 
   return (
     <div>
-      <NavBarMovedUP />
+      <NavBar />
       <GlobalStyle />
       <BackButton destination="./storefront" />
       <OutterBox>

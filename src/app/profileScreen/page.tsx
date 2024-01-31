@@ -3,14 +3,9 @@
 import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
+import NavBar from '../../components/NavBarFolder/NavBar';
 
-import {
-  LogOutButton,
-  GlobalStyle,
-  PopUp,
-  NavBarMovedUP,
-  FooterMoved,
-} from './styles';
+import { LogOutButton, GlobalStyle, PopUp, FooterMoved } from './styles';
 
 import { signOut } from '../../api/supabase/auth/auth';
 
@@ -31,7 +26,7 @@ export default function Profile() {
 
   return (
     <main>
-      <NavBarMovedUP />
+      <NavBar />
       <GlobalStyle />
       <LogOutButton onClick={() => showToastMessage()}>Log Out!</LogOutButton>
       <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />

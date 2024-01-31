@@ -11,37 +11,47 @@ import {
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
 import CartItem from './cartItem';
-
+import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   OutterFavoriteDiv,
   GlobalStyle,
-  NavBarMovedUP,
   PageDiv,
   CheckoutButton,
   LeftColumnDiv,
   RightColumnDiv,
 } from './styles';
 
+import { fetchUser } from '@/api/supabase/queries/user_queries';
+
 import { ProductWithQuantity } from '../../schema/schema';
 
 export default function OrderPage() {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [cart, setCart] = useState<ProductWithQuantity[]>([]);
-
+  const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
   const router = useRouter();
-
   useEffect(() => {
     async function fetchProducts() {
       setNumberOfItems(await totalNumberOfItemsInCart());
       setCart(await fetchCartItemsWithQuantity());
+      const data = await fetchUser();
+      setDeliveryEnabled(data.delivery_allowed);
     }
 
     fetchProducts();
   }, []);
 
+  const checkDelivery = () => {
+    if (deliveryEnabled) {
+      router.push('/delivery');
+    } else {
+      router.push('/pickup');
+    }
+  };
+
   return (
     <div>
-      <NavBarMovedUP />
+      <NavBar />
       <GlobalStyle />
       <PageDiv>
         <LeftColumnDiv>
@@ -64,7 +74,7 @@ export default function OrderPage() {
           <OrderSummary cart={cart} numberOfItems={numberOfItems} />
           <CheckoutButton
             // change this function so that the flow makes sense and that there is items within the cart
-            onClick={() => router.push('/delivery')}
+            onClick={() => checkDelivery()}
           >
             Check Out
           </CheckoutButton>

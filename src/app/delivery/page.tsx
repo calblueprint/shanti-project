@@ -7,6 +7,8 @@ import { Normal700Text } from '../../styles/fonts';
 import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
 import { OrderProduct } from '../../schema/schema';
 import ItemRows from './itemRows';
+import NavBar from '../../components/NavBarFolder/NavBar';
+import { useRouter } from 'next/navigation';
 import {
   DeliveryContainer,
   OrderContainer,
@@ -16,7 +18,6 @@ import {
   InformationContainer,
   InformationText,
   QtyText,
-  NavBarMovedUP,
 } from './styles';
 
 export default function App() {
@@ -25,13 +26,14 @@ export default function App() {
     const data = (await fetchRecentOrderProducts()) as OrderProduct[];
     setOrderProducts(data);
   }
+  const router = useRouter();
 
   fetchOrderProducts();
 
   return (
     <main>
       <GlobalStyle />
-      <NavBarMovedUP />
+      <NavBar />
       <BackButton destination="/storefront" />
       <DeliveryContainer>
         <InformationContainer>
@@ -49,7 +51,9 @@ export default function App() {
             <QtyText>Qty.</QtyText>
             <ItemRows products={OrderProducts} />
           </OrderSummary>
-          <OrderButton>Place Order</OrderButton>
+          <OrderButton onClick={() => router.push('/orderConfirmationPickUp')}>
+            Place Order
+          </OrderButton>
         </OrderContainer>
       </DeliveryContainer>
     </main>
