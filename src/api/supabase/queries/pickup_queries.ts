@@ -1,77 +1,52 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-//
+import { Pickup } from '../../../schema/schema';
+import supabase from '../createClient';
 
-import {
-  PostgrestSingleResponse,
-  PostgrestError,
-  createClient,
-} from '@supabase/supabase-js';
-import { Schedule } from '../../../schema/schema';
+/**
+ *
+ * @returns all the pickup times from the database
+ */
+export async function fetchPickupData(): Promise<Pickup[]> {
+  const { data: pickupTimes, error } = await supabase
+    .from('pickup_times')
+    .select('*');
 
-// Replace these with your Supabase project URL and API key
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseApiKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-// Initialize the Supabase client
-const supabase = createClient(supabaseUrl ?? '', supabaseApiKey ?? '');
-
-export async function fetchPickupData(): Promise<
-  PostgrestSingleResponse<Schedule[]> | { data: never[]; error: PostgrestError }
-> {
-  try {
-    const { data: pickupTimes, error } = await supabase
-      .from('Pickup_Times')
-      .select('*');
-
-    if (error) {
-      console.error('Error fetching data:', error);
-      return { data: [], error };
-    }
-
-    return { data: pickupTimes } as PostgrestSingleResponse<Schedule[]>;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
+  if (error) {
+    throw new Error(`Error fetching pickup times: ${error.message}`);
   }
+  return pickupTimes || [];
 }
 
-export async function fetchPickupTimesByUUID(
-  uuid: string,
-) {
-  try {
-    const { data: pickupTimes, error } = await supabase
-      .from('Pickup_Times')
-      .select('*')
-      .eq('id', uuid)
-      .single();
+/**
+ *
+ * @param pickupID
+ * @returns fetches a single pickup time by its ID
+ */
+export async function fetchPickupTimesByID(pickupID: string): Promise<Pickup> {
+  const { data: pickupTimes, error } = await supabase
+    .from('pickup_times')
+    .select('*')
+    .eq('id', pickupID)
+    .single();
 
-    if (error) {
-      console.error('Error fetching user data:', error);
-    }
-
-    return pickupTimes;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
+  if (error) {
+    throw new Error(`Error fetching pickup times: ${error.message}`);
   }
+
+  return pickupTimes;
 }
 
-export async function fetchRecentPickupTimes(
-) {
-  try {
-    const { data: pickupTimes, error } = await supabase
-      .from('Pickup_Times')
-      .select('*')
-      .limit(1)
+/**
+ *
+ * @returns most recevnt pickup
+ */
+export async function fetchRecentPickupTimes(): Promise<Pickup[]> {
+  const { data: getTimes, error } = await supabase
+    .from('pickup_times')
+    .select('*')
+    .limit(2);
 
-    if (error) {
-      console.error('Error fetching user data:', error);
-    }
-
-    return pickupTimes;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
+  if (error) {
+    throw new Error(`Error fetching pickup times: ${error.message}`);
   }
+  return getTimes;
 }

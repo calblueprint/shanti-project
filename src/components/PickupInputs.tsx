@@ -8,11 +8,7 @@ export default function PickupInputs(props: {
   placeholder: string;
   inputType: string;
 }) {
-  const {
-    text,
-    placeholder,
-    inputType,
-  } = props;
+  const { text, placeholder, inputType } = props;
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import supabase from '@/api/supabase/createClient';
-import { fetchUserByUUID } from '@/api/supabase/queries/user_queries';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { Button } from '../login/styles';
 
 import NavBar from '../../components/NavBar';
@@ -23,7 +23,7 @@ export default function Checkout() {
       )
         return;
 
-      const data = await fetchUserByUUID(sessionData.session.user.id as string);
+      const data = await fetchUser();
       setDeliveryEnabled(data.delivery_allowed);
     })();
   }, []);
