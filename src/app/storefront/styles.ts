@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { Heart , User, ShoppingCart } from 'react-feather';
+import { Heart, User, ShoppingCart } from 'react-feather';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 

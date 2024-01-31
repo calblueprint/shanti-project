@@ -22,7 +22,6 @@ import {
   RightColumnDiv,
 } from './styles';
 
-
 import { ProductWithQuantity } from '../../schema/schema';
 
 export default function OrderPage() {

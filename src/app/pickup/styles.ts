@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
- 
 import COLORS from '../../styles/colors';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
