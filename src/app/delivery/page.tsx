@@ -17,6 +17,7 @@ import {
   InformationText,
   QtyText,
   NavBarMovedUP,
+  InputStyled,
 } from './styles';
 
 export default function App() {
@@ -39,9 +40,13 @@ export default function App() {
             Shipping
           </Normal700Text>
           <Normal700Text>Name</Normal700Text>
-          <InformationText>Ethan Auyeung</InformationText>
+          <InformationText>
+            <InputStyled placeholder="Ethan Auyeung"></InputStyled>
+          </InformationText>
           <Normal700Text>Address</Normal700Text>
-          <InformationText>123 Telegraph Ave</InformationText>
+          <InformationText>
+            <InputStyled placeholder="123 Telegraph Ave"></InputStyled>
+          </InformationText>
         </InformationContainer>
         <OrderContainer>
           <OrderSummary>

@@ -51,6 +51,23 @@ export const InformationContainer = styled.div`
   height: 400px;
 `;
 
+export const InputStyled = styled.input`
+  width: 100%;
+  height: 100%;
+  border: 1px solid ${COLORS.neutralGrey};
+  background: ${COLORS.lightGrey};
+  background: ${COLORS.lightGrey};
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  padding-left: 20px;
+  color: ${COLORS.black};
+  &::placeholder,
+  ::-webkit-input-placeholder {
+    color: ${COLORS.black};
+  }
+`;
+
 export const InformationText = styled.div`
   width: 730px;
   height: 50px;
@@ -65,7 +82,6 @@ export const InformationText = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding-left: 20px;
 `;
 
 export const OrderContainer = styled.div`
