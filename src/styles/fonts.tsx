@@ -90,6 +90,13 @@ export const Body1Bold = styled.p`
   font-weight: 700;
   line-height: normal;
 `;
+export const Body1Point5 = styled.p`
+  font-family: 'Public Sans';
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
 
 export const Body2 = styled.p`
   font-family: 'Public Sans';

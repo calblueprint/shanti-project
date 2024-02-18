@@ -91,6 +91,7 @@ export const ItemButtons = styled.button`
   width: 290px;
   height: 290px;
   border: transparent;
+  background-color: var(--Greyish, #e6e6e6);
 `;
 
 export const StorefrontWrapper = styled.div`
@@ -107,8 +108,8 @@ export const StorefrontItem = styled.div`
 `;
 
 export const ShopAllText = styled.h1`
-  padding-top: 180px;
-  height: 220px;
+  padding-top: 80px;
+  height: 100px;
   margin-left: 60px;
   font-family: 'Public Sans', sans-serif;
   color: black;

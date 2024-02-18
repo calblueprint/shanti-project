@@ -8,8 +8,6 @@ export const ViewAllDiv = styled.button`
   color: ${COLORS.black};
   background-color: transparent;
   border: transparent;
-  margin-top: -25px;
-  margin-left: 400px;
 `;
 
 export const ImageWithSize = styled(Image)`

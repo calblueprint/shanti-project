@@ -29,10 +29,10 @@ export const HeadingBack = styled.div`
 `;
 
 export const AccountDetails = styled.div`
-  margin-left: 160px;
+  margin-left: 300px;
   margin-top: 50px;
-  width: 350px;
-  height: 290px;
+  width: 500px;
+  height: 350px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -46,10 +46,10 @@ export const AccountDetails = styled.div`
 `;
 
 export const OrderHistory = styled.div`
-  margin-left: 670px;
-  margin-top: -291px;
+  margin-left: 900px;
+  margin-top: -350px;
   margin-bottom: 47px;
-  width: 543.4px;
+  width: 600px;
   height: 290px;
   border-radius: 10px;
   background: var(--White, #fff);
@@ -61,9 +61,9 @@ export const OrderHistory = styled.div`
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-left: 670px;
-  width: 543.4px;
-  height: 290px;
+  margin-left: 900px;
+  width: 600px;
+  height: 300px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -84,12 +84,12 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 350px;
+  width: 300px;
   height: 300px;
   z-index: 1000;
-  margin-top: 92px;
+  margin-top: 120px;
   padding-top: 10px;
-  margin-left: -28px;
+  margin-left: 50px;
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -102,7 +102,7 @@ export const PopUp = styled(ToastContainer)`
 `;
 
 export const FooterMoved = styled(Footer)`
-  transform: translateY(400px);
+  transform: translateY(50px);
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
@@ -121,11 +121,22 @@ export const FavoriteDiv = styled.div`
 
 export const HeartIcon = styled(Heart)`
   color: #333286;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   fill: #333286;
 `;
 
 export const BackButtonDiv = styled.div`
   margin-bottom: 40px;
+`;
+
+export const HeaderDiv = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const ProductNameDiv = styled.div`
+  width: 250px;
 `;

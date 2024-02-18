@@ -14,8 +14,6 @@ import {
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-  ProfileButton,
-  ProfileFont,
 } from '../../components/NavBarFolder/styles';
 
 import { Product } from '../../schema/schema';
@@ -75,13 +73,6 @@ export default function StoreFrontNavBar(props: {
     changeData();
   }, [data]);
   const router = useRouter();
-  const checkDelivery = () => {
-    if (deliveryEnabled) {
-      router.push('/profileScreenDelivery');
-    } else {
-      router.push('/profileScreenPickUp');
-    }
-  };
 
   return (
     <NavBarComp>
@@ -109,10 +100,10 @@ export default function StoreFrontNavBar(props: {
       </ButtonsContainer>
 
       <ButtonsDiv>
-        <ProfileButton onClick={checkDelivery}>
+        <Link href="../profileScreen">
           <UserProfileIcon />
-          <ProfileFont>User</ProfileFont>
-        </ProfileButton>
+          <p>User</p>
+        </Link>
         <Link href="../cart">
           <ShoppingCartIcon />
           <p>Cart</p>
