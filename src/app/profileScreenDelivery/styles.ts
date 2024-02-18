@@ -26,12 +26,12 @@ export const HeadingSpacing = styled.div`
 
 export const HeadingBack = styled.div`
   margin-left: 171px;
-  margin-top: 41px;
+  margin-top: px;
 `;
 
 export const AccountDetails = styled.div`
   margin-left: 189px;
-  margin-top: 73px;
+  margin-top: 80px;
   width: 350px;
   height: 290px;
   border-radius: 10px;
@@ -44,23 +44,31 @@ export const AccountDetails = styled.div`
 `;
 
 export const OrderHistory = styled.div`
-  margin-left: 800px;
+  margin-left: 700px;
   margin-top: -291px;
   margin-bottom: 47px;
   width: 543.4px;
-  height: 343px;
+  height: 290px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-left: 800px;
+  margin-left: 700px;
   width: 543.4px;
-  height: 343px;
+  height: 290px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 `;
 
 export const LogOutButton = styled.button`
@@ -77,7 +85,7 @@ export const LogOutButton = styled.button`
   width: 350px;
   height: 300px;
   z-index: 1000;
-  margin-top: 100px;
+  margin-top: 70px;
   padding-top: 10px;
   padding-right: 10px;
   padding-left: 10px;
@@ -117,4 +125,4 @@ export const HeartIcon = styled(Heart)`
 
 export const BackButtonDiv = styled.div`
   margin-bottom: 68px;
-`
+`;

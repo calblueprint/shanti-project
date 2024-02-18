@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { Heading2, Heading4, Body2, Body3 } from '@/styles/fonts';
+import { Heading2, Heading4, Body2, Body3, Body2Bold } from '@/styles/fonts';
 import {
   addOrRemoveProductFromFavorite,
   arrayOfFavorites,
@@ -36,8 +36,8 @@ function FavoriteSection(props: {
   Favorites: Product[];
   setFavorites: (category: Product[]) => void;
 }) {
-  async function clickFunctions(props: { fav: Product }) {
-    const { fav } = props;
+  async function clickFunctions(props2: { fav: Product }) {
+    const { fav } = props2;
     addOrRemoveProductFromFavorite(fav, false);
     setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
   }
@@ -112,7 +112,7 @@ function AccountDetailSection() {
       <AccountDetails>
         <Heading4>Account Details</Heading4>
         <HeadingSpacing>
-          <Body2>Email</Body2>
+          <Body2Bold>Email</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
           <Body3>{user?.email}</Body3>

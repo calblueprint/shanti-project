@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { Heading2, Heading4, Body2, Body3 } from '@/styles/fonts';
+import { Heading2, Heading4, Body2, Body3, Heading4Bold, Body2Bold } from '@/styles/fonts';
 import {
   addOrRemoveProductFromFavorite,
   arrayOfFavorites,
@@ -45,7 +45,7 @@ function FavoriteSection(props: {
   return (
     <main>
       <FavoritesContainer>
-        <Heading4><b>Favorites</b></Heading4>
+        <Heading4Bold>Favorites</Heading4Bold>
         <ViewAllButton destination="./favorites" />
         {Favorites.slice(0, 2).map(favorite => (
           <FavoriteDiv key={favorite.id}>
@@ -75,7 +75,7 @@ function OrderHistorySection() {
   return (
     <main>
       <OrderHistory>
-        <Heading4><b>Order History</b></Heading4>
+        <Heading4Bold>Order History</Heading4Bold>
         <ViewAllButton destination="./favorites" />
       </OrderHistory>
     </main>
@@ -110,15 +110,15 @@ function AccountDetailSection() {
   return (
     <main>
       <AccountDetails>
-        <Heading4>Account Details</Heading4>
+        <Heading4Bold>Account Details</Heading4Bold>
         <HeadingSpacing>
-          <Body2>Email</Body2>
+          <Body2Bold>Email</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
           <Body3>{user?.email}</Body3>
         </TextSpacing>
         <HeadingSpacing>
-          <Body2>Name</Body2>
+          <Body2Bold>Name</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
           <Body3>
@@ -126,7 +126,7 @@ function AccountDetailSection() {
           </Body3>
         </TextSpacing>
         <HeadingSpacing>
-          <Body2>Phone Number</Body2>
+          <Body2Bold>Phone Number</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
           <Body3>+1 510-123-4567 {/* User?.phone */}</Body3>

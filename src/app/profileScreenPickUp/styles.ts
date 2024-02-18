@@ -21,17 +21,16 @@ export const TextSpacing = styled.div`
   margin-top: 10px;
 `;
 export const HeadingSpacing = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 export const HeadingBack = styled.div`
   margin-left: 171px;
-  margin-top: 41px;
 `;
 
 export const AccountDetails = styled.div`
-  margin-left: 189px;
-  margin-top: 73px;
+  margin-left: 160px;
+  margin-top: 50px;
   width: 350px;
   height: 290px;
   border-radius: 10px;
@@ -40,27 +39,38 @@ export const AccountDetails = styled.div`
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding-right: 30px;
+  padding-top: 29px;
+  padding-right: 29px;
+  padding-left: 29px;
+  padding-bottom: 29px;
 `;
 
 export const OrderHistory = styled.div`
-  margin-left: 800px;
+  margin-left: 670px;
   margin-top: -291px;
   margin-bottom: 47px;
   width: 543.4px;
-  height: 343px;
+  height: 290px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  padding-top: 23px;
+  padding-right: 23px;
+  padding-left: 23px;
+  padding-bottom: 23px;
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-left: 800px;
+  margin-left: 670px;
   width: 543.4px;
-  height: 343px;
+  height: 290px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  padding-top: 23px;
+  padding-right: 23px;
+  padding-left: 23px;
+  padding-bottom: 23px;
 `;
 
 export const LogOutButton = styled.button`
@@ -68,7 +78,7 @@ export const LogOutButton = styled.button`
   color: #fff;
   text-align: center;
   font-size: 25px;
-  font-family: normal;
+  font-family: body1;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -77,8 +87,9 @@ export const LogOutButton = styled.button`
   width: 350px;
   height: 300px;
   z-index: 1000;
-  margin-top: 100px;
+  margin-top: 92px;
   padding-top: 10px;
+  margin-left: -28px;
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -99,13 +110,13 @@ export const NavBarMovedUP = styled(NavBar)`
 `;
 
 export const FavoriteDiv = styled.div`
-display: flex;
-flex-direction: row;
-align-items: start;
-justify-content: space-around;
-width: 100%;
-margin-bottom: 50px;
-margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 30px;
 `;
 
 export const HeartIcon = styled(Heart)`
@@ -116,5 +127,5 @@ export const HeartIcon = styled(Heart)`
 `;
 
 export const BackButtonDiv = styled.div`
-  margin-bottom: 68px;
-`
+  margin-bottom: 40px;
+`;
