@@ -2,18 +2,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
+import supabase from '@/api/supabase/createClient';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
+import { useRouter } from 'next/navigation';
+
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
-import { Product } from '../../schema/schema';
-
 import {
-  ButtonsContainer,
   NavBarComp,
   ButtonsDiv,
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-} from './styles';
+  ProfileButton,
+  ProfileFont,
+} from '../../components/NavBarFolder/styles';
+
+import { Product } from '../../schema/schema';
+
+import { ButtonsContainer } from './styles';
 
 import { buttons } from './buttonValues';
 
@@ -33,6 +40,24 @@ export default function StoreFrontNavBar(props: {
     IsClickedButton,
     setCategoryWord,
   } = props;
+  const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
+  useEffect(() => {
+    (async () => {
+      const { data: sessionData, error } = await supabase.auth.getSession();
+
+      if (error) throw error;
+      if (
+        !sessionData ||
+        !sessionData.session ||
+        !sessionData.session.user ||
+        !sessionData.session.user.id
+      )
+        return;
+
+      const userData = await fetchUser();
+      setDeliveryEnabled(userData.delivery_allowed);
+    })();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,6 +74,14 @@ export default function StoreFrontNavBar(props: {
     };
     changeData();
   }, [data]);
+  const router = useRouter();
+  const checkDelivery = () => {
+    if (deliveryEnabled) {
+      router.push('/profileScreenDelivery');
+    } else {
+      router.push('/profileScreenPickUp');
+    }
+  };
 
   return (
     <NavBarComp>
@@ -76,10 +109,10 @@ export default function StoreFrontNavBar(props: {
       </ButtonsContainer>
 
       <ButtonsDiv>
-        <Link href="../profileScreen">
+        <ProfileButton onClick={checkDelivery}>
           <UserProfileIcon />
-          <p>User</p>
-        </Link>
+          <ProfileFont>User</ProfileFont>
+        </ProfileButton>
         <Link href="../cart">
           <ShoppingCartIcon />
           <p>Cart</p>
