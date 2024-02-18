@@ -45,7 +45,7 @@ function FavoriteSection(props: {
   return (
     <main>
       <FavoritesContainer>
-        <Heading4>Favorites</Heading4>
+        <Heading4><b>Favorites</b></Heading4>
         <ViewAllButton destination="./favorites" />
         {Favorites.slice(0, 2).map(favorite => (
           <FavoriteDiv key={favorite.id}>
@@ -75,8 +75,8 @@ function OrderHistorySection() {
   return (
     <main>
       <OrderHistory>
-        <Heading4>Order History</Heading4>
-        <ViewAllButton destination="./favorites" /> /
+        <Heading4><b>Order History</b></Heading4>
+        <ViewAllButton destination="./favorites" />
       </OrderHistory>
     </main>
   );

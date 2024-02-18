@@ -76,7 +76,7 @@ function OrderHistorySection() {
     <main>
       <OrderHistory>
         <Heading4>Order History</Heading4>
-        <ViewAllButton destination="./favorites" /> /
+        <ViewAllButton destination="./favorites" />
       </OrderHistory>
     </main>
   );
