@@ -44,20 +44,20 @@ export const AccountDetails = styled.div`
 `;
 
 export const OrderHistory = styled.div`
-  margin-left: 700px;
+  margin-left: 800px;
   margin-top: -291px;
   margin-bottom: 47px;
   width: 543.4px;
-  height: 290px;
+  height: 343px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-left: 700px;
+  margin-left: 800px;
   width: 543.4px;
-  height: 290px;
+  height: 343px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -77,7 +77,7 @@ export const LogOutButton = styled.button`
   width: 350px;
   height: 300px;
   z-index: 1000;
-  margin-top: 70px;
+  margin-top: 100px;
   padding-top: 10px;
   padding-right: 10px;
   padding-left: 10px;
@@ -117,4 +117,4 @@ export const HeartIcon = styled(Heart)`
 
 export const BackButtonDiv = styled.div`
   margin-bottom: 68px;
-`;
+`
