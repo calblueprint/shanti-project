@@ -16,10 +16,12 @@ export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
 
 export const UserProfileIcon = styled(User)`
   margin-left: 5px;
+  color: ${COLORS.black};
 `;
 
 export const ShoppingCartIcon = styled(ShoppingCart)`
   margin-left: 3px;
+  color: ${COLORS.black};
 `;
 
 export const NavBarComp = styled.nav`
@@ -60,4 +62,17 @@ export const LocationDiv = styled.div`
 export const Addie = styled.p`
   margin-top: 30px;
   margin-bottom: 30px;
+`;
+
+export const ProfileButton = styled.button`
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+`;
+export const ProfileFont = styled.div`
+  margin-left: 5px;
+  font-size: 18px;
+  font-style: normal;
+  color: ${COLORS.black};
 `;

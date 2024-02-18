@@ -61,6 +61,7 @@ export const HeartIcon = styled(Heart)`
   width: 30px;
   height: 30px;
   fill: #333286;
+  margin-right: 25px;
 `;
 
 export const TransparentButton = styled.button`
@@ -70,4 +71,8 @@ export const TransparentButton = styled.button`
 
 export const NavBarMovedUP = styled(NavBar)`
   position: relative;
+`;
+
+export const ProductNameDiv = styled.div`
+  width: 350px;
 `;

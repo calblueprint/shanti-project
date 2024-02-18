@@ -15,6 +15,7 @@ import {
   OutterFavoriteDiv,
   GlobalStyle,
   OutterBox,
+  ProductNameDiv,
   HeartIcon,
   TransparentButton,
 } from './styles';
@@ -53,7 +54,14 @@ export default function FavoritesPage() {
                 alt={favorite.name}
                 style={{ width: '150px', height: '150px' }}
               />
-              <p>{favorite.name}</p>
+
+              <ProductNameDiv>
+                <p>
+                  {favorite.name}
+                  <br />
+                  Product ID: {favorite.id}
+                </p>
+              </ProductNameDiv>
               <TransparentButton
                 onClick={() => clickFunctions({ fav: favorite })}
               >

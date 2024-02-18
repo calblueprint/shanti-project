@@ -57,3 +57,12 @@ export type ProductWithQuantity = {
   id: number;
   category: string;
 };
+
+export type Address = {
+  id: number;
+  created_at: Date;
+  street: string;
+  city: string;
+  zipcode: string;
+  user_id: number;
+};
