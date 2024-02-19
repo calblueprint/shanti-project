@@ -1,20 +1,18 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
+import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
-  BackButton,
   ImageContainer,
   TextContainer,
   DescriptionContainer,
   ToastPopUP,
 } from './styles';
 import { GlobalStyle } from '../../styles/components';
-import NavBar from '../../components/NavBar';
+import NavBar from '../../components/NavBarFolder/NavBar';
 import { Product } from '../../schema/schema';
 import Buttons from './Buttons';
 
@@ -43,7 +41,6 @@ export default function ItemDisplay({
   return (
     <main>
       <GlobalStyle />
-
       <NavBar />
       <ToastPopUP
         position="top-right"
@@ -51,17 +48,7 @@ export default function ItemDisplay({
         limit={1}
         hideProgressBar
       />
-      <BackButton>
-        <Link href="/storefront">
-          <Image
-            src="/images/Arrow_Left_MD.png"
-            alt="Back Arrow"
-            width={20}
-            height={20}
-          />
-          <span style={{ marginLeft: '8px' }}>Back</span>
-        </Link>
-      </BackButton>
+      <BackButton destination="./storefront" />
       <DescriptionContainer>
         <ImageContainer>
           <img
@@ -75,7 +62,7 @@ export default function ItemDisplay({
           <h4 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             {Item?.category}
           </h4>
-          <Buttons />
+          <Buttons productNumber={params.productId} />
           <p style={{ paddingTop: '50px' }}>Product ID: {Item?.id}</p>
           <p style={{ paddingTop: '20px' }}>Product Details:</p>
           <p>{Item?.description}</p>

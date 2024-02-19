@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { Trash2 } from 'react-feather';
 import COLORS from '../../styles/colors';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
@@ -15,12 +14,59 @@ export const GlobalStyle = createGlobalStyle`
     
   }
 `;
+
+export const PickupContainer = styled.div`
+  width: 730px;
+  height: 400px;
+  padding-left: 22px;
+`;
+
+export const PickupContent = styled.div`
+  width: 730px;
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  border: 1px solid ${COLORS.neutralGrey};
+  background: ${COLORS.lightGrey};
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 20px;
+`;
+
+export const PickupTimeButton = styled.button`
+  background: ${COLORS.lightGrey};
+
+  height: 124px;
+  width: 242px;
+  margin-top: 20px;
+  margin-right: 31px;
+  margin-bottom: 20px;
+
+  border: none;
+  border-radius: 5px;
+
+  color: black;
+  text-align: center;
+  font-family: 'Public Sans';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+`;
+
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: space-around;
-  width: 1000px;
+  width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
 `;
@@ -30,8 +76,9 @@ export const OutterFavoriteDiv = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  width: 1000px;
-  height: 700px;
+
+  width: 800px;
+  height: 500px;
   overflow: scroll;
   margin-top: 10px;
 `;
@@ -56,14 +103,6 @@ export const Backtext = styled.p`
   padding-top: 5px;
 `;
 
-export const TrashIcon = styled(Trash2)`
-  width: 30px;
-  height: 30px;
-  color: black;
-  margin-right: 30px;
-  margin-top: 28px;
-`;
-
 export const NavBarZeroIndex = styled(NavBar)`
   z-index: 0;
   position: fixed;
@@ -80,7 +119,7 @@ export const TransparentButton = styled.button`
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
-  position: relative;
+  position: static;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -92,27 +131,27 @@ export const ButtonsWrapper = styled.div`
   margin-top: 20px;
 `;
 
-export const QuantityButton = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 165px;
-  height: 50px;
-  border-radius: 8px;
-  background-color: ${COLORS.white};
-  border: 2px solid ${COLORS.navy};
-  color: ${COLORS.navy};
+export const QtyText = styled.div`
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: right;
 `;
 
-export const PlusMinusButton = styled.button`
-  width: 25px;
-  height: 25px;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border-color: transparent;
-  font-size: 20px;
-  color: ${COLORS.navy};
+export const ItemText = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const QuantityText = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: right;
 `;
 
 export const Label = styled.p`
@@ -155,7 +194,7 @@ export const OrderTotalDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const LeftColumnDiv = styled.div`
+export const ForceColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 50px;
@@ -172,7 +211,7 @@ export const CheckoutButton = styled.button`
 
   color: var(--White, #fff);
   text-align: center;
-  font-family: Public Sans;
+  font-family: 'Public Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -184,10 +223,25 @@ export const Qty = styled.p`
   padding-left: 290px;
 `;
 
+export const OrderButton = styled.button`
+  margin-top: 26px;
+  width: 350px;
+  height: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  background: ${COLORS.navy};
+  border-radius: 8px;
+  color: ${COLORS.white};
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 200px;
+  margin-left: 150px;
   margin-top: 100px;
 `;
 

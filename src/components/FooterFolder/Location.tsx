@@ -1,4 +1,4 @@
-import { LocationDiv, Addie } from '../styles/components';
+import { LocationDiv, Addie } from '../NavBarFolder/styles';
 
 export default function Location(props: {
   District: string;

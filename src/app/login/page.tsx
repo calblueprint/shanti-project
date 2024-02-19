@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import supabase from '@/api/supabase/createClient';
-import LoginForm from '../../components/LoginForm';
+import LoginForm from '../../components/LoginFormFolder/LoginForm';
 import { GlobalStyle } from '../../styles/components';
 
 import {
@@ -29,7 +29,6 @@ export default function App() {
     setErrorMessage('');
 
     if (error) {
-      console.error('Sign-in error:', error);
       setErrorMessage('Incorrect email or password');
     } else {
       window.location.href = '/storefront';

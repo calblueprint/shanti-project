@@ -1,7 +1,7 @@
 import supabase from '../createClient';
 
 import { fetchUser } from './user_queries';
-import { Product } from '../../../schema/schema';
+import { Product, ProductWithQuantity } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
 
 // define cart item type
@@ -11,11 +11,6 @@ export type CartItem = {
   quantity: number;
 };
 
-export type ProductWithQuantity = {
-  name: string;
-  quantity: number;
-  id:number;
-}
 
 /**
  * get cart item by id
@@ -24,9 +19,9 @@ export type ProductWithQuantity = {
  */
 export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
   const { data, error } = await supabase
-    .from('cart_items')
+    .from('order_product')
     .select('*')
-    .match({ id: cartItemID })
+    .eq('id', cartItemID)
     .single();
   if (error) {
     throw new Error(`Error fetching cart item: ${error.message}`);
@@ -40,23 +35,33 @@ export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
  */
 export async function fetchCart(): Promise<CartItem[]> {
   const user = await fetchUser();
+
+  // Check if the user has a cart_id
+  if (!user.cart_id) {
+    throw new Error('User does not have a cart.');
+  }
+
   const cartID = user.cart_id;
   const { data, error } = await supabase
     .from('order')
     .select('*')
     .match({ id: cartID })
-    .single();
+    .limit(1);
+
   if (error) {
     throw new Error(`Error fetching cart: ${error.message}`);
   }
-  const products = data.product_id_array;
-  const productPromises = products.map(async (productID: number) => {
-    const product = await fetchCartItem(productID);
-    return product;
-  });
-  const fetchedProducts = await Promise.all(productPromises);
+  const products = data[0].order_product_id_array;
+  if (products !== null && products !== undefined) {
+    const productPromises = products.map(async (productID: number) => {
+      const product = await fetchCartItem(productID);
+      return product;
+    });
+    const fetchedProducts = await Promise.all(productPromises);
+    return fetchedProducts;
+  }
 
-  return fetchedProducts;
+  return [] as CartItem[];
 }
 
 export async function fetchCartItems(): Promise<Product[]> {
@@ -66,19 +71,7 @@ export async function fetchCartItems(): Promise<Product[]> {
     return product;
   });
   const fetchedProducts = await Promise.all(productPromises);
-  
-  return fetchedProducts;
-}
 
-export async function fetchCartItemsWithQuantity(): Promise<ProductWithQuantity[]> {
-  const cart = await fetchCart();
-  const productPromises = cart.map(async (item: CartItem) => {
-    const product = await fetchProductByID(item.product_id);
-    return { name: product.name, quantity: item.quantity, id: product.id };
-  });
-
-  const fetchedProducts = await Promise.all(productPromises);
-  
   return fetchedProducts;
 }
 
@@ -92,7 +85,7 @@ export async function fetchCartItemsWithQuantity(): Promise<ProductWithQuantity[
 async function updateCart(cartID: number, cartIDArray: number[]) {
   await supabase
     .from('order')
-    .update({ cart_id_array: cartIDArray })
+    .update({ order_product_id_array: cartIDArray })
     .match({ id: cartID });
 }
 
@@ -105,16 +98,22 @@ export async function addToCart(productID: number, quantity: number) {
   const items = await fetchCart();
 
   // check if product is already in cart
-  const existingItem = items.find(item => item.product_id === productID);
+
+  const existingItem = items.find(
+    item => Number(item.product_id) === Number(productID),
+  );
+
   if (existingItem) {
-    const newQuantity = existingItem.quantity + quantity;
-    await supabase
-      .from('cart_items')
-      .update({ quantity: newQuantity })
-      .match({ id: existingItem.id });
+    if (existingItem !== undefined && existingItem !== null) {
+      const newQuantity = existingItem.quantity + quantity;
+      await supabase
+        .from('order_product')
+        .update({ quantity: newQuantity })
+        .match({ id: existingItem.id });
+    }
   } else {
     const { data, error } = await supabase
-      .from('cart_items')
+      .from('order_product')
       .insert([{ product_id: productID, quantity }])
       .select('*')
       .single();
@@ -142,7 +141,7 @@ export async function decreaseFromCart(productID: number, quantity: number) {
     const newQuantity = existingItem.quantity - quantity;
     if (newQuantity <= 0) {
       await supabase
-        .from('cart_items')
+        .from('order_product')
         .delete()
         .match({ id: existingItem.id })
         .select('*')
@@ -155,11 +154,11 @@ export async function decreaseFromCart(productID: number, quantity: number) {
       const index = productIdArray.indexOf(existingItem.id);
       productIdArray.splice(index, 1);
       updateCart(cartID, productIdArray);
-    } else { 
+    } else {
       await supabase
-        .from('cart_items')
+        .from('order_product')
         .update({ quantity: newQuantity })
-        .match({ id: existingItem.id });
+        .eq('id', existingItem.id);
     }
   }
 }
@@ -179,4 +178,36 @@ export async function clearCart() {
   const user = await fetchUser();
   const cartID = user.cart_id;
   updateCart(cartID, []);
+}
+
+/**
+ * @returns the number of items stored within the cart if there is no items then returns 0
+ */
+
+export async function totalNumberOfItemsInCart(): Promise<number> {
+  const cart = await fetchCart();
+  if (cart.length === 0 || cart === null || cart === null) {
+    return 0;
+  }
+  return cart.reduce((acc, item) => acc + item.quantity, 0);
+}
+
+export async function fetchCartItemsWithQuantity(): Promise<
+  ProductWithQuantity[]
+> {
+  const cart = await fetchCart();
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
+    return {
+      name: product.name,
+      quantity: item.quantity,
+      photo: product.photo,
+      id: product.id,
+      category: product.category,
+    };
+  });
+
+  const fetchedProducts = await Promise.all(productPromises);
+
+  return fetchedProducts;
 }

@@ -1,40 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { FormHeaders, Input } from '../app/login/styles';
+import { FormHeaders, Input } from '../../app/login/styles';
 
-export default function InputFields(props: {
+export default function PickupInputs(props: {
   text: string;
   placeholder: string;
   inputType: string;
-  changeUserName: (newUsername: string) => void;
-  changePassword: (newPassword: string) => void;
-  isPassword: boolean;
 }) {
-  const {
-    text,
-    placeholder,
-    inputType,
-    changeUserName,
-    changePassword,
-    isPassword,
-  } = props;
+  const { text, placeholder, inputType } = props;
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputValue(value);
-
-    if (isPassword) {
-      changePassword(value);
-    } else {
-      changeUserName(value);
-    }
   };
 
   return (
     <main>
-      <div id="userInfo">
+      <div id="pickupInfo">
         <FormHeaders>{text}</FormHeaders>
         <Input
           type={inputType}

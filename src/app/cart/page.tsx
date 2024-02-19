@@ -1,106 +1,79 @@
 'use client';
 
-import { ArrowLeft } from 'react-feather';
-
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
+import BackButton from '../../components/BackButton/BackButton';
+
+import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 
 import {
-  FavoriteDiv,
-  HeaderShiftLeft,
-  OrderSummaryDiv,
+  fetchCartItemsWithQuantity,
+  totalNumberOfItemsInCart,
+} from '../../api/supabase/queries/cart_queries';
+import CartItem from './cartItem';
+import NavBar from '../../components/NavBarFolder/NavBar';
+import {
   OutterFavoriteDiv,
-  HeaderShiftRight,
-  OrderTotalDiv,
-  PShiftLeft,
-  WhiteBackgroundDiv,
-  BackDiv,
   GlobalStyle,
-  Backtext,
-  TrashIcon,
-  TransparentButton,
-  NavBarMovedUP,
   PageDiv,
-  Label,
-  LabelBox,
   CheckoutButton,
-  ItemSummaryDiv,
-  ForceColumnDiv,
+  LeftColumnDiv,
   RightColumnDiv,
-  Qty,
-  PShiftRight,
 } from './styles';
 
-import Buttons from './Buttons';
-
-import { Product } from '../../schema/schema';
+import { ProductWithQuantity } from '../../schema/schema';
 
 export default function OrderPage() {
-  const [Cart, setCart] = useState<Product[]>([]);
+  const [numberOfItems, setNumberOfItems] = useState(0);
+  const [cart, setCart] = useState<ProductWithQuantity[]>([]);
+  const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
   const router = useRouter();
-  async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[]; // change the function to grab the cartItems as products
-    setCart(data);
-  }
   useEffect(() => {
+    async function fetchProducts() {
+      setNumberOfItems(await totalNumberOfItemsInCart());
+      setCart(await fetchCartItemsWithQuantity());
+      const data = await fetchUser();
+      setDeliveryEnabled(data.delivery_allowed);
+    }
+
     fetchProducts();
   }, []);
 
+  const checkDelivery = () => {
+    if (deliveryEnabled) {
+      router.push('/delivery');
+    } else {
+      router.push('/pickup');
+    }
+  };
+
   return (
     <div>
-      <NavBarMovedUP />
+      <NavBar />
       <GlobalStyle />
       <PageDiv>
-        <ForceColumnDiv>
-          <BackDiv onClick={() => router.push('/storefront')}>
-            <ArrowLeft />
-            <Backtext>Back</Backtext>
-          </BackDiv>
+        <LeftColumnDiv>
+          <BackButton destination="./storefront" />
           <h1>Cart</h1>
           <OutterFavoriteDiv>
-            {Cart.map(cart => (
-              <FavoriteDiv key={cart.id}>
-                <img
-                  src={cart.photo}
-                  alt={cart.name}
-                  style={{ width: '150px', height: '150px' }}
-                />
-                <LabelBox>
-                  <Label>{cart.name}</Label>
-                  <p>Category: {cart.category}</p>
-                </LabelBox>
-                <Buttons />
-                <TransparentButton
-                // {onClick={() => clickFunctions({ fav: favorite })}} <- change to remove item entirely
-                >
-                  <TrashIcon />
-                </TransparentButton>
-              </FavoriteDiv>
+            {cart.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                cartItemProduct={cartItem}
+                setCart={setCart}
+                cart={cart}
+                setNumberOfItems={setNumberOfItems}
+                numberOfItems={numberOfItems}
+              />
             ))}
           </OutterFavoriteDiv>
-        </ForceColumnDiv>
+        </LeftColumnDiv>
         <RightColumnDiv>
-          <WhiteBackgroundDiv>
-            <HeaderShiftLeft>Order Summary</HeaderShiftLeft>
-            <Qty>Qty.</Qty>
-            <OrderSummaryDiv>
-              {Cart.map(cart => (
-                <ItemSummaryDiv key={cart.id}>
-                  <PShiftLeft>{cart.name}</PShiftLeft>
-                  <PShiftRight>{cart.quantity}</PShiftRight>
-                </ItemSummaryDiv>
-              ))}
-            </OrderSummaryDiv>
-            <OrderTotalDiv>
-              <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-              <HeaderShiftRight>10</HeaderShiftRight>
-            </OrderTotalDiv>
-          </WhiteBackgroundDiv>
-
+          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
           <CheckoutButton
-            // Add Checkout Function by using onClick
-            onClick={() => router.push('/orderConfirmationPickUp')}
+            // change this function so that the flow makes sense and that there is items within the cart
+            onClick={() => checkDelivery()}
           >
             Check Out
           </CheckoutButton>

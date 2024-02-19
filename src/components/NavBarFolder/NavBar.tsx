@@ -1,8 +1,11 @@
+import supabase from '@/api/supabase/createClient';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { totalNumberOfItemsInCart } from '../api/supabase/queries/product_queries';
+import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
   NavBarComp,
@@ -10,7 +13,9 @@ import {
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-} from '../styles/components';
+  ProfileButton,
+  ProfileFont,
+} from './styles';
 
 export default function NavBar({ ...rest }) {
   const [data, setData] = useState(0);
@@ -22,6 +27,7 @@ export default function NavBar({ ...rest }) {
     };
     fetchData();
   }, []);
+
   useEffect(() => {
     const changeData = async () => {
       if (data > 0) {
@@ -48,9 +54,11 @@ export default function NavBar({ ...rest }) {
           <p>User</p>
         </Link>
         <Link href="../cart">
-          <ShoppingCartIcon />
-          <p>Cart</p>
-          <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
+          <ProfileButton>
+            <ShoppingCartIcon />
+            <ProfileFont>Cart</ProfileFont>
+            <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
+          </ProfileButton>
         </Link>
       </ButtonsDiv>
     </NavBarComp>

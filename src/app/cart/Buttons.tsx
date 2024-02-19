@@ -1,17 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { ButtonsWrapper, QuantityButton, PlusMinusButton } from './styles';
 
-export default function Buttons() {
-  const [quantity, setQuantity] = useState<number>(1);
+import {
+  decreaseFromCart,
+  addToCart,
+} from '../../api/supabase/queries/cart_queries';
+
+import { ProductWithQuantity } from '../../schema/schema';
+
+export default function Buttons(props: {
+  productNumber: number;
+  quantity: number;
+  setNumberOfItems: (count: number) => void;
+  numberOfItems: number;
+  count: number;
+  setCount: (count: number) => void;
+  cart: ProductWithQuantity[];
+  setCart: (category: ProductWithQuantity[]) => void;
+}) {
+  const {
+    productNumber,
+
+    setNumberOfItems,
+    numberOfItems,
+    count,
+    setCount,
+    cart,
+    setCart,
+  } = props;
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    setCount(count + 1);
+    addToCart(productNumber, 1);
+    setNumberOfItems(numberOfItems + 1);
+    const indexOfItem = cart.findIndex(item => item.id === productNumber);
+    cart[indexOfItem].quantity += 1;
+    setCart(cart);
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    if (count > 1) {
+      setCount(count - 1);
+      decreaseFromCart(productNumber, 1);
+      setNumberOfItems(numberOfItems - 1);
+      const indexOfItem = cart.findIndex(item => item.id === productNumber);
+      cart[indexOfItem].quantity -= 1;
+      setCart(cart);
     }
   };
 
@@ -23,7 +58,7 @@ export default function Buttons() {
         <PlusMinusButton type="button" onClick={decreaseQuantity}>
           –
         </PlusMinusButton>
-        <span>{quantity}</span>
+        <span>{count}</span>
         <PlusMinusButton type="button" onClick={increaseQuantity}>
           +
         </PlusMinusButton>

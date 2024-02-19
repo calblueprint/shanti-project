@@ -1,31 +1,30 @@
 'use client';
 
-import { ArrowLeft } from 'react-feather';
-
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import BackButton from '../../components/BackButton/BackButton';
+
 import {
   arrayOfFavorites,
   addOrRemoveProductFromFavorite,
 } from '../../api/supabase/queries/user_queries';
 
+import NavBar from '../../components/NavBarFolder/NavBar';
+
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-  BackDiv,
   GlobalStyle,
   OutterBox,
-  Backtext,
+  ProductNameDiv,
   HeartIcon,
   TransparentButton,
-  NavBarMovedUP,
-} from '../profileScreen/styles';
+} from './styles';
 
 import { Product } from '../../schema/schema';
 
 export default function FavoritesPage() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
-  const router = useRouter();
+
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
     setFavorites(data);
@@ -42,13 +41,10 @@ export default function FavoritesPage() {
 
   return (
     <div>
-      <NavBarMovedUP />
+      <NavBar />
       <GlobalStyle />
       <OutterBox>
-        <BackDiv onClick={() => router.push('/profileScreen')}>
-          <ArrowLeft />
-          <Backtext>Back</Backtext>
-        </BackDiv>
+        <BackButton destination="./profileScreen" />
         <h1>Favorites</h1>
         <OutterFavoriteDiv>
           {Favorites.map(favorite => (
@@ -58,7 +54,14 @@ export default function FavoritesPage() {
                 alt={favorite.name}
                 style={{ width: '150px', height: '150px' }}
               />
-              <p>{favorite.name}</p>
+
+              <ProductNameDiv>
+                <p>
+                  {favorite.name}
+                  <br />
+                  Product ID: {favorite.id}
+                </p>
+              </ProductNameDiv>
               <TransparentButton
                 onClick={() => clickFunctions({ fav: favorite })}
               >

@@ -6,16 +6,15 @@ export const LoginBox = styled.div`
   flex-direction: column;
   width: 500px;
   height: 420px;
-  margin-left: 450px;
-  margin-top: 80px;
-  border-radius: 10px;
-  background: ${COLORS.white};
-  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.18);
+  margin-left: 650px;
+  margin-top: 120px;
+  border: 1px solid #b3b3b3;
 `;
 
 export const LoginContent = styled.div`
   margin-left: 40px;
   margin-top: 30px;
+  text-color: black;
 `;
 
 export const Button = styled.button`
@@ -46,6 +45,8 @@ export const WelcomeSign = styled.div`
 export const Input = styled.input`
   background: ${COLORS.white};
   stroke-width: 1px;
+  color: ${COLORS.black};
+
   stroke: ${COLORS.navy};
   width: 420px;
   height: 40px;
@@ -79,12 +80,4 @@ export const ErrorMessage = styled.div`
 export const Fullscreen = styled.div`
   width: 1440px;
   height: 800px;
-`;
-export const Img = styled.div`
-  background-color: yellow;
-  align-self: flex - start;
-  justify-self: flex - start;
-  height: 50px;
-  width: 110px;
-  margin: 20px;
 `;
