@@ -18,6 +18,7 @@ export type Order = {
   status: string; // bigint null
   pickup_time: number; // bigint null
   created_at: string; // timestamp with time zone not null default now();
+  order_product_array: number[]; // number array with order ids
 };
 
 export type Pickup = {

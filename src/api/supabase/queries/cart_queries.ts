@@ -1,6 +1,8 @@
 import supabase from '../createClient';
 
 import { fetchUser } from './user_queries';
+import { Product } from '../../../schema/schema';
+import { fetchProductByID } from './product_queries';
 
 // define cart item type
 export type CartItem = {
@@ -8,6 +10,12 @@ export type CartItem = {
   product_id: number;
   quantity: number;
 };
+
+export type ProductWithQuantity = {
+  name: string;
+  quantity: number;
+  id:number;
+}
 
 /**
  * get cart item by id
@@ -50,6 +58,31 @@ export async function fetchCart(): Promise<CartItem[]> {
 
   return fetchedProducts;
 }
+
+export async function fetchCartItems(): Promise<Product[]> {
+  const cart = await fetchCart();
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
+    return product;
+  });
+  const fetchedProducts = await Promise.all(productPromises);
+  
+  return fetchedProducts;
+}
+
+export async function fetchCartItemsWithQuantity(): Promise<ProductWithQuantity[]> {
+  const cart = await fetchCart();
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
+    return { name: product.name, quantity: item.quantity, id: product.id };
+  });
+
+  const fetchedProducts = await Promise.all(productPromises);
+  
+  return fetchedProducts;
+}
+
+
 
 /**
  * update cart
@@ -122,6 +155,11 @@ export async function decreaseFromCart(productID: number, quantity: number) {
       const index = productIdArray.indexOf(existingItem.id);
       productIdArray.splice(index, 1);
       updateCart(cartID, productIdArray);
+    } else { 
+      await supabase
+        .from('cart_items')
+        .update({ quantity: newQuantity })
+        .match({ id: existingItem.id });
     }
   }
 }

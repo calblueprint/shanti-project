@@ -77,7 +77,8 @@ export async function addOrRemoveProductFromFavorite(
   const productID = product.id;
 
   if (isFav) {
-    favItems.push();
+    
+    favItems.push(productID);
   } else {
     const index = favItems.indexOf(productID);
     favItems.splice(index, 1);
