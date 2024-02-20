@@ -1,5 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
 
 interface OrderDetailsProps {
   date: string;
@@ -25,9 +26,9 @@ export default function OrderDetails(props: OrderDetailsProps) {
           {status === 'Confirmed' ? '✓' : '✗'} {status}
         </div>
       </div>
-      <button type="button" onClick={viewOrder}>
-        View order
-      </button>
+      <ViewOrderButton type="button" onClick={viewOrder}>
+        View order <ArrowIcon />
+      </ViewOrderButton>
     </div>
   );
 }

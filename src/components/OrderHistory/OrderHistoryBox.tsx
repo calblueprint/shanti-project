@@ -1,9 +1,13 @@
+'use client';
+
 // Importing the required components and styles
 import React, { useState, useEffect } from 'react';
 import { Order, Product} from '../../schema/schema';
 import {getOrderById, fetchProductsFromOrder } from '../../api/supabase/queries/order_queries';
 import ImageCarousel from './ImageCarousel';
 import OrderHistoryText from './OrderHistoryText';
+import { GlobalStyle } from '../../styles/components';
+
 import { containerStyle, imageGalleryStyle, viewButtonStyle } from './styles'; // Update with the actual path to your styles.ts file
 
 interface OrderDetailsWithProductsProps {
@@ -40,17 +44,20 @@ export default function OrderDetailsWithProducts({ orderId }: OrderDetailsWithPr
     return <div>Order not found.</div>;
   }
 
+
+
   const imageUrls = products.map(product => product.photo);
 
   return (
     <div>
+      <div>
       <OrderHistoryText
         date={order.created_at}
         orderNumber={order.id.toString()}
         status={order.status}
       />
       <ImageCarousel images={imageUrls} />
-
+      </div>
     </div>
   );
 }

@@ -75,6 +75,7 @@ export async function fetchOrdersByUser(): Promise<Order[]> {
   return data;
 }
 
+
 /**
  * gets all orders by user id and sorted it by creation data
  * @param Order[] - An array of Order objects.
@@ -93,6 +94,12 @@ export async function fetchOrdersByUserIdSorted(): Promise<Order[]> {
 export async function fetchNOrdersByUserIdSorted(n: number): Promise<Order[]> {
   const orders = await fetchOrdersByUser();
   return sortOrdersByCreated(orders).slice(0, n);
+}
+
+export async function fetchOrderIdsByUserIdSorted(): Promise<number[]> {
+  const ordersProm = await fetchOrdersByUser();
+  const orders = sortOrdersByCreated(ordersProm);
+  return orders.map(order => order.id);
 }
 
 export async function fetchOrderProductById(
