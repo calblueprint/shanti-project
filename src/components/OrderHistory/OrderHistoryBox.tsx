@@ -2,8 +2,11 @@
 
 // Importing the required components and styles
 import React, { useState, useEffect } from 'react';
-import { Order, Product} from '../../schema/schema';
-import {getOrderById, fetchProductsFromOrder } from '../../api/supabase/queries/order_queries';
+import { Order, Product } from '../../schema/schema';
+import {
+  getOrderById,
+  fetchProductsFromOrder,
+} from '../../api/supabase/queries/order_queries';
 import ImageCarousel from './ImageCarousel';
 import OrderHistoryText from './OrderHistoryText';
 
@@ -11,7 +14,9 @@ interface OrderDetailsWithProductsProps {
   orderId: number;
 }
 
-export default function OrderDetailsWithProducts({ orderId }: OrderDetailsWithProductsProps) {
+export default function OrderDetailsWithProducts({
+  orderId,
+}: OrderDetailsWithProductsProps) {
   const [order, setOrder] = useState<Order | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,8 +29,7 @@ export default function OrderDetailsWithProducts({ orderId }: OrderDetailsWithPr
         const fetchedProducts = await fetchProductsFromOrder(orderId);
         setOrder(fetchedOrder);
         setProducts(fetchedProducts);
-      } 
-      finally {
+      } finally {
         setLoading(false);
       }
     };
@@ -41,19 +45,17 @@ export default function OrderDetailsWithProducts({ orderId }: OrderDetailsWithPr
     return <div>Order not found.</div>;
   }
 
-
-
   const imageUrls = products.map(product => product.photo);
 
   return (
     <div>
       <div>
-      <OrderHistoryText
-        date={order.created_at}
-        orderNumber={order.id.toString()}
-        status={order.status}
-      />
-      <ImageCarousel images={imageUrls} />
+        <OrderHistoryText
+          date={order.created_at}
+          orderNumber={order.id.toString()}
+          status={order.status}
+        />
+        <ImageCarousel images={imageUrls} />
       </div>
     </div>
   );

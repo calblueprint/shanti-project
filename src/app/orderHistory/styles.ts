@@ -4,7 +4,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
 
-
 export const FooterMoved = styled(Footer)`
   transform: translateY(50px);
 `;
@@ -26,17 +25,16 @@ export const OutterBox = styled.div`
   margin-left: 500px;
 `;
 
-
 export const OrderHistoryContainer = styled.div`
-display: flex;
-flex-direction: column;
-border-radius: 10px;
-background: var(--White, #fff);
-box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-width: 900px;
-height: 1021px;
-overflow: scroll;
-margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: var(--White, #fff);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 900px;
+  height: 1021px;
+  overflow: scroll;
+  margin-top: 10px;
 `;
 
 export const OrderHistoryBox = styled.div`

@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
-
 export const containerStyle = styled.div`
   width: 250px;
   height: 250px;
@@ -31,7 +30,6 @@ export const viewButtonStyle = {
   cursor: 'pointer',
   // Add more styles as needed
 };
-
 
 export const ViewOrderButton = styled.button`
   overflow: hidden;

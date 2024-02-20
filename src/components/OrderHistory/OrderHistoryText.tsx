@@ -18,7 +18,14 @@ export default function OrderDetails(props: OrderDetailsProps) {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px',
+      }}
+    >
       <div>
         <div>{date}</div>
         <div>Order No. {orderNumber}</div>
@@ -27,7 +34,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </div>
       </div>
       <ViewOrderButton type="button" onClick={viewOrder}>
-        View order <ArrowIcon alt=">"/>
+        View order <ArrowIcon alt=">" />
       </ViewOrderButton>
     </div>
   );
