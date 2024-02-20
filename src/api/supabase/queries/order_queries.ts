@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import { Order, OrderProduct } from '../../../schema/schema';
+import { Order, OrderProduct , Product } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import { fetchProductByID } from './product_queries';
 import supabase from '../createClient';
@@ -109,14 +109,14 @@ export async function fetchOrderProductById(
   return orderProduct;
 }
 
-export async function fetchProductFromOrderProduct(orderId: number) {
-  const orderProduct = await fetchOrderProductById(orderId);
+export async function fetchProductFromOrderProduct(orderProductId: number): Promise<Product>{
+  const orderProduct = await fetchOrderProductById(orderProductId);
   const product = await fetchProductByID(orderProduct.product_id);
   return product;
 
 }
 
-export async function fetchProductsFromOrder(orderId: number) {
+export async function fetchProductsFromOrder(orderId: number):Promise<Product[]> {
   const order = await getOrderById(orderId);
   const products = order.order_product_id_array;
 
