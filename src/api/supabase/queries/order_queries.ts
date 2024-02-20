@@ -137,3 +137,21 @@ export async function fetchProductsFromOrder(
 
   return fetchedProducts;
 }
+
+export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
+  const order = await fetchNOrdersByUserIdSorted(1);
+  const orderProductIds = order[0].order_product_id_array;
+
+  const orderProducts = await Promise.all(
+    orderProductIds.map(async orderProductId => {
+      try {
+        const orderProduct = await fetchOrderProductById(orderProductId);
+        return orderProduct;
+      } catch (error) {
+        throw new Error(`Error fetching order product array.`);
+      }
+    }),
+  );
+
+  return orderProducts;
+}
