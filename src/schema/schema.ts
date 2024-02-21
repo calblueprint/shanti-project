@@ -10,6 +10,9 @@ export type User = {
   cart_id: number; // UUID
   address_id: string; // UUID
   fav_items: number[]; // JSONB with item as key and quantity as value
+  num_pets: number; // Integer value containing number of pets 
+  phone_number: string; // User's phone number for pick up orders
+  pet_perscription: string[]; // JSONB with pet_name as key and perscription as value
 };
 
 export type Order = {
