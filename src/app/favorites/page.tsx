@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import BackButton from '../../components/BackButton/BackButton';
 
+import { useRouter } from 'next/navigation';
+
 import {
   arrayOfFavorites,
   addOrRemoveProductFromFavorite,
@@ -18,12 +20,14 @@ import {
   ProductNameDiv,
   HeartIcon,
   TransparentButton,
+  ViewItem,
 } from './styles';
 
 import { Product } from '../../schema/schema';
 
 export default function FavoritesPage() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
+  const router = useRouter();
 
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
@@ -61,7 +65,10 @@ export default function FavoritesPage() {
                   <br />
                   Product ID: {favorite.id}
                 </p>
+                <ViewItem onClick={() => router.push(`/${favorite.id}`)}>View Item</ViewItem>
               </ProductNameDiv>
+
+
               <TransparentButton
                 onClick={() => clickFunctions({ fav: favorite })}
               >
