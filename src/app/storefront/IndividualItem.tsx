@@ -33,7 +33,7 @@ export default function IndividualItem(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
-  var hoverMessage = 'Test';
+  var hoverMessage = '';
 
   async function clickFunction() {
     addOrRemoveProductFromFavorite(product, !IsFavorite);

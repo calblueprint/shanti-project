@@ -116,7 +116,7 @@ export const ShopAllText = styled.h1`
   color: black;
 `;
 
-export const HeartIcon = styled(Heart)<props>`
+export const HeartIcon = styled(Heart) <props>`
   color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
