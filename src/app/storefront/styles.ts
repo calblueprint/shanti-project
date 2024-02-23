@@ -6,6 +6,8 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
+import { Body1 } from '@/styles/fonts';
+
 export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
@@ -116,7 +118,7 @@ export const ShopAllText = styled.h1`
   color: black;
 `;
 
-export const HeartIcon = styled(Heart) <props>`
+export const HeartIcon = styled(Heart)<props>`
   color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
@@ -195,8 +197,8 @@ export const Addie = styled.p`
 `;
 
 export const Hover = styled.p<props>`
-  display: ${props => (props.isHovering ? 'block' : 'none')};
-  transform: translate(180px, -300px);
+  visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
+  transform: translate(180px, -340px);
   color: black;
   border: none;
   width: 156px;
@@ -206,5 +208,14 @@ export const Hover = styled.p<props>`
   box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
   padding-top: 3px;
   padding-bottom: 3px;
-  position: fixed;
+  position: relative;
+`;
+
+export const Body1Translated = styled(Body1)`
+  transform: translateY(-100px);
+`;
+
+export const OutterDiv = styled.div`
+  width: 300px;
+  height: 375px;
 `;
