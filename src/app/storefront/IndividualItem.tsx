@@ -26,6 +26,7 @@ export default function IndividualItem(props: {
   const [IsFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
   const [hovering, setHovering] = useState(false);
+  var hoverMessage = '';
 
   useEffect(() => {
     async function fetchProducts() {
@@ -36,8 +37,6 @@ export default function IndividualItem(props: {
     fetchProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
-
-  var hoverMessage = '';
 
   async function clickFunction() {
     addOrRemoveProductFromFavorite(product, !IsFavorite);
@@ -62,20 +61,11 @@ export default function IndividualItem(props: {
           <HeartIcon isHovering={hovering} isClicked={IsFavorite} />
         </HeartContainer>
         <Hover isHovering={hovering} isClicked={IsFavorite}>
-          {hoverMessage}
+          {IsFavorite ? "Add to favorites" : "Remove from favorites"}
         </Hover>
       </StorefrontItem>
       <Body1Translated>{product.name}</Body1Translated>
     </OutterDiv>
   );
 
-  async function hoverButton() {
-    if (IsFavorite) {
-      hoverMessage = 'Remove from favorites';
-      console.log(hoverMessage);
-    } else {
-      hoverMessage = 'Add to favorites';
-      console.log(hoverMessage);
-    }
-  }
 }
