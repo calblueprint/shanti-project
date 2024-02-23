@@ -116,7 +116,7 @@ export const ShopAllText = styled.h1`
   color: black;
 `;
 
-export const HeartIcon = styled(Heart) <props>`
+export const HeartIcon = styled(Heart)<props>`
   color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
@@ -194,7 +194,7 @@ export const Addie = styled.p`
   margin-bottom: 30px;
 `;
 
-export const Hover = styled.p <props>`
+export const Hover = styled.p<props>`
   display: ${props => (props.isHovering ? 'block' : 'none')};
   transform: translate(180px, -300px);
   color: black;
@@ -202,8 +202,9 @@ export const Hover = styled.p <props>`
   width: 156px;
   height: 26px;
   border-radius: 8px;
-  background: var(--Light-Periwinkle, #F4F7FF);
-  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.20);
+  background: var(--Light-Periwinkle, #f4f7ff);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
   padding-top: 3px;
   padding-bottom: 3px;
+  position: fixed;
 `;

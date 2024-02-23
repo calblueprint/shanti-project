@@ -33,7 +33,7 @@ export default function IndividualItem(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
-  var hoverMessage = "";
+  var hoverMessage = 'Test';
 
   async function clickFunction() {
     addOrRemoveProductFromFavorite(product, !IsFavorite);
@@ -49,11 +49,14 @@ export default function IndividualItem(props: {
             style={{ width: '250px', height: '250px' }}
           />
         </ItemButtons>
-        <Hover isHovering={hovering} isClicked={IsFavorite}>{hoverMessage}</Hover>
-        <HeartContainer onClick={() => clickFunction()}
-          onMouseOver={() => hoverButton()}
+        <Hover isHovering={hovering} isClicked={IsFavorite}>
+          {hoverMessage}
+        </Hover>
+        <HeartContainer
+          onClick={() => clickFunction()}
           onMouseEnter={() => setHovering(true)}
-          onMouseLeave={() => setHovering(false)}>
+          onMouseLeave={() => setHovering(false)}
+        >
           <HeartIcon isHovering={hovering} isClicked={IsFavorite} />
         </HeartContainer>
       </StorefrontItem>
@@ -63,12 +66,11 @@ export default function IndividualItem(props: {
 
   async function hoverButton() {
     if (IsFavorite) {
-      hoverMessage = "Remove from favorites";
-      console.log(hoverMessage)
+      hoverMessage = 'Remove from favorites';
+      console.log(hoverMessage);
     } else {
-      hoverMessage = "Add to favorites";
-      console.log(hoverMessage)
+      hoverMessage = 'Add to favorites';
+      console.log(hoverMessage);
     }
   }
-
 }
