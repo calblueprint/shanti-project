@@ -8,6 +8,8 @@ import { GlobalStyle, ShopAllText } from './styles';
 import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
+import { Heading1 } from '@/styles/fonts';
+
 import StoreFrontNavBar from './StoreFrontNavBar';
 
 export default function App() {
@@ -44,7 +46,9 @@ export default function App() {
         setCategoryWord={setCategoryWord}
       />
       <GlobalStyle />
-      <ShopAllText>Shop {CategoryWord}</ShopAllText>
+      <ShopAllText>
+        <Heading1>Shop {CategoryWord}</Heading1>
+      </ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />
     </main>
