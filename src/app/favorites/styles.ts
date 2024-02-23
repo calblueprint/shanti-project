@@ -76,3 +76,22 @@ export const NavBarMovedUP = styled(NavBar)`
 export const ProductNameDiv = styled.div`
   width: 350px;
 `;
+
+export const ViewItem = styled.button`
+  background: #1B3679;
+  color: #FBFBFB;
+  text-align: center;
+  width: 132px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 87px;
+  padding-top: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+  border: none;
+  border-radius: 5px;
+  font-family: body1;
+  line-height: normal;
+`;
+

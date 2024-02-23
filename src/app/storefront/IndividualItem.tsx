@@ -7,6 +7,7 @@ import {
   ItemButtons,
   HeartIcon,
   HeartContainer,
+  Hover,
 } from './styles';
 
 import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
@@ -20,6 +21,7 @@ export default function IndividualItem(props: {
   const { product, products } = props;
   const [IsFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
+  const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -30,6 +32,8 @@ export default function IndividualItem(props: {
     fetchProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
+
+  var hoverMessage = "";
 
   async function clickFunction() {
     addOrRemoveProductFromFavorite(product, !IsFavorite);
@@ -45,11 +49,26 @@ export default function IndividualItem(props: {
             style={{ width: '250px', height: '250px' }}
           />
         </ItemButtons>
-        <HeartContainer onClick={() => clickFunction()}>
-          <HeartIcon isClicked={IsFavorite} />
+        <Hover isHovering={hovering} isClicked={IsFavorite}>{hoverMessage}</Hover>
+        <HeartContainer onClick={() => clickFunction()}
+          onMouseOver={() => hoverButton()}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}>
+          <HeartIcon isHovering={hovering} isClicked={IsFavorite} />
         </HeartContainer>
       </StorefrontItem>
       <p style={{ transform: 'translateY( -80px)' }}>{product.name}</p>
     </div>
   );
+
+  async function hoverButton() {
+    if (IsFavorite) {
+      hoverMessage = "Remove from favorites";
+      console.log(hoverMessage)
+    } else {
+      hoverMessage = "Add to favorites";
+      console.log(hoverMessage)
+    }
+  }
+
 }
