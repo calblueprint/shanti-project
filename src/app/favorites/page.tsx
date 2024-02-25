@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
-import { useRouter } from 'next/navigation';
 
 import {
   arrayOfFavorites,

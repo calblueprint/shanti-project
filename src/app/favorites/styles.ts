@@ -91,7 +91,7 @@ export const ViewItem = styled.button`
   padding-bottom: 3px;
   border: none;
   border-radius: 5px;
-  font-family: body1;
   line-height: normal;
+  border-radius: 14px;
 `;
 
