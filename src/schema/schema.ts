@@ -39,6 +39,7 @@ export type Product = {
   quantity: number; // numeric not null;
   photo: string; // text null;
   updated_at: Date; // timestamp with time zone not null default now();
+  Prescribed: boolean;
 };
 
 export type Cart = {
