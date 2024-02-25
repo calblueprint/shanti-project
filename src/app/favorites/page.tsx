@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import {
+  Body2
+} from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
-
 
 import {
   arrayOfFavorites,
@@ -11,6 +13,7 @@ import {
 } from '../../api/supabase/queries/user_queries';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
+
 
 import {
   FavoriteDiv,
@@ -65,9 +68,10 @@ export default function FavoritesPage() {
                   <br />
                   Product ID: {favorite.id}
                 </p>
-                <ViewItem onClick={() => router.push(`/${favorite.id}`)}>View Item</ViewItem>
+                <ViewItem onClick={() => router.push(`/${favorite.id}`)}>
+                  <Body2>View Item</Body2>
+                </ViewItem>
               </ProductNameDiv>
-
 
               <TransparentButton
                 onClick={() => clickFunctions({ fav: favorite })}

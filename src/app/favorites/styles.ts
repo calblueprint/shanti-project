@@ -9,7 +9,6 @@ export const GlobalStyle = createGlobalStyle`
     background:white;
     color: black;
     overflow: visible;
-    
   }
 `;
 
@@ -78,13 +77,13 @@ export const ProductNameDiv = styled.div`
 `;
 
 export const ViewItem = styled.button`
-  background: #1B3679;
-  color: #FBFBFB;
+  background: #1b3679;
+  color: #fbfbfb;
   text-align: center;
   width: 132px;
   height: 28px;
   flex-shrink: 0;
-  margin-top: 87px;
+  margin-top: 26px;
   padding-top: 3px;
   padding-right: 10px;
   padding-left: 10px;
@@ -94,4 +93,3 @@ export const ViewItem = styled.button`
   line-height: normal;
   border-radius: 14px;
 `;
-
