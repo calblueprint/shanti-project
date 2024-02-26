@@ -55,6 +55,11 @@ function sortOrdersByCreated(orders: Order[]): Order[] {
 }
 
 /**
+ * user = fetch_use()
+ * cart_id = user.cart_id
+ * 
+ */
+/**
  * gets all orders by user id and sorted it by creation data
  * @param Order[] - An array of Order objects.
  * @returns Promise<Order[]> - An array of Order objects.

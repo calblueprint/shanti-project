@@ -1,9 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import {
+  fetchUser,
+  fetchUserAddress,
+} from '@/api/supabase/queries/user_queries';
+import {
+  fetchPickupTimesByID
+  } from '@/api/supabase/queries/pickup_queries';
 import BackButton from '../../components/BackButton/BackButton';
 
-import { fetchCartItems } from '../../api/supabase/queries/cart_queries';
+import {
+  fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
+
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -20,17 +29,33 @@ import {
   DateText,
 } from './styles';
 
-import { Product } from '../../schema/schema';
+
+import { Product, User, Address, Order } from '../../schema/schema';
 
 export default function OrderConfirmationDelivery() {
+  
   const [Cart, setCart] = useState<Product[]>([]);
+  const [user, setUser] = useState<User>();
+  const [userAddress, setUserAddress] = useState<Address>();
+  const [order, setOrder] = useState<Order>();
 
   useEffect(() => {
     async function fetchProducts() {
-      const data = (await fetchCartItems()) as Product[];
-      setCart(data);
+      const cartItems = (await fetchCartItemsWithQuantity()) as Product[];
+      setCart(cartItems);
     }
+
+    async function setUserDetails() {
+      const fetchedUser = await fetchUser();
+      setUser(fetchedUser);
+      const address = await fetchUserAddress(fetchedUser.id);
+      setUserAddress(address);
+    }
+
     fetchProducts();
+    setUserDetails();
+    console.log(userAddress?.street, userAddress?.city, userAddress?.zipcode);
+
   }, []);
 
   return (
@@ -39,9 +64,9 @@ export default function OrderConfirmationDelivery() {
       <GlobalStyle />
       <BackButton destination="./storefront" />
       <OutterBox>
-        <HeaderText>Thank you, Ethan. Your order has been placed.</HeaderText>
+        <HeaderText>Thank you, {user?.first_name}. Your order has been placed.</HeaderText>
         <OutterFavoriteDiv>
-          <DateText>Date: November 23.2023</DateText>
+          <DateText>order id</DateText>
           <ScrollDiv>
             {Cart.map(cartItem => (
               <FavoriteDiv key={cartItem.id}>
@@ -62,7 +87,7 @@ export default function OrderConfirmationDelivery() {
               </FavoriteDiv>
             ))}
             <AddressText>
-              Shipping Address: 123 Telegraph Ave, Berkeley, 94704
+              Shipping Address: {userAddress?.street}, {userAddress?.city}, {userAddress?.zipcode}
             </AddressText>
           </ScrollDiv>
         </OutterFavoriteDiv>
