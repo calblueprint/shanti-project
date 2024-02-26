@@ -1,9 +1,7 @@
-import supabase from '@/api/supabase/createClient';
-import { fetchUser } from '@/api/supabase/queries/user_queries';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 

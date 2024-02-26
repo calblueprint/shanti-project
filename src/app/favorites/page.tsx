@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import {
-  Body2
-} from '@/styles/fonts';
+import { Body2 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -13,7 +11,6 @@ import {
 } from '../../api/supabase/queries/user_queries';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
-
 
 import {
   FavoriteDiv,
