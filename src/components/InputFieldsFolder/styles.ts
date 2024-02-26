@@ -4,11 +4,15 @@ import COLORS from '../../styles/colors';
 export const Input = styled.input`
   background: ${COLORS.white};
   stroke-width: 1px;
-  color: ${COLORS.black};
-  stroke: ${COLORS.navy};
+  color: ${COLORS.darkRed};
   width: 420px;
   height: 40px;
   padding-left: 10px;
+  border-color: ${COLORS.marineBlue};
+`;
+
+export const InputError = styled.span<{ $pickColor?: boolean }>`
+  background-color: ${props => (props.$pickColor ? '#00507f' : '#C7E1FF')};
 `;
 
 export const FormHeaders = styled.p`
