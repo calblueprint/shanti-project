@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
+import { Body3 } from '@/styles/fonts';
+
 import {
   StorefrontItem,
   ItemButtons,
   HeartIcon,
+  Body1Translated,
   HeartContainer,
+  Hover,
+  OutterDiv,
 } from './styles';
 
 import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
@@ -20,6 +25,7 @@ export default function IndividualItem(props: {
   const { product, products } = props;
   const [IsFavorite, setIsFavorite] = useState(false);
   const router = useRouter();
+  const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -36,7 +42,7 @@ export default function IndividualItem(props: {
     setIsFavorite(!IsFavorite);
   }
   return (
-    <div>
+    <OutterDiv>
       <StorefrontItem>
         <ItemButtons onClick={() => router.push(`/${product.id}`)}>
           <img
@@ -45,11 +51,21 @@ export default function IndividualItem(props: {
             style={{ width: '250px', height: '250px' }}
           />
         </ItemButtons>
-        <HeartContainer onClick={() => clickFunction()}>
-          <HeartIcon isClicked={IsFavorite} />
+
+        <HeartContainer
+          onClick={() => clickFunction()}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+        >
+          <HeartIcon isHovering={hovering} isClicked={IsFavorite} />
         </HeartContainer>
+        <Hover isHovering={hovering} isClicked={IsFavorite}>
+          <Body3>
+            {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+          </Body3>
+        </Hover>
       </StorefrontItem>
-      <p style={{ transform: 'translateY( -80px)' }}>{product.name}</p>
-    </div>
+      <Body1Translated>{product.name}</Body1Translated>
+    </OutterDiv>
   );
 }
