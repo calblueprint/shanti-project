@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 
 import Footer from '../../components/FooterFolder/Footer';
-import { GlobalStyle, ShopAllText } from './styles';
+import { ShopAllText } from './styles';
 import { fetchProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
@@ -43,7 +43,7 @@ export default function App() {
         IsClickedButton={IsClickedButton}
         setCategoryWord={setCategoryWord}
       />
-      <GlobalStyle />
+
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />

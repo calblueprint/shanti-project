@@ -1,16 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Heart } from 'react-feather';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-  }
-`;
 
 export const FavoriteDiv = styled.div`
   display: flex;

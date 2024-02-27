@@ -17,7 +17,6 @@ import {
   PShiftLeft,
   WhiteBackgroundDiv,
   BackDiv,
-  GlobalStyle,
   Backtext,
   NavBarMovedUP,
   PageDiv,
@@ -45,7 +44,6 @@ export default function Pickup() {
     async function fetchTimes() {
       const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
       setTimes(data);
-      console.log(Time);
     }
     fetchProducts();
     fetchTimes();
@@ -54,7 +52,7 @@ export default function Pickup() {
   return (
     <div>
       <NavBarMovedUP />
-      <GlobalStyle />
+
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>

@@ -12,7 +12,6 @@ import {
   ColDiv,
   OutterFavoriteDiv,
   HeaderText,
-  GlobalStyle,
   OutterBox,
   Label,
   LabelBox,
@@ -38,7 +37,6 @@ export default function OrderConfirmationPickUp() {
   return (
     <div>
       <NavBar />
-      <GlobalStyle />
       <BackButton destination="./storefront" />
       <OutterBox>
         <HeaderText>Thank you, Ethan. Your order has been placed.</HeaderText>

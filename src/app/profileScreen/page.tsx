@@ -23,9 +23,7 @@ import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
-  GlobalStyle,
   NavBarMovedUP,
-  FooterMoved,
   AccountDetails,
   HeadingBack,
   HeadingSpacing,
@@ -224,7 +222,7 @@ export default function Profile() {
         </BackButtonDiv>
         <Heading1>My Profile</Heading1>
       </HeadingBack>
-      <GlobalStyle />
+
       {user.delivery_allowed ? (
         <AccountDetailSectionDelivery user={user} />
       ) : (
@@ -236,7 +234,6 @@ export default function Profile() {
       <LogOutButton onClick={() => router.push('/favorites')}>
         Favorites
       </LogOutButton> */}
-      <FooterMoved />
     </main>
   );
 }

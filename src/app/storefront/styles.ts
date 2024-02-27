@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Heart, User, ShoppingCart } from 'react-feather';
 
@@ -7,14 +7,6 @@ import { Body1 } from '@/styles/fonts';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color:black;
-  }
-
-`;
 
 interface props {
   isClicked: boolean;

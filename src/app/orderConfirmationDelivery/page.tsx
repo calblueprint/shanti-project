@@ -11,7 +11,6 @@ import {
   FavoriteDiv,
   OutterFavoriteDiv,
   HeaderText,
-  GlobalStyle,
   OutterBox,
   Label,
   LabelBox,
@@ -36,7 +35,7 @@ export default function OrderConfirmationDelivery() {
   return (
     <div>
       <NavBar />
-      <GlobalStyle />
+
       <BackButton destination="./storefront" />
       <OutterBox>
         <HeaderText>Thank you, Ethan. Your order has been placed.</HeaderText>
