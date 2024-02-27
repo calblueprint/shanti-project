@@ -117,7 +117,7 @@ export const ShopAllText = styled.h1`
   color: black;
 `;
 
-export const HeartIcon = styled(Heart)<props>`
+export const HeartIcon = styled(Heart) <props>`
   color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
@@ -197,17 +197,17 @@ export const Addie = styled.p`
 
 export const Hover = styled.p<props>`
   visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
-  transform: translate(180px, -340px);
+  transform: translate(130px, -340px);
   color: black;
   border: none;
-  width: 156px;
+  width: 190px;
   height: 26px;
   border-radius: 8px;
   background: var(--Light-Periwinkle, #f4f7ff);
   box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
   padding-top: 3px;
-  padding-bottom: 3px;
   position: relative;
+  text-align: center;
 `;
 
 export const Body1Translated = styled(Body1)`
