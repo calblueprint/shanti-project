@@ -6,6 +6,8 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
+import { Body1 } from '@/styles/fonts';
+
 export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
@@ -191,4 +193,28 @@ export const LocationDiv = styled.div`
 export const Addie = styled.p`
   margin-top: 30px;
   margin-bottom: 30px;
+`;
+
+export const Hover = styled.p<props>`
+  visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
+  transform: translate(180px, -340px);
+  color: black;
+  border: none;
+  width: 156px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--Light-Periwinkle, #f4f7ff);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  position: relative;
+`;
+
+export const Body1Translated = styled(Body1)`
+  transform: translateY(-100px);
+`;
+
+export const OutterDiv = styled.div`
+  width: 300px;
+  height: 375px;
 `;
