@@ -1,8 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d6b21dd (feat: action on hover of heart button and view item button)
 import {
   arrayOfFavorites,
   addOrRemoveProductFromFavorite,
