@@ -10,6 +10,8 @@ export default function InputFields(props: {
   changeUserName: (newUsername: string) => void;
   changePassword: (newPassword: string) => void;
   isPassword: boolean;
+  setIsTyping: (typing: boolean) => void;
+
 }) {
   const {
     text,
@@ -17,13 +19,16 @@ export default function InputFields(props: {
     inputType,
     changeUserName,
     changePassword,
+    setIsTyping,
     isPassword,
   } = props;
   const [inputValue, setInputValue] = useState('');
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputValue(value);
+    setIsTyping(true);
 
     if (isPassword) {
       changePassword(value);
@@ -37,6 +42,7 @@ export default function InputFields(props: {
       <div id="userInfo">
         <FormHeaders>{text}</FormHeaders>
         <Input
+        
           type={inputType}
           placeholder={placeholder}
           value={inputValue}

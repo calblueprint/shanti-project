@@ -39,11 +39,11 @@ export default function Footer({ ...rest }) {
                   'https://www.facebook.com/ShantiProjectSF/';
               }}
             >
-              <Body1>
+
                 <MySpanIcon>
                   <FacebookIcon />
                 </MySpanIcon>
-              </Body1>
+
             </Body1>
             <Body1
               style={{ cursor: 'pointer' }}
@@ -52,11 +52,11 @@ export default function Footer({ ...rest }) {
                   'https://www.youtube.com/channel/UCc3DMrL7_KDOzeJNVkoFrsA';
               }}
             >
-              <Body1>
+
                 <MySpanIcon>
                   <YoutubeIcon />
                 </MySpanIcon>
-              </Body1>
+
             </Body1>
             <Body1
               style={{ cursor: 'pointer' }}
@@ -65,11 +65,11 @@ export default function Footer({ ...rest }) {
                   'https://www.instagram.com/shantiprojectsf/';
               }}
             >
-              <Body1>
+
                 <MySpanIcon>
                   <InstagramIcon />
                 </MySpanIcon>
-              </Body1>
+
             </Body1>
           </SVGWrapper>
         </ContactDiv>
