@@ -24,7 +24,6 @@ import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
   NavBarMovedUP,
-  FooterMoved,
   AccountDetails,
   HeadingBack,
   HeadingSpacing,

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Trash2 } from 'react-feather';
 import COLORS from '../../styles/colors';
