@@ -15,7 +15,7 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-  GlobalStyle,
+ 
   OutterBox,
   ProductNameDiv,
   HeartIcon,
@@ -46,7 +46,7 @@ export default function FavoritesPage() {
   return (
     <div>
       <NavBar />
-      <GlobalStyle />
+      
       <OutterBox>
         <BackButton destination="./profileScreen" />
         <h1>Favorites</h1>

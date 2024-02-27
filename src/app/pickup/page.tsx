@@ -17,7 +17,6 @@ import {
   PShiftLeft,
   WhiteBackgroundDiv,
   BackDiv,
-  GlobalStyle,
   Backtext,
   NavBarMovedUP,
   PageDiv,
@@ -54,7 +53,7 @@ export default function Pickup() {
   return (
     <div>
       <NavBarMovedUP />
-      <GlobalStyle />
+
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>

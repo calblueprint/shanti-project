@@ -8,15 +8,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-    
-  }
-`;
-
 export const TextSpacing = styled.div`
   margin-top: 10px;
 `;

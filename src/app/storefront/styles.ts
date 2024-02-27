@@ -8,13 +8,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color:black;
-  }
-
-`;
 
 interface props {
   isClicked: boolean;
