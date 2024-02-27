@@ -15,6 +15,7 @@ export const LoginContent = styled.div`
   margin-left: 40px;
   margin-top: 30px;
   text-color: black;
+  color: ${COLORS.darkRed};
 `;
 
 export const Button = styled.button`

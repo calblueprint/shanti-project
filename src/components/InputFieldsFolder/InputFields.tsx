@@ -17,6 +17,7 @@ export default function InputFields(props: {
     inputType,
     changeUserName,
     changePassword,
+
     isPassword,
   } = props;
   const [inputValue, setInputValue] = useState('');
