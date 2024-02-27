@@ -2,16 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-<<<<<<< HEAD
-=======
 import { Body2 } from '@/styles/fonts';
->>>>>>> 868ec15529959f9fb270c1a2eb9a43342d4495c2
 import BackButton from '../../components/BackButton/BackButton';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d6b21dd (feat: action on hover of heart button and view item button)
 import {
   arrayOfFavorites,
   addOrRemoveProductFromFavorite,

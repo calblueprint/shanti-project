@@ -75,28 +75,15 @@ export const NavBarMovedUP = styled(NavBar)`
 export const ProductNameDiv = styled.div`
   width: 350px;
 `;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-export const ViewItem = styled.button`
-  background: #1B3679;
-  color: #FBFBFB;
-=======
 
 export const ViewItem = styled.button`
   background: #1b3679;
   color: #fbfbfb;
->>>>>>> 868ec15529959f9fb270c1a2eb9a43342d4495c2
   text-align: center;
   width: 132px;
   height: 28px;
   flex-shrink: 0;
-<<<<<<< HEAD
-  margin-top: 87px;
-=======
   margin-top: 26px;
->>>>>>> 868ec15529959f9fb270c1a2eb9a43342d4495c2
   padding-top: 3px;
   padding-right: 10px;
   padding-left: 10px;
@@ -106,8 +93,3 @@ export const ViewItem = styled.button`
   line-height: normal;
   border-radius: 14px;
 `;
-<<<<<<< HEAD
-
->>>>>>> d6b21dd (feat: action on hover of heart button and view item button)
-=======
->>>>>>> 868ec15529959f9fb270c1a2eb9a43342d4495c2

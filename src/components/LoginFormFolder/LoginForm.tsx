@@ -16,7 +16,6 @@ export default function LoginForm(props: {
         changeUserName={changeUserName}
         changePassword={changePassword}
         isPassword={false}
-        
       />
       <InputFields
         inputType="password"

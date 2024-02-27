@@ -27,11 +27,9 @@ export default function App() {
     });
 
     setErrorMessage('');
-    
 
     if (error) {
       setErrorMessage('Incorrect email or password');
-
     } else {
       window.location.href = '/storefront';
     }

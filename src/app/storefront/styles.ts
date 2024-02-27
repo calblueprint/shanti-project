@@ -8,7 +8,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
-
 export const GlobalStyle = createGlobalStyle`
   body {
     background:white;
@@ -119,7 +118,7 @@ export const ShopAllText = styled.h1`
   color: black;
 `;
 
-export const HeartIcon = styled(Heart) <props>`
+export const HeartIcon = styled(Heart)<props>`
   color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;

@@ -11,7 +11,6 @@ export const Input1 = styled.input<{ $pickColor?: boolean }>`
   border-color: ${COLORS.black};
 `;
 
-
 export const FormHeaders = styled.p`
   color: ${COLORS.black};
   font-size: 18px;
@@ -24,10 +23,10 @@ export const FormHeaders = styled.p`
 
 export const Input = styled.input`
   &:focus {
-    border: 2px solid #1B3679;
-    background: #F5FBFF;
+    border: 2px solid #1b3679;
+    background: #f5fbff;
     outline: none;
-    color: #1B3679;
+    color: #1b3679;
   }
   background: ${COLORS.white};
   color: ${COLORS.black};

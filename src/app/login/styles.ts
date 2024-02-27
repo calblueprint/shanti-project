@@ -11,7 +11,6 @@ export const LoginBox = styled.div`
   border: 1px solid #b3b3b3;
 `;
 
-
 export const LoginContent = styled.div`
   margin-left: 40px;
   margin-top: 30px;
