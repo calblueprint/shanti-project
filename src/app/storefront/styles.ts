@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 
 interface props {
   isClicked: boolean;
-  isHovering:boolean;
+  isHovering: boolean;
 }
 
 export const StickyHeader = styled.div`
@@ -128,7 +128,7 @@ export const HeartIcon = styled(Heart) <props>`
 `;
 
 export const HeartContainer = styled.button`
-  transform: translate(245px, -280px);
+  transform: translate(230px, -260px);
   position: relative;
   background-color: transparent;
   border: none;
@@ -199,15 +199,16 @@ export const Addie = styled.p`
 
 export const Hover = styled.p<props>`
   visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
-  transform: translate(130px, -340px);
+  transform: translate(170px, -335px);
   color: black;
   border: none;
-  width: 190px;
+  width: 156px;
   height: 26px;
   border-radius: 8px;
   background: var(--Light-Periwinkle, #f4f7ff);
   box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
-  padding-top: 3px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   position: relative;
   text-align: center;
 `;

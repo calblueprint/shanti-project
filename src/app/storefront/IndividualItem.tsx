@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { Body1 } from '@/styles/fonts';
+import { Body3 } from '@/styles/fonts';
 
 import {
   StorefrontItem,
@@ -60,7 +60,9 @@ export default function IndividualItem(props: {
           <HeartIcon isHovering={hovering} isClicked={IsFavorite} />
         </HeartContainer>
         <Hover isHovering={hovering} isClicked={IsFavorite}>
-          {IsFavorite ? "Remove from favorites" : "Add to favorites"}
+          <Body3>
+            {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+          </Body3>
         </Hover>
       </StorefrontItem>
       <Body1Translated>{product.name}</Body1Translated>
