@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import {
-  fetchUser,
-} from '@/api/supabase/queries/user_queries';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import { fetchCurrentOrdersByUser } from '@/api/supabase/queries/order_queries';
 import { Body2Bold, Body2, Heading3Bold } from '@/styles/fonts';
