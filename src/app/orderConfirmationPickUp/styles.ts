@@ -45,7 +45,16 @@ export const BackDiv = styled.button`
 
 export const OutterBox = styled.div`
   width: 900px;
-  margin-left: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CenterBox = styled.div`
+
+  display: flex;
+  justify-content: center;
 `;
 
 export const Backtext = styled.p`
@@ -88,7 +97,7 @@ export const HeaderText = styled.h3`
   color: var(--Black, #101010);
   margin-top: 30px;
   margin-bottom: 20px;
-  margin-left: 45px;
+  text: center;
   color: var(--Black, #101010);
   font-family: Public Sans;
   font-size: 35px;

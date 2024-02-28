@@ -5,6 +5,11 @@ import {
   fetchUser,
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
+
+import {
+  Body2,
+  Heading3Bold
+} from '@/styles/fonts';
 import {
   fetchPickupTimesByID
   } from '@/api/supabase/queries/pickup_queries';
@@ -26,6 +31,7 @@ import {
   ScrollDiv,
   AddressText,
   DateText,
+  CenterBox
 } from './styles';
 
 
@@ -62,10 +68,11 @@ export default function OrderConfirmationDelivery() {
       <NavBar />
 
       <BackButton destination="./storefront" />
+      <CenterBox>
       <OutterBox>
-        <HeaderText>Thank you, {user?.first_name}. Your order has been placed.</HeaderText>
+        <HeaderText><Heading3Bold>Thank you, {user?.first_name}. Your order has been placed.</Heading3Bold></HeaderText>
         <OutterFavoriteDiv>
-          <DateText>order id</DateText>
+          <DateText>Order No. {user?.cart_id}</DateText>
           <ScrollDiv>
             {Cart.map(cartItem => (
               <FavoriteDiv key={cartItem.id}>
@@ -85,12 +92,14 @@ export default function OrderConfirmationDelivery() {
                 </LabelBox>
               </FavoriteDiv>
             ))}
-            <AddressText>
-              Shipping Address: {userAddress?.street}, {userAddress?.city}, {userAddress?.zipcode}
-            </AddressText>
           </ScrollDiv>
+          <AddressText><Body2>
+              Shipping Address: {userAddress?.street}, {userAddress?.city}, {userAddress?.zipcode}
+              </Body2>
+          </AddressText>
         </OutterFavoriteDiv>
       </OutterBox>
+      </CenterBox>
     </div>
   );
 }
