@@ -26,14 +26,26 @@ import {
   AddressText,
   DateText,
   PickUpText,
+<<<<<<< HEAD
   CenterBox,
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
+=======
+  CenterBox
+} from './styles';
+
+
+import { Address, Product, User, Pickup } from '../../schema/schema';
+>>>>>>> e0f689c327173d14a5ef664479f8c49570751e0e
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
+<<<<<<< HEAD
+=======
+  const [userAddress, setUserAddress] = useState<Address>();
+>>>>>>> e0f689c327173d14a5ef664479f8c49570751e0e
   const [pickupTime, setPickupTime] = useState<Pickup>();
 
   useEffect(() => {
@@ -44,6 +56,12 @@ export default function OrderConfirmationPickUp() {
 
     async function setUserDetails() {
       const fetchedUser = await fetchUser();
+<<<<<<< HEAD
+=======
+      const address = await fetchUserAddress(fetchedUser.id);
+      console.log(fetchedUser.id);
+      setUserAddress(address);
+>>>>>>> e0f689c327173d14a5ef664479f8c49570751e0e
       setUser(fetchedUser);
       const currOrder = await fetchCurrentOrdersByUser();
       const pickup = await fetchPickupTimesByID(currOrder[0].pickup_time_id);
@@ -56,6 +74,7 @@ export default function OrderConfirmationPickUp() {
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
+<<<<<<< HEAD
     const endTime = pickupTime?.end_time.toLocaleString();
     const date =
       startTime == null
@@ -65,6 +84,16 @@ export default function OrderConfirmationPickUp() {
     const start = startTime?.substring(11, 16);
     const end = endTime?.substring(11, 16);
     return `${dateStr} (${start} - ${end})`;
+=======
+    console.log(startTime);
+    const endTime = pickupTime?.end_time.toLocaleString();
+    const date = (startTime==null ? ["0", "0", "0"] : startTime?.substring(0,10).split("-"));
+    const dateStr = `${date[2]  }/${  date[1]  }/${  date[0]}`;
+    const start = startTime?.substring(11, 16);
+    const end = endTime?.substring(11, 16);
+    console.log(dateStr);
+    return `${dateStr  } (${  start  } - ${  end  })`;
+>>>>>>> e0f689c327173d14a5ef664479f8c49570751e0e
   }
 
   return (
@@ -72,6 +101,7 @@ export default function OrderConfirmationPickUp() {
       <NavBar />
       <BackButton destination="./storefront" />
       <CenterBox>
+<<<<<<< HEAD
         <OutterBox>
           <HeaderText>
             <Heading3Bold>
@@ -115,6 +145,52 @@ export default function OrderConfirmationPickUp() {
             </AddressText>
           </OutterFavoriteDiv>
         </OutterBox>
+=======
+      <OutterBox>
+        <HeaderText>
+        <Heading3Bold>Thank you, {user?.first_name}. Your order has been placed.</Heading3Bold>
+        </HeaderText>
+        <OutterFavoriteDiv>
+          <ColDiv>
+            {/** change this to order number! */}
+            <DateText>Order No. {user?.cart_id}</DateText>
+            {/** got the date but please clean up the date format :) */}
+            <PickUpText>
+              <Body2Bold>
+              Pick Up: {organizePickupTime()}
+              </Body2Bold>
+            </PickUpText>
+          </ColDiv>
+          {/** mess w/ the height of the scrollDiv so that the locationn stays constant :) */}
+
+          <ScrollDiv>
+            {Cart.map(cartItem => (
+              <FavoriteDiv key={cartItem.id}>
+                <img
+                  src={cartItem.photo}
+                  alt={cartItem.name}
+                  style={{
+                    width: '150px',
+                    height: '150px',
+                    marginLeft: '80px',
+                    marginRight: '100px',
+                  }}
+                />
+                <LabelBox>
+                  <Label>{cartItem.name}</Label>
+                  <p>Category: {cartItem.category}</p>
+                </LabelBox>
+              </FavoriteDiv>
+            ))}
+          </ScrollDiv>
+          {/** the location for pickup should be constant! I think it stays as the one below. Also please make sure that the address is not within the scrollable bar :) */}
+          <AddressText><Body2>
+            Location: 3170 23rd Street, San Francisco, CA 94110
+            </Body2>
+          </AddressText>
+        </OutterFavoriteDiv>
+      </OutterBox>
+>>>>>>> e0f689c327173d14a5ef664479f8c49570751e0e
       </CenterBox>
     </div>
   );
