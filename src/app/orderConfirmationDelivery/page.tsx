@@ -6,18 +6,10 @@ import {
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
-import {
-  Body2,
-  Heading3Bold
-} from '@/styles/fonts';
-import {
-  fetchPickupTimesByID
-  } from '@/api/supabase/queries/pickup_queries';
+import { Body2, Heading3Bold } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
-import {
-  fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
-
+import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -31,18 +23,15 @@ import {
   ScrollDiv,
   AddressText,
   DateText,
-  CenterBox
+  CenterBox,
 } from './styles';
 
-
-import { Product, User, Address, Order } from '../../schema/schema';
+import { Product, User, Address } from '../../schema/schema';
 
 export default function OrderConfirmationDelivery() {
-  
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
   const [userAddress, setUserAddress] = useState<Address>();
-  const [order, setOrder] = useState<Order>();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -59,8 +48,6 @@ export default function OrderConfirmationDelivery() {
 
     fetchProducts();
     setUserDetails();
-    console.log(userAddress?.street, userAddress?.city, userAddress?.zipcode);
-
   }, []);
 
   return (
@@ -69,36 +56,42 @@ export default function OrderConfirmationDelivery() {
 
       <BackButton destination="./storefront" />
       <CenterBox>
-      <OutterBox>
-        <HeaderText><Heading3Bold>Thank you, {user?.first_name}. Your order has been placed.</Heading3Bold></HeaderText>
-        <OutterFavoriteDiv>
-          <DateText>Order No. {user?.cart_id}</DateText>
-          <ScrollDiv>
-            {Cart.map(cartItem => (
-              <FavoriteDiv key={cartItem.id}>
-                <img
-                  src={cartItem.photo}
-                  alt={cartItem.name}
-                  style={{
-                    width: '150px',
-                    height: '150px',
-                    marginLeft: '80px',
-                    marginRight: '100px',
-                  }}
-                />
-                <LabelBox>
-                  <Label>{cartItem.name}</Label>
-                  <p>Category: {cartItem.category}</p>
-                </LabelBox>
-              </FavoriteDiv>
-            ))}
-          </ScrollDiv>
-          <AddressText><Body2>
-              Shipping Address: {userAddress?.street}, {userAddress?.city}, {userAddress?.zipcode}
+        <OutterBox>
+          <HeaderText>
+            <Heading3Bold>
+              Thank you, {user?.first_name}. Your order has been placed.
+            </Heading3Bold>
+          </HeaderText>
+          <OutterFavoriteDiv>
+            <DateText>Order No. {user?.cart_id}</DateText>
+            <ScrollDiv>
+              {Cart.map(cartItem => (
+                <FavoriteDiv key={cartItem.id}>
+                  <img
+                    src={cartItem.photo}
+                    alt={cartItem.name}
+                    style={{
+                      width: '150px',
+                      height: '150px',
+                      marginLeft: '80px',
+                      marginRight: '100px',
+                    }}
+                  />
+                  <LabelBox>
+                    <Label>{cartItem.name}</Label>
+                    <p>Category: {cartItem.category}</p>
+                  </LabelBox>
+                </FavoriteDiv>
+              ))}
+            </ScrollDiv>
+            <AddressText>
+              <Body2>
+                Shipping Address: {userAddress?.street}, {userAddress?.city},{' '}
+                {userAddress?.zipcode}
               </Body2>
-          </AddressText>
-        </OutterFavoriteDiv>
-      </OutterBox>
+            </AddressText>
+          </OutterFavoriteDiv>
+        </OutterBox>
       </CenterBox>
     </div>
   );

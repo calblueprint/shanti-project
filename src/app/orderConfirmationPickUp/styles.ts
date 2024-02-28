@@ -52,7 +52,6 @@ export const OutterBox = styled.div`
 `;
 
 export const CenterBox = styled.div`
-
   display: flex;
   justify-content: center;
 `;
