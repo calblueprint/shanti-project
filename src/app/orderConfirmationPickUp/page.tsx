@@ -25,6 +25,7 @@ import {
   DateText,
   PickUpText,
   CenterBox,
+  AddressDiv,
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
@@ -108,9 +109,13 @@ export default function OrderConfirmationPickUp() {
               ))}
             </ScrollDiv>
             {/** the location for pickup should be constant! I think it stays as the one below. Also please make sure that the address is not within the scrollable bar :) */}
-            <AddressText>
-              <Body2>Location: 3170 23rd Street, San Francisco, CA 94110</Body2>
-            </AddressText>
+            <AddressDiv>
+              <AddressText>
+                <Body2>
+                  Location: 3170 23rd Street, San Francisco, CA 94110
+                </Body2>
+              </AddressText>
+            </AddressDiv>
           </OutterFavoriteDiv>
         </OutterBox>
       </CenterBox>

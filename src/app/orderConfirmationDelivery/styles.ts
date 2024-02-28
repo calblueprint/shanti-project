@@ -47,7 +47,7 @@ export const OutterBox = styled.div`
   width: 900px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -127,4 +127,11 @@ export const DateText = styled.p`
   font-weight: 700;
   line-height: normal;
   text-decoration-line: underline;
+`;
+
+export const AddressDiv = styled.div`
+  margin-top: 670px;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
 `;

@@ -148,3 +148,10 @@ export const ColDiv = styled.div`
   justify-content: space-between;
   width: 750px;
 `;
+
+export const AddressDiv = styled.div`
+  margin-top: 670px;
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+`;

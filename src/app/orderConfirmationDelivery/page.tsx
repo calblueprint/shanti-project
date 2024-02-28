@@ -24,6 +24,7 @@ import {
   AddressText,
   DateText,
   CenterBox,
+  AddressDiv,
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
@@ -84,12 +85,14 @@ export default function OrderConfirmationDelivery() {
                 </FavoriteDiv>
               ))}
             </ScrollDiv>
-            <AddressText>
-              <Body2>
-                Shipping Address: {userAddress?.street}, {userAddress?.city},{' '}
-                {userAddress?.zipcode}
-              </Body2>
-            </AddressText>
+            <AddressDiv>
+              <AddressText>
+                <Body2>
+                  Shipping Address: {userAddress?.street}, {userAddress?.city},{' '}
+                  {userAddress?.zipcode}
+                </Body2>
+              </AddressText>
+            </AddressDiv>
           </OutterFavoriteDiv>
         </OutterBox>
       </CenterBox>
