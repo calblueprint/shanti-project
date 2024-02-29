@@ -5,8 +5,10 @@ import InputFields from '../InputFieldsFolder/InputFields';
 export default function LoginForm(props: {
   changeUserName: (newUsername: string) => void;
   changePassword: (newPassword: string) => void;
+  isError: boolean;
+  showPassword: boolean;
 }) {
-  const { changeUserName, changePassword } = props;
+  const { isError, changeUserName, changePassword, showPassword } = props;
   return (
     <div>
       <InputFields
@@ -16,15 +18,16 @@ export default function LoginForm(props: {
         changeUserName={changeUserName}
         changePassword={changePassword}
         isPassword={false}
-        
+        isError={isError}
       />
       <InputFields
-        inputType="password"
+        inputType={showPassword ? 'text' : 'password'}
         text="Password"
         placeholder="Enter Password"
         changeUserName={changeUserName}
         changePassword={changePassword}
         isPassword
+        isError={isError}
       />
     </div>
   );
