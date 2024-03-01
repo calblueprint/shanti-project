@@ -53,7 +53,6 @@ export const OutterBox = styled.div`
 
 export const Backtext = styled.p`
   color: var(--Black, #101010);
-
   /* Body 1 - Bold, button */
   font-family: Public Sans;
   font-size: 20px;
@@ -120,7 +119,6 @@ export const DateText = styled.p`
   color: var(--Black, #101010);
   margin-top: 20px;
   margin-left: 45px;
-
   font-family: Public Sans;
   font-size: 25px;
   font-style: normal;
