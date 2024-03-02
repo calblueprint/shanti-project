@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FormHeaders, Input } from '../../app/login/styles';
-
+import { FormHeaders } from '../../app/login/styles';
+import { Input } from '../InputFieldsFolder/styles';
 export default function PickupInputs(props: {
   text: string;
   placeholder: string;
@@ -21,6 +21,8 @@ export default function PickupInputs(props: {
       <div id="pickupInfo">
         <FormHeaders>{text}</FormHeaders>
         <Input
+          $pickColor={false}
+          $wrongLogin={false}
           type={inputType}
           placeholder={placeholder}
           value={inputValue}
