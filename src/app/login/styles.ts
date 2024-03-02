@@ -3,19 +3,17 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const LoginBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   width: 500px;
   height: 420px;
-  margin-left: 520px;
-  margin-top: 120px;
+
   border: 1px solid #b3b3b3;
 `;
 
 export const LoginContent = styled.div`
   margin-left: 40px;
   flex-direction: column;
+  align-self: center;
+  justify-self: center;
   margin-top: 30px;
   text-color: black;
 `;
@@ -65,7 +63,7 @@ export const ErrorMessage = styled.div`
   font-weight: 300;
   line-height: normal;
   z-index: 0;
-  position: fixed;
+  position: absolute;
 `;
 
 export const EyeOffIcon = styled(EyeOff)`
@@ -87,8 +85,11 @@ export const EyeIcon = styled(Eye)`
 `;
 
 export const Fullscreen = styled.div`
-  width: 1440px;
-  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 870px;
 `;
 
 export const InputField = styled.div`
