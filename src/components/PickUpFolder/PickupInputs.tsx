@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FormHeaders } from '../../app/login/styles';
 import { Input } from '../InputFieldsFolder/styles';
+
 export default function PickupInputs(props: {
   text: string;
   placeholder: string;
