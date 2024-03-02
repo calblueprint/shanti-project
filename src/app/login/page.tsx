@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import supabase from '@/api/supabase/createClient';
 import LoginForm from '../../components/LoginFormFolder/LoginForm';
-import { GlobalStyle } from '../../styles/components';
 
 import {
   Fullscreen,
@@ -42,14 +41,17 @@ export default function App() {
 
   return (
     <main>
-      <GlobalStyle />
       <Fullscreen>
         <Image
           src="/images/ShantiLogo.png"
           alt="logo pic"
           width={125}
           height={65}
-          style={{ marginTop: '30px', marginLeft: '30px' }}
+          style={{
+            top: '30px',
+            left: '30px',
+            position: 'absolute',
+          }}
         />
 
         <LoginBox>
