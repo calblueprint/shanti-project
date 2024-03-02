@@ -14,7 +14,7 @@ import {
   Button,
   ErrorMessage,
   EyeOffIcon,
-  EyeIcon
+  EyeIcon,
 } from './styles';
 
 export default function App() {
