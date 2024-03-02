@@ -18,7 +18,10 @@ export default function LoginForm(props: {
         changeUserName={changeUserName}
         changePassword={changePassword}
         isPassword={false}
+<<<<<<< HEAD
         isError={isError}
+=======
+>>>>>>> a896ffce653abaaa278ecd02f5ab0d9ba699dc93
       />
       <InputFields
         inputType={showPassword ? 'text' : 'password'}

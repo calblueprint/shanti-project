@@ -1,21 +1,16 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Heart, User, ShoppingCart } from 'react-feather';
+
+import { Body1 } from '@/styles/fonts';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color:black;
-  }
-
-`;
-
 interface props {
   isClicked: boolean;
+  isHovering: boolean;
 }
 
 export const StickyHeader = styled.div`
@@ -124,7 +119,7 @@ export const HeartIcon = styled(Heart)<props>`
 `;
 
 export const HeartContainer = styled.button`
-  transform: translate(245px, -280px);
+  transform: translate(230px, -260px);
   position: relative;
   background-color: transparent;
   border: none;
@@ -191,4 +186,29 @@ export const LocationDiv = styled.div`
 export const Addie = styled.p`
   margin-top: 30px;
   margin-bottom: 30px;
+`;
+
+export const Hover = styled.p<props>`
+  visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
+  transform: translate(170px, -335px);
+  color: black;
+  border: none;
+  width: 156px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--Light-Periwinkle, #f4f7ff);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+  padding-top: 6px;
+  padding-bottom: 6px;
+  position: relative;
+  text-align: center;
+`;
+
+export const Body1Translated = styled(Body1)`
+  transform: translateY(-100px);
+`;
+
+export const OutterDiv = styled.div`
+  width: 300px;
+  height: 375px;
 `;

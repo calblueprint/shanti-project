@@ -17,7 +17,6 @@ import {
   PShiftLeft,
   WhiteBackgroundDiv,
   BackDiv,
-  GlobalStyle,
   Backtext,
   NavBarMovedUP,
   PageDiv,
@@ -35,28 +34,25 @@ import {
 export default function Pickup() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
-  const [Times, setTimes] = useState<Pickup[]>([]);
+  const [Time, setTimes] = useState<Pickup[]>([]);
 
   useEffect(() => {
     async function fetchProducts() {
       const data = await arrayOfFavorites(); // change the function to grab the cartItems as products
       setCart(data);
     }
-    fetchProducts();
-  }, []);
-
-  useEffect(() => {
     async function fetchTimes() {
       const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
       setTimes(data);
     }
+    fetchProducts();
     fetchTimes();
   }, []);
 
   return (
     <div>
       <NavBarMovedUP />
-      <GlobalStyle />
+
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>

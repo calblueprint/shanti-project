@@ -10,7 +10,10 @@ export default function InputFields(props: {
   changeUserName: (newUsername: string) => void;
   changePassword: (newPassword: string) => void;
   isPassword: boolean;
+<<<<<<< HEAD
   isError: boolean;
+=======
+>>>>>>> a896ffce653abaaa278ecd02f5ab0d9ba699dc93
 }) {
   const {
     text,
@@ -18,6 +21,10 @@ export default function InputFields(props: {
     inputType,
     changeUserName,
     changePassword,
+<<<<<<< HEAD
+=======
+
+>>>>>>> a896ffce653abaaa278ecd02f5ab0d9ba699dc93
     isPassword,
     isError,
   } = props;
@@ -40,8 +47,11 @@ export default function InputFields(props: {
       <div id="userInfo">
         <FormHeaders>{text}</FormHeaders>
         <Input
+<<<<<<< HEAD
           $pickColor={isError}
           $wrongLogin={isError}
+=======
+>>>>>>> a896ffce653abaaa278ecd02f5ab0d9ba699dc93
           type={inputType}
           placeholder={placeholder}
           value={inputValue}

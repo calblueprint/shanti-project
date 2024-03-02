@@ -15,7 +15,6 @@ import CartItem from './cartItem';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   OutterFavoriteDiv,
-  GlobalStyle,
   PageDiv,
   CheckoutButton,
   LeftColumnDiv,
@@ -51,7 +50,7 @@ export default function OrderPage() {
   return (
     <div>
       <NavBar />
-      <GlobalStyle />
+
       <PageDiv>
         <LeftColumnDiv>
           <BackButton destination="./storefront" />
