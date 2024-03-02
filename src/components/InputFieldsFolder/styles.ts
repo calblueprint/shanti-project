@@ -27,11 +27,7 @@ export const Input = styled.input<{
   $wrongLogin?: boolean;
 }>`
   &:focus {
-<<<<<<< HEAD
     border: 1.5px solid #1b3679;
-=======
-    border: 2px solid #1b3679;
->>>>>>> a896ffce653abaaa278ecd02f5ab0d9ba699dc93
     background: #f5fbff;
     outline: none;
     color: #1b3679;
@@ -44,7 +40,6 @@ export const Input = styled.input<{
   height: 40px;
   padding-left: 10px;
 `;
-<<<<<<< HEAD
 
 export const wrong = styled.div`
   color: red;
@@ -66,5 +61,3 @@ export const EyeIcon = styled(Eye)`
   color: black;
   margin: 20px 20px 20px 20px;
 `;
-=======
->>>>>>> a896ffce653abaaa278ecd02f5ab0d9ba699dc93
