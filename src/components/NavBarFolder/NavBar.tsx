@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 717c962 (chore:fixed Eslint)
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';

@@ -44,6 +44,7 @@ export default function Pickup() {
     async function fetchTimes() {
       const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
       setTimes(data);
+      console.log(Time);
     }
     fetchProducts();
     fetchTimes();
