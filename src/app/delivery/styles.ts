@@ -71,7 +71,7 @@ export const InformationText = styled.div`
 export const OrderContainer = styled.div`
   margin-top: 50px;
   width: 350px;
-  height: 450px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -22,7 +22,8 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 500px;
+  height: auto;
+  max-height: 600px;
   margin-top: 10px;
 `;
 
