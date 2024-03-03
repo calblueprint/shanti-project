@@ -108,7 +108,6 @@ export default function OrderConfirmationPickUp() {
                 </FavoriteDiv>
               ))}
             </ScrollDiv>
-            {/** the location for pickup should be constant! I think it stays as the one below. Also please make sure that the address is not within the scrollable bar :) */}
             <AddressDiv>
               <AddressText>
                 <Body2>
