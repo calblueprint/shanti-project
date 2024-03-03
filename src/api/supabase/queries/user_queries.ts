@@ -119,11 +119,37 @@ export async function fetchUserAddress(uuid: string) {
       .eq('user_id', uuid)
       .single();
 
+    console.log('test', error);
+
     if (error) {
       console.error('Error fetching user data:', error);
     }
 
     return user;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+/**
+ * fetchUserAddress: Get's a user's address based on their UUID
+ * @param uuid: String containing the uuid of the user
+ */
+export async function fetchCurrentUserAddress() {
+  try {
+    const user = await fetchUser();
+    const { data: address, error } = await supabase
+      .from('address')
+      .select('*')
+      .eq('user_id', user.id)
+      .single();
+
+    if (error) {
+      console.error('Error fetching user data:', error);
+    }
+
+    return address;
   } catch (error) {
     console.error('Error:', error);
     throw error;
