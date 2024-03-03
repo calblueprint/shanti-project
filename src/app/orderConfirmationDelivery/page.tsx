@@ -58,11 +58,9 @@ export default function OrderConfirmationDelivery() {
       <BackButton destination="./storefront" />
       <CenterBox>
         <OutterBox>
-          <HeaderText>
-            <Heading3Bold>
-              Thank you, {user?.first_name}. Your order has been placed.
-            </Heading3Bold>
-          </HeaderText>
+          <Heading3Bold>
+            Thank you, {user?.first_name}. Your order has been placed.
+          </Heading3Bold>
           <OutterFavoriteDiv>
             <DateText>Order No. {user?.cart_id}</DateText>
             <ScrollDiv>
@@ -86,12 +84,10 @@ export default function OrderConfirmationDelivery() {
               ))}
             </ScrollDiv>
             <AddressDiv>
-              <AddressText>
-                <Body2>
-                  Shipping Address: {userAddress?.street}, {userAddress?.city},{' '}
-                  {userAddress?.zipcode}
-                </Body2>
-              </AddressText>
+              <Body2>
+                Shipping Address: {userAddress?.street}, {userAddress?.city},{' '}
+                {userAddress?.zipcode}
+              </Body2>
             </AddressDiv>
           </OutterFavoriteDiv>
         </OutterBox>

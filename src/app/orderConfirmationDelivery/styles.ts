@@ -22,7 +22,8 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 500px;
+  height: auto;
+  max-height: 600px;
   margin-top: 10px;
 `;
 
@@ -45,6 +46,7 @@ export const BackDiv = styled.button`
 
 export const OutterBox = styled.div`
   width: 900px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -89,6 +91,7 @@ export const LabelBox = styled.div`
 export const CenterBox = styled.div`
   display: flex;
   justify-content: center;
+  height: 700px;
 `;
 
 export const HeaderText = styled.h3`
@@ -128,8 +131,7 @@ export const DateText = styled.p`
 `;
 
 export const AddressDiv = styled.div`
-  margin-top: 670px;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: flex-end;
 `;

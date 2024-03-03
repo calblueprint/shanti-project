@@ -1,18 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
-
+import {
+  fetchCartItemsWithQuantity,
+  totalNumberOfItemsInCart,
+} from '../../api/supabase/queries/cart_queries';
 import { Normal700Text } from '../../styles/fonts';
 import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
-import { OrderProduct } from '../../schema/schema';
+import { OrderProduct, ProductWithQuantity } from '../../schema/schema';
+import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import ItemRows from './itemRows';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   DeliveryContainer,
   OrderContainer,
-  OrderSummary,
   OrderSummaryText,
   OrderButton,
   InformationContainer,
@@ -21,14 +24,17 @@ import {
 } from './styles';
 
 export default function App() {
-  const [OrderProducts, setOrderProducts] = useState<OrderProduct[]>([]);
-  async function fetchOrderProducts() {
-    const data = (await fetchRecentOrderProducts()) as OrderProduct[];
-    setOrderProducts(data);
-  }
+  const [numberOfItems, setNumberOfItems] = useState(0);
+  const [cart, setCart] = useState<ProductWithQuantity[]>([]);
   const router = useRouter();
+  useEffect(() => {
+    async function fetchProducts() {
+      setNumberOfItems(await totalNumberOfItemsInCart());
+      setCart(await fetchCartItemsWithQuantity());
+    }
 
-  fetchOrderProducts();
+    fetchProducts();
+  }, []);
 
   return (
     <main>
@@ -45,12 +51,10 @@ export default function App() {
           <InformationText>123 Telegraph Ave</InformationText>
         </InformationContainer>
         <OrderContainer>
-          <OrderSummary>
-            <OrderSummaryText>Order Summary</OrderSummaryText>
-            <QtyText>Qty.</QtyText>
-            <ItemRows products={OrderProducts} />
-          </OrderSummary>
-          <OrderButton onClick={() => router.push('/orderConfirmationPickUp')}>
+          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
+          <OrderButton
+            onClick={() => router.push('/orderConfirmationDelivery')}
+          >
             Place Order
           </OrderButton>
         </OrderContainer>

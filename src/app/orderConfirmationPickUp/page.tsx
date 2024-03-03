@@ -72,19 +72,17 @@ export default function OrderConfirmationPickUp() {
       <BackButton destination="./storefront" />
       <CenterBox>
         <OutterBox>
-          <HeaderText>
-            <Heading3Bold>
-              Thank you, {user?.first_name}. Your order has been placed.
-            </Heading3Bold>
-          </HeaderText>
+          <Heading3Bold>
+            Thank you, {user?.first_name}. Your order has been placed.
+          </Heading3Bold>
+
           <OutterFavoriteDiv>
             <ColDiv>
               {/** change this to order number! */}
               <DateText>Order No. {user?.cart_id}</DateText>
               {/** got the date but please clean up the date format :) */}
-              <PickUpText>
-                <Body2Bold>Pick Up: {organizePickupTime()}</Body2Bold>
-              </PickUpText>
+
+              <Body2Bold>Pick Up: {organizePickupTime()}</Body2Bold>
             </ColDiv>
             {/** mess w/ the height of the scrollDiv so that the locationn stays constant :) */}
 
@@ -109,11 +107,7 @@ export default function OrderConfirmationPickUp() {
               ))}
             </ScrollDiv>
             <AddressDiv>
-              <AddressText>
-                <Body2>
-                  Location: 3170 23rd Street, San Francisco, CA 94110
-                </Body2>
-              </AddressText>
+              <Body2>Location: 3170 23rd Street, San Francisco, CA 94110</Body2>
             </AddressDiv>
           </OutterFavoriteDiv>
         </OutterBox>
