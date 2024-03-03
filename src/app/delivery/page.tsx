@@ -9,7 +9,7 @@ import {
 } from '../../api/supabase/queries/cart_queries';
 import { Normal700Text } from '../../styles/fonts';
 import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
-import { OrderProduct , ProductWithQuantity } from '../../schema/schema';
+import { OrderProduct, ProductWithQuantity } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import ItemRows from './itemRows';
 import NavBar from '../../components/NavBarFolder/NavBar';
