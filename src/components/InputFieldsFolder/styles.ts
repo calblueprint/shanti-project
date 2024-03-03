@@ -1,3 +1,4 @@
+import { EyeOff, Eye } from 'react-feather';
 import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
@@ -21,16 +22,42 @@ export const FormHeaders = styled.p`
   margin-bottom: 10px;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{
+  $pickColor?: boolean;
+  $wrongLogin?: boolean;
+}>`
   &:focus {
-    border: 2px solid #1b3679;
+    border: 1.5px solid #1b3679;
     background: #f5fbff;
     outline: none;
     color: #1b3679;
   }
-  background: ${COLORS.white};
-  color: ${COLORS.black};
+  stroke-width: 1px;
+  color: #000000;
+  border: 1.5px solid ${props => (props.$wrongLogin ? '#B60000' : 'black')};
+  background: ${props => (props.$pickColor ? '#ffdddd' : 'white')};
   width: 420px;
   height: 40px;
   padding-left: 10px;
+`;
+
+export const wrong = styled.div`
+  color: red;
+  background: pink;
+`;
+
+export const EyeOffIcon = styled(EyeOff)`
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
+  color: black;
+  margin: 20px 20px 20px 20px;
+`;
+
+export const EyeIcon = styled(Eye)`
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
+  color: black;
+  margin: 20px 20px 20px 20px;
 `;
