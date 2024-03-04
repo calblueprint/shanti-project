@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     
   }
 `;
+
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
