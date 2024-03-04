@@ -21,7 +21,7 @@ export async function fetchPickupData(): Promise<Pickup[]> {
  * @param pickupID
  * @returns fetches a single pickup time by its ID
  */
-export async function fetchPickupTimesByID(pickupID: string): Promise<Pickup> {
+export async function fetchPickupTimesByID(pickupID: number): Promise<Pickup> {
   const { data: pickupTimes, error } = await supabase
     .from('pickup_times')
     .select('*')

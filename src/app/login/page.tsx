@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import supabase from '@/api/supabase/createClient';
 import LoginForm from '../../components/LoginFormFolder/LoginForm';
-import { GlobalStyle } from '../../styles/components';
 
 import {
   Fullscreen,
@@ -13,12 +12,16 @@ import {
   WelcomeSign,
   Button,
   ErrorMessage,
+  EyeOffIcon,
+  EyeIcon,
 } from './styles';
 
 export default function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isError, setIsError] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleLogin = async () => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -30,6 +33,7 @@ export default function App() {
 
     if (error) {
       setErrorMessage('Incorrect email or password');
+      setIsError(true);
     } else {
       window.location.href = '/storefront';
     }
@@ -37,21 +41,45 @@ export default function App() {
 
   return (
     <main>
-      <GlobalStyle />
       <Fullscreen>
         <Image
           src="/images/ShantiLogo.png"
           alt="logo pic"
           width={125}
           height={65}
-          style={{ marginTop: '30px', marginLeft: '30px' }}
+          style={{
+            top: '30px',
+            left: '30px',
+            position: 'absolute',
+          }}
         />
+
         <LoginBox>
           <LoginContent>
             <WelcomeSign>Welcome</WelcomeSign>
-            <LoginForm changeUserName={setEmail} changePassword={setPassword} />
+
+            <LoginForm
+              isError={isError}
+              changeUserName={setEmail}
+              changePassword={setPassword}
+              showPassword={showPassword}
+            />
+            {showPassword ? (
+              <EyeIcon
+                onClick={() => setShowPassword(false)}
+                style={{ cursor: 'pointer' }}
+              />
+            ) : (
+              <EyeOffIcon
+                onClick={() => setShowPassword(true)}
+                style={{ cursor: 'pointer' }}
+              />
+            )}
+
             {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-            <Button onClick={handleLogin}>Log In</Button>
+            <Button style={{ cursor: 'pointer' }} onClick={handleLogin}>
+              Log In
+            </Button>
             {/* <Button type="button" onClick={() => handleSignUp(email, password)}>
               Sign up
             </Button> */}

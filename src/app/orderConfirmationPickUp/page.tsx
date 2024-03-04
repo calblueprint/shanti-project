@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import BackButton from '../../components/BackButton/BackButton';
 
-import { fetchCartItems } from '../../api/supabase/queries/cart_queries';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
+import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
+import { fetchCurrentOrdersByUser } from '@/api/supabase/queries/order_queries';
+import { Body2Bold, Body2, Heading3Bold } from '@/styles/fonts';
+import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
+
+import BackButton from '../../components/BackButton/BackButton';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -12,7 +17,6 @@ import {
   ColDiv,
   OutterFavoriteDiv,
   HeaderText,
-  GlobalStyle,
   OutterBox,
   Label,
   LabelBox,
@@ -20,59 +24,94 @@ import {
   AddressText,
   DateText,
   PickUpText,
+  CenterBox,
+  AddressDiv,
 } from './styles';
 
-import { Product } from '../../schema/schema';
+import { Product, User, Pickup } from '../../schema/schema';
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
+  const [user, setUser] = useState<User>();
+  const [pickupTime, setPickupTime] = useState<Pickup>();
 
   useEffect(() => {
     async function fetchProducts() {
-      const data = (await fetchCartItems()) as Product[];
-      setCart(data);
+      const cartItems = (await fetchCartItemsWithQuantity()) as Product[];
+      setCart(cartItems);
     }
+
+    async function setUserDetails() {
+      const fetchedUser = await fetchUser();
+      setUser(fetchedUser);
+      const currOrder = await fetchCurrentOrdersByUser();
+      const pickup = await fetchPickupTimesByID(currOrder[0].pickup_time_id);
+      setPickupTime(pickup);
+    }
+
     fetchProducts();
+    setUserDetails();
   }, []);
+
+  function organizePickupTime() {
+    const startTime = pickupTime?.start_time.toLocaleString();
+    const endTime = pickupTime?.end_time.toLocaleString();
+    const date =
+      startTime == null
+        ? ['0', '0', '0']
+        : startTime?.substring(0, 10).split('-');
+    const dateStr = `${date[2]}/${date[1]}/${date[0]}`;
+    const start = startTime?.substring(11, 16);
+    const end = endTime?.substring(11, 16);
+    return `${dateStr} (${start} - ${end})`;
+  }
 
   return (
     <div>
       <NavBar />
-      <GlobalStyle />
       <BackButton destination="./storefront" />
-      <OutterBox>
-        <HeaderText>Thank you, Ethan. Your order has been placed.</HeaderText>
-        <OutterFavoriteDiv>
-          <ColDiv>
-            <DateText>Date: November 23.2023</DateText>
-            <PickUpText>Pick Up : 12/01/2023 (1:00 PM - 4:00 PM)</PickUpText>
-          </ColDiv>
+      <CenterBox>
+        <OutterBox>
+          <Heading3Bold>
+            Thank you, {user?.first_name}. Your order has been placed.
+          </Heading3Bold>
 
-          <ScrollDiv>
-            {Cart.map(cartItem => (
-              <FavoriteDiv key={cartItem.id}>
-                <img
-                  src={cartItem.photo}
-                  alt={cartItem.name}
-                  style={{
-                    width: '150px',
-                    height: '150px',
-                    marginLeft: '80px',
-                    marginRight: '100px',
-                  }}
-                />
-                <LabelBox>
-                  <Label>{cartItem.name}</Label>
-                  <p>Category: {cartItem.category}</p>
-                </LabelBox>
-              </FavoriteDiv>
-            ))}
-            <AddressText>
-              Location: 3170 23rd Street, San Francisco, CA 94110
-            </AddressText>
-          </ScrollDiv>
-        </OutterFavoriteDiv>
-      </OutterBox>
+          <OutterFavoriteDiv>
+            <ColDiv>
+              {/** change this to order number! */}
+              <DateText>Order No. {user?.cart_id}</DateText>
+              {/** got the date but please clean up the date format :) */}
+
+              <Body2Bold>Pick Up: {organizePickupTime()}</Body2Bold>
+            </ColDiv>
+            {/** mess w/ the height of the scrollDiv so that the locationn stays constant :) */}
+
+            <ScrollDiv>
+              {Cart.map(cartItem => (
+                <FavoriteDiv key={cartItem.id}>
+                  <img
+                    src={cartItem.photo}
+                    alt={cartItem.name}
+                    style={{
+                      width: '150px',
+                      height: '150px',
+                      marginLeft: '80px',
+                      marginRight: '100px',
+                    }}
+                  />
+                  <LabelBox>
+                    <Label>{cartItem.name}</Label>
+                    <p>Category: {cartItem.category}</p>
+                  </LabelBox>
+                </FavoriteDiv>
+              ))}
+            </ScrollDiv>
+            <AddressDiv>
+              <Body2>Location: 3170 23rd Street, San Francisco, CA 94110</Body2>
+            </AddressDiv>
+          </OutterFavoriteDiv>
+        </OutterBox>
+      </CenterBox>
     </div>
   );
 }

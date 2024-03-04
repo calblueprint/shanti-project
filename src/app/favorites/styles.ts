@@ -1,17 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Heart } from 'react-feather';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-    
-  }
-`;
 
 export const FavoriteDiv = styled.div`
   display: flex;
@@ -75,4 +66,22 @@ export const NavBarMovedUP = styled(NavBar)`
 
 export const ProductNameDiv = styled.div`
   width: 350px;
+`;
+
+export const ViewItem = styled.button`
+  background: #1b3679;
+  color: #fbfbfb;
+  text-align: center;
+  width: 132px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 26px;
+  padding-top: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+  border: none;
+  border-radius: 5px;
+  line-height: normal;
+  border-radius: 14px;
 `;

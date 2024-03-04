@@ -18,7 +18,6 @@ import {
   PShiftLeft,
   WhiteBackgroundDiv,
   BackDiv,
-  GlobalStyle,
   Backtext,
   NavBarMovedUP,
   PageDiv,
@@ -52,7 +51,7 @@ function DateInfoComponent({ date }: { date: Date }) {
 export default function Pickup() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
-  const [Times, setTimes] = useState<Pickup[]>([]);
+  const [Time, setTimes] = useState<Pickup[]>([]);
 
   const [Profile, setProfile] = useState<User>();
 
@@ -62,14 +61,12 @@ export default function Pickup() {
       const data = await arrayOfFavorites(); // change the function to grab the cartItems as products
       setCart(data);
     }
-    fetchProducts();
-  }, []);
-
-  useEffect(() => {
     async function fetchTimes() {
       const data = await fetchNRecentPickupTimes(2); // change the function to grab the cartItems as products
       setTimes(data);
+      console.log(Time);
     }
+    fetchProducts();
     fetchTimes();
   }, []);
   
@@ -85,7 +82,7 @@ export default function Pickup() {
   return (
     <div>
       <NavBarMovedUP />
-      <GlobalStyle />
+
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>

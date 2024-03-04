@@ -1,17 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Heart } from 'react-feather';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-    
-  }
-`;
 
 export const FavoriteDiv = styled.div`
   display: flex;
@@ -31,7 +22,8 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 500px;
+  height: auto;
+  max-height: 600px;
   margin-top: 10px;
 `;
 
@@ -54,12 +46,15 @@ export const BackDiv = styled.button`
 
 export const OutterBox = styled.div`
   width: 900px;
-  margin-left: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const Backtext = styled.p`
   color: var(--Black, #101010);
-
   /* Body 1 - Bold, button */
   font-family: Public Sans;
   font-size: 20px;
@@ -93,11 +88,17 @@ export const LabelBox = styled.div`
   height: 100%;
 `;
 
+export const CenterBox = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 700px;
+`;
+
 export const HeaderText = styled.h3`
   color: var(--Black, #101010);
   margin-top: 30px;
   margin-bottom: 20px;
-  margin-left: 45px;
+  text: center;
   color: var(--Black, #101010);
   font-family: Public Sans;
   font-size: 35px;
@@ -121,11 +122,16 @@ export const DateText = styled.p`
   color: var(--Black, #101010);
   margin-top: 20px;
   margin-left: 45px;
-
   font-family: Public Sans;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-decoration-line: underline;
+`;
+
+export const AddressDiv = styled.div`
+  position: relative;
+  display: flex;
+  align-items: flex-end;
 `;

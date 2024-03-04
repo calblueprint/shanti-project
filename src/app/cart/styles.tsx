@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Trash2 } from 'react-feather';
 import COLORS from '../../styles/colors';
@@ -6,15 +6,6 @@ import COLORS from '../../styles/colors';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-    
-  }
-`;
 
 export const FavoriteDiv = styled.div`
   display: flex;

@@ -1,17 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { Heart } from 'react-feather';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-    
-  }
-`;
 
 export const FavoriteDiv = styled.div`
   display: flex;
@@ -31,7 +22,7 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 700px;
+  max-height: 600px;
   margin-top: 10px;
 `;
 
@@ -54,7 +45,15 @@ export const BackDiv = styled.button`
 
 export const OutterBox = styled.div`
   width: 900px;
-  margin-left: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CenterBox = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const Backtext = styled.p`
@@ -97,7 +96,7 @@ export const HeaderText = styled.h3`
   color: var(--Black, #101010);
   margin-top: 30px;
   margin-bottom: 20px;
-  margin-left: 45px;
+  text: center;
   color: var(--Black, #101010);
   font-family: Public Sans;
   font-size: 35px;
@@ -148,4 +147,10 @@ export const ColDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 750px;
+`;
+
+export const AddressDiv = styled.div`
+  position: relative;
+  display: flex;
+  align-items: flex-end;
 `;

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -7,15 +7,6 @@ import { Heart } from 'react-feather';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-    
-  }
-`;
 
 export const TextSpacing = styled.div`
   margin-top: 10px;
