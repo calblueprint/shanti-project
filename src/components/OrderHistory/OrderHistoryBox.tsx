@@ -9,7 +9,7 @@ import {
 } from '../../api/supabase/queries/order_queries';
 import ImageCarousel from './ImageCarousel';
 import OrderHistoryText from './OrderHistoryText';
-import { OrderDiv } from './styles';
+import { OrderDiv, RowDiv } from './styles';
 
 interface OrderDetailsWithProductsProps {
   orderId: number;
@@ -46,18 +46,16 @@ export default function OrderDetailsWithProducts({
     return <div>Order not found.</div>;
   }
 
-  const imageUrls = products.map(product => product.photo);
+  const imageUrls = products.map(product => product.photo).slice(0, 3);
 
   return (
-    <div>
-      <div>
-        <OrderHistoryText
-          date={order.created_at}
-          orderNumber={order.id.toString()}
-          status={order.status}
-        />
-        <ImageCarousel images={imageUrls} />
-      </div>
-    </div>
+    <RowDiv>
+      <OrderHistoryText
+        date={order.created_at}
+        orderNumber={order.id.toString()}
+        status={order.status}
+      />
+      <ImageCarousel images={imageUrls} />
+    </RowDiv>
   );
 }
