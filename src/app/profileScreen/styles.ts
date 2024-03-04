@@ -75,12 +75,12 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 300px;
+  width: 500px;
   height: 300px;
   z-index: 1000;
   margin-top: 120px;
   padding-top: 10px;
-  margin-left: 50px;
+  margin-left: -28px;
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
