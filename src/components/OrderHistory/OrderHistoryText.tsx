@@ -3,7 +3,11 @@ import { useRouter } from 'next/navigation';
 import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
 
 function formatDate(isoString: string) {
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
   const date = new Date(isoString);
   return date.toLocaleDateString('en-US', options);
 }
@@ -40,6 +44,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </div>
       </div>
       <ViewOrderButton type="button" onClick={viewOrder}>
+        {/**DO NOT USE IMAGE Please use the icon in the feather library! */}
         View order <ArrowIcon alt=">" />
       </ViewOrderButton>
     </div>

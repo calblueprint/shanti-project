@@ -15,14 +15,7 @@ export const NavBarMovedUP = styled(NavBar)`
   position: relative;
 `;
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background:white;
-    color: black;
-    overflow: visible;
-  }
-  
-`;
+ 
 
 export const OutterBox = styled.div`
   width: 900px;

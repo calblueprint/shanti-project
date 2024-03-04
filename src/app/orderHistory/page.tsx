@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistoryBox';
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
+import Footer from '../../components/FooterFolder/Footer';
 import {
   GlobalStyle,
   OrderHistoryContainer,
@@ -27,11 +28,9 @@ function OrderHistory() {
   return (
     <div>
       <NavBarMovedUP />
-      <GlobalStyle />
       <OutterBox>
         <BackButton destination="./profileScreen" />
         <h1>Order History</h1>
-
         <OrderHistoryContainer>
           {orderIds.length > 0 ? (
             orderIds.map((orderId: number) => (
@@ -42,7 +41,7 @@ function OrderHistory() {
           )}
         </OrderHistoryContainer>
       </OutterBox>
-      <FooterMoved />
+      <Footer />
     </div>
   );
 }
