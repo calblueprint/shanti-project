@@ -16,7 +16,7 @@ export const HeadingSpacing = styled.div`
 `;
 
 export const HeadingBack = styled.div`
-  margin-left: 171px;
+  margin-left: 300px;
 `;
 
 export const AccountDetails = styled.div`
@@ -41,7 +41,7 @@ export const OrderHistory = styled.div`
   margin-top: -350px;
   margin-bottom: 47px;
   width: 600px;
-  height: 290px;
+  height: 350px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -54,7 +54,7 @@ export const OrderHistory = styled.div`
 export const FavoritesContainer = styled.div`
   margin-left: 900px;
   width: 600px;
-  height: 300px;
+  height: 350px;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -75,12 +75,13 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 300px;
+  width: 405px;
   height: 300px;
   z-index: 1000;
   margin-top: 120px;
   padding-top: 10px;
-  margin-left: 50px;
+  margin-left: 2px;
+  margin-right: 2px;
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -124,10 +125,16 @@ export const BackButtonDiv = styled.div`
 export const HeaderDiv = styled.div`
   display: flex;
   width: 100%;
+  
   align-items: center;
   justify-content: space-between;
 `;
 
 export const ProductNameDiv = styled.div`
   width: 250px;
+`;
+
+export const BlankSpace = styled.div`
+  width: 250px;
+  height:200px;
 `;
