@@ -65,7 +65,7 @@ export const FavoritesContainer = styled.div`
 `;
 
 export const LogOutButton = styled.button`
-  background: #00507f;
+  background: #1B3679;
   color: #fff;
   text-align: center;
   font-size: 25px;
@@ -133,7 +133,7 @@ export const BackButtonDiv = styled.div`
 export const HeaderDiv = styled.div`
   display: flex;
   width: 100%;
-  
+
   align-items: center;
   justify-content: space-between;
 `;
@@ -144,5 +144,5 @@ export const ProductNameDiv = styled.div`
 
 export const BlankSpace = styled.div`
   width: 250px;
-  height:200px;
+  height: 200px;
 `;
