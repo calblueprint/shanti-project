@@ -135,3 +135,7 @@ export const AddressDiv = styled.div`
   display: flex;
   align-items: flex-end;
 `;
+
+export const ButtonDiv = styled.div`
+
+`;

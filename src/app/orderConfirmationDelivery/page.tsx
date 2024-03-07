@@ -25,6 +25,7 @@ import {
   DateText,
   CenterBox,
   AddressDiv,
+  ButtonDiv,
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
@@ -54,8 +55,9 @@ export default function OrderConfirmationDelivery() {
   return (
     <div>
       <NavBar />
-
-      <BackButton destination="./storefront" />
+      <ButtonDiv>
+        <BackButton destination="./storefront" />
+      </ButtonDiv>
       <CenterBox>
         <OutterBox>
           <HeaderText>
