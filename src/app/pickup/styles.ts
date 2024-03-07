@@ -43,7 +43,7 @@ export const PickupTimeButton = styled.button`
 
   color: black;
   text-align: center;
-  font-family: 'Public Sans';
+  font-family: 'Public Sans', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -202,7 +202,7 @@ export const CheckoutButton = styled.button`
 
   color: var(--White, #fff);
   text-align: center;
-  font-family: 'Public Sans';
+  font-family: 'Public Sans', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
