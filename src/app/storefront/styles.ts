@@ -86,7 +86,7 @@ export const ItemButtons = styled.button`
   width: 290px;
   height: 290px;
   border: transparent;
-  background-color: var(--Greyish, #e6e6e6);
+  background-color: var(--lightGrey, #F4F4F4);
 `;
 
 export const StorefrontWrapper = styled.div`
