@@ -5,7 +5,13 @@ import { useState, useEffect } from 'react';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import { fetchCurrentOrdersByUser } from '@/api/supabase/queries/order_queries';
-import { Body2Bold, Body2, Heading3Bold } from '@/styles/fonts';
+import {
+  Body2Bold,
+  Body2,
+  Heading3Bold,
+  Body1,
+  Body2Light,
+} from '@/styles/fonts';
 import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
@@ -102,13 +108,14 @@ export default function OrderConfirmationPickUp() {
                     }}
                   />
                   <LabelBox>
-                    <Label>{cartItem.name}</Label>
-                    <p>Category: {cartItem.category}</p>
+                    <Label>
+                      <Body1>{cartItem.name}</Body1>
+                    </Label>
+                    <Body2Light>Category: {cartItem.category}</Body2Light>
                   </LabelBox>
                 </FavoriteDiv>
               ))}
             </ScrollDiv>
-            {/** the location for pickup should be constant! I think it stays as the one below. Also please make sure that the address is not within the scrollable bar :) */}
             <AddressDiv>
               <AddressText>
                 <Body2>

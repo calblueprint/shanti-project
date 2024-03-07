@@ -6,7 +6,7 @@ import {
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
-import { Body2, Heading3Bold } from '@/styles/fonts';
+import { Body2, Heading3Bold, Body1, Body2Light } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
@@ -25,7 +25,6 @@ import {
   DateText,
   CenterBox,
   AddressDiv,
-  ButtonDiv,
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
@@ -55,9 +54,7 @@ export default function OrderConfirmationDelivery() {
   return (
     <div>
       <NavBar />
-      <ButtonDiv>
-        <BackButton destination="./storefront" />
-      </ButtonDiv>
+      <BackButton destination="./storefront" />
       <CenterBox>
         <OutterBox>
           <HeaderText>
@@ -81,8 +78,10 @@ export default function OrderConfirmationDelivery() {
                     }}
                   />
                   <LabelBox>
-                    <Label>{cartItem.name}</Label>
-                    <p>Category: {cartItem.category}</p>
+                    <Label>
+                      <Body1>{cartItem.name}</Body1>
+                    </Label>
+                    <Body2Light>Category: {cartItem.category}</Body2Light>
                   </LabelBox>
                 </FavoriteDiv>
               ))}

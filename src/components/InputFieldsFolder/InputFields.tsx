@@ -10,6 +10,7 @@ export default function InputFields(props: {
   changeUserName: (newUsername: string) => void;
   changePassword: (newPassword: string) => void;
   isPassword: boolean;
+  isError: boolean;
 }) {
   const {
     text,
@@ -17,9 +18,10 @@ export default function InputFields(props: {
     inputType,
     changeUserName,
     changePassword,
-
     isPassword,
+    isError,
   } = props;
+
   const [inputValue, setInputValue] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +40,8 @@ export default function InputFields(props: {
       <div id="userInfo">
         <FormHeaders>{text}</FormHeaders>
         <Input
+          $pickColor={isError}
+          $wrongLogin={isError}
           type={inputType}
           placeholder={placeholder}
           value={inputValue}

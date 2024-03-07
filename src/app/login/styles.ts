@@ -1,30 +1,31 @@
+import { EyeOff, Eye } from 'react-feather';
 import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const LoginBox = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 500px;
   height: 420px;
-  margin-left: 650px;
+  margin-left: 520px;
   margin-top: 120px;
   border: 1px solid #b3b3b3;
 `;
 
 export const LoginContent = styled.div`
   margin-left: 40px;
+  flex-direction: column;
   margin-top: 30px;
   text-color: black;
-  color: ${COLORS.darkRed};
 `;
 
 export const Button = styled.button`
-  margin-top: 60px;
   color: ${COLORS.white};
   text-align: center;
   font-size: 17px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
   width: 420px;
   height: 40px;
@@ -38,20 +39,9 @@ export const WelcomeSign = styled.div`
   color: ${COLORS.navy};
   font-size: 40px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   padding-bottom: 10px;
-`;
-
-export const Input = styled.input`
-  background: ${COLORS.white};
-  stroke-width: 1px;
-  color: ${COLORS.black};
-
-  stroke: ${COLORS.navy};
-  width: 420px;
-  height: 40px;
-  padding-left: 10px;
 `;
 
 export const FormHeaders = styled.p`
@@ -65,7 +55,7 @@ export const FormHeaders = styled.p`
 `;
 
 export const ErrorMessage = styled.div`
-  margin-top: 20px;
+  transform: translateY(-250%);
   margin-bottom: 20px;
   width: 420px;
   color: ${COLORS.darkRed};
@@ -78,7 +68,29 @@ export const ErrorMessage = styled.div`
   position: fixed;
 `;
 
+export const EyeOffIcon = styled(EyeOff)`
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
+  color: black;
+  margin: 20px 20px 20px 20px;
+  transform: translateY(-250%) translateX(1800%);
+`;
+
+export const EyeIcon = styled(Eye)`
+  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
+  color: black;
+  margin: 20px 20px 20px 20px;
+  transform: translateY(-250%) translateX(1800%);
+`;
+
 export const Fullscreen = styled.div`
   width: 1440px;
   height: 800px;
+`;
+
+export const InputField = styled.div`
+  position: relative;
 `;
