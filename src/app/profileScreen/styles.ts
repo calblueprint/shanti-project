@@ -68,10 +68,10 @@ export const LogOutButton = styled.button`
   background: #1b3679;
   color: #fff;
   text-align: center;
-  font-size: 25px;
-  font-family: Body1;
+  font-size: 20px;
+  font-family: 'Public Sans', sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
   border: transparent;
   border-radius: 5px;
