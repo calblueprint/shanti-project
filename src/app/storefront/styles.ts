@@ -25,8 +25,8 @@ export const StickyHeader = styled.div`
 export const Button = styled.button<{ $pickColor?: boolean }>`
   background-color: ${props => (props.$pickColor ? '#1B3679' : '#C7E1FF')};
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: transparent;
 `;
 
@@ -35,7 +35,7 @@ export const Label = styled.p<{ $pickColor?: boolean }>`
   text-align: center;
   font-family: 'Public Sans', sans-serif;
   padding-top: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
