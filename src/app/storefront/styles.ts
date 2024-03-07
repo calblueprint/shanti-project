@@ -104,6 +104,7 @@ export const StorefrontItem = styled.div`
 
 export const ShopAllText = styled.h1`
   padding-top: 80px;
+  padding-bottom: 38px;
   height: 100px;
   margin-left: 60px;
   font-family: 'Public Sans', sans-serif;
