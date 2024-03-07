@@ -125,6 +125,7 @@ export const OrderButton = styled.button`
   border-radius: 8px;
   color: ${COLORS.white};
   font-size: 20px;
+  font-family: 'Public Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
