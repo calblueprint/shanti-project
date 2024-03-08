@@ -71,7 +71,7 @@ export const AddToCartButton = styled.button`
   height: 50px;
   border-radius: 8px;
   background-color: ${COLORS.navy};
-  font-family: Public Sans;
+  font-family: 'Public Sans', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;

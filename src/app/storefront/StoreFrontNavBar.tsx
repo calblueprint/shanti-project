@@ -57,8 +57,8 @@ export default function StoreFrontNavBar(props: {
         <Image
           src="/images/ShantiLogo.png"
           alt="Shanti Logo"
-          width={125}
-          height={70}
+          width={147}
+          height={73}
         />
       </Link>
       <ButtonsContainer>
