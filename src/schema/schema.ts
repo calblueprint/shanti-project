@@ -16,12 +16,12 @@ export type User = {
 };
 
 export enum OrderStatus {
-  ApprovalInProgress = "Approval in Progress",
-  OrderApproved = "Order Approved",
-  OrderProcessing = "Order Processing",
-  ReadyForPickup = "Ready for Pickup",
-  OutForDelivery = "Out for Delivery",
-  Completed = "Completed",
+  ApprovalInProgress = 'Approval in Progress',
+  OrderApproved = 'Order Approved',
+  OrderProcessing = 'Order Processing',
+  ReadyForPickup = 'Ready for Pickup',
+  OutForDelivery = 'Out for Delivery',
+  Completed = 'Completed',
 }
 
 export type Order = {

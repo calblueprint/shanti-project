@@ -7,8 +7,6 @@ import { Button, Label, IndividualContainer } from './styles';
 import { buttons } from './buttonValues';
 
 import {
-  fetchProducts,
-  filterProduct,
   fetchUserProducts,
   filterUserProducts,
 } from '../../api/supabase/queries/product_queries';

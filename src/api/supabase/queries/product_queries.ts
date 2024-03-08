@@ -23,7 +23,7 @@ export async function fetchUnprescribedProducts(): Promise<Product[]> {
   if (error) {
     throw new Error(`Error fetching products: ${error.message}`);
   }
-  return products
+  return products;
 }
 
 export async function fetchUserProducts(): Promise<Product[]> {
@@ -37,12 +37,10 @@ export async function fetchUserProducts(): Promise<Product[]> {
   if (error) {
     throw new Error(`Error fetching products: ${error.message}`);
   }
-  console.log(prescribed);
 
   for (let i = 0; i < prescribed.length; i += 1) {
     if (prescribed[i].id) {
       if (user.pet_prescription.includes(prescribed[i].id)) {
-        console.log(prescribed[i].id, user.pet_prescription);
         products.push(prescribed[i]);
       }
     }
@@ -87,7 +85,9 @@ export async function filterProduct(productType: string): Promise<Product[]> {
   return products;
 }
 
-export async function fetchUnprescribedCategory(productType: string): Promise<Product[]> {
+export async function fetchUnprescribedCategory(
+  productType: string,
+): Promise<Product[]> {
   const { data: products, error } = await supabase
     .from('product')
     .select('*')
@@ -96,10 +96,12 @@ export async function fetchUnprescribedCategory(productType: string): Promise<Pr
   if (error) {
     throw new Error(`Error fetching products: ${error.message}`);
   }
-  return products
+  return products;
 }
 
-export async function filterUserProducts(productType: string): Promise<Product[]> {
+export async function filterUserProducts(
+  productType: string,
+): Promise<Product[]> {
   const products = await fetchUnprescribedCategory(productType);
   const user = await fetchUser();
 
