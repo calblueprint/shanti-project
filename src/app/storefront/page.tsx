@@ -5,9 +5,7 @@ import Storefront from './storefrontItems';
 
 import Footer from '../../components/FooterFolder/Footer';
 import { ShopAllText } from './styles';
-import {
-  fetchUserProducts,
-} from '../../api/supabase/queries/product_queries';
+import { fetchUserProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
 import StoreFrontNavBar from './StoreFrontNavBar';
