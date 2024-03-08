@@ -86,7 +86,7 @@ export const ItemButtons = styled.button`
   width: 290px;
   height: 290px;
   border: transparent;
-  background-color: var(--lightGrey, #F4F4F4);
+  background-color: var(--lightGrey, #f4f4f4);
 `;
 
 export const StorefrontWrapper = styled.div`
@@ -111,7 +111,7 @@ export const ShopAllText = styled.h1`
   color: black;
 `;
 
-export const HeartIcon = styled(Heart) <props>`
+export const HeartIcon = styled(Heart)<props>`
   color: ${props => (props.isClicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;

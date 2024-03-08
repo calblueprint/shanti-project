@@ -75,7 +75,7 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 500px;
+  width: 405px;
   height: 300px;
   z-index: 1000;
   margin-top: 115px;
