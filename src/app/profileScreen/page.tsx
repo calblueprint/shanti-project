@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
@@ -223,6 +223,12 @@ export default function Profile() {
         </BackButtonDiv>
         <Heading1>My Profile</Heading1>
       </HeadingBack>
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        limit={1}
+        hideProgressBar
+      />
 
       {user.delivery_allowed ? (
         <AccountDetailSectionDelivery user={user} />
