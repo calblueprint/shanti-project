@@ -65,7 +65,7 @@ export const FavoritesContainer = styled.div`
 `;
 
 export const LogOutButton = styled.button`
-  background: #1B3679;
+  background: #1b3679;
   color: #fff;
   text-align: center;
   font-size: 25px;
@@ -75,21 +75,13 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-<<<<<<< HEAD
   width: 500px;
-=======
-  width: 405px;
->>>>>>> f9cb7d3 (style:changedProfileStyle)
   height: 300px;
   z-index: 1000;
-  margin-top: 120px;
+  margin-top: 115px;
   padding-top: 10px;
-<<<<<<< HEAD
-  margin-left: -28px;
-=======
-  margin-left: 2px;
+  margin-left: 15px;
   margin-right: 2px;
->>>>>>> f9cb7d3 (style:changedProfileStyle)
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
