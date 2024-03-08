@@ -5,7 +5,7 @@ import Storefront from './storefrontItems';
 
 import Footer from '../../components/FooterFolder/Footer';
 import { ShopAllText } from './styles';
-import { fetchProducts } from '../../api/supabase/queries/product_queries';
+import { fetchProducts, fetchUserProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
 import StoreFrontNavBar from './StoreFrontNavBar';
@@ -25,7 +25,7 @@ export default function App() {
   useEffect(() => {
     async function fetchAllProducts() {
       try {
-        const data = (await fetchProducts()) as Product[];
+        const data = (await fetchUserProducts()) as Product[];
         setFilteredProducts(data);
       } catch (error) {
         // console.log(error);
