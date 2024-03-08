@@ -7,8 +7,8 @@ import { Button, Label, IndividualContainer } from './styles';
 import { buttons } from './buttonValues';
 
 import {
-  fetchProducts,
-  filterProduct,
+  fetchUserProducts,
+  filterUserProducts,
 } from '../../api/supabase/queries/product_queries';
 
 import { Product } from '../../schema/schema';
@@ -40,7 +40,7 @@ export default function ProductButtons(props: {
     // which button is clicked
 
     const category = e.currentTarget.value;
-    const productItem = await fetchProducts();
+    const productItem = await fetchUserProducts();
 
     for (let i = 0; i < buttons.length; i += 1) {
       if (buttons[i].value === category) {
@@ -71,12 +71,12 @@ export default function ProductButtons(props: {
     // Applying the filter to the categories of the product
 
     if (category !== 'All') {
-      const products = await filterProduct(category);
+      const products = await filterUserProducts(category);
       if (products !== null) {
         setFiltredProducts(products);
       }
     } else {
-      const products = await fetchProducts();
+      const products = await fetchUserProducts();
       if (products !== null) {
         setFiltredProducts(products);
       }
