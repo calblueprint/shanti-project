@@ -6,6 +6,7 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
 
+
 export const PickupContainer = styled.div`
   width: 730px;
   height: 400px;
@@ -30,7 +31,8 @@ export const PickupContent = styled.div`
 `;
 
 export const PickupTimeButton = styled.button`
-  background: ${COLORS.lightGrey};
+
+  background: ${(props) => (props.isSelected ?  COLORS.periwinkle : COLORS.lightGrey)};
 
   height: 124px;
   width: 242px;

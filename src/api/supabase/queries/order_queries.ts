@@ -33,6 +33,7 @@ export async function createOrder() {
     .insert({ user_id: user.id })
     .select('*')
     .single();
+    
   if (error) {
     throw new Error(`Error creating order: ${error.message}`);
   }
@@ -54,6 +55,8 @@ function sortOrdersByCreated(orders: Order[]): Order[] {
       new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
   );
 }
+
+
 
 /**
  * user = fetch_use()
@@ -179,4 +182,25 @@ export async function fetchCurrentOrdersByUser(): Promise<Order[]> {
   }
 
   return data;
+}
+
+
+
+
+
+export async function updateOrderPickupId(orderId: number, pickupId: number) {
+  await supabase
+    .from('order')
+    .update({ pickup_time_id: pickupId })
+    .eq('id', orderId);
+}
+
+
+export async function updateCartPickupId(pickupId: number) {
+  const user = await fetchUser();
+  const cartId = user.cart_id;
+  await supabase
+    .from('order')
+    .update({ pickup_time_id: pickupId })
+    .eq('id', cartId);
 }
