@@ -155,6 +155,7 @@ export default function Pickup() {
           // TODO add the pick up ID to the order add the checkout feature that will clear the current users art and replace
           // it with an empty cart convettying it to an order and then redirecting to the order
           // confirmation page
+          
             onClick={async () => {
               // Add the pickup ID to the order
               const pickupId = selectedPickupIndex !== null ? Time[selectedPickupIndex]?.id : null;
