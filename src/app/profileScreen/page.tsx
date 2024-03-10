@@ -34,6 +34,7 @@ import {
   FavoriteDiv,
   HeartIcon,
   BackButtonDiv,
+  BlankSpace,
   HeaderDiv,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
@@ -234,6 +235,7 @@ export default function Profile() {
       <LogOutButton onClick={() => router.push('/favorites')}>
         Favorites
       </LogOutButton> */}
+      <BlankSpace />
     </main>
   );
 }

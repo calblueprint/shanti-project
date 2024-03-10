@@ -23,19 +23,19 @@ export const StickyHeader = styled.div`
 `;
 
 export const Button = styled.button<{ $pickColor?: boolean }>`
-  background-color: ${props => (props.$pickColor ? '#00507f' : '#C7E1FF')};
+  background-color: ${props => (props.$pickColor ? '#1B3679' : '#C7E1FF')};
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: transparent;
 `;
 
 export const Label = styled.p<{ $pickColor?: boolean }>`
-  color: ${props => (props.$pickColor ? '#00507f' : '#000')};
+  color: ${props => (props.$pickColor ? '#1B3679' : '#000')};
   text-align: center;
   font-family: 'Public Sans', sans-serif;
   padding-top: 5px;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -86,7 +86,7 @@ export const ItemButtons = styled.button`
   width: 290px;
   height: 290px;
   border: transparent;
-  background-color: var(--Greyish, #e6e6e6);
+  background-color: var(--lightGrey, #f4f4f4);
 `;
 
 export const StorefrontWrapper = styled.div`
@@ -104,6 +104,7 @@ export const StorefrontItem = styled.div`
 
 export const ShopAllText = styled.h1`
   padding-top: 80px;
+  padding-bottom: 38px;
   height: 100px;
   margin-left: 60px;
   font-family: 'Public Sans', sans-serif;
