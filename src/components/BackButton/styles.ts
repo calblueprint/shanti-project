@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { ArrowLeft } from 'react-feather';
 import Image from 'next/image';
 import COLORS from '../../styles/colors';
+
 
 export const BackDiv = styled.button`
   display: flex;
@@ -11,10 +13,15 @@ export const BackDiv = styled.button`
   border: transparent;
   margin-left: 0px;
   margin-top: 55px;
+  gap: 5px;
 `;
 
 export const ImageWithSize = styled(Image)`
     width={23}
     height={23}
+`;
 
+export const ArrowLeftIcon = styled(ArrowLeft)`
+  width: 17px;
+  height: 17px;
 `;

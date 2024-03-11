@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Heading1 = styled.div`
+export const Heading1 = styled.h1`
+  font-family: 'Public Sans', sans-serif;
   font-size: 40px;
   font-style: normal;
   line-height: normal;
@@ -107,7 +108,7 @@ export const Body2 = styled.p`
 `;
 
 export const Body2Bold = styled.p`
-  font-family: 'Public Sans';
+  font-family: 'Public Sans', sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;

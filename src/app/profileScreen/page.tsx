@@ -89,7 +89,7 @@ function OrderHistorySection() {
       <OrderHistory>
         <HeaderDiv>
           <Heading2>Order History</Heading2>
-          <ViewAllButton destination="./favorites" />
+          <ViewAllButton destination="./orderPage" />
         </HeaderDiv>
       </OrderHistory>
     </main>

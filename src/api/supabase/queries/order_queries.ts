@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import { Order, OrderProduct } from '../../../schema/schema';
+import { Order, OrderProduct, ProductWithQuantity } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import supabase from '../createClient';
 
@@ -113,6 +113,18 @@ export async function fetchOrderProductById(
   return orderProduct;
 }
 
+export async function fetchProductWithQuantityById( productId: number, ): Promise<ProductWithQuantity> {
+  const { data: orderProduct, error } = await supabase
+    .from('product')
+    .select('*')
+    .eq('id', productId)
+    .single();
+  if (error) {
+    throw new Error(`Error fetching order product: ${error.message}`);
+  }
+  return orderProduct;
+}
+
 export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
   const order = await fetchNOrdersByUserIdSorted(1);
   const orderProductIds = order[0].order_product_id_array;
@@ -127,6 +139,17 @@ export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
       }
     }),
   );
+
+  return orderProducts;
+}
+
+export async function fetchOrderProductsbyOrderId(orderId: number): Promise<ProductWithQuantity[]> {
+  const order = await getOrderById(orderId);
+  const orderProductIds = order.order_product_id_array;
+
+  const newOrderProducts = await Promise.all(orderProductIds.map(orderProductId => fetchOrderProductById(orderProductId)));
+  console.log(newOrderProducts);
+  const orderProducts = await Promise.all(newOrderProducts.map(async orderProduct => fetchProductWithQuantityById(orderProduct.product_id)));
 
   return orderProducts;
 }

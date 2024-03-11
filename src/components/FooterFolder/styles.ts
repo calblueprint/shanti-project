@@ -12,8 +12,8 @@ export const ContactDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-right: 90px;
-  margin-left: 90px;
+  margin-left: 40px;
+  margin-right: 40px;
   gap: 18px;
 `;
 
@@ -21,8 +21,8 @@ export const LinkDiv = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 60px;
-  margin-right: 90px;
-  margin-left: 90px;
+  margin-left: 40px;
+  margin-right: 40px;
 `;
 
 export const Body1Bold = styled.p`
@@ -49,8 +49,8 @@ export const MissionDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 90px;
-  margin-right: 90px;
+  margin-left: 40px;
+  margin-right: 40px;
   gap: 10px;
 `;
 

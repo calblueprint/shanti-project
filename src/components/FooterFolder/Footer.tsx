@@ -112,9 +112,9 @@ export default function Footer({ ...rest }) {
         <Image
           src="/images/PAWS.png"
           alt="logo pic"
-          width={233}
-          height={162}
-          style={{ marginTop: '48px', marginBottom: '48px' }}
+          width={231}
+          height={160}
+          style={{ marginTop: '48px', marginBottom: '48px', marginRight: '20px', marginLeft: '20px' }}
         />
       </Wrapper>
     </main>
