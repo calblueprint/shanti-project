@@ -88,3 +88,9 @@ export const GalleryImage = styled.img`
   max-width: 115px;
   display: block;
 `;
+
+export const RowDiv = styled.div`
+  width: 700px;
+  height: 400px;
+  margin-bottom: 50px;
+`;
