@@ -3,7 +3,6 @@ import { ArrowLeft } from 'react-feather';
 import Image from 'next/image';
 import COLORS from '../../styles/colors';
 
-
 export const BackDiv = styled.button`
   display: flex;
   flex-direction: row;

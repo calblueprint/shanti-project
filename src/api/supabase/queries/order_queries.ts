@@ -1,7 +1,11 @@
 /* eslint-disable no-console */
 //
 
-import { Order, OrderProduct, ProductWithQuantity } from '../../../schema/schema';
+import {
+  Order,
+  OrderProduct,
+  ProductWithQuantity,
+} from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import supabase from '../createClient';
 
@@ -113,7 +117,9 @@ export async function fetchOrderProductById(
   return orderProduct;
 }
 
-export async function fetchProductWithQuantityById( productId: number, ): Promise<ProductWithQuantity> {
+export async function fetchProductWithQuantityById(
+  productId: number,
+): Promise<ProductWithQuantity> {
   const { data: orderProduct, error } = await supabase
     .from('product')
     .select('*')
@@ -143,13 +149,23 @@ export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
   return orderProducts;
 }
 
-export async function fetchOrderProductsbyOrderId(orderId: number): Promise<ProductWithQuantity[]> {
+export async function fetchOrderProductsbyOrderId(
+  orderId: number,
+): Promise<ProductWithQuantity[]> {
   const order = await getOrderById(orderId);
   const orderProductIds = order.order_product_id_array;
 
-  const newOrderProducts = await Promise.all(orderProductIds.map(orderProductId => fetchOrderProductById(orderProductId)));
+  const newOrderProducts = await Promise.all(
+    orderProductIds.map(orderProductId =>
+      fetchOrderProductById(orderProductId),
+    ),
+  );
   console.log(newOrderProducts);
-  const orderProducts = await Promise.all(newOrderProducts.map(async orderProduct => fetchProductWithQuantityById(orderProduct.product_id)));
+  const orderProducts = await Promise.all(
+    newOrderProducts.map(async orderProduct =>
+      fetchProductWithQuantityById(orderProduct.product_id),
+    ),
+  );
 
   return orderProducts;
 }

@@ -114,7 +114,12 @@ export default function Footer({ ...rest }) {
           alt="logo pic"
           width={231}
           height={160}
-          style={{ marginTop: '48px', marginBottom: '48px', marginRight: '20px', marginLeft: '20px' }}
+          style={{
+            marginTop: '48px',
+            marginBottom: '48px',
+            marginRight: '20px',
+            marginLeft: '20px',
+          }}
         />
       </Wrapper>
     </main>
