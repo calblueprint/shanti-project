@@ -2,14 +2,18 @@
 
 // import { GlobalStyle } from "@/styles/components";
 import { ArrowLeft } from 'react-feather';
-import { arrayOfFavorites, fetchUser } from '@/api/supabase/queries/user_queries';
-import {fetchCartItemsWithQuantity} from '@/api/supabase/queries/cart_queries';
+import {
+  fetchUser,
+} from '@/api/supabase/queries/user_queries';
+import { fetchCartItemsWithQuantity } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/navigation';
 import { Normal700Text } from '@/styles/fonts';
-import { fetchRecentPickupTimes ,fetchNRecentPickupTimes} from '@/api/supabase/queries/pickup_queries';
-import {updateCartPickupId} from '@/api/supabase/queries/order_queries';
-import { Pickup, Product, User, ProductWithQuantity } from '@/schema/schema';
+import {
+  fetchNRecentPickupTimes,
+} from '@/api/supabase/queries/pickup_queries';
+import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
+import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
 
 import PickupButton from '@/components/PickUpFolder/PickupButton';
 import {
@@ -34,25 +38,30 @@ import {
   PickupTimeButton,
 } from './styles';
 
-
 function DateInfoComponent(date: string) {
   const date1 = new Date(date.date);
 
-
-
-  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const daysOfWeek = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
   const getDayOfWeek = daysOfWeek[date1.getDay()];
 
-  const dateAsMonthDay = date1.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
-
-
+  const dateAsMonthDay = date1.toLocaleDateString(undefined, {
+    month: 'long',
+    day: 'numeric',
+  });
 
   return {
     getDayOfWeek,
-    dateAsMonthDay
+    dateAsMonthDay,
   };
 }
-
 
 //
 
@@ -62,7 +71,6 @@ export default function Pickup() {
   const [Time, setTimes] = useState<Pickup[]>([]);
 
   const [Profile, setProfile] = useState<User>();
-
 
   useEffect(() => {
     async function fetchProducts() {
@@ -77,7 +85,7 @@ export default function Pickup() {
     fetchProducts();
     fetchTimes();
   }, []);
-  
+
   useEffect(() => {
     async function fetchUserData() {
       const data = await fetchUser(); // change the function to grab the cartItems as products
@@ -91,7 +99,6 @@ export default function Pickup() {
   const handleButtonClick = (index: SetStateAction<null>) => {
     setSelectedPickupIndex(index);
   };
-
 
   return (
     <div>
@@ -108,7 +115,9 @@ export default function Pickup() {
               Pick Up
             </Normal700Text>
             <Normal700Text>Name</Normal700Text>
-            <PickupContent>{Profile?.first_name} {Profile?.last_name}</PickupContent>
+            <PickupContent>
+              {Profile?.first_name} {Profile?.last_name}
+            </PickupContent>
             <Normal700Text>Phone Number</Normal700Text>
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
             {/* <PickupButton day="hi" date="date" start="start" end="end" /> */}
@@ -116,16 +125,26 @@ export default function Pickup() {
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
               {Time.map((time, index) => (
                 <PickupTimeButton
-                  key={index}
+                  key={time.id} // Replace 'index' with a unique identifier from the 'time' object
                   isSelected={selectedPickupIndex === index}
                   onClick={() => handleButtonClick(index)}
                 >
-                  <div>{String(DateInfoComponent({ date: time.start_time })?.getDayOfWeek)}</div>
-                  <div>{DateInfoComponent({ date: time.start_time })?.dateAsMonthDay}</div>
+                  <div>
+                    {String(
+                      DateInfoComponent({ date: time.start_time })
+                        ?.getDayOfWeek,
+                    )}
+                  </div>
+                  <div>
+                    {
+                      DateInfoComponent({ date: time.start_time })
+                        ?.dateAsMonthDay
+                    }
+                  </div>
                 </PickupTimeButton>
               ))}
             </div>
-        
+
             <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
         </ForceColumnDiv>
@@ -152,13 +171,16 @@ export default function Pickup() {
           </WhiteBackgroundDiv>
 
           <CheckoutButton
-          // TODO add the pick up ID to the order add the checkout feature that will clear the current users art and replace
-          // it with an empty cart convettying it to an order and then redirecting to the order
-          // confirmation page
-          
+            // TODO add the pick up ID to the order add the checkout feature that will clear the current users art and replace
+            // it with an empty cart convettying it to an order and then redirecting to the order
+            // confirmation page
+
             onClick={async () => {
               // Add the pickup ID to the order
-              const pickupId = selectedPickupIndex !== null ? Time[selectedPickupIndex]?.id : null;
+              const pickupId =
+                selectedPickupIndex !== null
+                  ? Time[selectedPickupIndex]?.id
+                  : null;
               if (pickupId) {
                 await updateCartPickupId(pickupId);
 
@@ -168,9 +190,10 @@ export default function Pickup() {
                 // console.log(updatedOrder);
               }
               router.push('/orderConfirmationPickUp');
-            }}>
+            }}
+          >
             Checkout
-            </CheckoutButton>
+          </CheckoutButton>
         </RightColumnDiv>
       </PageDiv>
     </div>
