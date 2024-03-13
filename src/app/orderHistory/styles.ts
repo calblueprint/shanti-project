@@ -1,5 +1,5 @@
 // styles.ts (for styled-components)
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
@@ -14,8 +14,6 @@ export const FooterMoved = styled(Footer)`
 export const NavBarMovedUP = styled(NavBar)`
   position: relative;
 `;
-
- 
 
 export const OutterBox = styled.div`
   width: 900px;
@@ -48,4 +46,3 @@ export const OrderHistoryBox = styled.div`
   gap: 20px;
   overflow-y: auto;
 `;
-
