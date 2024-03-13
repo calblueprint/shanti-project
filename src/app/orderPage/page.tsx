@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { Body1, Body2 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -23,18 +21,21 @@ import {
   Heading,
   ProductNameDiv,
   StatusButton,
-  ViewItem,
 } from './styles';
 
+<<<<<<< HEAD
 import {
   ProductWithQuantity,
   OrderProduct,
   Order,
   Product,
 } from '../../schema/schema';
+=======
+import { ProductWithQuantity, Order } from '../../schema/schema';
+>>>>>>> 60e46d8 (feat: order page udpated)
 
-function formatDate(date: Date | null): string {
-  if (!date) return '';
+function formatDate(date: string | undefined): string {
+  if (date === undefined) return '';
 
   const monthNames = [
     'January',
@@ -54,21 +55,49 @@ function formatDate(date: Date | null): string {
   const day = date.getDate();
   const year = date.getFullYear();
 
-  return `${month} ${day}, ${year}`;
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const formattedDate = `${months[parseInt(month, 10) - 1]} ${parseInt(
+    day,
+    10,
+  )}, ${year}`;
+
+  return formattedDate;
 }
 
 export default function FavoritesPage() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
-  const [currOrder, setcurrOrder] = useState<Order[]>([]);
-  const router = useRouter();
   const currOrderId = 32;
+  const [order, setOrder] = useState<Order>();
 
   async function fetchProducts() {
+<<<<<<< HEAD
     const order = await getOrderById(currOrderId);
     const data = (await fetchOrderProductsbyOrderId(
       currOrderId,
     )) as ProductWithQuantity[];
     setOrders(data);
+=======
+    const data = (await fetchOrderProductsbyOrderId(
+      currOrderId,
+    )) as ProductWithQuantity[];
+    const currOrder = await getOrderById(currOrderId);
+    setOrders(data);
+    setOrder(currOrder);
+>>>>>>> 60e46d8 (feat: order page udpated)
   }
 
   useEffect(() => {
@@ -84,10 +113,17 @@ export default function FavoritesPage() {
           <BackButton destination="./profileScreen" />
         </BackButtonDiv>
         <OutterDiv>
+<<<<<<< HEAD
           <Heading>{order.created_at}</Heading>
           <StatusButton>
             {' '}
             <Body1Bold>{order.status}</Body1Bold>{' '}
+=======
+          <Heading>{formatDate(order?.created_at)}</Heading>
+          <StatusButton>
+            {' '}
+            <Body1Bold>{order?.status}</Body1Bold>{' '}
+>>>>>>> 60e46d8 (feat: order page udpated)
           </StatusButton>
         </OutterDiv>
 
