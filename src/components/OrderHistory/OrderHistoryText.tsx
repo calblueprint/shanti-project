@@ -44,7 +44,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </div>
       </div>
       <ViewOrderButton type="button" onClick={viewOrder}>
-        {/**DO NOT USE IMAGE Please use the icon in the feather library! */}
+        {/** DO NOT USE IMAGE Please use the icon in the feather library! */}
         View order <ArrowIcon alt=">" />
       </ViewOrderButton>
     </div>

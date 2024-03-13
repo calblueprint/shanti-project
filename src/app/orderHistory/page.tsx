@@ -5,10 +5,8 @@ import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistory
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
 import Footer from '../../components/FooterFolder/Footer';
 import {
-  GlobalStyle,
   OrderHistoryContainer,
   OutterBox,
-  FooterMoved,
   NavBarMovedUP,
 } from './styles';
 import BackButton from '../../components/BackButton/BackButton';
