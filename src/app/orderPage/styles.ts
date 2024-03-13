@@ -55,7 +55,6 @@ export const Heading = styled.h1`
   font-size: 30px;
 `;
 
-
 export const OutterDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -118,7 +117,7 @@ export const ViewItem = styled.button`
 `;
 
 export const StatusButton = styled.button`
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: 0;
   color: black;
   text-align: center;
@@ -131,8 +130,7 @@ export const StatusButton = styled.button`
   padding-bottom: 3px;
   border: none;
   border-radius: 16.5px;
-  background: var(--Baby-Blue, #C7DDFF);
-
+  background: var(--Baby-Blue, #c7ddff);
 `;
 
 export const Body1Bold = styled.p`
