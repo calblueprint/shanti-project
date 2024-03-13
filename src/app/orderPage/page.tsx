@@ -23,16 +23,7 @@ import {
   StatusButton,
 } from './styles';
 
-<<<<<<< HEAD
-import {
-  ProductWithQuantity,
-  OrderProduct,
-  Order,
-  Product,
-} from '../../schema/schema';
-=======
 import { ProductWithQuantity, Order } from '../../schema/schema';
->>>>>>> 60e46d8 (feat: order page udpated)
 
 function formatDate(date: string | undefined): string {
   if (date === undefined) return '';
@@ -84,20 +75,12 @@ export default function FavoritesPage() {
   const [order, setOrder] = useState<Order>();
 
   async function fetchProducts() {
-<<<<<<< HEAD
-    const order = await getOrderById(currOrderId);
-    const data = (await fetchOrderProductsbyOrderId(
-      currOrderId,
-    )) as ProductWithQuantity[];
-    setOrders(data);
-=======
     const data = (await fetchOrderProductsbyOrderId(
       currOrderId,
     )) as ProductWithQuantity[];
     const currOrder = await getOrderById(currOrderId);
     setOrders(data);
     setOrder(currOrder);
->>>>>>> 60e46d8 (feat: order page udpated)
   }
 
   useEffect(() => {
@@ -113,17 +96,10 @@ export default function FavoritesPage() {
           <BackButton destination="./profileScreen" />
         </BackButtonDiv>
         <OutterDiv>
-<<<<<<< HEAD
-          <Heading>{order.created_at}</Heading>
-          <StatusButton>
-            {' '}
-            <Body1Bold>{order.status}</Body1Bold>{' '}
-=======
           <Heading>{formatDate(order?.created_at)}</Heading>
           <StatusButton>
             {' '}
             <Body1Bold>{order?.status}</Body1Bold>{' '}
->>>>>>> 60e46d8 (feat: order page udpated)
           </StatusButton>
         </OutterDiv>
 
