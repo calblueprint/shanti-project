@@ -24,7 +24,7 @@ import {
 } from './styles';
 
 import { ProductWithQuantity, Order } from '../../schema/schema';
-
+import { useSearchParams } from 'next/navigation';
 function formatDate(date: string | undefined): string {
   if (!date) return '';
 
@@ -51,9 +51,18 @@ function formatDate(date: string | undefined): string {
   return `${month} ${day}, ${year}`;
 }
 
-export default function FavoritesPage() {
+export default function OrderPage() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
-  const currOrderId = 32;
+  const searchParams = useSearchParams();
+  const orderIDFromSearch = searchParams.get('orderID');
+  console.log(orderIDFromSearch);
+  let currOrderId = 0;
+  if (orderIDFromSearch !== null) {
+    currOrderId = parseInt(orderIDFromSearch);
+  } else {
+    currOrderId = 32;
+  }
+
   const [order, setOrder] = useState<Order>();
 
   async function fetchProducts() {
@@ -75,7 +84,7 @@ export default function FavoritesPage() {
 
       <OutterBox>
         <BackButtonDiv>
-          <BackButton destination="./profileScreen" />
+          <BackButton destination="./orderHistory" />
         </BackButtonDiv>
         <OutterDiv>
           <Heading>{formatDate(order?.created_at)}</Heading>
