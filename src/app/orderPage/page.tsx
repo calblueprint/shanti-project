@@ -26,7 +26,7 @@ import {
 import { ProductWithQuantity, Order } from '../../schema/schema';
 
 function formatDate(date: string | undefined): string {
-  if (date === undefined) return '';
+  if (!date) return '';
 
   const monthNames = [
     'January',
@@ -42,31 +42,13 @@ function formatDate(date: string | undefined): string {
     'November',
     'December',
   ];
-  const month = monthNames[date.getMonth()];
-  const day = date.getDate();
-  const year = date.getFullYear();
+  const res: Date = new Date(date);
 
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const month = monthNames[res.getMonth()];
+  const day = res.getDate();
+  const year = res.getFullYear();
 
-  const formattedDate = `${months[parseInt(month, 10) - 1]} ${parseInt(
-    day,
-    10,
-  )}, ${year}`;
-
-  return formattedDate;
+  return `${month} ${day}, ${year}`;
 }
 
 export default function FavoritesPage() {
