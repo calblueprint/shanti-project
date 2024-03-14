@@ -2,12 +2,13 @@
 
 // import { GlobalStyle } from "@/styles/components";
 import { ArrowLeft } from 'react-feather';
-import { arrayOfFavorites } from '@/api/supabase/queries/user_queries';
+import { arrayOfFavorites, fetchUser } from '@/api/supabase/queries/user_queries';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Normal700Text } from '@/styles/fonts';
-import { fetchRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
-import { Pickup, Product } from '@/schema/schema';
+import { fetchRecentPickupTimes ,fetchNRecentPickupTimes} from '@/api/supabase/queries/pickup_queries';
+import { Pickup, Product, User } from '@/schema/schema';
+
 import PickupButton from '@/components/PickUpFolder/PickupButton';
 import {
   HeaderShiftLeft,
@@ -31,10 +32,29 @@ import {
   PickupTimeButton,
 } from './styles';
 
+
+function DateInfoComponent({ date }: { date: Date }) {
+  const dayOfWeek = date.getDay;
+  console.log(dayOfWeek);
+  const dateAsMonthDay = `${date.getDate  }/${  date.getMonth  }${1}`;
+
+
+  return {
+    dayOfWeek,
+    dateAsMonthDay
+  };
+}
+
+
+//
+
 export default function Pickup() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
   const [Time, setTimes] = useState<Pickup[]>([]);
+
+  const [Profile, setProfile] = useState<User>();
+
 
   useEffect(() => {
     async function fetchProducts() {
@@ -42,13 +62,22 @@ export default function Pickup() {
       setCart(data);
     }
     async function fetchTimes() {
-      const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
+      const data = await fetchNRecentPickupTimes(2); // change the function to grab the cartItems as products
       setTimes(data);
       console.log(Time);
     }
     fetchProducts();
     fetchTimes();
   }, []);
+  
+  useEffect(() => {
+    async function fetchUserData() {
+      const data = await fetchUser(); // change the function to grab the cartItems as products
+      setProfile(data);
+    }
+    fetchUserData();
+  }, []);
+
 
   return (
     <div>
@@ -65,12 +94,20 @@ export default function Pickup() {
               Pick Up
             </Normal700Text>
             <Normal700Text>Name</Normal700Text>
-            <PickupContent>Ethan Auyeung</PickupContent>
+            <PickupContent>{Profile?.first_name} {Profile?.last_name}</PickupContent>
             <Normal700Text>Phone Number</Normal700Text>
-            <PickupContent>+1 123-456-7890</PickupContent>
-            <PickupButton day="hi" date="date" start="start" end="end" />
+            <PickupContent>{Profile?.phone_numbers}</PickupContent>
+            {/* <PickupButton day="hi" date="date" start="start" end="end" /> */}
 
-            <PickupTimeButton>Time</PickupTimeButton>
+            <PickupTimeButton>
+              {Times.length > 0 && (
+                <>
+                  <div>{DateInfoComponent({ date: Times[0].start_time })?.dayOfWeek}</div>
+                  <div>{DateInfoComponent({ date: Times[0].start_time })?.dateAsMonthDay}</div>
+                </>
+              )}
+            </PickupTimeButton>
+        
             <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
         </ForceColumnDiv>

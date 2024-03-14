@@ -9,6 +9,7 @@ import {
 } from '../../api/supabase/queries/order_queries';
 import ImageCarousel from './ImageCarousel';
 import OrderHistoryText from './OrderHistoryText';
+import { OrderDiv } from './styles';
 
 interface OrderDetailsWithProductsProps {
   orderId: number;
