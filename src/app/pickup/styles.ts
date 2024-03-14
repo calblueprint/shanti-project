@@ -30,8 +30,7 @@ export const PickupContent = styled.div`
 `;
 
 export const PickupTimeButton = styled.button`
-  background: ${props =>
-    props.isSelected ? COLORS.periwinkle : COLORS.lightGrey};
+  background: {COLORS.periwinkle};
 
   height: 124px;
   width: 242px;
