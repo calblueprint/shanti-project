@@ -2,6 +2,12 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
 
+function formatDate(isoString: string) {
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const date = new Date(isoString);
+  return date.toLocaleDateString('en-US', options);
+}
+
 interface OrderDetailsProps {
   date: string;
   orderNumber: string;
@@ -27,7 +33,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
       }}
     >
       <div>
-        <div>{date}</div>
+        <div>{formatDate(date)}</div>
         <div>Order No. {orderNumber}</div>
         <div style={{ color: status === 'Confirmed' ? 'green' : 'red' }}>
           {status === 'Confirmed' ? '✓' : '✗'} {status}

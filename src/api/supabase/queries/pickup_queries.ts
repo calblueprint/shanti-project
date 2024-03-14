@@ -50,3 +50,20 @@ export async function fetchRecentPickupTimes(): Promise<Pickup[]> {
   }
   return getTimes;
 }
+
+/**
+ *
+ * @returns 2 most recent pickup times
+ */
+export async function fetchNRecentPickupTimes(n: number): Promise<Pickup[]> {
+  const { data: getTimes, error } = await supabase
+    .from('pickup_times')
+    .select('*')
+    .order('start_time', { ascending: false })
+    .limit(n);
+
+  if (error) {
+    throw new Error(`Error fetching pickup times: ${error.message}`);
+  }
+  return getTimes;
+}
