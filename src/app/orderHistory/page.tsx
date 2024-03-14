@@ -4,11 +4,7 @@ import React, { useEffect, useState } from 'react';
 import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistoryBox';
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
 import Footer from '../../components/FooterFolder/Footer';
-import {
-  OrderHistoryContainer,
-  OutterBox,
-  NavBarMovedUP,
-} from './styles';
+import { OrderHistoryContainer, OutterBox, NavBarMovedUP } from './styles';
 import BackButton from '../../components/BackButton/BackButton';
 
 function OrderHistory() {

@@ -2,20 +2,15 @@
 
 // import { GlobalStyle } from "@/styles/components";
 import { ArrowLeft } from 'react-feather';
-import {
-  fetchUser,
-} from '@/api/supabase/queries/user_queries';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchCartItemsWithQuantity } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect, SetStateAction } from 'react';
 import { useRouter } from 'next/navigation';
 import { Normal700Text } from '@/styles/fonts';
-import {
-  fetchNRecentPickupTimes,
-} from '@/api/supabase/queries/pickup_queries';
+import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
 import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
 
-import PickupButton from '@/components/PickUpFolder/PickupButton';
 import {
   HeaderShiftLeft,
   OrderSummaryDiv,
@@ -80,7 +75,6 @@ export default function Pickup() {
     async function fetchTimes() {
       const data = await fetchNRecentPickupTimes(2); // change the function to grab the cartItems as products
       setTimes(data);
-      console.log(Time);
     }
     fetchProducts();
     fetchTimes();
@@ -121,10 +115,10 @@ export default function Pickup() {
             <Normal700Text>Phone Number</Normal700Text>
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Normal700Text>Pick Up Time</Normal700Text> 
-            <Normal700Text>Pick Up times: 10:00 AM - 12:00 PM </Normal700Text> 
+              <Normal700Text>Pick Up Time</Normal700Text>
+              <Normal700Text>Pick Up times: 10:00 AM - 12:00 PM </Normal700Text>
             </div>
-            
+
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
               {Time.map((time, index) => (
                 <PickupTimeButton
