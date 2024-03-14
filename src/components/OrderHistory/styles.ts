@@ -48,11 +48,13 @@ export const ViewOrderButton = styled.button`
   align-items: center;
 `;
 
-export const ArrowIcon = styled.img`
+export const ArrowIcon = styled.div`
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid var(--Black, #101010);
   margin-left: 5px;
-  width: 16px; // Set width as needed
-  height: 16px; // Set height as needed
-  // No need to set color since it's an img element
 `;
 
 export const OrderDiv = styled.div`

@@ -120,8 +120,11 @@ export default function Pickup() {
             </PickupContent>
             <Normal700Text>Phone Number</Normal700Text>
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
-            {/* <PickupButton day="hi" date="date" start="start" end="end" /> */}
-
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Normal700Text>Pick Up Time</Normal700Text> 
+            <Normal700Text>Pick Up times: 10:00 AM - 12:00 PM </Normal700Text> 
+            </div>
+            
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
               {Time.map((time, index) => (
                 <PickupTimeButton
