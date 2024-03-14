@@ -33,6 +33,7 @@ export async function createOrder() {
     .insert({ user_id: user.id })
     .select('*')
     .single();
+
   if (error) {
     throw new Error(`Error creating order: ${error.message}`);
   }
@@ -159,4 +160,40 @@ export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
   );
 
   return orderProducts;
+}
+
+/**
+ * gets all orders by user id and sorted it by creation data
+ * @param Order[] - An array of Order objects.
+ * @returns Promise<Order[]> - An array of Order objects.
+ */
+export async function fetchCurrentOrdersByUser(): Promise<Order[]> {
+  const user = await fetchUser();
+  const userCartId = user.cart_id;
+  const { data, error } = await supabase
+    .from('order')
+    .select('*')
+    .eq('id', userCartId);
+
+  if (error) {
+    throw new Error(`Error fetching orders for user: ${error.message}`);
+  }
+
+  return data;
+}
+
+export async function updateOrderPickupId(orderId: number, pickupId: number) {
+  await supabase
+    .from('order')
+    .update({ pickup_time_id: pickupId })
+    .eq('id', orderId);
+}
+
+export async function updateCartPickupId(pickupId: number) {
+  const user = await fetchUser();
+  const cartId = user.cart_id;
+  await supabase
+    .from('order')
+    .update({ pickup_time_id: pickupId })
+    .eq('id', cartId);
 }
