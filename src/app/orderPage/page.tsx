@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Body1, Body2 } from '@/styles/fonts';
+import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -24,7 +25,7 @@ import {
 } from './styles';
 
 import { ProductWithQuantity, Order } from '../../schema/schema';
-import { useSearchParams } from 'next/navigation';
+
 function formatDate(date: string | undefined): string {
   if (!date) return '';
 
@@ -58,7 +59,7 @@ export default function OrderPage() {
   console.log(orderIDFromSearch);
   let currOrderId = 0;
   if (orderIDFromSearch !== null) {
-    currOrderId = parseInt(orderIDFromSearch);
+    currOrderId = parseInt(orderIDFromSearch, 10);
   } else {
     currOrderId = 32;
   }
