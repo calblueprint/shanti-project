@@ -27,7 +27,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </div>
       </div>
       <ViewOrderButton type="button" onClick={viewOrder}>
-        View order <ArrowIcon src="./Chevron_Right.svg" alt=">"/>
+        View order <ArrowIcon alt=">"/>
       </ViewOrderButton>
     </div>
   );
