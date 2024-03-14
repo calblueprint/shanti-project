@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
 
-
 function formatDate(isoString: string) {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',

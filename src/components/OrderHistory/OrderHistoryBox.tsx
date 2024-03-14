@@ -9,7 +9,7 @@ import {
 } from '../../api/supabase/queries/order_queries';
 import ImageCarousel from './ImageCarousel';
 import OrderHistoryText from './OrderHistoryText';
-import {RowDiv } from './styles';
+import { RowDiv } from './styles';
 
 interface OrderDetailsWithProductsProps {
   orderId: number;
