@@ -33,7 +33,7 @@ import {
   PickupTimeButton,
 } from './styles';
 
-function DateInfoComponent(date: { date: unknown; }) {
+function DateInfoComponent(date: { date: unknown }) {
   const date1 = new Date(date.date as string);
 
   const daysOfWeek = [
