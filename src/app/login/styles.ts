@@ -9,6 +9,7 @@ export const LoginBox = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
+
   width: 500px;
   height: 420px;
 
