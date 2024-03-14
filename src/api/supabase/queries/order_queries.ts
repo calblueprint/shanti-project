@@ -1,16 +1,12 @@
 /* eslint-disable no-console */
 //
 
-<<<<<<< HEAD
 import {
   Order,
   OrderProduct,
   Product,
   ProductWithQuantity,
 } from '../../../schema/schema';
-=======
-import { Order, OrderProduct, Product } from '../../../schema/schema';
->>>>>>> 271c77dec8dcfbd7d83b49e98d276f057fff76d0
 import { fetchUser } from './user_queries';
 import { fetchProductByID } from './product_queries';
 import supabase from '../createClient';
