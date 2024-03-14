@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
 
+
 function formatDate(isoString: string) {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -45,7 +46,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
       </div>
       <ViewOrderButton type="button" onClick={viewOrder}>
         {/** DO NOT USE IMAGE Please use the icon in the feather library! */}
-        View order <ArrowIcon alt=">" />
+        View order <ArrowIcon />
       </ViewOrderButton>
     </div>
   );

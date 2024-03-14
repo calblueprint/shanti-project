@@ -5,10 +5,8 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 import Footer from '../../components/FooterFolder/Footer';
 
 export const FooterMoved = styled(Footer)`
-  transform: translateY(50px);
-  position: fixed;
+
   left: 0;
-  bottom: 50px;
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
