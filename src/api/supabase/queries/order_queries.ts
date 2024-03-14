@@ -143,43 +143,20 @@ export async function fetchProductsFromOrder(
   return fetchedProducts;
 }
 
-export async function fetchOrderProductsbyOrderId(
-  orderId: number,
-): Promise<ProductWithQuantity[]> {
-  const order = await getOrderById(orderId);
-  const orderProductIds = order.order_product_id_array;
+export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
+  const order = await fetchNOrdersByUserIdSorted(1);
+  const orderProductIds = order[0].order_product_id_array;
 
-  const newOrderProducts = await Promise.all(
-    orderProductIds.map(orderProductId =>
-      fetchOrderProductById(orderProductId),
-    ),
-  );
-  console.log(newOrderProducts);
   const orderProducts = await Promise.all(
-    newOrderProducts.map(async orderProduct =>
-      fetchProductWithQuantityById(orderProduct.product_id),
-    ),
+    orderProductIds.map(async orderProductId => {
+      try {
+        const orderProduct = await fetchOrderProductById(orderProductId);
+        return orderProduct;
+      } catch (error) {
+        throw new Error(`Error fetching order product array.`);
+      }
+    }),
   );
 
   return orderProducts;
-}
-
-/**
- * gets all orders by user id and sorted it by creation data
- * @param Order[] - An array of Order objects.
- * @returns Promise<Order[]> - An array of Order objects.
- */
-export async function fetchCurrentOrdersByUser(): Promise<Order[]> {
-  const user = await fetchUser();
-  const userCartId = user.cart_id;
-  const { data, error } = await supabase
-    .from('order')
-    .select('*')
-    .eq('id', userCartId);
-
-  if (error) {
-    throw new Error(`Error fetching orders for user: ${error.message}`);
-  }
-
-  return data;
 }
