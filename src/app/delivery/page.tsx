@@ -8,7 +8,7 @@ import {
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
 import { Normal700Text } from '../../styles/fonts';
-import {ProductWithQuantity } from '../../schema/schema';
+import { ProductWithQuantity } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
