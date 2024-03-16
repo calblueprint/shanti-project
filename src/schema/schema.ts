@@ -79,3 +79,10 @@ export type Address = {
   zipcode: string;
   user_id: number;
 };
+
+export type StorefrontButtons = {
+  id: number;
+  name: string;
+  value: string;
+  count: number;
+};

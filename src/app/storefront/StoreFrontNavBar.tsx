@@ -1,7 +1,9 @@
+/* eslint-disable react/button-has-type */
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
+import { fetchButoonCategories } from '@/api/supabase/queries/button_queries';
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -12,11 +14,9 @@ import {
   ShoppingCartIcon,
 } from '../../components/NavBarFolder/styles';
 
-import { Product } from '../../schema/schema';
+import { Product, StorefrontButtons } from '../../schema/schema';
 
 import { ButtonsContainer } from './styles';
-
-import { buttons } from './buttonValues';
 
 import ProductButtons from './productButtons';
 
@@ -26,14 +26,22 @@ export default function StoreFrontNavBar(props: {
   IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
 }) {
-  const [data, setData] = useState(0);
-  const [isZero, setIsZero] = useState(true);
+
   const {
     setFilteredProducts,
     setIsClickedButton,
     IsClickedButton,
     setCategoryWord,
   } = props;
+
+  const [data, setData] = useState(0);
+  const [isZero, setIsZero] = useState(true);
+  const [buttonCategories, setButtonCategories] = useState<StorefrontButtons[]>([]);
+  const [buttonDisplay, setButtonDisplay] = useState<StorefrontButtons[]>([]);
+  let ind = 0;
+  const length = 4;
+  // const [reachedEnd, setReachedEnd] = useState(false);
+  // const [reachedStart, setReachedStart] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +59,54 @@ export default function StoreFrontNavBar(props: {
     changeData();
   }, [data]);
 
+  useEffect(() => {
+    const fetchButtonCat = async () => {
+      setButtonCategories(await fetchButoonCategories());
+    };
+    fetchButtonCat();
+  }, [])
+  
+  useEffect(() => {
+    const displayedButtons = async () => {
+      const button = await fetchButoonCategories()
+      setButtonDisplay(button.slice(0, 4));
+    };
+    displayedButtons();
+  }, [])
+
+  const changeDisplay = (direction : number) => {
+    setButtonDisplay(buttonCategories.slice(ind, ind+4));
+    const clicked = IsClickedButton;
+    for (let i = 0; i < buttonDisplay.length; i += 1) {
+      buttonDisplay[i].count += direction;
+      if (clicked[i]) {
+        clicked[i] = false;
+        clicked[i+direction] = true;
+      }
+    }
+
+    setIsClickedButton(clicked);
+
+  }
+
+  const handlePrevious = () => {
+    console.log(ind > 0);
+    if (ind > 0) {
+      ind -= 1;
+      console.log(ind);
+      // setInd(newIndex < 0 ? length - 1 : newIndex);
+      changeDisplay(-1);
+    }
+  };
+
+  const handleNext = () => {
+    if (ind + 4 < buttonCategories.length) {
+      ind += 1;
+      console.log(ind);
+      changeDisplay(1);
+    }
+  };
+
   return (
     <NavBarComp>
       <Link href="../storefront">
@@ -62,7 +118,8 @@ export default function StoreFrontNavBar(props: {
         />
       </Link>
       <ButtonsContainer>
-        {buttons.map((type, index) => (
+        <button onClick={handlePrevious}>P</button>
+        {buttonDisplay.map((type, index) => (
           <ProductButtons
             key={type.count}
             value={type.value}
@@ -74,6 +131,7 @@ export default function StoreFrontNavBar(props: {
             index={index}
           />
         ))}
+        <button onClick={handleNext}>Next</button>
       </ButtonsContainer>
 
       <ButtonsDiv>
