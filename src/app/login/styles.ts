@@ -3,15 +3,13 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const LoginBox = styled.div`
-<<<<<<< HEAD
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
   display: flex;
   flex-direction: column;
-=======
->>>>>>> 8cd37bcfaa7060e67b743ca06d19b8d32b88c1cf
+
   width: 500px;
   height: 420px;
 

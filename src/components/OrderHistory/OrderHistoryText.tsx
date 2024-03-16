@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
+
+import querystring from 'querystring';
 import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
 
 function formatDate(isoString: string) {
@@ -22,9 +24,9 @@ export default function OrderDetails(props: OrderDetailsProps) {
   const { date, orderNumber, status } = props;
   const router = useRouter();
 
-  const viewOrder = () => {
-    // Navigate to the order details page
-    router.push(`/order/${orderNumber}`);
+  const viewOrder = (orderID: string) => {
+    const queryString = querystring.stringify({ orderID });
+    router.push(`/orderPage?${queryString}`);
   };
 
   return (
@@ -43,7 +45,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
           {status === 'Confirmed' ? '✓' : '✗'} {status}
         </div>
       </div>
-      <ViewOrderButton type="button" onClick={viewOrder}>
+      <ViewOrderButton type="button" onClick={() => viewOrder(orderNumber)}>
         {/** DO NOT USE IMAGE Please use the icon in the feather library! */}
         View order <ArrowIcon />
       </ViewOrderButton>

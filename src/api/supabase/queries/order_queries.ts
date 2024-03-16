@@ -4,6 +4,7 @@
 import {
   Order,
   OrderProduct,
+  Product,
   ProductWithQuantity,
 } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
@@ -125,6 +126,7 @@ export async function fetchOrderProductById(
   return orderProduct;
 }
 
+<<<<<<< HEAD
 export async function fetchProductWithQuantityById(
   productId: number,
 ): Promise<ProductWithQuantity> {
@@ -139,6 +141,8 @@ export async function fetchProductWithQuantityById(
   return orderProduct;
 }
 
+=======
+>>>>>>> a8905fea7e6eac10fea552a7996c73407e756f43
 export async function fetchProductFromOrderProduct(
   orderProductId: number,
 ): Promise<Product> {
@@ -180,27 +184,6 @@ export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
   return orderProducts;
 }
 
-export async function fetchOrderProductsbyOrderId(
-  orderId: number,
-): Promise<ProductWithQuantity[]> {
-  const order = await getOrderById(orderId);
-  const orderProductIds = order.order_product_id_array;
-
-  const newOrderProducts = await Promise.all(
-    orderProductIds.map(orderProductId =>
-      fetchOrderProductById(orderProductId),
-    ),
-  );
-  console.log(newOrderProducts);
-  const orderProducts = await Promise.all(
-    newOrderProducts.map(async orderProduct =>
-      fetchProductWithQuantityById(orderProduct.product_id),
-    ),
-  );
-
-  return orderProducts;
-}
-
 /**
  * gets all orders by user id and sorted it by creation data
  * @param Order[] - An array of Order objects.
@@ -235,4 +218,39 @@ export async function updateCartPickupId(pickupId: number) {
     .from('order')
     .update({ pickup_time_id: pickupId })
     .eq('id', cartId);
+}
+
+export async function fetchProductWithQuantityById(
+  productId: number,
+): Promise<ProductWithQuantity> {
+  const { data: orderProduct, error } = await supabase
+    .from('product')
+    .select('*')
+    .eq('id', productId)
+    .single();
+  if (error) {
+    throw new Error(`Error fetching order product: ${error.message}`);
+  }
+  return orderProduct;
+}
+
+export async function fetchOrderProductsbyOrderId(
+  orderId: number,
+): Promise<ProductWithQuantity[]> {
+  const order = await getOrderById(orderId);
+  const orderProductIds = order.order_product_id_array;
+
+  const newOrderProducts = await Promise.all(
+    orderProductIds.map(orderProductId =>
+      fetchOrderProductById(orderProductId),
+    ),
+  );
+  console.log(newOrderProducts);
+  const orderProducts = await Promise.all(
+    newOrderProducts.map(async orderProduct =>
+      fetchProductWithQuantityById(orderProduct.product_id),
+    ),
+  );
+
+  return orderProducts;
 }
