@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Heading1 = styled.div`
+export const Heading1 = styled.h1`
   font-family: 'Public Sans', sans-serif;
   font-size: 40px;
   font-style: normal;
