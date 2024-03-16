@@ -79,7 +79,7 @@ export default function StoreFrontNavBar(props: {
       <ButtonsDiv>
         <Link href="../profileScreen">
           <UserProfileIcon />
-          <p>User</p>
+          <p>Users</p>
         </Link>
         <Link href="../cart">
           <ShoppingCartIcon />
