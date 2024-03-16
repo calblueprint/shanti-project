@@ -138,3 +138,17 @@ export const BlankSpace = styled.div`
   width: 250px;
   height: 200px;
 `;
+
+export const MostRecentOrder = styled.div`
+
+`;
+
+export const OrderDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 30px;
+`;
