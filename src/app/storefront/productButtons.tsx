@@ -2,9 +2,11 @@
 
 import React from 'react';
 
+import { fetchButoonCategories } from '@/api/supabase/queries/button_queries';
 import { Button, Label, IndividualContainer } from './styles';
 
 import { buttons } from './buttonValues';
+
 
 import {
   fetchUserProducts,
@@ -41,10 +43,12 @@ export default function ProductButtons(props: {
 
     const category = e.currentTarget.value;
     const productItem = await fetchUserProducts();
+    const buttonCategories = await fetchButoonCategories();
 
-    for (let i = 0; i < buttons.length; i += 1) {
-      if (buttons[i].value === category) {
-        const ind = buttons[i].count;
+    for (let i = 0; i < buttonCategories.length; i += 1) {
+      console.log(buttonCategories[i].value, category);
+      if (buttonCategories[i].value === category) {
+        const ind = buttonCategories[i].count;
         if (IsClickedButton[ind] === true) {
           const tempArray = [...IsClickedButton];
           tempArray[ind] = !tempArray[ind];
@@ -59,7 +63,7 @@ export default function ProductButtons(props: {
         }
         const arrayOfFalse = [false, false, false, false];
         arrayOfFalse[ind] = true;
-        setCategoryWord(buttons[i].value);
+        setCategoryWord(buttonCategories[i].value);
         setIsClickedButton(arrayOfFalse);
 
         break;
