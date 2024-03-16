@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { fetchButoonCategories } from '@/api/supabase/queries/button_queries';
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
+
+
 import {
   NavBarComp,
   ButtonsDiv,
@@ -16,7 +18,12 @@ import {
 
 import { Product, StorefrontButtons } from '../../schema/schema';
 
-import { ButtonsContainer } from './styles';
+import { ButtonsContainer,
+  FrontButton,
+  BackButton,
+  Front,
+  Back
+ } from './styles';
 
 import ProductButtons from './productButtons';
 
@@ -38,11 +45,9 @@ export default function StoreFrontNavBar(props: {
   const [isZero, setIsZero] = useState(true);
   const [buttonCategories, setButtonCategories] = useState<StorefrontButtons[]>([]);
   const [buttonDisplay, setButtonDisplay] = useState<StorefrontButtons[]>([]);
-  let ind = 0;
-  const length = 4;
-  // const [reachedEnd, setReachedEnd] = useState(false);
-  // const [reachedStart, setReachedStart] = useState(true);
-
+  const [ind, setInd] = useState(0);
+  let newInd = 0;
+  
   useEffect(() => {
     const fetchData = async () => {
       setData(await totalNumberOfItemsInCart());
@@ -73,38 +78,41 @@ export default function StoreFrontNavBar(props: {
     };
     displayedButtons();
   }, [])
+  
 
-  const changeDisplay = (direction : number) => {
-    setButtonDisplay(buttonCategories.slice(ind, ind+4));
+  const changeDisplay = (direction : number, index : number) => {
+    setButtonDisplay(buttonCategories.slice(index, index+4));
     const clicked = IsClickedButton;
-    for (let i = 0; i < buttonDisplay.length; i += 1) {
-      buttonDisplay[i].count += direction;
-      if (clicked[i]) {
-        clicked[i] = false;
-        clicked[i+direction] = true;
-      }
-    }
+    // for (let i = 0; i < buttonDisplay.length; i += 1) {
+  
+    //   if (clicked[i]) {
+    //     clicked[i] = false;
+    //     if (i+direction >= 0 || i+direction < buttonCategories.length) {
+    //       clicked[i+direction] = true;
+    //     }
+    //   }
+    // }
 
-    setIsClickedButton(clicked);
-
+    // setIsClickedButton(clicked);
+    console.log(IsClickedButton);
   }
 
   const handlePrevious = () => {
-    console.log(ind > 0);
     if (ind > 0) {
-      ind -= 1;
-      console.log(ind);
-      // setInd(newIndex < 0 ? length - 1 : newIndex);
-      changeDisplay(-1);
+      newInd = ind - 1;
+      setInd(newInd);
+      changeDisplay(-1, newInd);
     }
   };
 
   const handleNext = () => {
     if (ind + 4 < buttonCategories.length) {
-      ind += 1;
-      console.log(ind);
-      changeDisplay(1);
+      newInd = ind + 1;
+      setInd(ind+1);
+      changeDisplay(1, newInd);
+      
     }
+   
   };
 
   return (
@@ -118,20 +126,24 @@ export default function StoreFrontNavBar(props: {
         />
       </Link>
       <ButtonsContainer>
-        <button onClick={handlePrevious}>P</button>
+        <FrontButton onClick={handlePrevious}>
+          <Front/>
+        </FrontButton>
         {buttonDisplay.map((type, index) => (
           <ProductButtons
-            key={type.count}
+            key={type.id}
             value={type.value}
             setFiltredProducts={setFilteredProducts}
             content={type.name}
             setIsClickedButton={setIsClickedButton}
             IsClickedButton={IsClickedButton}
             setCategoryWord={setCategoryWord}
-            index={index}
+            index={index+ind}
           />
         ))}
-        <button onClick={handleNext}>Next</button>
+        <BackButton onClick={handleNext}>
+          <Back/>
+        </BackButton>
       </ButtonsContainer>
 
       <ButtonsDiv>

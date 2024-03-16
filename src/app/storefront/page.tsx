@@ -20,7 +20,9 @@ export default function App() {
     false,
     false,
     false,
-  ]);
+  ]
+  
+  );
 
   useEffect(() => {
     async function fetchAllProducts() {
