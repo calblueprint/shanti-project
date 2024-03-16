@@ -26,7 +26,6 @@ export default function StoreFrontNavBar(props: {
   IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
 }) {
-
   const {
     setFilteredProducts,
     setIsClickedButton,
@@ -36,9 +35,12 @@ export default function StoreFrontNavBar(props: {
 
   const [data, setData] = useState(0);
   const [isZero, setIsZero] = useState(true);
-  const [buttonCategories, setButtonCategories] = useState<StorefrontButtons[]>([]);
+  const [buttonCategories, setButtonCategories] = useState<StorefrontButtons[]>(
+    [],
+  );
   const [buttonDisplay, setButtonDisplay] = useState<StorefrontButtons[]>([]);
-  let ind = 0;
+  const [ind, setInd] = useState(0);
+
   const length = 4;
   // const [reachedEnd, setReachedEnd] = useState(false);
   // const [reachedStart, setReachedStart] = useState(true);
@@ -64,35 +66,35 @@ export default function StoreFrontNavBar(props: {
       setButtonCategories(await fetchButoonCategories());
     };
     fetchButtonCat();
-  }, [])
-  
+  }, []);
+
   useEffect(() => {
     const displayedButtons = async () => {
-      const button = await fetchButoonCategories()
+      const button = await fetchButoonCategories();
       setButtonDisplay(button.slice(0, 4));
     };
     displayedButtons();
-  }, [])
+  }, []);
 
-  const changeDisplay = (direction : number) => {
-    setButtonDisplay(buttonCategories.slice(ind, ind+4));
+  const changeDisplay = (direction: number) => {
+    setButtonDisplay(buttonCategories.slice(ind, ind + 4));
     const clicked = IsClickedButton;
     for (let i = 0; i < buttonDisplay.length; i += 1) {
       buttonDisplay[i].count += direction;
       if (clicked[i]) {
         clicked[i] = false;
-        clicked[i+direction] = true;
+        clicked[i + direction] = true;
       }
     }
 
     setIsClickedButton(clicked);
-
-  }
+  };
 
   const handlePrevious = () => {
     console.log(ind > 0);
+    console.log(ind);
     if (ind > 0) {
-      ind -= 1;
+      setInd(ind - 1);
       console.log(ind);
       // setInd(newIndex < 0 ? length - 1 : newIndex);
       changeDisplay(-1);
