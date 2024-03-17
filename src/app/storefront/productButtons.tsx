@@ -17,8 +17,6 @@ export default function ProductButtons(props: {
   value: string;
   setFiltredProducts: (category: Product[]) => void;
   content: string;
-  setIsClickedButton: (clicked: boolean[]) => void;
-  IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
   index: number;
   setClickedButton: (clicked: number) => void;
@@ -29,12 +27,10 @@ export default function ProductButtons(props: {
     value,
     content,
     setFiltredProducts,
-    setIsClickedButton,
-    IsClickedButton,
     setCategoryWord,
     index,
     setClickedButton,
-    clickedButton
+    clickedButton,
   } = props;
 
   async function applyFilter(
@@ -92,14 +88,14 @@ export default function ProductButtons(props: {
   return (
     <IndividualContainer>
       <Button
-        $pickColor={index===clickedButton}
+        $pickColor={index === clickedButton}
         key={key}
         value={value}
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           applyFilter(e)
         }
       />
-      <Label $pickColor={index===clickedButton}>{content}</Label>
+      <Label $pickColor={index === clickedButton}>{content}</Label>
     </IndividualContainer>
   );
 }

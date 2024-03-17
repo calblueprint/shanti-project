@@ -28,16 +28,12 @@ import ProductButtons from './productButtons';
 
 export default function StoreFrontNavBar(props: {
   setFilteredProducts: (category: Product[]) => void;
-  setIsClickedButton: (clicked: boolean[]) => void;
-  IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
   clickedButton: number;
   setClickedButton: (clicked: number) => void;
 }) {
   const {
     setFilteredProducts,
-    setIsClickedButton,
-    IsClickedButton,
     setCategoryWord,
     setClickedButton,
     clickedButton,
@@ -138,8 +134,6 @@ export default function StoreFrontNavBar(props: {
             value={type.value}
             setFiltredProducts={setFilteredProducts}
             content={type.name}
-            setIsClickedButton={setIsClickedButton}
-            IsClickedButton={IsClickedButton}
             setCategoryWord={setCategoryWord}
             index={index + ind}
             setClickedButton={setClickedButton}
