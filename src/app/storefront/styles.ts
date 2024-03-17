@@ -17,8 +17,6 @@ import COLORS from '../../styles/colors';
 interface props {
   isClicked: boolean;
   isHovering: boolean;
-  hasReachedStart: boolean;
-  hasReachedEnd: boolean;
 }
 
 export const StickyHeader = styled.div`
