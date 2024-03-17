@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-import { Heart, User, ShoppingCart, ChevronLeft, ChevronRight } from 'react-feather';
+import {
+  Heart,
+  User,
+  ShoppingCart,
+  ChevronLeft,
+  ChevronRight,
+} from 'react-feather';
 
 import { Body1 } from '@/styles/fonts';
 

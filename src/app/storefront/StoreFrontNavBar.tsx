@@ -16,42 +16,40 @@ import {
 
 import { Product, StorefrontButtons } from '../../schema/schema';
 
-import { ButtonsContainer,
+import {
+  ButtonsContainer,
   FrontButton,
   BackButton,
   Front,
   Back,
- } from './styles';
+} from './styles';
 
 import ProductButtons from './productButtons';
 
 export default function StoreFrontNavBar(props: {
   setFilteredProducts: (category: Product[]) => void;
-  setIsClickedButton: (clicked: boolean[]) => void;
-  IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
   clickedButton: number;
   setClickedButton: (clicked: number) => void;
 }) {
-
   const {
     setFilteredProducts,
-    setIsClickedButton,
-    IsClickedButton,
     setCategoryWord,
     setClickedButton,
-    clickedButton
+    clickedButton,
   } = props;
 
   const [data, setData] = useState(0);
   const [isZero, setIsZero] = useState(true);
-  const [buttonCategories, setButtonCategories] = useState<StorefrontButtons[]>([]);
+  const [buttonCategories, setButtonCategories] = useState<StorefrontButtons[]>(
+    [],
+  );
   const [buttonDisplay, setButtonDisplay] = useState<StorefrontButtons[]>([]);
   const [ind, setInd] = useState(0);
   let newInd = 0;
   const [reachedStart, setReachedStart] = useState(false);
   const [reachedEnd, setReachedEnd] = useState(true);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setData(await totalNumberOfItemsInCart());
@@ -73,20 +71,19 @@ export default function StoreFrontNavBar(props: {
       setButtonCategories(await fetchButoonCategories());
     };
     fetchButtonCat();
-  }, [])
-  
+  }, []);
+
   useEffect(() => {
     const displayedButtons = async () => {
-      const button = await fetchButoonCategories()
+      const button = await fetchButoonCategories();
       setButtonDisplay(button.slice(0, 4));
     };
     displayedButtons();
-  }, [])
-  
+  }, []);
 
-  const changeDisplay = (direction : number, index : number) => {
-    setButtonDisplay(buttonCategories.slice(index, index+4));
-  }
+  const changeDisplay = (direction: number, index: number) => {
+    setButtonDisplay(buttonCategories.slice(index, index + 4));
+  };
 
   const handlePrevious = () => {
     if (ind > 0) {
@@ -108,7 +105,7 @@ export default function StoreFrontNavBar(props: {
       if (remainder < 4) {
         newInd = buttonCategories.length - 4;
       } else {
-        newInd = ind + 4
+        newInd = ind + 4;
       }
       setInd(newInd);
       changeDisplay(1, newInd);
@@ -129,7 +126,7 @@ export default function StoreFrontNavBar(props: {
       </Link>
       <ButtonsContainer>
         <FrontButton onClick={handlePrevious} $reachedStart={reachedStart}>
-          <Front/>
+          <Front />
         </FrontButton>
         {buttonDisplay.map((type, index) => (
           <ProductButtons
@@ -137,16 +134,14 @@ export default function StoreFrontNavBar(props: {
             value={type.value}
             setFiltredProducts={setFilteredProducts}
             content={type.name}
-            setIsClickedButton={setIsClickedButton}
-            IsClickedButton={IsClickedButton}
             setCategoryWord={setCategoryWord}
-            index={index+ind}
+            index={index + ind}
             setClickedButton={setClickedButton}
             clickedButton={clickedButton}
           />
         ))}
         <BackButton onClick={handleNext} $reachedEnd={reachedEnd}>
-          <Back/>
+          <Back />
         </BackButton>
       </ButtonsContainer>
 
