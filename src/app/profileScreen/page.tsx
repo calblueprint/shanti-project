@@ -96,25 +96,22 @@ function OrderHistorySection(props: {
   setOrder: (category: Order[]) => void;
 }) {
   const { Orders, setOrder } = props;
-
-  async function fetchOrders() {
-    try {
-      const orders = await fetchOrdersByUserIdSorted(); 
-      setOrder(orders);
-    } catch (error) {
-      console.error('Error fetching orders:', error);
-    }
-  }
+  const [firstOrderProducts, setFirstOrderProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchOrders();
-  }, []);
+    async function fetchFirstOrderProducts() {
+      if (Orders.length > 0) {
+        const firstOrder = Orders[0];
+        const firstOrderProductIds = firstOrder.order_product_id_array.slice(0, 3);
+        const products = await Promise.all(firstOrderProductIds.map(productId => fetchProductByID(productId)));
+        setFirstOrderProducts(products);
+      }
+    }
+    fetchFirstOrderProducts();
+  }, [Orders]); // Fetch products whenever Orders change
 
-  if (Orders.length > 0) {
-    const firstOrder = Orders[0];
-    const firstOrderProducts = firstOrder.order_product_id_array.slice(0, 3);
-
-   return (
+  if (firstOrderProducts.length > 0) {
+    return (
       <main>
         <OrderHistory>
           <HeaderDiv>
@@ -122,18 +119,15 @@ function OrderHistorySection(props: {
             <ViewAllButton destination="./orderPage" />
           </HeaderDiv>
           <MostRecentOrder>
-            {Promise.all(firstOrderProducts.map(async productId => {
-              const product = await fetchProductByID(productId);
-              return (
-                <OrderDiv key={product.id}>
-                  <img
-                    src={product.photo}
-                    alt={product.name}
-                    style={{ width: '75px', height: '75px' }}
-                  />
-                </OrderDiv>
-              );
-            }))}
+            {firstOrderProducts.map(product => (
+              <OrderDiv key={product.id}>
+                <img
+                  src={product.photo}
+                  alt={product.name}
+                  style={{ width: '75px', height: '75px' }}
+                />
+              </OrderDiv>
+            ))}
           </MostRecentOrder>
         </OrderHistory>
       </main>
