@@ -8,8 +8,7 @@ export async function fetchButoonCategories(): Promise<StorefrontButtons[]> {
     if (error) {
         throw new Error(`Error fetching buttons: ${error.message}`);
     }
-    console.log("func tester")
-    console.log(buttons)
+    
     return buttons;
 }
 

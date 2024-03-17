@@ -5,9 +5,6 @@ import React from 'react';
 import { fetchButoonCategories } from '@/api/supabase/queries/button_queries';
 import { Button, Label, IndividualContainer } from './styles';
 
-import { buttons } from './buttonValues';
-
-
 import {
   fetchUserProducts,
   filterUserProducts,
@@ -24,6 +21,8 @@ export default function ProductButtons(props: {
   IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
   index: number;
+  setClickedButton: (clicked: number) => void;
+  clickedButton: number;
 }) {
   const {
     key,
@@ -34,6 +33,8 @@ export default function ProductButtons(props: {
     IsClickedButton,
     setCategoryWord,
     index,
+    setClickedButton,
+    clickedButton
   } = props;
 
   async function applyFilter(
@@ -46,25 +47,26 @@ export default function ProductButtons(props: {
     const buttonCategories = await fetchButoonCategories();
 
     for (let i = 0; i < buttonCategories.length; i += 1) {
-      console.log(buttonCategories[i].value, category);
       if (buttonCategories[i].value === category) {
-        const ind = buttonCategories[i].count;
-        if (IsClickedButton[ind] === true) {
-          const tempArray = [...IsClickedButton];
-          tempArray[ind] = !tempArray[ind];
-          tempArray[0] = true;
+        const ind = buttonCategories[i].id - 1;
+        if (ind === clickedButton) {
+          // const tempArray = [...IsClickedButton];
+          // tempArray[ind] = !tempArray[ind];
+          // tempArray[0] = true;
           setCategoryWord('All');
-          setIsClickedButton(tempArray);
+          // setIsClickedButton(tempArray);
+          setClickedButton(0);
 
           if (productItem !== null) {
             setFiltredProducts(productItem);
           }
           return;
         }
-        const arrayOfFalse = [false, false, false, false];
-        arrayOfFalse[ind] = true;
+        setClickedButton(ind);
+        // const arrayOfFalse = [false, false, false, false];
+        // arrayOfFalse[ind] = true;
         setCategoryWord(buttonCategories[i].value);
-        setIsClickedButton(arrayOfFalse);
+        // setIsClickedButton(arrayOfFalse);
 
         break;
       }
@@ -90,14 +92,14 @@ export default function ProductButtons(props: {
   return (
     <IndividualContainer>
       <Button
-        $pickColor={IsClickedButton[index]}
+        $pickColor={index===clickedButton}
         key={key}
         value={value}
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           applyFilter(e)
         }
       />
-      <Label $pickColor={IsClickedButton[index]}>{content}</Label>
+      <Label $pickColor={index===clickedButton}>{content}</Label>
     </IndividualContainer>
   );
 }

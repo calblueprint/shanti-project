@@ -105,11 +105,14 @@ export async function filterUserProducts(
   const products = await fetchUnprescribedCategory(productType);
   const user = await fetchUser();
 
+
+
   const { data: prescribed, error } = await supabase
     .from('product')
     .select('*')
     .eq('prescribed', true)
     .eq('category', productType);
+    
   if (error) {
     throw new Error(`Error fetching products: ${error.message}`);
   }
