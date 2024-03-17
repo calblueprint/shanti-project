@@ -36,6 +36,7 @@ import {
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
+  Fullscreen,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -215,7 +216,7 @@ export default function Profile() {
     return <p>Error Loading User</p>;
   }
   return (
-    <main>
+    <Fullscreen>
       <NavBarMovedUP />
       <HeadingBack>
         <BackButtonDiv>
@@ -242,6 +243,6 @@ export default function Profile() {
         Favorites
       </LogOutButton> */}
       <BlankSpace />
-    </main>
+    </Fullscreen>
   );
 }

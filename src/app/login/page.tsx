@@ -40,52 +40,50 @@ export default function App() {
   };
 
   return (
-    <main>
-      <Fullscreen>
-        <Image
-          src="/images/ShantiLogo.png"
-          alt="logo pic"
-          width={125}
-          height={65}
-          style={{
-            top: '30px',
-            left: '30px',
-            position: 'absolute',
-          }}
-        />
+    <Fullscreen>
+      <Image
+        src="/images/ShantiLogo.png"
+        alt="logo pic"
+        width={125}
+        height={65}
+        style={{
+          top: '30px',
+          left: '30px',
+          position: 'absolute',
+        }}
+      />
 
-        <LoginBox>
-          <LoginContent>
-            <WelcomeSign>Welcome</WelcomeSign>
+      <LoginBox>
+        <LoginContent>
+          <WelcomeSign>Welcome</WelcomeSign>
 
-            <LoginForm
-              isError={isError}
-              changeUserName={setEmail}
-              changePassword={setPassword}
-              showPassword={showPassword}
+          <LoginForm
+            isError={isError}
+            changeUserName={setEmail}
+            changePassword={setPassword}
+            showPassword={showPassword}
+          />
+          {showPassword ? (
+            <EyeIcon
+              onClick={() => setShowPassword(false)}
+              style={{ cursor: 'pointer' }}
             />
-            {showPassword ? (
-              <EyeIcon
-                onClick={() => setShowPassword(false)}
-                style={{ cursor: 'pointer' }}
-              />
-            ) : (
-              <EyeOffIcon
-                onClick={() => setShowPassword(true)}
-                style={{ cursor: 'pointer' }}
-              />
-            )}
+          ) : (
+            <EyeOffIcon
+              onClick={() => setShowPassword(true)}
+              style={{ cursor: 'pointer' }}
+            />
+          )}
 
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-            <Button style={{ cursor: 'pointer' }} onClick={handleLogin}>
-              Log In
-            </Button>
-            {/* <Button type="button" onClick={() => handleSignUp(email, password)}>
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+          <Button style={{ cursor: 'pointer' }} onClick={handleLogin}>
+            Log In
+          </Button>
+          {/* <Button type="button" onClick={() => handleSignUp(email, password)}>
               Sign up
             </Button> */}
-          </LoginContent>
-        </LoginBox>
-      </Fullscreen>
-    </main>
+        </LoginContent>
+      </LoginBox>
+    </Fullscreen>
   );
 }

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 
 import Footer from '../../components/FooterFolder/Footer';
-import { ShopAllText } from './styles';
+import { ShopAllText, Fullscreen } from './styles';
 import { fetchUserProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
@@ -36,7 +36,7 @@ export default function App() {
   }, []);
 
   return (
-    <main>
+    <Fullscreen>
       <StoreFrontNavBar
         setFilteredProducts={setFilteredProducts}
         setIsClickedButton={setIsClickedButton}
@@ -47,6 +47,6 @@ export default function App() {
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />
-    </main>
+    </Fullscreen>
   );
 }

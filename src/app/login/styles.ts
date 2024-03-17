@@ -85,11 +85,8 @@ export const EyeIcon = styled(Eye)`
 `;
 
 export const Fullscreen = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 870px;
+  height: 100%;
 `;
 
 export const InputField = styled.div`

@@ -213,3 +213,10 @@ export const OutterDiv = styled.div`
   width: 300px;
   height: 375px;
 `;
+
+
+export const Fullscreen = styled.div`
+ 
+  width: 100%;
+  height: 100%;
+`;
