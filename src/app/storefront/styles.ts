@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Heart, User, ShoppingCart, ArrowLeft, ArrowRight } from 'react-feather';
+import { Heart, User, ShoppingCart, ChevronLeft, ChevronRight } from 'react-feather';
 
 import { Body1 } from '@/styles/fonts';
 
@@ -11,6 +11,8 @@ import COLORS from '../../styles/colors';
 interface props {
   isClicked: boolean;
   isHovering: boolean;
+  hasReachedStart: boolean;
+  hasReachedEnd: boolean;
 }
 
 export const StickyHeader = styled.div`
@@ -214,26 +216,28 @@ export const OutterDiv = styled.div`
   height: 375px;
 `;
 
-export const Front = styled(ArrowLeft)`
+export const Front = styled(ChevronLeft)`
   width: 30px;
   height: 30px;
   position: relative;
 `;
 
-export const FrontButton = styled.button`
+export const FrontButton = styled.button<{ $reachedStart?: boolean }>`
   position: relative;
   background-color: transparent;
   border: none;
+  visibility: ${props => (props.$reachedStart ? 'visible' : 'hidden')};
 `;
 
-export const Back = styled(ArrowRight)`
+export const Back = styled(ChevronRight)`
   width: 30px;
   height: 30px;
   position: relative;
 `;
 
-export const BackButton = styled.button`
+export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
   position: relative;
   background-color: transparent;
   border: none;
+  visibility: ${props => (props.$reachedEnd ? 'visible' : 'hidden')};
 `;

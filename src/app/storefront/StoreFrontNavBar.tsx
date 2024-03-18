@@ -51,6 +51,8 @@ export default function StoreFrontNavBar(props: {
   const [buttonDisplay, setButtonDisplay] = useState<StorefrontButtons[]>([]);
   const [ind, setInd] = useState(0);
   let newInd = 0;
+  const [reachedStart, setReachedStart] = useState(false);
+  const [reachedEnd, setReachedEnd] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,7 +98,9 @@ export default function StoreFrontNavBar(props: {
       }
       setInd(newInd);
       changeDisplay(-1, newInd);
+      setReachedStart(!(newInd === 0));
     }
+    setReachedEnd(true);
   };
 
   const handleNext = () => {
@@ -110,6 +114,8 @@ export default function StoreFrontNavBar(props: {
       setInd(newInd);
       changeDisplay(1, newInd);
     }
+    setReachedEnd(ind + 5 < buttonCategories.length);
+    setReachedStart(true);
   };
 
   return (
@@ -123,7 +129,7 @@ export default function StoreFrontNavBar(props: {
         />
       </Link>
       <ButtonsContainer>
-        <FrontButton onClick={handlePrevious}>
+        <FrontButton onClick={handlePrevious} $reachedStart={reachedStart}>
           <Front />
         </FrontButton>
         {buttonDisplay.map((type, index) => (
@@ -140,7 +146,7 @@ export default function StoreFrontNavBar(props: {
             clickedButton={clickedButton}
           />
         ))}
-        <BackButton onClick={handleNext}>
+        <BackButton onClick={handleNext} $reachedEnd={reachedEnd}>
           <Back />
         </BackButton>
       </ButtonsContainer>
