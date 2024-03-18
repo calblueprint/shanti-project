@@ -221,7 +221,7 @@ export const OutterDiv = styled.div`
   height: 375px;
 `;
 
-export const Front = styled(ChevronLeft)`
+export const FrontArrow = styled(ChevronLeft)`
   width: 30px;
   height: 30px;
   position: relative;
@@ -235,7 +235,7 @@ export const FrontButton = styled.button<{ $reachedStart?: boolean }>`
   visibility: ${props => (props.$reachedStart ? 'visible' : 'hidden')};
 `;
 
-export const Back = styled(ChevronRight)`
+export const BackArrow = styled(ChevronRight)`
   width: 30px;
   height: 30px;
   position: relative;
