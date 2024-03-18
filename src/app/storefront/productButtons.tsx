@@ -43,7 +43,7 @@ export default function ProductButtons(props: {
     const buttonCategories = await fetchButoonCategories();
 
     for (let i = 0; i < buttonCategories.length; i += 1) {
-      if (buttonCategories[i].value === category) {
+      if (buttonCategories[i].name === category) {
         const ind = buttonCategories[i].id - 1;
         if (ind === clickedButton) {
           // const tempArray = [...IsClickedButton];
@@ -61,7 +61,7 @@ export default function ProductButtons(props: {
         setClickedButton(ind);
         // const arrayOfFalse = [false, false, false, false];
         // arrayOfFalse[ind] = true;
-        setCategoryWord(buttonCategories[i].value);
+        setCategoryWord(buttonCategories[i].name);
         // setIsClickedButton(arrayOfFalse);
 
         break;

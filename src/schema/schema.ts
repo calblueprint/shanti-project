@@ -83,6 +83,4 @@ export type Address = {
 export type StorefrontButtons = {
   id: number;
   name: string;
-  value: string;
-  count: number;
 };
