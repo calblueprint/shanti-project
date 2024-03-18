@@ -130,8 +130,8 @@ export default function StoreFrontNavBar(props: {
         </FrontButton>
         {buttonDisplay.map((type, index) => (
           <ProductButtons
-            key={type.id}
-            value={type.value}
+            key={type.id - 1}
+            value={type.name}
             setFiltredProducts={setFilteredProducts}
             content={type.name}
             setCategoryWord={setCategoryWord}
