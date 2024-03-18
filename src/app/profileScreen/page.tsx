@@ -18,7 +18,7 @@ import {
   fetchUser,
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
-import { Address, Order, Product, User } from '@/schema/schema';
+import { Address, Order, OrderProduct, Product, User } from '@/schema/schema';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
 import BackButton from '../../components/BackButton/BackButton';
 import {
@@ -95,6 +95,7 @@ function OrderHistorySection(props: {
   Orders: Order[];
   setOrder: (category: Order[]) => void;
 }) {
+
   const { Orders, setOrder } = props;
   const [firstOrderProducts, setFirstOrderProducts] = useState<Product[]>([]);
 
@@ -103,12 +104,13 @@ function OrderHistorySection(props: {
       if (Orders.length > 0) {
         const firstOrder = Orders[0];
         const firstOrderProductIds = firstOrder.order_product_id_array.slice(0, 3);
-        const products = await Promise.all(firstOrderProductIds.map(productId => fetchProductByID(productId)));
-        setFirstOrderProducts(products);
+        const productIds = firstOrderProductIds.map(productId => fetchOrderProductById(productId));
+        const realProducts1 = productIds.slice(0).productId;
+        setFirstOrderProducts(realProducts);
       }
     }
     fetchFirstOrderProducts();
-  }, [Orders]); // Fetch products whenever Orders change
+  }, [Orders]);
 
   if (firstOrderProducts.length > 0) {
     return (
