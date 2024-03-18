@@ -31,12 +31,16 @@ export default function StoreFrontNavBar(props: {
   setIsClickedButton: (clicked: boolean[]) => void;
   IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
+  clickedButton: number;
+  setClickedButton: (clicked: number) => void;
 }) {
   const {
     setFilteredProducts,
     setIsClickedButton,
     IsClickedButton,
     setCategoryWord,
+    setClickedButton,
+    clickedButton,
   } = props;
 
   const [data, setData] = useState(0);
@@ -81,24 +85,15 @@ export default function StoreFrontNavBar(props: {
 
   const changeDisplay = (direction: number, index: number) => {
     setButtonDisplay(buttonCategories.slice(index, index + 4));
-    const clicked = IsClickedButton;
-    // for (let i = 0; i < buttonDisplay.length; i += 1) {
-
-    //   if (clicked[i]) {
-    //     clicked[i] = false;
-    //     if (i+direction >= 0 || i+direction < buttonCategories.length) {
-    //       clicked[i+direction] = true;
-    //     }
-    //   }
-    // }
-
-    // setIsClickedButton(clicked);
-    console.log(IsClickedButton);
   };
 
   const handlePrevious = () => {
     if (ind > 0) {
-      newInd = ind - 1;
+      if (ind % 4 !== 0) {
+        newInd = 4 * (Math.floor(buttonCategories.length / 4) - 1);
+      } else {
+        newInd = ind - 4;
+      }
       setInd(newInd);
       changeDisplay(-1, newInd);
     }
@@ -106,8 +101,13 @@ export default function StoreFrontNavBar(props: {
 
   const handleNext = () => {
     if (ind + 4 < buttonCategories.length) {
-      newInd = ind + 1;
-      setInd(ind + 1);
+      const remainder = buttonCategories.length - ind - 4;
+      if (remainder < 4) {
+        newInd = buttonCategories.length - 4;
+      } else {
+        newInd = ind + 4;
+      }
+      setInd(newInd);
       changeDisplay(1, newInd);
     }
   };
@@ -136,6 +136,8 @@ export default function StoreFrontNavBar(props: {
             IsClickedButton={IsClickedButton}
             setCategoryWord={setCategoryWord}
             index={index + ind}
+            setClickedButton={setClickedButton}
+            clickedButton={clickedButton}
           />
         ))}
         <BackButton onClick={handleNext}>

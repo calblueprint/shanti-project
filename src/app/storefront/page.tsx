@@ -21,8 +21,11 @@ export default function App() {
     false,
     false,
   ]
-  
   );
+
+
+  const [clickedButton, setClickedButton] = useState(0);
+
 
   useEffect(() => {
     async function fetchAllProducts() {
@@ -44,6 +47,8 @@ export default function App() {
         setIsClickedButton={setIsClickedButton}
         IsClickedButton={IsClickedButton}
         setCategoryWord={setCategoryWord}
+        clickedButton={clickedButton}
+        setClickedButton={setClickedButton}
       />
 
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
