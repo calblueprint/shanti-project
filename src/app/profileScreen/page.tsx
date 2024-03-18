@@ -45,7 +45,6 @@ import { TransparentButton } from '../favorites/styles';
 import {
   fetchOrdersByUserIdSorted,
   fetchOrderProductById,
-
 } from '@/api/supabase/queries/order_queries';
 import { fetchProductByID } from '@/api/supabase/queries/product_queries';
 function FavoriteSection(props: {
@@ -101,9 +100,15 @@ function OrderHistorySection(props: {
   useEffect(() => {
     async function fetchFirstOrderProducts() {
       if (Orders.length > 0) {
+        console.log(Orders);
         const firstOrder = Orders[0];
-        const firstOrderProductIds = firstOrder.order_product_id_array.slice(0, 3);
-        const products = await Promise.all(firstOrderProductIds.map(productId => fetchProductByID(productId)));
+        const firstOrderProductIds = firstOrder.order_product_id_array.slice(
+          0,
+          3,
+        );
+        const products = await Promise.all(
+          firstOrderProductIds.map(productId => fetchProductByID(productId)),
+        );
         setFirstOrderProducts(products);
       }
     }
@@ -278,7 +283,7 @@ export default function Profile() {
       ) : (
         <AccountDetailSectionPickUp user={user} />
       )}
-      <OrderHistorySection Orders = {Orders} setOrder = {setOrder}/>
+      <OrderHistorySection Orders={Orders} setOrder={setOrder} />
       <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
       {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
       <LogOutButton onClick={() => router.push('/favorites')}>
@@ -288,4 +293,3 @@ export default function Profile() {
     </main>
   );
 }
-
