@@ -66,11 +66,8 @@ function FavoriteSection(props: {
               style={{ width: '75px', height: '75px' }}
             />
             <ProductNameDiv>
-              <p>
-                {favorite.name}
-                <br />
-                Product ID: {favorite.id}
-              </p>
+              <Body1Bold>{favorite.name}</Body1Bold>
+              <Body2>Category: {favorite.category}</Body2>
             </ProductNameDiv>
             <TransparentButton
               onClick={() => clickFunctions({ fav: favorite })}

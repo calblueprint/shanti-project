@@ -15,12 +15,7 @@ export default function App() {
 
   const [CategoryWord, setCategoryWord] = useState('All');
 
-  const [IsClickedButton, setIsClickedButton] = useState<boolean[]>([
-    true,
-    false,
-    false,
-    false,
-  ]);
+  const [clickedButton, setClickedButton] = useState(0);
 
   useEffect(() => {
     async function fetchAllProducts() {
@@ -39,9 +34,9 @@ export default function App() {
     <main>
       <StoreFrontNavBar
         setFilteredProducts={setFilteredProducts}
-        setIsClickedButton={setIsClickedButton}
-        IsClickedButton={IsClickedButton}
         setCategoryWord={setCategoryWord}
+        clickedButton={clickedButton}
+        setClickedButton={setClickedButton}
       />
 
       <ShopAllText>Shop {CategoryWord}</ShopAllText>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Body2 } from '@/styles/fonts';
+import { Body1Bold, Body2 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -20,6 +20,7 @@ import {
   HeartIcon,
   TransparentButton,
   ViewItem,
+  Fullscreen,
 } from './styles';
 
 import { Product } from '../../schema/schema';
@@ -43,9 +44,8 @@ export default function FavoritesPage() {
   }
 
   return (
-    <div>
+    <Fullscreen>
       <NavBar />
-
       <OutterBox>
         <BackButton destination="./profileScreen" />
         <h1>Favorites</h1>
@@ -59,11 +59,8 @@ export default function FavoritesPage() {
               />
 
               <ProductNameDiv>
-                <p>
-                  {favorite.name}
-                  <br />
-                  Product ID: {favorite.id}
-                </p>
+                <Body1Bold>{favorite.name}</Body1Bold>
+                <Body2>Category: {favorite.category}</Body2>
                 <ViewItem onClick={() => router.push(`/${favorite.id}`)}>
                   <Body2>View Item</Body2>
                 </ViewItem>
@@ -78,6 +75,6 @@ export default function FavoritesPage() {
           ))}
         </OutterFavoriteDiv>
       </OutterBox>
-    </div>
+    </Fullscreen>
   );
 }

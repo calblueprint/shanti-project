@@ -5,8 +5,7 @@ import COLORS from '../../styles/colors';
 export const LoginBox = styled.div`
   width: 500px;
   height: 420px;
-
-  border: 1px solid #b3b3b3;
+  border: 1px solid ${COLORS.neutralGrey};
 `;
 
 export const LoginContent = styled.div`
@@ -15,31 +14,20 @@ export const LoginContent = styled.div`
   align-self: center;
   justify-self: center;
   margin-top: 30px;
-  text-color: black;
+  text-color: ${COLORS.black};
 `;
 
 export const Button = styled.button`
   color: ${COLORS.white};
-  text-align: center;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
   width: 420px;
   height: 40px;
   border-radius: 8px;
   background: ${COLORS.navy};
   border: transparent;
-  z-index: 1;
 `;
 
 export const WelcomeSign = styled.div`
   color: ${COLORS.navy};
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  padding-bottom: 10px;
 `;
 
 export const FormHeaders = styled.p`
@@ -70,8 +58,8 @@ export const EyeOffIcon = styled(EyeOff)`
   stroke-width: 1.5;
   width: 20px;
   height: 20px;
-  color: black;
-  margin: 20px 20px 20px 20px;
+  color: ${COLORS.black};
+  margin: 20px;
   transform: translateY(-250%) translateX(1800%);
 `;
 
@@ -79,8 +67,8 @@ export const EyeIcon = styled(Eye)`
   stroke-width: 1.5;
   width: 20px;
   height: 20px;
-  color: black;
-  margin: 20px 20px 20px 20px;
+  color: ${COLORS.black};
+  margin: 20px;
   transform: translateY(-250%) translateX(1800%);
 `;
 
