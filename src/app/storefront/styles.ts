@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Heart, User, ShoppingCart } from 'react-feather';
+import { Heart, User, ShoppingCart, ArrowLeft, ArrowRight } from 'react-feather';
 
 import { Body1 } from '@/styles/fonts';
 
@@ -212,4 +212,28 @@ export const Body1Translated = styled(Body1)`
 export const OutterDiv = styled.div`
   width: 300px;
   height: 375px;
+`;
+
+export const Front = styled(ArrowLeft)`
+  width: 30px;
+  height: 30px;
+  position: relative;
+`;
+
+export const FrontButton = styled.button`
+  position: relative;
+  background-color: transparent;
+  border: none;
+`;
+
+export const Back = styled(ArrowRight)`
+  width: 30px;
+  height: 30px;
+  position: relative;
+`;
+
+export const BackButton = styled.button`
+  position: relative;
+  background-color: transparent;
+  border: none;
 `;
