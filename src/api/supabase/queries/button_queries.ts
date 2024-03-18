@@ -1,7 +1,7 @@
 import { StorefrontButtons } from '../../../schema/schema';
 import supabase from '../createClient';
 
-export async function fetchButoonCategories(): Promise<StorefrontButtons[]> {
+export async function fetchButtonCategories(): Promise<StorefrontButtons[]> {
   const { data: buttons, error } = await supabase
     .from('storefront_buttons')
     .select('*');

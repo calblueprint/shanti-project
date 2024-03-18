@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { fetchButoonCategories } from '@/api/supabase/queries/button_queries';
+import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
 import { Button, Label, IndividualContainer } from './styles';
 
 import {
@@ -40,7 +40,7 @@ export default function ProductButtons(props: {
 
     const category = e.currentTarget.value;
     const productItem = await fetchUserProducts();
-    const buttonCategories = await fetchButoonCategories();
+    const buttonCategories = await fetchButtonCategories();
 
     for (let i = 0; i < buttonCategories.length; i += 1) {
       if (buttonCategories[i].name === category) {

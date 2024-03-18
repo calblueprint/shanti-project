@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-import { fetchButoonCategories } from '@/api/supabase/queries/button_queries';
+import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
+import { Body2 } from '@/styles/fonts';
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -20,8 +21,8 @@ import {
   ButtonsContainer,
   FrontButton,
   BackButton,
-  Front,
-  Back,
+  FrontArrow,
+  BackArrow,
 } from './styles';
 
 import ProductButtons from './productButtons';
@@ -68,14 +69,14 @@ export default function StoreFrontNavBar(props: {
 
   useEffect(() => {
     const fetchButtonCat = async () => {
-      setButtonCategories(await fetchButoonCategories());
+      setButtonCategories(await fetchButtonCategories());
     };
     fetchButtonCat();
   }, []);
 
   useEffect(() => {
     const displayedButtons = async () => {
-      const button = await fetchButoonCategories();
+      const button = await fetchButtonCategories();
       setButtonDisplay(button.slice(0, 4));
     };
     displayedButtons();
@@ -126,7 +127,7 @@ export default function StoreFrontNavBar(props: {
       </Link>
       <ButtonsContainer>
         <FrontButton onClick={handlePrevious} $reachedStart={reachedStart}>
-          <Front />
+          <FrontArrow />
         </FrontButton>
         {buttonDisplay.map((type, index) => (
           <ProductButtons
@@ -141,18 +142,18 @@ export default function StoreFrontNavBar(props: {
           />
         ))}
         <BackButton onClick={handleNext} $reachedEnd={reachedEnd}>
-          <Back />
+          <BackArrow />
         </BackButton>
       </ButtonsContainer>
 
       <ButtonsDiv>
         <Link href="../profileScreen">
           <UserProfileIcon />
-          <p>Users</p>
+          <Body2>Users</Body2>
         </Link>
         <Link href="../cart">
           <ShoppingCartIcon />
-          <p>Cart</p>
+          <Body2>Cart</Body2>
           <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
         </Link>
       </ButtonsDiv>
