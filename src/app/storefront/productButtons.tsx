@@ -2,9 +2,8 @@
 
 import React from 'react';
 
+import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
 import { Button, Label, IndividualContainer } from './styles';
-
-import { buttons } from './buttonValues';
 
 import {
   fetchUserProducts,
@@ -18,20 +17,20 @@ export default function ProductButtons(props: {
   value: string;
   setFiltredProducts: (category: Product[]) => void;
   content: string;
-  setIsClickedButton: (clicked: boolean[]) => void;
-  IsClickedButton: boolean[];
   setCategoryWord: (word: string) => void;
   index: number;
+  setClickedButton: (clicked: number) => void;
+  clickedButton: number;
 }) {
   const {
     key,
     value,
     content,
     setFiltredProducts,
-    setIsClickedButton,
-    IsClickedButton,
     setCategoryWord,
     index,
+    setClickedButton,
+    clickedButton,
   } = props;
 
   async function applyFilter(
@@ -41,26 +40,29 @@ export default function ProductButtons(props: {
 
     const category = e.currentTarget.value;
     const productItem = await fetchUserProducts();
+    const buttonCategories = await fetchButtonCategories();
 
-    for (let i = 0; i < buttons.length; i += 1) {
-      if (buttons[i].value === category) {
-        const ind = buttons[i].count;
-        if (IsClickedButton[ind] === true) {
-          const tempArray = [...IsClickedButton];
-          tempArray[ind] = !tempArray[ind];
-          tempArray[0] = true;
+    for (let i = 0; i < buttonCategories.length; i += 1) {
+      if (buttonCategories[i].name === category) {
+        const ind = buttonCategories[i].id - 1;
+        if (ind === clickedButton) {
+          // const tempArray = [...IsClickedButton];
+          // tempArray[ind] = !tempArray[ind];
+          // tempArray[0] = true;
           setCategoryWord('All');
-          setIsClickedButton(tempArray);
+          // setIsClickedButton(tempArray);
+          setClickedButton(0);
 
           if (productItem !== null) {
             setFiltredProducts(productItem);
           }
           return;
         }
-        const arrayOfFalse = [false, false, false, false];
-        arrayOfFalse[ind] = true;
-        setCategoryWord(buttons[i].value);
-        setIsClickedButton(arrayOfFalse);
+        setClickedButton(ind);
+        // const arrayOfFalse = [false, false, false, false];
+        // arrayOfFalse[ind] = true;
+        setCategoryWord(buttonCategories[i].name);
+        // setIsClickedButton(arrayOfFalse);
 
         break;
       }
@@ -86,14 +88,14 @@ export default function ProductButtons(props: {
   return (
     <IndividualContainer>
       <Button
-        $pickColor={IsClickedButton[index]}
+        $pickColor={index === clickedButton}
         key={key}
         value={value}
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           applyFilter(e)
         }
       />
-      <Label $pickColor={IsClickedButton[index]}>{content}</Label>
+      <Label $pickColor={index === clickedButton}>{content}</Label>
     </IndividualContainer>
   );
 }

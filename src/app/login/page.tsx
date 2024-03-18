@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import supabase from '@/api/supabase/createClient';
+import { Body1, Heading1 } from '@/styles/fonts';
 import LoginForm from '../../components/LoginFormFolder/LoginForm';
 
 import {
@@ -52,10 +53,11 @@ export default function App() {
           position: 'absolute',
         }}
       />
-
       <LoginBox>
         <LoginContent>
-          <WelcomeSign>Welcome</WelcomeSign>
+          <WelcomeSign>
+            <Heading1>Welcome</Heading1>
+          </WelcomeSign>
 
           <LoginForm
             isError={isError}
@@ -77,11 +79,8 @@ export default function App() {
 
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <Button style={{ cursor: 'pointer' }} onClick={handleLogin}>
-            Log In
+            <Body1>Log In</Body1>
           </Button>
-          {/* <Button type="button" onClick={() => handleSignUp(email, password)}>
-              Sign up
-            </Button> */}
         </LoginContent>
       </LoginBox>
     </Fullscreen>

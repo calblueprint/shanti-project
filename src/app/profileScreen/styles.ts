@@ -104,7 +104,7 @@ export const NavBarMovedUP = styled(NavBar)`
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   justify-content: space-around;
   width: 100%;
   margin-bottom: 50px;
@@ -140,8 +140,6 @@ export const BlankSpace = styled.div`
 `;
 
 export const Fullscreen = styled.div`
- 
   width: 100%;
   height: 100%;
 `;
-
