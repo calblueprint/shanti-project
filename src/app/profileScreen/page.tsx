@@ -101,7 +101,7 @@ function OrderHistorySection(props: {
   Orders: Order[];
   setOrder: (category: Order[]) => void;
 }) {
-  const { Orders, setOrder } = props;
+  const {Orders} = props;
   const [firstOrderProducts, setFirstOrderProducts] = useState<
     ProductWithQuantity[]
   >([]);
