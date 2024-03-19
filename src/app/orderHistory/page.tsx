@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { Heading1 } from '@/styles/fonts';
 import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistoryBox';
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
-import Footer from '../../components/FooterFolder/Footer';
-import { Heading1 } from '@/styles/fonts';
+
 import {
   OrderHistoryContainer,
   OutterBox,

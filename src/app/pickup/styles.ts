@@ -29,8 +29,9 @@ export const PickupContent = styled.div`
   padding-left: 20px;
 `;
 
-export const PickupTimeButton = styled.button`
-  background: {COLORS.periwinkle};
+export const PickupTimeButton = styled.button<{ $isSelected?: boolean }>`
+  background: ${props =>
+    props.$isSelected ? COLORS.periwinkle : COLORS.lightGrey};
   height: 124px;
   width: 242px;
   margin-top: 20px;
@@ -156,6 +157,8 @@ export const LabelBox = styled.div`
 export const PageDiv = styled.div`
   display: flex;
   flex-flow: row;
+  width: 100%;
+  justify-content: space-around;
 `;
 
 export const OrderSummaryDiv = styled.div`

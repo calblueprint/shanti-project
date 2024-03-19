@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import querystring from 'querystring';
+import { Heading4Bold, Body1, OrderStatusFont } from '@/styles/fonts';
 import {
   ViewOrderButton,
   ArrowIcon,
@@ -12,8 +13,8 @@ import {
   OrderStatusSubmittedDiv,
   LoaderStyled,
 } from './styles'; // Adjust the import path as necessary
-import { Heading4Bold, Body1, OrderStatusFont } from '@/styles/fonts';
 import { Order, OrderStatus } from '../../schema/schema';
+
 function formatDate(isoString: string) {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -75,7 +76,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </Body1>
         <OrderStatusDiv>
           <CrossStyled />
-          <OrderStatusFont>{'Order Rejected'}</OrderStatusFont>
+          <OrderStatusFont>Order Rejected</OrderStatusFont>
         </OrderStatusDiv>
       </div>
     );
@@ -116,7 +117,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </Body1>
         <OrderStatusApprovedDiv>
           <CheckStyled />
-          <OrderStatusFont>{'Order Approved'}</OrderStatusFont>
+          <OrderStatusFont>Order Approved</OrderStatusFont>
         </OrderStatusApprovedDiv>
       </div>
     );
@@ -157,7 +158,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         </Body1>
         <OrderStatusSubmittedDiv>
           <LoaderStyled />
-          <OrderStatusFont>{'Order Submitted'}</OrderStatusFont>
+          <OrderStatusFont>Order Submitted</OrderStatusFont>
         </OrderStatusSubmittedDiv>
       </div>
     );

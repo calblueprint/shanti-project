@@ -1,7 +1,8 @@
 // styles.ts
 import styled from 'styled-components';
-import COLORS from '../../styles/colors';
 import { X, Check, Loader } from 'react-feather';
+import COLORS from '../../styles/colors';
+
 export const containerStyle = styled.div`
   width: 250px; // This width might be too small if it's meant to contain the OrderDiv
   height: 250px;

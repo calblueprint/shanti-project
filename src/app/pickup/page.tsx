@@ -4,13 +4,13 @@
 import { ArrowLeft } from 'react-feather';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchCartItemsWithQuantity } from '@/api/supabase/queries/cart_queries';
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Normal700Text } from '@/styles/fonts';
+import { Normal700Text, Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
 import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
-
+import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   HeaderShiftLeft,
   OrderSummaryDiv,
@@ -20,7 +20,6 @@ import {
   WhiteBackgroundDiv,
   BackDiv,
   Backtext,
-  NavBarMovedUP,
   PageDiv,
   CheckoutButton,
   ItemSummaryDiv,
@@ -64,9 +63,8 @@ export default function Pickup() {
   const [Cart, setCart] = useState<ProductWithQuantity[]>([]);
   const router = useRouter();
   const [Time, setTimes] = useState<Pickup[]>([]);
-
   const [Profile, setProfile] = useState<User>();
-
+  const [selectedPickupIndex, setSelectedPickupIndex] = useState<number>(0);
   useEffect(() => {
     async function fetchProducts() {
       const data = await fetchCartItemsWithQuantity(); // change the function to grab the cartItems as products
@@ -88,16 +86,13 @@ export default function Pickup() {
     fetchUserData();
   }, []);
 
-  const [selectedPickupIndex, setSelectedPickupIndex] = useState(null);
-
-  const handleButtonClick = (index: SetStateAction<null>) => {
+  const handleButtonClick = (index: number) => {
     setSelectedPickupIndex(index);
   };
 
   return (
     <div>
-      <NavBarMovedUP />
-
+      <NavBar />
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>
@@ -105,26 +100,26 @@ export default function Pickup() {
             <Backtext>Back</Backtext>
           </BackDiv>
           <PickupContainer>
-            <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
+            <Heading4Bold style={{ marginBottom: '38px', fontSize: '40px' }}>
               Pick Up
-            </Normal700Text>
-            <Normal700Text>Name</Normal700Text>
+            </Heading4Bold>
+            <Heading4Bold>Name</Heading4Bold>
             <PickupContent>
               {Profile?.first_name} {Profile?.last_name}
             </PickupContent>
-            <Normal700Text>Phone Number</Normal700Text>
+            <Heading4Bold>Phone Number</Heading4Bold>
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Normal700Text>Pick Up Time</Normal700Text>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Heading4Bold>Time Slot</Heading4Bold>
               <Normal700Text>Pick Up times: 10:00 AM - 12:00 PM </Normal700Text>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-              {Time.map((time, index) => (
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              {Time.map(time => (
                 <PickupTimeButton
-                  key={time.id} // Replace 'index' with a unique identifier from the 'time' object
-                  isSelected={selectedPickupIndex === index}
-                  onClick={() => handleButtonClick(index)}
+                  key={time.id}
+                  $isSelected={selectedPickupIndex === time.id}
+                  onClick={() => handleButtonClick(time.id)}
                 >
                   <div>
                     {String(
@@ -168,25 +163,13 @@ export default function Pickup() {
           </WhiteBackgroundDiv>
 
           <CheckoutButton
-            // TODO add the pick up ID to the order add the checkout feature that will clear the current users art and replace
-            // it with an empty cart convettying it to an order and then redirecting to the order
-            // confirmation page
-
             onClick={async () => {
-              // Add the pickup ID to the order
-              const pickupId =
-                selectedPickupIndex !== null
-                  ? Time[selectedPickupIndex]?.id
-                  : null;
-              if (pickupId) {
-                await updateCartPickupId(pickupId);
-
-                // Add your code here to update the order with the pickup ID
-                // For example:
-                // const updatedOrder = await updateOrderWithPickupId(orderId, pickupId);
-                // console.log(updatedOrder);
+              if (selectedPickupIndex !== 0) {
+                await updateCartPickupId(selectedPickupIndex);
+                router.push('/orderConfirmationPickUp');
+              } else {
+                // handle the case where they didn't select a time!
               }
-              router.push('/orderConfirmationPickUp');
             }}
           >
             Checkout

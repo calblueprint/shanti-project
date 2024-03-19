@@ -1,17 +1,16 @@
 'use client';
 
+import { Body1, Body2, Heading2Bold, Body1Bold } from '@/styles/fonts';
 import {
-  HeaderShiftLeft,
   OrderSummaryDiv,
   HeaderShiftRight,
   OrderTotalDiv,
-  PShiftLeft,
   WhiteBackgroundDiv,
+  AlignItemCenter,
   ItemSummaryDiv,
-  Qty,
-  PShiftRight,
+  OrderSummaryHeaderDiv,
+  ItemNameDiv,
 } from './styles';
-
 import { ProductWithQuantity } from '../../schema/schema';
 
 export default function OrderSummary(props: {
@@ -22,20 +21,28 @@ export default function OrderSummary(props: {
 
   return (
     <WhiteBackgroundDiv>
-      <HeaderShiftLeft>Order Summary</HeaderShiftLeft>
-      <Qty>Qty.</Qty>
-      <OrderSummaryDiv>
-        {cart.map(cartItem => (
-          <ItemSummaryDiv key={cartItem.id}>
-            <PShiftLeft>{cartItem.name}</PShiftLeft>
-            <PShiftRight>{cartItem.quantity}</PShiftRight>
-          </ItemSummaryDiv>
-        ))}
-      </OrderSummaryDiv>
-      <OrderTotalDiv>
-        <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-        <HeaderShiftRight>{numberOfItems}</HeaderShiftRight>
-      </OrderTotalDiv>
+      <Heading2Bold>Order Summary</Heading2Bold>
+      <AlignItemCenter>
+        <OrderSummaryHeaderDiv>
+          <Body2>Product Name</Body2>
+          <Body2>Qty.</Body2>
+        </OrderSummaryHeaderDiv>
+        <OrderSummaryDiv>
+          {cart.map(cartItem => (
+            <ItemSummaryDiv key={cartItem.id}>
+              <ItemNameDiv>
+                <Body1>{cartItem.name}</Body1>
+              </ItemNameDiv>
+
+              <Body1>{cartItem.quantity}</Body1>
+            </ItemSummaryDiv>
+          ))}
+        </OrderSummaryDiv>
+        <OrderTotalDiv>
+          <Body1Bold>Order Total</Body1Bold>
+          <HeaderShiftRight>{numberOfItems}</HeaderShiftRight>
+        </OrderTotalDiv>
+      </AlignItemCenter>
     </WhiteBackgroundDiv>
   );
 }

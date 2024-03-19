@@ -56,7 +56,6 @@ export default function OrderPage() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
-  console.log(orderIDFromSearch);
   let currOrderId = 0;
   if (orderIDFromSearch !== null) {
     currOrderId = parseInt(orderIDFromSearch, 10);
@@ -66,16 +65,15 @@ export default function OrderPage() {
 
   const [order, setOrder] = useState<Order>();
 
-  async function fetchProducts() {
-    const data = (await fetchOrderProductsbyOrderId(
-      currOrderId,
-    )) as ProductWithQuantity[];
-    const currOrder = await getOrderById(currOrderId);
-    setOrders(data);
-    setOrder(currOrder);
-  }
-
   useEffect(() => {
+    async function fetchProducts() {
+      const data = (await fetchOrderProductsbyOrderId(
+        currOrderId,
+      )) as ProductWithQuantity[];
+      const currOrder = await getOrderById(currOrderId);
+      setOrders(data);
+      setOrder(currOrder);
+    }
     fetchProducts();
   }, []);
 
