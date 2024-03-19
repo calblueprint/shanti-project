@@ -10,8 +10,9 @@ import {
   TextContainer,
   DescriptionContainer,
   ToastPopUP,
+  Fullscreen,
 } from './styles';
-import { GlobalStyle } from '../../styles/components';
+
 import NavBar from '../../components/NavBarFolder/NavBar';
 import { Product } from '../../schema/schema';
 import Buttons from './Buttons';
@@ -39,8 +40,7 @@ export default function ItemDisplay({
   }, [params.productId]);
 
   return (
-    <main>
-      <GlobalStyle />
+    <Fullscreen>
       <NavBar />
       <ToastPopUP
         position="top-right"
@@ -68,6 +68,6 @@ export default function ItemDisplay({
           <p>{Item?.description}</p>
         </TextContainer>
       </DescriptionContainer>
-    </main>
+    </Fullscreen>
   );
 }

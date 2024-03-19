@@ -138,3 +138,8 @@ export const BlankSpace = styled.div`
   width: 250px;
   height: 200px;
 `;
+
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
+`;

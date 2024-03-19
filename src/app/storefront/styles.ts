@@ -14,11 +14,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
-interface props {
-  isClicked: boolean;
-  isHovering: boolean;
-}
-
 export const StickyHeader = styled.div`
   position: fixed;
   background-color: ${COLORS.periwinkle};
@@ -118,11 +113,11 @@ export const ShopAllText = styled.h1`
   color: ${COLORS.black};
 `;
 
-export const HeartIcon = styled(Heart)<props>`
-  color: ${props => (props.isClicked ? '#333286' : 'black')};
+export const HeartIcon = styled(Heart)<{ $isclicked?: boolean }>`
+  color: ${props => (props.$isclicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
-  fill: ${props => (props.isClicked ? '#333286' : 'none')};
+  fill: ${props => (props.$isclicked ? '#333286' : 'none')};
   position: relative;
 `;
 
@@ -196,8 +191,8 @@ export const Addie = styled.p`
   margin-bottom: 30px;
 `;
 
-export const Hover = styled.p<props>`
-  visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
+export const Hover = styled.div<{ $ishovering?: boolean }>`
+  visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
   transform: translate(170px, -335px);
   color: ${COLORS.black};
   border: none;
@@ -247,4 +242,8 @@ export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
   background-color: transparent;
   border: none;
   visibility: ${props => (props.$reachedEnd ? 'visible' : 'hidden')};
+`;
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
 `;

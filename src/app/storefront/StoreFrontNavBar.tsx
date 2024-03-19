@@ -134,6 +134,7 @@ export default function StoreFrontNavBar(props: {
             key={type.id - 1}
             value={type.name}
             setFiltredProducts={setFilteredProducts}
+            id={type.id}
             content={type.name}
             setCategoryWord={setCategoryWord}
             index={index + ind}

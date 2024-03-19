@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
@@ -36,6 +36,7 @@ import {
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
+  Fullscreen,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -212,7 +213,7 @@ export default function Profile() {
     return <p>Error Loading User</p>;
   }
   return (
-    <main>
+    <Fullscreen>
       <NavBarMovedUP />
       <HeadingBack>
         <BackButtonDiv>
@@ -220,6 +221,12 @@ export default function Profile() {
         </BackButtonDiv>
         <Heading1>My Profile</Heading1>
       </HeadingBack>
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        limit={1}
+        hideProgressBar
+      />
 
       {user.delivery_allowed ? (
         <AccountDetailSectionDelivery user={user} />
@@ -233,6 +240,6 @@ export default function Profile() {
         Favorites
       </LogOutButton> */}
       <BlankSpace />
-    </main>
+    </Fullscreen>
   );
 }

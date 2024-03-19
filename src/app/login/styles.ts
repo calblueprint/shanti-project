@@ -6,6 +6,8 @@ export const LoginBox = styled.div`
   width: 500px;
   height: 420px;
   border: 1px solid ${COLORS.neutralGrey};
+  justify-self: center;
+  align-self: center;
 `;
 
 export const LoginContent = styled.div`
@@ -73,11 +75,9 @@ export const EyeIcon = styled(Eye)`
 `;
 
 export const Fullscreen = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 870px;
+  height: 100%;
+  display: grid;
 `;
 
 export const InputField = styled.div`
