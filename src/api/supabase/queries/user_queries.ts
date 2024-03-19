@@ -113,15 +113,8 @@ export async function fetchUserAddress() {
     const { data: user, error } = await supabase
       .from('address')
       .select('*')
-<<<<<<< HEAD
-      .eq('user_id', uuid)
-      .single();
-
-    console.log('test', user);
-=======
       .eq('user_id', userID.id)
       .maybeSingle();
->>>>>>> 80aa8ff (changes)
 
     if (error) {
       console.error('Error fetching user data:', error);
