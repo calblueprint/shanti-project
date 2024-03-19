@@ -26,6 +26,11 @@ import {
   User,
 } from '@/schema/schema';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
+import {
+  fetchOrdersByUserIdSorted,
+  fetchOrderProductById,
+  fetchProductWithQuantityById,
+} from '@/api/supabase/queries/order_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -43,17 +48,11 @@ import {
   BlankSpace,
   HeaderDiv,
   MostRecentOrder,
-  OrderDiv,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import { TransparentButton } from '../favorites/styles';
-import {
-  fetchOrdersByUserIdSorted,
-  fetchOrderProductById,
-  fetchProductWithQuantityById,
-} from '@/api/supabase/queries/order_queries';
-import { fetchProductByID } from '@/api/supabase/queries/product_queries';
+
 function FavoriteSection(props: {
   Favorites: Product[];
   setFavorites: (category: Product[]) => void;
@@ -143,26 +142,65 @@ function OrderHistorySection(props: {
             <Heading2>Order History</Heading2>
             <ViewAllButton destination="./orderPage" />
           </HeaderDiv>
-          <Body2Bold>Order No. {Orders[0].id}</Body2Bold>
-          <Body2>{Orders[0].created_at}</Body2>
-          <Body2Bold>{Orders[0].status}</Body2Bold>
-          <MostRecentOrder>
-            {firstOrderProducts.map(product => (
-              <OrderDiv key={product.id}>
-                <img
-                  src={product.photo}
-                  alt={product.name}
-                  style={{ width: '75px', height: '75px' }}
-                />
-              </OrderDiv>
-            ))}
-          </MostRecentOrder>
+          <div
+            style={{
+              marginTop: '20px',
+              width: '100%',
+            }}
+          >
+            <Body1Bold
+              style={{
+                marginTop: '20px',
+              }}
+            >
+              Order No. {Orders[0].id}
+            </Body1Bold>
+            <Body2
+              style={{
+                marginTop: '5px',
+              }}
+            >
+              {Orders[0].created_at}
+            </Body2>
+            <Body2Bold
+              style={{
+                marginTop: '20px',
+                marginBottom: '30px',
+              }}
+            >
+              {Orders[0].status}
+            </Body2Bold>
+            <MostRecentOrder>
+              {firstOrderProducts.map(product => (
+                <div
+                  key={product.id}
+                  style={{
+                    width: '85px',
+                    height: '85px',
+                    backgroundColor: 'grey',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <img
+                    src={product.photo}
+                    alt={product.name}
+                    style={{
+                      width: '75px',
+                      height: '75px',
+                    }}
+                  />
+                </div>
+              ))}
+            </MostRecentOrder>
+          </div>
         </OrderHistory>
       </main>
     );
-  } else {
+  } 
     return null;
-  }
+  
 }
 function AccountDetailSectionDelivery(props: { user: User }) {
   const { user } = props;

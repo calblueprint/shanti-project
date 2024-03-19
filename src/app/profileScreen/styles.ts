@@ -141,15 +141,5 @@ export const BlankSpace = styled.div`
 
 export const MostRecentOrder = styled.div`
   display: flex;
-  flex-direction: row;
-`;
-
-export const OrderDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: space-around;
-  width: 100%;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  gap: 5px;
 `;
