@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -100,10 +98,7 @@ function FavoriteSection(props: {
   );
 }
 
-function OrderHistorySection(props: {
-  Orders: Order[];
-  setOrder: (category: Order[]) => void;
-}) {
+function OrderHistorySection(props: { Orders: Order[] }) {
   const { Orders } = props;
   const [firstOrderProducts, setFirstOrderProducts] = useState<
     ProductWithQuantity[]
@@ -385,7 +380,7 @@ export default function Profile() {
       ) : (
         <AccountDetailSectionPickUp user={user} />
       )}
-      <OrderHistorySection Orders={Orders} setOrder={setOrder} />
+      <OrderHistorySection Orders={Orders} />
       <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
       {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
       <LogOutButton onClick={() => router.push('/favorites')}>
