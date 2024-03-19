@@ -126,23 +126,6 @@ export async function fetchOrderProductById(
   return orderProduct;
 }
 
-<<<<<<< HEAD
-export async function fetchProductWithQuantityById(
-  productId: number,
-): Promise<ProductWithQuantity> {
-  const { data: orderProduct, error } = await supabase
-    .from('product')
-    .select('*')
-    .eq('id', productId)
-    .single();
-  if (error) {
-    throw new Error(`Error fetching order product: ${error.message}`);
-  }
-  return orderProduct;
-}
-
-=======
->>>>>>> a8905fea7e6eac10fea552a7996c73407e756f43
 export async function fetchProductFromOrderProduct(
   orderProductId: number,
 ): Promise<Product> {
@@ -253,4 +236,4 @@ export async function fetchOrderProductsbyOrderId(
   );
 
   return orderProducts;
-}
+}   
