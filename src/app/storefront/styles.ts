@@ -132,7 +132,7 @@ export const NavBarZeroIndex = styled(NavBar)`
   position: fixed;
 `;
 
-export const CartTotalCircle = styled.div<{ $isZero?: Boolean }>`
+export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
   width: 20px;
   height: 20px;
   background: ${COLORS.marineBlue};
