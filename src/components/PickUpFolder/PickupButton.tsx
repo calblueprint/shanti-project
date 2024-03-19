@@ -1,8 +1,7 @@
 /* eslint-disable */
 import { useState } from 'react';
 
-function PickupButton({
-}: {
+function PickupButton({}: {
   day: string;
   date: string;
   start: string;
@@ -14,7 +13,7 @@ function PickupButton({
   // const selectedStyle = 'bg-[#547829] text-white border-[#547829]';
 
   // const handleClick = () => {
-    setIsSelected(!isSelected);
+  setIsSelected(!isSelected);
   // };
 
   return <button type="button" aria-label="PickUPButtons" />;

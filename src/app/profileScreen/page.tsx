@@ -103,15 +103,12 @@ function OrderHistorySection(props: {
   Orders: Order[];
   setOrder: (category: Order[]) => void;
 }) {
-  const {Orders} = props;
+  const { Orders } = props;
   const [firstOrderProducts, setFirstOrderProducts] = useState<
     ProductWithQuantity[]
   >([]);
   const [fD, setFormattedDate] = useState<string>('');
 
- 
-
-  
   useEffect(() => {
     async function fetchFirstOrderProducts() {
       if (Orders.length > 0) {
@@ -139,14 +136,18 @@ function OrderHistorySection(props: {
 
         const timestamp = firstOrder.created_at;
         const date = new Date(timestamp);
-        const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+        const options: Intl.DateTimeFormatOptions = {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        };
         const formattedDate = date.toLocaleDateString('en-US', options);
         setFormattedDate(formattedDate);
       }
     }
     fetchFirstOrderProducts();
   }, [Orders]);
-  
+
   if (firstOrderProducts.length > 0) {
     let backgroundColor = 'transparent';
     if (Orders[0].status === 'Submitted') {
@@ -158,11 +159,11 @@ function OrderHistorySection(props: {
     }
     let icon;
     if (Orders[0].status === 'Submitted') {
-      icon = <CheckCircle/>
+      icon = <CheckCircle />;
     } else if (Orders[0].status === 'Rejected') {
-      icon = <X/>
-    } else if (Orders[0].status === 'Completed'){
-      icon = <Check/>
+      icon = <X />;
+    } else if (Orders[0].status === 'Completed') {
+      icon = <Check />;
     } else {
       icon = null;
     }
@@ -205,12 +206,12 @@ function OrderHistorySection(props: {
                 marginTop: '20px',
                 marginBottom: '15px',
               }}
-        >
-          {icon}
-          <Body2Bold style = {{marginLeft: "13px"}}>
-            {Orders[0].status}
-          </Body2Bold>
-        </div>
+            >
+              {icon}
+              <Body2Bold style={{ marginLeft: '13px' }}>
+                {Orders[0].status}
+              </Body2Bold>
+            </div>
             <MostRecentOrder>
               {firstOrderProducts.map(product => (
                 <div
@@ -238,9 +239,8 @@ function OrderHistorySection(props: {
         </OrderHistory>
       </main>
     );
-  } 
-    return null;
-  
+  }
+  return null;
 }
 function AccountDetailSectionDelivery(props: { user: User }) {
   const { user } = props;
