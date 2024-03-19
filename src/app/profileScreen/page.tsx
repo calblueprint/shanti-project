@@ -242,11 +242,6 @@ function AccountDetailSectionDelivery(props: { user: User }) {
   const [UserAddress, setUserAddress] = useState<Address>();
   const router = useRouter();
 
-  async function getUserAddress() {
-    const data = await fetchUser();
-    const address = await fetchUserAddress(data.id);
-    setUserAddress(address);
-  }
   const showToastMessage = () => {
     signOut();
     toast("You've been Logged Out! Redirecting...", {
@@ -258,6 +253,10 @@ function AccountDetailSectionDelivery(props: { user: User }) {
   };
 
   useEffect(() => {
+    async function getUserAddress() {
+      const address = await fetchUserAddress();
+      setUserAddress(address);
+    }
     getUserAddress();
   }, []);
   return (

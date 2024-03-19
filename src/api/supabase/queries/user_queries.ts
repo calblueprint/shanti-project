@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-//
-
 import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
@@ -111,15 +107,14 @@ export async function arrayOfFavorites(): Promise<Product[]> {
  * fetchUserAddress: Get's a user's address based on their UUID
  * @param uuid: String containing the uuid of the user
  */
-export async function fetchUserAddress(uuid: string) {
+export async function fetchUserAddress() {
   try {
+    const userID = await fetchUser();
     const { data: user, error } = await supabase
       .from('address')
       .select('*')
-      .eq('user_id', uuid)
-      .single();
-
-    console.log('test', error);
+      .eq('user_id', userID.id)
+      .maybeSingle();
 
     if (error) {
       console.error('Error fetching user data:', error);
