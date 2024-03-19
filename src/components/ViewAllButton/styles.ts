@@ -8,6 +8,9 @@ export const ViewAllDiv = styled.button`
   color: ${COLORS.black};
   background-color: transparent;
   border: transparent;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const ImageWithSize = styled(Image)`

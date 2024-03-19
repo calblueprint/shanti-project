@@ -2,13 +2,15 @@
 
 // import { GlobalStyle } from "@/styles/components";
 import { ArrowLeft } from 'react-feather';
-import { arrayOfFavorites } from '@/api/supabase/queries/user_queries';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
+import { fetchCartItemsWithQuantity } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Normal700Text } from '@/styles/fonts';
-import { fetchRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
-import { Pickup, Product } from '@/schema/schema';
-import PickupButton from '@/components/PickUpFolder/PickupButton';
+import { Normal700Text, Heading4Bold } from '@/styles/fonts';
+import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
+import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
+import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
+import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   HeaderShiftLeft,
   OrderSummaryDiv,
@@ -18,7 +20,6 @@ import {
   WhiteBackgroundDiv,
   BackDiv,
   Backtext,
-  NavBarMovedUP,
   PageDiv,
   CheckoutButton,
   ItemSummaryDiv,
@@ -31,29 +32,67 @@ import {
   PickupTimeButton,
 } from './styles';
 
+function DateInfoComponent(date: { date: unknown }) {
+  const date1 = new Date(date.date as string);
+
+  const daysOfWeek = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  const getDayOfWeek = daysOfWeek[date1.getDay()];
+
+  const dateAsMonthDay = date1.toLocaleDateString(undefined, {
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return {
+    getDayOfWeek,
+    dateAsMonthDay,
+  };
+}
+
+//
+
 export default function Pickup() {
-  const [Cart, setCart] = useState<Product[]>([]);
+  const [Cart, setCart] = useState<ProductWithQuantity[]>([]);
   const router = useRouter();
   const [Time, setTimes] = useState<Pickup[]>([]);
-
+  const [Profile, setProfile] = useState<User>();
+  const [selectedPickupIndex, setSelectedPickupIndex] = useState<number>(0);
   useEffect(() => {
     async function fetchProducts() {
-      const data = await arrayOfFavorites(); // change the function to grab the cartItems as products
+      const data = await fetchCartItemsWithQuantity(); // change the function to grab the cartItems as products
       setCart(data);
     }
     async function fetchTimes() {
-      const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
+      const data = await fetchNRecentPickupTimes(2); // change the function to grab the cartItems as products
       setTimes(data);
-      console.log(Time);
     }
     fetchProducts();
     fetchTimes();
   }, []);
 
+  useEffect(() => {
+    async function fetchUserData() {
+      const data = await fetchUser(); // change the function to grab the cartItems as products
+      setProfile(data);
+    }
+    fetchUserData();
+  }, []);
+
+  const handleButtonClick = (index: number) => {
+    setSelectedPickupIndex(index);
+  };
+
   return (
     <div>
-      <NavBarMovedUP />
-
+      <NavBar />
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>
@@ -61,16 +100,43 @@ export default function Pickup() {
             <Backtext>Back</Backtext>
           </BackDiv>
           <PickupContainer>
-            <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
+            <Heading4Bold style={{ marginBottom: '38px', fontSize: '40px' }}>
               Pick Up
-            </Normal700Text>
-            <Normal700Text>Name</Normal700Text>
-            <PickupContent>Ethan Auyeung</PickupContent>
-            <Normal700Text>Phone Number</Normal700Text>
-            <PickupContent>+1 123-456-7890</PickupContent>
-            <PickupButton day="hi" date="date" start="start" end="end" />
+            </Heading4Bold>
+            <Heading4Bold>Name</Heading4Bold>
+            <PickupContent>
+              {Profile?.first_name} {Profile?.last_name}
+            </PickupContent>
+            <Heading4Bold>Phone Number</Heading4Bold>
+            <PickupContent>{Profile?.phone_numbers}</PickupContent>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Heading4Bold>Time Slot</Heading4Bold>
+              <Normal700Text>Pick Up times: 10:00 AM - 12:00 PM </Normal700Text>
+            </div>
 
-            <PickupTimeButton>Time</PickupTimeButton>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              {Time.map(time => (
+                <PickupTimeButton
+                  key={time.id}
+                  $isSelected={selectedPickupIndex === time.id}
+                  onClick={() => handleButtonClick(time.id)}
+                >
+                  <div>
+                    {String(
+                      DateInfoComponent({ date: time.start_time })
+                        ?.getDayOfWeek,
+                    )}
+                  </div>
+                  <div>
+                    {
+                      DateInfoComponent({ date: time.start_time })
+                        ?.dateAsMonthDay
+                    }
+                  </div>
+                </PickupTimeButton>
+              ))}
+            </div>
+
             <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
         </ForceColumnDiv>
@@ -91,15 +157,22 @@ export default function Pickup() {
               <HeaderShiftRight
               // change with the actual cart total
               >
-                10
+                {Cart.reduce((acc, item) => acc + item.quantity, 0)}
               </HeaderShiftRight>
             </OrderTotalDiv>
           </WhiteBackgroundDiv>
 
           <CheckoutButton
-            onClick={() => router.push('/orderConfirmationPickUp')}
+            onClick={async () => {
+              if (selectedPickupIndex !== 0) {
+                await updateCartPickupId(selectedPickupIndex);
+                router.push('/orderConfirmationPickUp');
+              } else {
+                // handle the case where they didn't select a time!
+              }
+            }}
           >
-            Place Order
+            Checkout
           </CheckoutButton>
         </RightColumnDiv>
       </PageDiv>

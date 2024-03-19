@@ -8,9 +8,7 @@ export default function BackButton(props: { destination: string }) {
   return (
     <Link href={destination}>
       <ViewAllDiv>
-        <Body1Point5>
-          <u>View All</u>
-        </Body1Point5>
+        <Body1Point5>View All</Body1Point5>
         <ArrowRight />
       </ViewAllDiv>
     </Link>
