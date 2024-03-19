@@ -33,7 +33,7 @@ interface OrderDetailsProps {
 }
 
 export default function OrderDetails(props: OrderDetailsProps) {
-  const { date, orderNumber, status, order } = props;
+  const { date, orderNumber, order } = props;
   const router = useRouter();
 
   const viewOrder = (orderID: string) => {

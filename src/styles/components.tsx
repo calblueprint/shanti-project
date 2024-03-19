@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 import { User, ShoppingCart } from 'react-feather';
 import COLORS from './colors';

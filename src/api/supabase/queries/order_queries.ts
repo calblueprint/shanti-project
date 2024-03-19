@@ -197,6 +197,14 @@ export async function updateCartPickupId(pickupId: number) {
     .eq('id', cartId);
 }
 
+export async function fetchProductFromOrderProduct(
+  orderProductId: number,
+): Promise<Product> {
+  const orderProduct = await fetchOrderProductById(orderProductId);
+  const product = await fetchProductByID(orderProduct.product_id);
+  return product;
+}
+
 export async function fetchProductsFromOrder(
   orderId: number,
 ): Promise<Product[]> {
@@ -210,12 +218,4 @@ export async function fetchProductsFromOrder(
   const fetchedProducts = await Promise.all(productPromises);
 
   return fetchedProducts;
-}
-
-export async function fetchProductFromOrderProduct(
-  orderProductId: number,
-): Promise<Product> {
-  const orderProduct = await fetchOrderProductById(orderProductId);
-  const product = await fetchProductByID(orderProduct.product_id);
-  return product;
 }
