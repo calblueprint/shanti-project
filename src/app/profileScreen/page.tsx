@@ -31,6 +31,7 @@ import {
   fetchOrderProductById,
   fetchProductWithQuantityById,
 } from '@/api/supabase/queries/order_queries';
+import { Check, CheckCircle, X } from 'react-feather';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -104,7 +105,11 @@ function OrderHistorySection(props: {
   const [firstOrderProducts, setFirstOrderProducts] = useState<
     ProductWithQuantity[]
   >([]);
+  const [fD, setFormattedDate] = useState<string>('');
 
+ 
+
+  
   useEffect(() => {
     async function fetchFirstOrderProducts() {
       if (Orders.length > 0) {
@@ -129,12 +134,36 @@ function OrderHistorySection(props: {
         );
 
         setFirstOrderProducts(productArray);
+
+        const timestamp = firstOrder.created_at;
+        const date = new Date(timestamp);
+        const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+        setFormattedDate(formattedDate);
       }
     }
     fetchFirstOrderProducts();
   }, [Orders]);
-
+  
   if (firstOrderProducts.length > 0) {
+    let backgroundColor = 'transparent';
+    if (Orders[0].status === 'Submitted') {
+      backgroundColor = '#CEE8BE';
+    } else if (Orders[0].status === 'Rejected') {
+      backgroundColor = '#FFDDDD';
+    } else if (Orders[0].status === 'Completed') {
+      backgroundColor = '#C7DDFF';
+    }
+    let icon;
+    if (Orders[0].status === 'Submitted') {
+      icon = <CheckCircle/>
+    } else if (Orders[0].status === 'Rejected') {
+      icon = <X/>
+    } else if (Orders[0].status === 'Completed'){
+      icon = <Check/>
+    } else {
+      icon = null;
+    }
     return (
       <main>
         <OrderHistory>
@@ -160,24 +189,33 @@ function OrderHistorySection(props: {
                 marginTop: '5px',
               }}
             >
-              {Orders[0].created_at}
+              {fD}
             </Body2>
-            <Body2Bold
+            <div
               style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 'fit-content',
+                padding: '5px 10px',
+                borderRadius: '20px', // adjust the border radius to make it more oval-shaped
+                background: backgroundColor,
                 marginTop: '20px',
-                marginBottom: '30px',
+                marginBottom: '15px',
               }}
-            >
-              {Orders[0].status}
-            </Body2Bold>
+        >
+          {icon}
+          <Body2Bold style = {{marginLeft: "13px"}}>
+            {Orders[0].status}
+          </Body2Bold>
+        </div>
             <MostRecentOrder>
               {firstOrderProducts.map(product => (
                 <div
                   key={product.id}
                   style={{
-                    width: '85px',
-                    height: '85px',
-                    backgroundColor: 'grey',
+                    width: '102px',
+                    height: '102px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -187,8 +225,8 @@ function OrderHistorySection(props: {
                     src={product.photo}
                     alt={product.name}
                     style={{
-                      width: '75px',
-                      height: '75px',
+                      width: '102px',
+                      height: '102px',
                     }}
                   />
                 </div>
@@ -233,7 +271,7 @@ function AccountDetailSectionDelivery(props: { user: User }) {
           <Body2Bold>Email</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body1>{user?.email}</Body1>
+          <Body3>{user?.email}</Body3>
         </TextSpacing>
         <HeadingSpacing>
           <Body2>Name</Body2>

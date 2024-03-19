@@ -16,12 +16,10 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-  HeaderText,
   OutterBox,
   Label,
   LabelBox,
   ScrollDiv,
-  AddressText,
   DateText,
   CenterBox,
   AddressDiv,
