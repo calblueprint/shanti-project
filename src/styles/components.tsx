@@ -3,20 +3,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { User, ShoppingCart } from 'react-feather';
 import COLORS from './colors';
 
-export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap'); 
-  
-  body {
-    background: ${COLORS.offWhite};
-    color: ${COLORS.black};
-    font-family: 'Public Sans', sans-serif;
-  }
-  span{
-  
-    color:black;
-  }
-`;
-
 export const StickyHeader = styled.div`
   position: fixed;
   background-color: ${COLORS.lightPeriwinkle};

@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-import { Heart, User, ShoppingCart } from 'react-feather';
+import {
+  Heart,
+  User,
+  ShoppingCart,
+  ChevronLeft,
+  ChevronRight,
+} from 'react-feather';
 
 import { Body1 } from '@/styles/fonts';
 
@@ -8,14 +14,9 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import COLORS from '../../styles/colors';
 
-interface props {
-  isClicked: boolean;
-  isHovering: boolean;
-}
-
 export const StickyHeader = styled.div`
   position: fixed;
-  background-color: var(--Light-Periwinkle, #f4f7ff);
+  background-color: ${COLORS.periwinkle};
   filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.1));
   width: 1470px;
   height: 10px;
@@ -23,7 +24,8 @@ export const StickyHeader = styled.div`
 `;
 
 export const Button = styled.button<{ $pickColor?: boolean }>`
-  background-color: ${props => (props.$pickColor ? '#1B3679' : '#C7E1FF')};
+  background-color: ${props =>
+    props.$pickColor ? COLORS.navy : COLORS.babyBlue};
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -31,7 +33,7 @@ export const Button = styled.button<{ $pickColor?: boolean }>`
 `;
 
 export const Label = styled.p<{ $pickColor?: boolean }>`
-  color: ${props => (props.$pickColor ? '#1B3679' : '#000')};
+  color: ${props => (props.$pickColor ? COLORS.navy : COLORS.black)};
   text-align: center;
   font-family: 'Public Sans', sans-serif;
   padding-top: 5px;
@@ -67,7 +69,7 @@ export const ButtonsContainer = styled.div`
 export const NavButton = styled.button`
   margin-top: 30px;
   margin-right: 25px;
-  color: white;
+  color: ${COLORS.white};
   text-align: center;
   font-family: sans-serif;
   font-size: 15px;
@@ -76,7 +78,7 @@ export const NavButton = styled.button`
   line-height: normal;
   width: 70px;
   height: 40px;
-  background: black;
+  background: ${COLORS.black};
   border: transparent;
   border-radius: 5px;
   float: right;
@@ -108,14 +110,14 @@ export const ShopAllText = styled.h1`
   height: 100px;
   margin-left: 60px;
   font-family: 'Public Sans', sans-serif;
-  color: black;
+  color: ${COLORS.black};
 `;
 
-export const HeartIcon = styled(Heart)<props>`
-  color: ${props => (props.isClicked ? '#333286' : 'black')};
+export const HeartIcon = styled(Heart)<{ $isclicked?: boolean }>`
+  color: ${props => (props.$isclicked ? '#333286' : 'black')};
   width: 30px;
   height: 30px;
-  fill: ${props => (props.isClicked ? '#333286' : 'none')};
+  fill: ${props => (props.$isclicked ? '#333286' : 'none')};
   position: relative;
 `;
 
@@ -189,10 +191,10 @@ export const Addie = styled.p`
   margin-bottom: 30px;
 `;
 
-export const Hover = styled.p<props>`
-  visibility: ${props => (props.isHovering ? 'visible' : 'hidden')};
+export const Hover = styled.div<{ $ishovering?: boolean }>`
+  visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
   transform: translate(170px, -335px);
-  color: black;
+  color: ${COLORS.black};
   border: none;
   width: 156px;
   height: 26px;
@@ -212,4 +214,36 @@ export const Body1Translated = styled(Body1)`
 export const OutterDiv = styled.div`
   width: 300px;
   height: 375px;
+`;
+
+export const FrontArrow = styled(ChevronLeft)`
+  width: 30px;
+  height: 30px;
+  position: relative;
+`;
+
+export const FrontButton = styled.button<{ $reachedStart?: boolean }>`
+  position: relative;
+  color: ${COLORS.black};
+  background-color: transparent;
+  border: none;
+  visibility: ${props => (props.$reachedStart ? 'visible' : 'hidden')};
+`;
+
+export const BackArrow = styled(ChevronRight)`
+  width: 30px;
+  height: 30px;
+  position: relative;
+`;
+
+export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
+  position: relative;
+  color: ${COLORS.black};
+  background-color: transparent;
+  border: none;
+  visibility: ${props => (props.$reachedEnd ? 'visible' : 'hidden')};
+`;
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
 `;

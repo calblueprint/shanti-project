@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   justify-content: space-around;
   width: 100%;
   margin-bottom: 50px;
@@ -22,7 +22,7 @@ export const OutterFavoriteDiv = styled.div`
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px;
-  height: 700px;
+  height: 650px;
   overflow: scroll;
   margin-top: 10px;
 `;
@@ -39,8 +39,8 @@ export const BackDiv = styled.button`
 `;
 
 export const OutterBox = styled.div`
-  width: 900px;
-  margin-left: 500px;
+  width: 800px;
+  height: 100%;
 `;
 
 export const Backtext = styled.p`
@@ -84,4 +84,12 @@ export const ViewItem = styled.button`
   border-radius: 5px;
   line-height: normal;
   border-radius: 14px;
+`;
+
+export const Fullscreen = styled.div`
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

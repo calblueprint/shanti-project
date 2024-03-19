@@ -85,3 +85,8 @@ export const ToastPopUP = styled(ToastContainer)`
   z-index: 100;
   transform: translatey(130px);
 `;
+
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
+`;

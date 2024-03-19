@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Storefront from './storefrontItems';
 
 import Footer from '../../components/FooterFolder/Footer';
-import { ShopAllText } from './styles';
+import { ShopAllText, Fullscreen } from './styles';
 import { fetchUserProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
@@ -15,12 +15,7 @@ export default function App() {
 
   const [CategoryWord, setCategoryWord] = useState('All');
 
-  const [IsClickedButton, setIsClickedButton] = useState<boolean[]>([
-    true,
-    false,
-    false,
-    false,
-  ]);
+  const [clickedButton, setClickedButton] = useState(0);
 
   useEffect(() => {
     async function fetchAllProducts() {
@@ -36,17 +31,17 @@ export default function App() {
   }, []);
 
   return (
-    <main>
+    <Fullscreen>
       <StoreFrontNavBar
         setFilteredProducts={setFilteredProducts}
-        setIsClickedButton={setIsClickedButton}
-        IsClickedButton={IsClickedButton}
         setCategoryWord={setCategoryWord}
+        clickedButton={clickedButton}
+        setClickedButton={setClickedButton}
       />
 
       <ShopAllText>Shop {CategoryWord}</ShopAllText>
       <Storefront products={FilteredProducts} />
       <Footer />
-    </main>
+    </Fullscreen>
   );
 }

@@ -110,6 +110,7 @@ export async function filterUserProducts(
     .select('*')
     .eq('prescribed', true)
     .eq('category', productType);
+
   if (error) {
     throw new Error(`Error fetching products: ${error.message}`);
   }
