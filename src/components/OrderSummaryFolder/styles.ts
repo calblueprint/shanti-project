@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const OrderSummaryDiv = styled.div`
   overflow: scroll;
-  width: 350px;
+  width: 300px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ItemSummaryDiv = styled.div`
@@ -11,30 +14,27 @@ export const ItemSummaryDiv = styled.div`
   flex-direction: row;
   margin-bottom: 20px;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
 `;
 
 export const OrderTotalDiv = styled.div`
   height: 50px;
-  padding-top: 10px;
-  width: 350px;
-  padding-left: 0px;
+  padding-top: 5px;
+  width: 100%;
   border-top: 1px black solid;
   display: flex;
   flex-flow: row;
+  align-items: center;
   justify-content: space-between;
 `;
 
 export const Qty = styled.p`
   width: 100%;
-  padding-left: 290px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`
   border-radius: 8px;
   background: var(--White, #fff);
-  height: 430px;
+  height: 480px;
   width: 350px;
   padding-top: 20px;
 
@@ -49,10 +49,26 @@ export const PShiftRight = styled.p`
   margin-right: 30px;
 `;
 
-export const HeaderShiftLeft = styled.h2`
+export const PShiftLeft = styled.p`
   margin-left: 15px;
 `;
 
-export const PShiftLeft = styled.p`
-  margin-left: 15px;
+export const OrderSummaryHeaderDiv = styled.div`
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+`;
+
+export const ItemNameDiv = styled.div`
+  width: 200px;
+  overflow: hidden;
+  height: 25px;
+`;
+
+export const AlignItemCenter = styled.div`
+  margin-left: 10px;
+  margin-top: 10px;
 `;
