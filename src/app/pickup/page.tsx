@@ -75,7 +75,7 @@ export default function Pickup() {
       setTimes(data);
     }
     fetchProducts();
-    fetchTimes();
+    // fetchTimes();
   }, []);
 
   useEffect(() => {

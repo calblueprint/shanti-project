@@ -12,7 +12,11 @@ import {
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
 import { Normal700Text } from '../../styles/fonts';
+<<<<<<< HEAD
 import { ProductWithQuantity, User, Address } from '../../schema/schema';
+=======
+import {ProductWithQuantity } from '../../schema/schema';
+>>>>>>> 31ee5db (eslint issues)
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
