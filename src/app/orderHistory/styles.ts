@@ -43,3 +43,7 @@ export const OrderHistoryBox = styled.div`
   gap: 20px;
   overflow-y: auto;
 `;
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
+`;

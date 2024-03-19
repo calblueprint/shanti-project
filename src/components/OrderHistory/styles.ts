@@ -1,5 +1,6 @@
 // styles.ts
 import styled from 'styled-components';
+import { X, Check, Loader } from 'react-feather';
 import COLORS from '../../styles/colors';
 
 export const containerStyle = styled.div`
@@ -35,17 +36,15 @@ export const ViewOrderButton = styled.button`
   color: var(--Black, #101010);
   text-align: right;
   text-overflow: ellipsis;
-  font-family: 'Public Sans', sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
-  text-decoration-line: underline;
   background: none;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const ArrowIcon = styled.div`
@@ -86,8 +85,8 @@ export const ImageContainer = styled.div`
 `;
 
 export const GalleryImage = styled.img`
-  max-height: 115px;
-  max-width: 115px;
+  height: 115px;
+  width: 115px;
   display: block;
 `;
 
@@ -95,4 +94,52 @@ export const RowDiv = styled.div`
   width: 700px;
   height: 400px;
   margin-bottom: 50px;
+`;
+
+export const OrderStatusDiv = styled.div`
+  width: 300px;
+  height: 35px;
+  background: var(--Light-Red, #fdd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 15px;
+`;
+
+export const OrderStatusApprovedDiv = styled.div`
+  width: 300px;
+  height: 35px;
+  background: var(--Lime-Green, #cee8be);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 15px;
+`;
+
+export const OrderStatusSubmittedDiv = styled.div`
+  width: 300px;
+  height: 35px;
+  background: var(--Baby-Blue, #c7ddff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 15px;
+`;
+
+export const CrossStyled = styled(X)`
+  stroke-width: 5px;
+  margin-right: 10px;
+`;
+
+export const CheckStyled = styled(Check)`
+  stroke-width: 5px;
+  margin-right: 10px;
+`;
+
+export const LoaderStyled = styled(Loader)`
+  stroke-width: 3px;
+  margin-right: 10px;
 `;

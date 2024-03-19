@@ -54,6 +54,7 @@ export default function OrderDetailsWithProducts({
         date={order.created_at}
         orderNumber={order.id.toString()}
         status={order.status}
+        order={order}
       />
       <ImageCarousel images={imageUrls} />
     </RowDiv>
