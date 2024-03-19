@@ -8,19 +8,15 @@ import {
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
 import { Normal700Text } from '../../styles/fonts';
-import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
-import { OrderProduct, ProductWithQuantity } from '../../schema/schema';
+import {ProductWithQuantity } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
-import ItemRows from './itemRows';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   DeliveryContainer,
   OrderContainer,
-  OrderSummaryText,
   OrderButton,
   InformationContainer,
   InformationText,
-  QtyText,
 } from './styles';
 
 export default function App() {

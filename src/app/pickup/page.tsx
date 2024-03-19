@@ -6,7 +6,6 @@ import { arrayOfFavorites } from '@/api/supabase/queries/user_queries';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Normal700Text } from '@/styles/fonts';
-import { fetchRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import { Pickup, Product } from '@/schema/schema';
 import PickupButton from '@/components/PickUpFolder/PickupButton';
 import {
@@ -34,20 +33,19 @@ import {
 export default function Pickup() {
   const [Cart, setCart] = useState<Product[]>([]);
   const router = useRouter();
-  const [Time, setTimes] = useState<Pickup[]>([]);
+  // const [Time, setTimes] = useState<Pickup[]>([]);
 
   useEffect(() => {
     async function fetchProducts() {
       const data = await arrayOfFavorites(); // change the function to grab the cartItems as products
       setCart(data);
     }
-    async function fetchTimes() {
-      const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
-      setTimes(data);
-      console.log(Time);
-    }
+    // async function fetchTimes() {
+    //   const data = await fetchRecentPickupTimes(); // change the function to grab the cartItems as products
+    //   setTimes(data);
+    // }
     fetchProducts();
-    fetchTimes();
+    // fetchTimes();
   }, []);
 
   return (
