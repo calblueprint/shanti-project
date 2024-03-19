@@ -163,4 +163,5 @@ export default function OrderDetails(props: OrderDetailsProps) {
       </div>
     );
   }
+  return <p>error occured</p>;
 }
