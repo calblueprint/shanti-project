@@ -38,11 +38,11 @@ export default function OrderSummary(props: {
             </ItemSummaryDiv>
           ))}
         </OrderSummaryDiv>
-        <OrderTotalDiv>
-          <Body1Bold>Order Total</Body1Bold>
-          <HeaderShiftRight>{numberOfItems}</HeaderShiftRight>
-        </OrderTotalDiv>
       </AlignItemCenter>
+      <OrderTotalDiv>
+        <Body1Bold style={{ marginLeft: '10px' }}>Order Total</Body1Bold>
+        <HeaderShiftRight>{numberOfItems}</HeaderShiftRight>
+      </OrderTotalDiv>
     </WhiteBackgroundDiv>
   );
 }
