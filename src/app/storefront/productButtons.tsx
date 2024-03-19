@@ -13,20 +13,20 @@ import {
 import { Product } from '../../schema/schema';
 
 export default function ProductButtons(props: {
-  key: number;
   value: string;
   setFiltredProducts: (category: Product[]) => void;
   content: string;
   setCategoryWord: (word: string) => void;
   index: number;
+  id: number;
   setClickedButton: (clicked: number) => void;
   clickedButton: number;
 }) {
   const {
-    key,
     value,
     content,
     setFiltredProducts,
+    id,
     setCategoryWord,
     index,
     setClickedButton,
@@ -89,7 +89,7 @@ export default function ProductButtons(props: {
     <IndividualContainer>
       <Button
         $pickColor={index === clickedButton}
-        key={key}
+        key={id}
         value={value}
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           applyFilter(e)
