@@ -19,6 +19,8 @@ import {
   InformationText,
 } from './styles';
 
+
+
 export default function App() {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [cart, setCart] = useState<ProductWithQuantity[]>([]);

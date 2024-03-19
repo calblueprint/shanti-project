@@ -31,7 +31,6 @@ export const PickupContent = styled.div`
 
 export const PickupTimeButton = styled.button`
   background: {COLORS.periwinkle};
-
   height: 124px;
   width: 242px;
   margin-top: 20px;
