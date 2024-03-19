@@ -51,15 +51,14 @@ export default function IndividualItem(props: {
             style={{ width: '250px', height: '250px' }}
           />
         </ItemButtons>
-
         <HeartContainer
           onClick={() => clickFunction()}
           onMouseEnter={() => setHovering(true)}
           onMouseLeave={() => setHovering(false)}
         >
-          <HeartIcon isHovering={hovering} isClicked={IsFavorite} />
+          <HeartIcon $isclicked={IsFavorite} />
         </HeartContainer>
-        <Hover isHovering={hovering} isClicked={IsFavorite}>
+        <Hover $ishovering={hovering}>
           <Body3>
             {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
           </Body3>
