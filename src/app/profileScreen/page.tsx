@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
@@ -18,8 +18,20 @@ import {
   fetchUser,
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
-import { Address, Product, User } from '@/schema/schema';
+import {
+  Address,
+  Order,
+  ProductWithQuantity,
+  Product,
+  User,
+} from '@/schema/schema';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
+import {
+  fetchOrdersByUserIdSorted,
+  fetchOrderProductById,
+  fetchProductWithQuantityById,
+} from '@/api/supabase/queries/order_queries';
+import { Check, CheckCircle, X } from 'react-feather';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -36,7 +48,7 @@ import {
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
-  Fullscreen,
+  MostRecentOrder,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -67,8 +79,11 @@ function FavoriteSection(props: {
               style={{ width: '75px', height: '75px' }}
             />
             <ProductNameDiv>
-              <Body1Bold>{favorite.name}</Body1Bold>
-              <Body2>Category: {favorite.category}</Body2>
+              <p>
+                {favorite.name}
+                <br />
+                Product ID: {favorite.id}
+              </p>
             </ProductNameDiv>
             <TransparentButton
               onClick={() => clickFunctions({ fav: favorite })}
@@ -82,17 +97,148 @@ function FavoriteSection(props: {
   );
 }
 
-function OrderHistorySection() {
-  return (
-    <main>
-      <OrderHistory>
-        <HeaderDiv>
-          <Heading2>Order History</Heading2>
-          <ViewAllButton destination="./orderPage" />
-        </HeaderDiv>
-      </OrderHistory>
-    </main>
-  );
+function OrderHistorySection(props: {
+  Orders: Order[];
+  setOrder: (category: Order[]) => void;
+}) {
+  const {Orders} = props;
+  const [firstOrderProducts, setFirstOrderProducts] = useState<
+    ProductWithQuantity[]
+  >([]);
+  const [fD, setFormattedDate] = useState<string>('');
+
+ 
+
+  
+  useEffect(() => {
+    async function fetchFirstOrderProducts() {
+      if (Orders.length > 0) {
+        const firstOrder = Orders[0];
+        const firstOrderProductIds = firstOrder.order_product_id_array.slice(
+          0,
+          3,
+        );
+
+        const productIds = await Promise.all(
+          firstOrderProductIds.map(productId =>
+            fetchOrderProductById(productId).then(
+              orderproduct => orderproduct.product_id,
+            ),
+          ),
+        );
+
+        const productArray = await Promise.all(
+          productIds.map(async productId =>
+            fetchProductWithQuantityById(productId).then(product => product),
+          ),
+        );
+
+        setFirstOrderProducts(productArray);
+
+        const timestamp = firstOrder.created_at;
+        const date = new Date(timestamp);
+        const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+        setFormattedDate(formattedDate);
+      }
+    }
+    fetchFirstOrderProducts();
+  }, [Orders]);
+  
+  if (firstOrderProducts.length > 0) {
+    let backgroundColor = 'transparent';
+    if (Orders[0].status === 'Submitted') {
+      backgroundColor = '#CEE8BE';
+    } else if (Orders[0].status === 'Rejected') {
+      backgroundColor = '#FFDDDD';
+    } else if (Orders[0].status === 'Completed') {
+      backgroundColor = '#C7DDFF';
+    }
+    let icon;
+    if (Orders[0].status === 'Submitted') {
+      icon = <CheckCircle/>
+    } else if (Orders[0].status === 'Rejected') {
+      icon = <X/>
+    } else if (Orders[0].status === 'Completed'){
+      icon = <Check/>
+    } else {
+      icon = null;
+    }
+    return (
+      <main>
+        <OrderHistory>
+          <HeaderDiv>
+            <Heading2>Order History</Heading2>
+            <ViewAllButton destination="./orderPage" />
+          </HeaderDiv>
+          <div
+            style={{
+              marginTop: '20px',
+              width: '100%',
+            }}
+          >
+            <Body1Bold
+              style={{
+                marginTop: '20px',
+              }}
+            >
+              Order No. {Orders[0].id}
+            </Body1Bold>
+            <Body2
+              style={{
+                marginTop: '5px',
+              }}
+            >
+              {fD}
+            </Body2>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 'fit-content',
+                padding: '5px 10px',
+                borderRadius: '20px', // adjust the border radius to make it more oval-shaped
+                background: backgroundColor,
+                marginTop: '20px',
+                marginBottom: '15px',
+              }}
+        >
+          {icon}
+          <Body2Bold style = {{marginLeft: "13px"}}>
+            {Orders[0].status}
+          </Body2Bold>
+        </div>
+            <MostRecentOrder>
+              {firstOrderProducts.map(product => (
+                <div
+                  key={product.id}
+                  style={{
+                    width: '102px',
+                    height: '102px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <img
+                    src={product.photo}
+                    alt={product.name}
+                    style={{
+                      width: '102px',
+                      height: '102px',
+                    }}
+                  />
+                </div>
+              ))}
+            </MostRecentOrder>
+          </div>
+        </OrderHistory>
+      </main>
+    );
+  } 
+    return null;
+  
 }
 function AccountDetailSectionDelivery(props: { user: User }) {
   const { user } = props;
@@ -125,7 +271,7 @@ function AccountDetailSectionDelivery(props: { user: User }) {
           <Body2Bold>Email</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body1>{user?.email}</Body1>
+          <Body3>{user?.email}</Body3>
         </TextSpacing>
         <HeadingSpacing>
           <Body2>Name</Body2>
@@ -197,23 +343,32 @@ export default function Profile() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
 
+  const [Orders, setOrder] = useState<Order[]>([]);
+
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
     setFavorites(data);
   }
+
+  async function fetchOrders() {
+    const data = (await fetchOrdersByUserIdSorted()) as Order[];
+    setOrder(data);
+  }
+
   async function getUser() {
     const data = await fetchUser();
     setUser(data);
   }
   useEffect(() => {
     fetchProducts();
+    fetchOrders();
     getUser();
   }, []);
   if (user === undefined) {
     return <p>Error Loading User</p>;
   }
   return (
-    <Fullscreen>
+    <main>
       <NavBarMovedUP />
       <HeadingBack>
         <BackButtonDiv>
@@ -221,25 +376,19 @@ export default function Profile() {
         </BackButtonDiv>
         <Heading1>My Profile</Heading1>
       </HeadingBack>
-      <ToastContainer
-        position="top-right"
-        autoClose={500}
-        limit={1}
-        hideProgressBar
-      />
 
       {user.delivery_allowed ? (
         <AccountDetailSectionDelivery user={user} />
       ) : (
         <AccountDetailSectionPickUp user={user} />
       )}
-      <OrderHistorySection />
+      <OrderHistorySection Orders={Orders} setOrder={setOrder} />
       <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
       {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
       <LogOutButton onClick={() => router.push('/favorites')}>
         Favorites
       </LogOutButton> */}
       <BlankSpace />
-    </Fullscreen>
+    </main>
   );
 }
