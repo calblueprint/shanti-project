@@ -140,7 +140,8 @@ export const BlankSpace = styled.div`
 `;
 
 export const MostRecentOrder = styled.div`
-
+  display: flex;
+  flex-direction: row;
 `;
 
 export const OrderDiv = styled.div`

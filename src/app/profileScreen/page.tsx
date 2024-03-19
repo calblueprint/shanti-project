@@ -18,7 +18,13 @@ import {
   fetchUser,
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
-import { Address, Order, Product, User } from '@/schema/schema';
+import {
+  Address,
+  Order,
+  ProductWithQuantity,
+  Product,
+  User,
+} from '@/schema/schema';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
 import BackButton from '../../components/BackButton/BackButton';
 import {
@@ -45,6 +51,7 @@ import { TransparentButton } from '../favorites/styles';
 import {
   fetchOrdersByUserIdSorted,
   fetchOrderProductById,
+  fetchProductWithQuantityById,
 } from '@/api/supabase/queries/order_queries';
 import { fetchProductByID } from '@/api/supabase/queries/product_queries';
 function FavoriteSection(props: {
@@ -95,25 +102,38 @@ function OrderHistorySection(props: {
   setOrder: (category: Order[]) => void;
 }) {
   const { Orders, setOrder } = props;
-  const [firstOrderProducts, setFirstOrderProducts] = useState<Product[]>([]);
+  const [firstOrderProducts, setFirstOrderProducts] = useState<
+    ProductWithQuantity[]
+  >([]);
 
   useEffect(() => {
     async function fetchFirstOrderProducts() {
       if (Orders.length > 0) {
-        console.log(Orders);
         const firstOrder = Orders[0];
         const firstOrderProductIds = firstOrder.order_product_id_array.slice(
           0,
           3,
         );
-        const products = await Promise.all(
-          firstOrderProductIds.map(productId => fetchProductByID(productId)),
+
+        const productIds = await Promise.all(
+          firstOrderProductIds.map(productId =>
+            fetchOrderProductById(productId).then(
+              orderproduct => orderproduct.product_id,
+            ),
+          ),
         );
-        setFirstOrderProducts(products);
+
+        const productArray = await Promise.all(
+          productIds.map(async productId =>
+            fetchProductWithQuantityById(productId).then(product => product),
+          ),
+        );
+
+        setFirstOrderProducts(productArray);
       }
     }
     fetchFirstOrderProducts();
-  }, [Orders]); // Fetch products whenever Orders change
+  }, [Orders]);
 
   if (firstOrderProducts.length > 0) {
     return (
@@ -123,6 +143,9 @@ function OrderHistorySection(props: {
             <Heading2>Order History</Heading2>
             <ViewAllButton destination="./orderPage" />
           </HeaderDiv>
+          <Body2Bold>Order No. {Orders[0].id}</Body2Bold>
+          <Body2>{Orders[0].created_at}</Body2>
+          <Body2Bold>{Orders[0].status}</Body2Bold>
           <MostRecentOrder>
             {firstOrderProducts.map(product => (
               <OrderDiv key={product.id}>
