@@ -164,7 +164,7 @@ export async function fetchOrderProductsbyOrderId(
       fetchOrderProductById(orderProductId),
     ),
   );
- 
+
   const orderProducts = await Promise.all(
     newOrderProducts.map(async orderProduct =>
       fetchProductWithQuantityById(orderProduct.product_id),
