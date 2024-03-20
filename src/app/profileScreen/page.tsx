@@ -16,7 +16,7 @@ import {
   addOrRemoveProductFromFavorite,
   arrayOfFavorites,
   fetchUser,
-  fetchUserAddress,
+  fetchCurrentUserAddress,
 } from '@/api/supabase/queries/user_queries';
 import {
   Address,
@@ -255,7 +255,7 @@ function AccountDetailSectionDelivery(props: { user: User }) {
 
   useEffect(() => {
     async function getUserAddress() {
-      const address = await fetchUserAddress();
+      const address = await fetchCurrentUserAddress();
       setUserAddress(address);
     }
     getUserAddress();

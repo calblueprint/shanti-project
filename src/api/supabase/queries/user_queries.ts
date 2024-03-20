@@ -107,14 +107,13 @@ export async function arrayOfFavorites(): Promise<Product[]> {
  * fetchUserAddress: Get's a user's address based on their UUID
  * @param uuid: String containing the uuid of the user
  */
-export async function fetchUserAddress() {
+export async function fetchUserAddress(uuid: string) {
   try {
-    const userID = await fetchUser();
     const { data: user, error } = await supabase
       .from('address')
       .select('*')
-      .eq('user_id', userID.id)
-      .maybeSingle();
+      .eq('user_id', uuid)
+      .single();
 
     if (error) {
       console.error('Error fetching user data:', error);
@@ -138,7 +137,9 @@ export async function fetchCurrentUserAddress() {
       .from('address')
       .select('*')
       .eq('user_id', user.id)
+      .limit(1)
       .single();
+    console.log(address);
 
     if (error) {
       console.error('Error fetching user data:', error);
