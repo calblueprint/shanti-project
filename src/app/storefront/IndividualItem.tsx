@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import { useRouter } from 'next/navigation';
-
-import { Body3 } from '@/styles/fonts';
+import { Body1, Body3 } from '@/styles/fonts';
 
 import {
-  StorefrontItem,
-  ItemButtons,
+  ImageLinkWrapper,
   HeartIcon,
-  Body1Translated,
   HeartContainer,
-  Hover,
-  OutterDiv,
+  FavoritePopup,
+  OuterDiv,
 } from './styles';
 
 import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
@@ -23,48 +19,34 @@ export default function IndividualItem(props: {
   products: Product[];
 }) {
   const { product, products } = props;
-  const [IsFavorite, setIsFavorite] = useState(false);
-  const router = useRouter();
-  const [hovering, setHovering] = useState(false);
+  const [IsFavorite, setIsFavorite] = useState(
+    !!products.find(item => item.id === product.id),
+  );
 
-  useEffect(() => {
-    async function fetchProducts() {
-      if (products.find(item => item.id === product.id)) {
-        setIsFavorite(true);
-      }
-    }
-    fetchProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
-
-  async function clickFunction() {
-    addOrRemoveProductFromFavorite(product, !IsFavorite);
+  async function handleFavorite() {
+    await addOrRemoveProductFromFavorite(product, !IsFavorite);
     setIsFavorite(!IsFavorite);
   }
   return (
-    <OutterDiv>
-      <StorefrontItem>
-        <ItemButtons onClick={() => router.push(`/${product.id}`)}>
-          <img
-            src={product.photo}
-            alt={product.name}
-            style={{ width: '250px', height: '250px' }}
-          />
-        </ItemButtons>
-        <HeartContainer
-          onClick={() => clickFunction()}
-          onMouseEnter={() => setHovering(true)}
-          onMouseLeave={() => setHovering(false)}
-        >
-          <HeartIcon $isclicked={IsFavorite} />
+    <OuterDiv>
+      {/* <StorefrontItem> */}
+      <ImageLinkWrapper href={product.id.toString()}>
+        <img
+          src={product.photo}
+          alt={product.name}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        <HeartContainer onClick={() => handleFavorite()}>
+          <FavoritePopup>
+            <Body3>
+              {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            </Body3>
+          </FavoritePopup>
+          <HeartIcon $favorited={IsFavorite} />
         </HeartContainer>
-        <Hover $ishovering={hovering}>
-          <Body3>
-            {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
-          </Body3>
-        </Hover>
-      </StorefrontItem>
-      <Body1Translated>{product.name}</Body1Translated>
-    </OutterDiv>
+      </ImageLinkWrapper>
+      {/* </StorefrontItem> */}
+      <Body1>{product.name}</Body1>
+    </OuterDiv>
   );
 }

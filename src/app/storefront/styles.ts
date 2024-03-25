@@ -8,7 +8,9 @@ import {
   ChevronRight,
 } from 'react-feather';
 
-import { Body1 } from '@/styles/fonts';
+import { Body3 } from '@/styles/fonts';
+
+import Link from 'next/link';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -84,48 +86,47 @@ export const NavButton = styled.button`
   float: right;
 `;
 
-export const ItemButtons = styled.button`
-  width: 290px;
-  height: 290px;
-  border: transparent;
-  background-color: var(--lightGrey, #f4f4f4);
+export const ImageLinkWrapper = styled(Link)`
+  width: 300px;
+  height: 300px;
+  background-color: ${COLORS.lightGrey};
+  padding: 32px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.10);
 `;
 
 export const StorefrontWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 `;
 
-export const StorefrontItem = styled.div`
-  width: calc(25% - 40px);
-  margin-bottom: 50px;
+export const StorefrontItemsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 32px;
+  justify-content: space-between;
 `;
 
-export const ShopAllText = styled.h1`
-  padding-top: 80px;
-  padding-bottom: 38px;
-  height: 100px;
-  margin-left: 60px;
-  font-family: 'Public Sans', sans-serif;
-  color: ${COLORS.black};
-`;
-
-export const HeartIcon = styled(Heart)<{ $isclicked?: boolean }>`
-  color: ${props => (props.$isclicked ? '#333286' : 'black')};
+export const HeartIcon = styled(Heart)<{ $favorited: boolean }>`
   width: 30px;
   height: 30px;
-  fill: ${props => (props.$isclicked ? '#333286' : 'none')};
+  color: ${props => (props.$favorited ? COLORS.marineBlue : COLORS.black)};
+  fill: ${props => (props.$favorited ? COLORS.marineBlue : 'none')};
   position: relative;
 `;
 
 export const HeartContainer = styled.button`
-  transform: translate(230px, -260px);
-  position: relative;
+  position: absolute;
+  right: 16px;
+  top: 16px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 
 export const NavBarZeroIndex = styled(NavBar)`
@@ -191,29 +192,33 @@ export const Addie = styled.p`
   margin-bottom: 30px;
 `;
 
-export const Hover = styled.div<{ $ishovering?: boolean }>`
-  visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
-  transform: translate(170px, -335px);
-  color: ${COLORS.black};
-  border: none;
-  width: 156px;
-  height: 26px;
+export const FavoritePopup = styled.div`
+  position: absolute;
+  visibility: hidden;
+  width: 150px;
   border-radius: 8px;
-  background: var(--Light-Periwinkle, #f4f7ff);
+  padding: 8px;
+  // Find better way to refactor this, it shouldn't need a calc
+  transform: translate(calc(-50% + 15px), -40px);
+  z-index: 1;
+
+  color: ${COLORS.black};
+  background: ${COLORS.lightPeriwinkle};
   box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
-  padding-top: 6px;
-  padding-bottom: 6px;
-  position: relative;
-  text-align: center;
+
+  ${Body3} {
+    display: inline;
+  }
+
+  ${HeartContainer}:hover & {
+    visibility: visible;
+  }
 `;
 
-export const Body1Translated = styled(Body1)`
-  transform: translateY(-100px);
-`;
-
-export const OutterDiv = styled.div`
+export const OuterDiv = styled.div`
   width: 300px;
   height: 375px;
+  position: relative;
 `;
 
 export const FrontArrow = styled(ChevronLeft)`
@@ -242,8 +247,4 @@ export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
   background-color: transparent;
   border: none;
   visibility: ${props => (props.$reachedEnd ? 'visible' : 'hidden')};
-`;
-export const Fullscreen = styled.div`
-  width: 100%;
-  height: 100%;
 `;
