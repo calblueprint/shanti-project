@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
+// Font family will be taken care of by the global layout.tsx. If other fonts are needed, refactor this file.
+
 export const Heading1 = styled.h1`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 40px;
   font-style: normal;
   line-height: normal;
 `;
 
 export const Heading4 = styled.div`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -16,14 +18,14 @@ export const Heading4 = styled.div`
 `;
 
 export const Normal700Text = styled.div`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 `;
 
 export const Heading1Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 40px;
   font-style: normal;
   font-weight: 800;
@@ -31,7 +33,7 @@ export const Heading1Bold = styled.p`
 `;
 
 export const Heading2 = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 35px;
   font-style: normal;
   font-weight: 700;
@@ -39,7 +41,7 @@ export const Heading2 = styled.p`
 `;
 
 export const Heading2Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 35px;
   font-style: normal;
   font-weight: 800;
@@ -47,7 +49,7 @@ export const Heading2Bold = styled.p`
 `;
 
 export const Heading3 = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 30px;
   font-style: normal;
   font-weight: 500;
@@ -55,7 +57,7 @@ export const Heading3 = styled.p`
 `;
 
 export const Heading3Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -63,7 +65,7 @@ export const Heading3Bold = styled.p`
 `;
 
 export const HeadingTemp = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 25px;
   font-style: normal;
   font-weight: 400;
@@ -71,7 +73,7 @@ export const HeadingTemp = styled.p`
 `;
 
 export const Heading4Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -79,7 +81,7 @@ export const Heading4Bold = styled.p`
 `;
 
 export const Body1 = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -87,14 +89,14 @@ export const Body1 = styled.p`
 `;
 
 export const Body1Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 `;
 export const Body1Point5 = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -102,7 +104,7 @@ export const Body1Point5 = styled.p`
 `;
 
 export const Body2 = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -110,7 +112,7 @@ export const Body2 = styled.p`
 `;
 
 export const Body2Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -118,7 +120,7 @@ export const Body2Bold = styled.p`
 `;
 
 export const Body2Light = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 15px;
   font-style: normal;
   font-weight: 300;
@@ -126,7 +128,7 @@ export const Body2Light = styled.p`
 `;
 
 export const Body3 = styled.p`
-  font-family: 'Public Sans', sans-serif;
+  /* font-family: 'Public Sans', sans-serif; */
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
