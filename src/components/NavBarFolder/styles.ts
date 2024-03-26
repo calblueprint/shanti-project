@@ -28,10 +28,8 @@ export const NavBarComp = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
   height: 140px;
-  padding-top: 20px;
+  padding: 20px;
   position: relative;
   width: 100%;
   background: ${COLORS.lightPeriwinkle};
@@ -44,7 +42,6 @@ export const ButtonsDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding-top: 15px;
 `;
 
 export const LocationDiv = styled.div`
