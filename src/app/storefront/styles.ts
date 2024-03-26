@@ -25,17 +25,18 @@ export const StickyHeader = styled.div`
   z-index: 2;
 `;
 
-export const Button = styled.button<{ $pickColor?: boolean }>`
+export const CategoryButton = styled.button<{ $selected?: boolean }>`
   background-color: ${props =>
-    props.$pickColor ? COLORS.navy : COLORS.babyBlue};
+    props.$selected ? COLORS.navy : COLORS.babyBlue};
   border-radius: 50%;
   width: 60px;
   height: 60px;
   border: transparent;
+  cursor: pointer;
 `;
 
-export const Label = styled.p<{ $pickColor?: boolean }>`
-  color: ${props => (props.$pickColor ? COLORS.navy : COLORS.black)};
+export const CategoryButtonLabel = styled.p<{ $selected?: boolean }>`
+  color: ${props => (props.$selected ? COLORS.navy : COLORS.black)};
   text-align: center;
   font-family: 'Public Sans', sans-serif;
   padding-top: 5px;
@@ -59,13 +60,11 @@ export const ItemContainer = styled.div`
 `;
 
 export const ButtonsContainer = styled.div`
-  margin-left: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   position: flex;
   align-items: center;
-  z-index: 1100;
 `;
 
 export const NavButton = styled.button`
@@ -233,6 +232,7 @@ export const FrontButton = styled.button<{ $reachedStart?: boolean }>`
   background-color: transparent;
   border: none;
   visibility: ${props => (props.$reachedStart ? 'visible' : 'hidden')};
+  cursor: pointer;
 `;
 
 export const BackArrow = styled(ChevronRight)`
@@ -247,4 +247,5 @@ export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
   background-color: transparent;
   border: none;
   visibility: ${props => (props.$reachedEnd ? 'visible' : 'hidden')};
+  cursor: pointer;
 `;

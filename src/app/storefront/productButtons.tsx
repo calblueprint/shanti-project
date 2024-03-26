@@ -3,7 +3,11 @@
 import React from 'react';
 
 import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
-import { Button, Label, IndividualContainer } from './styles';
+import {
+  CategoryButton,
+  CategoryButtonLabel,
+  IndividualContainer,
+} from './styles';
 
 import {
   fetchUserProducts,
@@ -87,15 +91,15 @@ export default function ProductButtons(props: {
 
   return (
     <IndividualContainer>
-      <Button
-        $pickColor={index === clickedButton}
+      <CategoryButton
+        $selected={index === clickedButton}
         key={id}
         value={value}
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-          applyFilter(e)
-        }
+        onClick={e => applyFilter(e)}
       />
-      <Label $pickColor={index === clickedButton}>{content}</Label>
+      <CategoryButtonLabel $selected={index === clickedButton}>
+        {content}
+      </CategoryButtonLabel>
     </IndividualContainer>
   );
 }
