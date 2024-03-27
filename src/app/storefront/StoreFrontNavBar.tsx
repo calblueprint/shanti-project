@@ -1,6 +1,5 @@
 /* eslint-disable react/button-has-type */
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
@@ -23,6 +22,7 @@ import {
   BackButton,
   FrontArrow,
   BackArrow,
+  IconWithLabelLink,
 } from './styles';
 
 import ProductButtons from './productButtons';
@@ -117,14 +117,14 @@ export default function StoreFrontNavBar(props: {
 
   return (
     <NavBarComp>
-      <Link href="../storefront">
+      <IconWithLabelLink href="../storefront">
         <Image
           src="/images/ShantiLogo.png"
           alt="Shanti Logo"
-          width={147}
-          height={73}
+          width={125}
+          height={70}
         />
-      </Link>
+      </IconWithLabelLink>
       <ButtonsContainer>
         <FrontButton onClick={handlePrevious} $reachedStart={reachedStart}>
           <FrontArrow />
@@ -148,15 +148,15 @@ export default function StoreFrontNavBar(props: {
       </ButtonsContainer>
 
       <ButtonsDiv>
-        <Link href="../profileScreen">
+        <IconWithLabelLink href="../profileScreen">
           <UserProfileIcon />
-          <Body2>Users</Body2>
-        </Link>
-        <Link href="../cart">
+          <Body2>User</Body2>
+        </IconWithLabelLink>
+        <IconWithLabelLink href="../cart">
           <ShoppingCartIcon />
           <Body2>Cart</Body2>
           <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
-        </Link>
+        </IconWithLabelLink>
       </ButtonsDiv>
     </NavBarComp>
   );

@@ -7,8 +7,9 @@ export const BackLink = styled(Link)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   color: ${COLORS.black};
-  gap: 5px;
+  width: 56px;
 `;
 
 export const ArrowLeftIcon = styled(ArrowLeft)`

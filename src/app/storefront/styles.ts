@@ -249,3 +249,11 @@ export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
   visibility: ${props => (props.$reachedEnd ? 'visible' : 'hidden')};
   cursor: pointer;
 `;
+
+export const IconWithLabelLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: ${COLORS.black};
+`;

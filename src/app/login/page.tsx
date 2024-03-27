@@ -48,9 +48,9 @@ export default function App() {
         width={125}
         height={65}
         style={{
+          position: 'absolute',
           top: '30px',
           left: '30px',
-          position: 'absolute',
         }}
       />
       <LoginBox>
