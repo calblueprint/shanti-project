@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+// eslint-disable-next-line camelcase
+import { Public_Sans } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const publicSans = Public_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Shanti Project',
@@ -16,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={publicSans.className}>{children}</body>
     </html>
   );
 }

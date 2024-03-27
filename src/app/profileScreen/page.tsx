@@ -20,12 +20,11 @@ import {
 } from '@/api/supabase/queries/user_queries';
 import { Address, Product, User } from '@/schema/schema';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
+import NavBar from '@/components/NavBarFolder/NavBar';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
-  NavBarMovedUP,
   AccountDetails,
-  HeadingBack,
   HeadingSpacing,
   TextSpacing,
   OrderHistory,
@@ -33,10 +32,13 @@ import {
   ProductNameDiv,
   FavoriteDiv,
   HeartIcon,
-  BackButtonDiv,
-  BlankSpace,
   HeaderDiv,
-  Fullscreen,
+  MainContainer,
+  AccountDiv,
+  InfoDiv,
+  ContentContainer,
+  FlexContainer,
+  PageContainer,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -97,22 +99,12 @@ function OrderHistorySection() {
 function AccountDetailSectionDelivery(props: { user: User }) {
   const { user } = props;
   const [UserAddress, setUserAddress] = useState<Address>();
-  const router = useRouter();
 
   async function getUserAddress() {
     const data = await fetchUser();
     const address = await fetchUserAddress(data.id);
     setUserAddress(address);
   }
-  const showToastMessage = () => {
-    signOut();
-    toast("You've been Logged Out! Redirecting...", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setTimeout(() => {
-      router.push('/login');
-    }, 3000);
-  };
 
   useEffect(() => {
     getUserAddress();
@@ -143,25 +135,12 @@ function AccountDetailSectionDelivery(props: { user: User }) {
             {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
           </Body1>
         </TextSpacing>
-        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
       </AccountDetails>
     </main>
   );
 }
 function AccountDetailSectionPickUp(props: { user: User }) {
   const { user } = props;
-
-  const router = useRouter();
-
-  const showToastMessage = () => {
-    signOut();
-    toast("You've been Logged Out! Redirecting...", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setTimeout(() => {
-      router.push('/login');
-    }, 3000);
-  };
 
   return (
     <main>
@@ -187,7 +166,6 @@ function AccountDetailSectionPickUp(props: { user: User }) {
         <TextSpacing>
           <Body2>+1 510-123-4567 {/* User?.phone */}</Body2>
         </TextSpacing>
-        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
       </AccountDetails>
     </main>
   );
@@ -196,6 +174,7 @@ function AccountDetailSectionPickUp(props: { user: User }) {
 export default function Profile() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
+  const router = useRouter();
 
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
@@ -212,34 +191,56 @@ export default function Profile() {
   if (user === undefined) {
     return <p>Error Loading User</p>;
   }
+
+  const showToastMessage = () => {
+    signOut();
+    toast("You've been Logged Out! Redirecting...", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setTimeout(() => {
+      router.push('/login');
+    }, 3000);
+  };
+
   return (
-    <Fullscreen>
-      <NavBarMovedUP />
-      <HeadingBack>
-        <BackButtonDiv>
-          <BackButton destination="./storefront" />
-        </BackButtonDiv>
-        <Heading1>My Profile</Heading1>
-      </HeadingBack>
+    <PageContainer>
       <ToastContainer
         position="top-right"
         autoClose={500}
         limit={1}
         hideProgressBar
       />
+      <NavBar />
+      <FlexContainer>
+        <MainContainer>
+          <BackButton destination="./storefront" />
+          <Heading1>My Profile</Heading1>
+          <ContentContainer>
+            <AccountDiv>
+              {user.delivery_allowed ? (
+                <AccountDetailSectionDelivery user={user} />
+              ) : (
+                <AccountDetailSectionPickUp user={user} />
+              )}
+              <LogOutButton onClick={() => showToastMessage()}>
+                Log Out
+              </LogOutButton>
+            </AccountDiv>
+            <InfoDiv>
+              <OrderHistorySection />
+              <FavoriteSection
+                Favorites={Favorites}
+                setFavorites={setFavorites}
+              />
+            </InfoDiv>
+          </ContentContainer>
 
-      {user.delivery_allowed ? (
-        <AccountDetailSectionDelivery user={user} />
-      ) : (
-        <AccountDetailSectionPickUp user={user} />
-      )}
-      <OrderHistorySection />
-      <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
-      {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
-      <LogOutButton onClick={() => router.push('/favorites')}>
-        Favorites
-      </LogOutButton> */}
-      <BlankSpace />
-    </Fullscreen>
+          {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
+        <LogOutButton onClick={() => router.push('/favorites')}>
+          Favorites
+        </LogOutButton> */}
+        </MainContainer>
+      </FlexContainer>
+    </PageContainer>
   );
 }
