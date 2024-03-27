@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { User, ShoppingCart } from 'react-feather';
+import Link from 'next/link';
 import COLORS from '../../styles/colors';
 
 export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
@@ -15,12 +16,10 @@ export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
 `;
 
 export const UserProfileIcon = styled(User)`
-  margin-left: 5px;
   color: ${COLORS.black};
 `;
 
 export const ShoppingCartIcon = styled(ShoppingCart)`
-  margin-left: 3px;
   color: ${COLORS.black};
 `;
 
@@ -28,20 +27,19 @@ export const NavBarComp = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 140px;
-  padding: 20px;
+  align-items: center;
+  padding: 16px 32px;
   position: relative;
   width: 100%;
   background: ${COLORS.lightPeriwinkle};
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
-  z-index: 100;
 `;
 
 export const ButtonsDiv = styled.div`
-  width: 200px;
+  width: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const LocationDiv = styled.div`
@@ -61,15 +59,10 @@ export const Addie = styled.p`
   margin-bottom: 30px;
 `;
 
-export const ProfileButton = styled.button`
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-`;
-export const ProfileFont = styled.div`
-  margin-left: 5px;
-  font-size: 18px;
-  font-style: normal;
+export const IconWithLabelLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
   color: ${COLORS.black};
 `;
