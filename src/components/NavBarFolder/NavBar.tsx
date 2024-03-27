@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
+import { Body2 } from '@/styles/fonts';
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -10,8 +10,7 @@ import {
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
-  ProfileButton,
-  ProfileFont,
+  IconWithLabelLink,
 } from './styles';
 
 export default function NavBar({ ...rest }) {
@@ -36,27 +35,25 @@ export default function NavBar({ ...rest }) {
 
   return (
     <NavBarComp {...rest}>
-      <Link href="../storefront">
+      <IconWithLabelLink href="../storefront">
         <Image
           src="/images/ShantiLogo.png"
           alt="Shanti Logo"
           width={125}
           height={70}
         />
-      </Link>
+      </IconWithLabelLink>
 
       <ButtonsDiv>
-        <Link href="../profileScreen">
+        <IconWithLabelLink href="../profileScreen">
           <UserProfileIcon />
-          <p>User</p>
-        </Link>
-        <Link href="../cart">
-          <ProfileButton>
-            <ShoppingCartIcon />
-            <ProfileFont>Cart</ProfileFont>
-            <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
-          </ProfileButton>
-        </Link>
+          <Body2>User</Body2>
+        </IconWithLabelLink>
+        <IconWithLabelLink href="../cart">
+          <ShoppingCartIcon />
+          <Body2>Cart</Body2>
+          <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
+        </IconWithLabelLink>
       </ButtonsDiv>
     </NavBarComp>
   );
