@@ -2,7 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import querystring from 'querystring';
-import { ViewOrderButton, ArrowIcon } from './styles'; // Adjust the import path as necessary
+import { ViewOrderButton, ArrowIcon, OrderApproved, OrderReject, OrderReady,CheckmarkIcon } from './styles'; // Adjust the import path as necessary
+import check from '../../../public/check.svg'
 
 function formatDate(isoString: string) {
   const options: Intl.DateTimeFormatOptions = {
@@ -28,7 +29,31 @@ export default function OrderDetails(props: OrderDetailsProps) {
     const queryString = querystring.stringify({ orderID });
     router.push(`/orderPage?${queryString}`);
   };
+  let statusElement;
 
+  if (status === 'Ready') {
+    statusElement = (
+      <OrderReady>
+        <CheckmarkIcon src="/ready.svg" alt='checkmark'/>
+        Ready for Pick Up
+      </OrderReady>
+    );
+  } else if (status === 'Rejected') {
+    statusElement = (
+      <OrderReject>
+        <CheckmarkIcon src="/x.svg" alt='checkmark'/>
+        Order Rejected
+      </OrderReject>
+    );
+  } else {
+    statusElement = (
+      <OrderApproved>
+        <CheckmarkIcon src="/check.svg" alt='checkmark'/>
+        Order Approved
+      </OrderApproved>
+    );
+  }
+  console.log('status', status);
   return (
     <div
       style={{
@@ -39,11 +64,34 @@ export default function OrderDetails(props: OrderDetailsProps) {
       }}
     >
       <div>
-        <div>{formatDate(date)}</div>
-        <div>Order No. {orderNumber}</div>
-        <div style={{ color: status === 'Confirmed' ? 'green' : 'red' }}>
-          {status === 'Confirmed' ? '✓' : '✗'} {status}
+        <div style={{ color: 'var(--Black, #101010)'}}>
+          <h4
+            style={{
+              fontFamily: 'Public Sans',
+              fontSize: '25px',
+              fontStyle: 'normal',
+              fontWeight: 700,
+              lineHeight: 'normal',
+            }}
+          >
+            Order No. {orderNumber}
+          </h4>
         </div>
+        <div style={{ color: 'var(--Black, #101010)'}}>
+          <h5
+            style={{
+              fontFamily: 'Public Sans',
+              fontSize: '20px',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              lineHeight: 'normal',
+            }}
+            
+          >{formatDate(date)}
+          </h5>
+        </div>
+        
+        {statusElement}
       </div>
       <ViewOrderButton type="button" onClick={() => viewOrder(orderNumber)}>
         {/** DO NOT USE IMAGE Please use the icon in the feather library! */}

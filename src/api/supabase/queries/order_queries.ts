@@ -71,7 +71,7 @@ function sortOrdersByCreated(orders: Order[]): Order[] {
  * @param Order[] - An array of Order objects.
  * @returns Promise<Order[]> - An array of Order objects.
  */
-export async function fetchOrdersByUser(): Promise<Order[]> {
+export async function  fetchOrdersByUser(): Promise<Order[]> {
   const user = await fetchUser();
   const userId = user.id;
   const { data, error } = await supabase
@@ -149,6 +149,20 @@ export async function fetchProductsFromOrder(
   return fetchedProducts;
 }
 
+export async function fetchProductWithQuantityById(
+  productId: number,
+): Promise<ProductWithQuantity> {
+  const { data: orderProduct, error } = await supabase
+    .from('product')
+    .select('*')
+    .eq('id', productId)
+    .single();
+  if (error) {
+    throw new Error(`Error fetching order product: ${error.message}`);
+  }
+  return orderProduct;
+}
+
 export async function fetchOrderProductsbyOrderId(
   orderId: number,
 ): Promise<ProductWithQuantity[]> {
@@ -208,25 +222,7 @@ export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
   return orderProducts;
 }
 
-/**
- * gets all orders by user id and sorted it by creation data
- * @param Order[] - An array of Order objects.
- * @returns Promise<Order[]> - An array of Order objects.
- */
-export async function fetchCurrentOrdersByUser(): Promise<Order[]> {
-  const user = await fetchUser();
-  const userCartId = user.cart_id;
-  const { data, error } = await supabase
-    .from('order')
-    .select('*')
-    .eq('id', userCartId);
 
-  if (error) {
-    throw new Error(`Error fetching orders for user: ${error.message}`);
-  }
-
-  return data;
-}
 
 export async function updateOrderPickupId(orderId: number, pickupId: number) {
   await supabase
@@ -244,37 +240,6 @@ export async function updateCartPickupId(pickupId: number) {
     .eq('id', cartId);
 }
 
-export async function fetchProductWithQuantityById(
-  productId: number,
-): Promise<ProductWithQuantity> {
-  const { data: orderProduct, error } = await supabase
-    .from('product')
-    .select('*')
-    .eq('id', productId)
-    .single();
-  if (error) {
-    throw new Error(`Error fetching order product: ${error.message}`);
-  }
-  return orderProduct;
-}
 
-export async function fetchOrderProductsbyOrderId(
-  orderId: number,
-): Promise<ProductWithQuantity[]> {
-  const order = await getOrderById(orderId);
-  const orderProductIds = order.order_product_id_array;
 
-  const newOrderProducts = await Promise.all(
-    orderProductIds.map(orderProductId =>
-      fetchOrderProductById(orderProductId),
-    ),
-  );
-  console.log(newOrderProducts);
-  const orderProducts = await Promise.all(
-    newOrderProducts.map(async orderProduct =>
-      fetchProductWithQuantityById(orderProduct.product_id),
-    ),
-  );
 
-  return orderProducts;
-}   

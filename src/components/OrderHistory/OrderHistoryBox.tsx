@@ -43,11 +43,10 @@ export default function OrderDetailsWithProducts({
   }
 
   if (!order) {
-    return <div>Order not found.</div>;
+    return <div> </div>;
   }
-
+  console.log('order', order);
   const imageUrls = products.map(product => product.photo).slice(0, 3);
-
   return (
     <RowDiv>
       <OrderHistoryText

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const containerStyle = styled.div`
-  width: 250px; // This width might be too small if it's meant to contain the OrderDiv
+  width: 750px; // This width might be too small if it's meant to contain the OrderDiv
   height: 250px;
   margin-right: auto; // Center the container if that's the intention
   margin-left: auto; // Center the container if that's the intention
@@ -68,6 +68,79 @@ export const OrderDiv = styled.div`
   padding-left: 30px; // Adjust as necessary to align with the left edge
   padding-right: 130px; // Adjust as necessary to align with the right edge
 `;
+
+export const OrderApproved = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Assuming you want the checkmark and text to be at the start */
+  background-color: #CEE8BE; /* Or the exact color from the image */
+  color: white;
+  color: var(--Black, #101010);
+  font-family: "Public Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  
+  border-radius: 20px; /* Adjust for the exact curvature you want */
+  gap: 14px; /* Space between the checkmark and text */
+  width: 245px;
+  margin-top: 18px;
+  padding-left: 10px; /* Adjust as necessary to align with the left edge */
+  padding-right: 10px; /* Adjust as necessary to align with the right edge */
+  padding-top: 5px; /* Adjust as necessary to align with the top edge */
+  padding-bottom: 5px; /* Adjust as necessary to align with the bottom edge */
+`;
+
+export const OrderReject = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Assuming you want the checkmark and text to be at the start */
+  background-color: #FDD; /* Or the exact color from the image */
+  color: white;
+  color: var(--Black, #101010);
+  font-family: "Public Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  
+  border-radius: 20px; /* Adjust for the exact curvature you want */
+  gap: 14px; /* Space between the checkmark and text */
+  width: 245px;
+  margin-top: 18px;
+  padding-left: 10px; /* Adjust as necessary to align with the left edge */
+  padding-right: 10px; /* Adjust as necessary to align with the right edge */
+  padding-top: 5px; /* Adjust as necessary to align with the top edge */
+  padding-bottom: 5px; /* Adjust as necessary to align with the bottom edge */
+`;
+
+export const OrderReady = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Assuming you want the checkmark and text to be at the start */
+  background-color: #FDD; /* Or the exact color from the image */
+  color: white;
+  color: var(--Black, #101010);
+  font-family: "Public Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  
+  border-radius: 20px; /* Adjust for the exact curvature you want */
+  gap: 14px; /* Space between the checkmark and text */
+  width: 245px;
+  margin-top: 18px;
+  padding-left: 10px; /* Adjust as necessary to align with the left edge */
+  padding-right: 10px; /* Adjust as necessary to align with the right edge */
+  padding-top: 5px; /* Adjust as necessary to align with the top edge */
+  padding-bottom: 5px; /* Adjust as necessary to align with the bottom edge */
+`;
+
 export const GalleryContainer = styled.div`
   display: flex;
   overflow-x: auto;
@@ -92,7 +165,12 @@ export const GalleryImage = styled.img`
 `;
 
 export const RowDiv = styled.div`
-  width: 700px;
+  width: 750px
   height: 400px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+`;
+
+export const CheckmarkIcon = styled.img`
+  width: 20px; /* Adjust based on the exact size you need */
+  height: 20px; /* Adjust based on the exact size you need */
 `;
