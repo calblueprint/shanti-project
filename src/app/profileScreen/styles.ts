@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { Heart } from 'react-feather';
 
+import COLORS from '@/styles/colors';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
@@ -20,30 +21,22 @@ export const HeadingBack = styled.div`
 `;
 
 export const AccountDetails = styled.div`
-  margin-left: 300px;
-  margin-top: 50px;
-  width: 500px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  align-items: left;
-  padding-top: 29px;
-  padding-right: 29px;
-  padding-left: 29px;
-  padding-bottom: 29px;
+  align-items: flex-start;
+  padding: 32px;
 `;
 
 export const OrderHistory = styled.div`
-  margin-left: 900px;
-  margin-top: -350px;
-  margin-bottom: 47px;
-  width: 600px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   padding-top: 23px;
   padding-right: 23px;
@@ -52,11 +45,10 @@ export const OrderHistory = styled.div`
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-left: 900px;
-  width: 600px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   padding-top: 23px;
   padding-right: 23px;
@@ -65,7 +57,7 @@ export const FavoritesContainer = styled.div`
 `;
 
 export const LogOutButton = styled.button`
-  background: #1b3679;
+  background: ${COLORS.navy};
   color: #fff;
   text-align: center;
   font-size: 20px;
@@ -75,18 +67,8 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 405px;
-  height: 300px;
-  z-index: 1000;
-  margin-top: 115px;
-  padding-top: 10px;
-  margin-left: 15px;
-  margin-right: 2px;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  padding: 8px;
 `;
-/* transform: translateY(200px); */
 
 export const PopUp = styled(ToastContainer)`
   transform: translate(-150px, 250px);
@@ -142,4 +124,54 @@ export const BlankSpace = styled.div`
 export const Fullscreen = styled.div`
   width: 100%;
   height: 100%;
+`;
+
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
+
+export const FlexContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: ${COLORS.offWhite};
+`;
+
+export const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  width: 100%;
+  height: 100%;
+`;
+
+export const AccountDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+  height: 400px;
+`;
+
+export const InfoDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500px;
+  height: 500px;
 `;
