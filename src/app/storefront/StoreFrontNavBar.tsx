@@ -23,6 +23,7 @@ import {
   BackButton,
   FrontArrow,
   BackArrow,
+  IconWithLabelLink,
 } from './styles';
 
 import ProductButtons from './productButtons';
