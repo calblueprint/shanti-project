@@ -19,6 +19,7 @@ export enum OrderStatus {
   OrderRejected = 'Rejected',
   OrderApproved = 'Confirmed',
   OrderSubmitted = 'Submitted',
+  OrderReady = 'Ready',
 }
 
 export type Order = {

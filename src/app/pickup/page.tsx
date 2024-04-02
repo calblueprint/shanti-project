@@ -111,7 +111,6 @@ export default function Pickup() {
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Heading4Bold>Time Slot</Heading4Bold>
-              <Normal700Text>Pick Up times: 10:00 AM - 12:00 PM </Normal700Text>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -136,7 +135,7 @@ export default function Pickup() {
                 </PickupTimeButton>
               ))}
             </div>
-
+            <div> Pick Up times: 10:00 AM - 12:00 PM </div>
             <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
         </ForceColumnDiv>
@@ -165,10 +164,10 @@ export default function Pickup() {
           <CheckoutButton
             onClick={async () => {
               if (selectedPickupIndex !== 0) {
-                await updateCartPickupId(selectedPickupIndex);
+                await updateCartPickupId(selectedPickupIndex); // TODO double check if this is correct
                 router.push('/orderConfirmationPickUp');
               } else {
-                // handle the case where they didn't select a time!
+                // TODO handle the case where they didn't select a time!
               }
             }}
           >

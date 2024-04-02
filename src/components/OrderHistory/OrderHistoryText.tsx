@@ -81,7 +81,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
       </div>
     );
   }
-  if (order.status === OrderStatus.OrderApproved) {
+  if (order.status === OrderStatus.OrderReady) {
     return (
       <div
         style={{
@@ -163,5 +163,5 @@ export default function OrderDetails(props: OrderDetailsProps) {
       </div>
     );
   }
-  return <p>error occured</p>;
+  return <p> </p>;
 }

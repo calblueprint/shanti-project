@@ -3,16 +3,6 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const LoginBox = styled.div`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-<<<<<<< HEAD
-=======
-
->>>>>>> 3136b80d876d15fd5e19204d4adc9b4fe012ffd2
   width: 500px;
   height: 420px;
   border: 1px solid ${COLORS.neutralGrey};

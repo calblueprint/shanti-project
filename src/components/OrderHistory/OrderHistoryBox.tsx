@@ -43,7 +43,7 @@ export default function OrderDetailsWithProducts({
   }
 
   if (!order) {
-    return <div>Order not found.</div>;
+    return <div> </div>;
   }
 
   const imageUrls = products.map(product => product.photo).slice(0, 3);
