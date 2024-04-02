@@ -1,12 +1,7 @@
 /* eslint-disable no-console */
 //
 
-import {
-  Order,
-  OrderProduct,
-  Product,
-  ProductWithQuantity,
-} from '../../../schema/schema';
+import { Order, OrderProduct, Product } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import { fetchProductByID } from './product_queries';
 import supabase from '../createClient';
@@ -61,11 +56,6 @@ function sortOrdersByCreated(orders: Order[]): Order[] {
   );
 }
 
-/**
- * user = fetch_use()
- * cart_id = user.cart_id
- *
- */
 /**
  * gets all orders by user id and sorted it by creation data
  * @param Order[] - An array of Order objects.
@@ -151,7 +141,7 @@ export async function fetchProductsFromOrder(
 
 export async function fetchProductWithQuantityById(
   productId: number,
-): Promise<ProductWithQuantity> {
+): Promise<Product> {
   const { data: orderProduct, error } = await supabase
     .from('product')
     .select('*')
@@ -165,7 +155,7 @@ export async function fetchProductWithQuantityById(
 
 export async function fetchOrderProductsbyOrderId(
   orderId: number,
-): Promise<ProductWithQuantity[]> {
+): Promise<Product[]> {
   const order = await getOrderById(orderId);
   const orderProductIds = order.order_product_id_array;
 

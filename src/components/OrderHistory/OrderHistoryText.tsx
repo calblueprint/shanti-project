@@ -2,8 +2,18 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import querystring from 'querystring';
-import { ViewOrderButton, ArrowIcon, OrderApproved, OrderReject, OrderReady,CheckmarkIcon } from './styles'; // Adjust the import path as necessary
-import check from '../../../public/check.svg'
+import { Heading4Bold, Body1, OrderStatusFont } from '@/styles/fonts';
+import {
+  ViewOrderButton,
+  ArrowIcon,
+  OrderStatusDiv,
+  CheckStyled,
+  OrderStatusApprovedDiv,
+  CrossStyled,
+  OrderStatusSubmittedDiv,
+  LoaderStyled,
+} from './styles'; // Adjust the import path as necessary
+import { Order, OrderStatus } from '../../schema/schema';
 
 function formatDate(isoString: string) {
   const options: Intl.DateTimeFormatOptions = {
@@ -19,84 +29,139 @@ interface OrderDetailsProps {
   date: string;
   orderNumber: string;
   status: string; // Define more statuses if needed
+  order: Order;
 }
 
 export default function OrderDetails(props: OrderDetailsProps) {
-  const { date, orderNumber, status } = props;
+  const { date, orderNumber, order } = props;
   const router = useRouter();
 
   const viewOrder = (orderID: string) => {
     const queryString = querystring.stringify({ orderID });
     router.push(`/orderPage?${queryString}`);
   };
-  let statusElement;
+  if (order.status === OrderStatus.OrderRejected) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'start',
+          marginBottom: '20px',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            marginTop: '10px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
+        >
+          <Heading4Bold>Order No. {orderNumber}</Heading4Bold>
+          <ViewOrderButton onClick={() => viewOrder(orderNumber)}>
+            <Body1>View Order</Body1>
+            <ArrowIcon />
+          </ViewOrderButton>
+        </div>
 
-  if (status === 'Ready') {
-    statusElement = (
-      <OrderReady>
-        <CheckmarkIcon src="/ready.svg" alt='checkmark'/>
-        Ready for Pick Up
-      </OrderReady>
-    );
-  } else if (status === 'Rejected') {
-    statusElement = (
-      <OrderReject>
-        <CheckmarkIcon src="/x.svg" alt='checkmark'/>
-        Order Rejected
-      </OrderReject>
-    );
-  } else {
-    statusElement = (
-      <OrderApproved>
-        <CheckmarkIcon src="/check.svg" alt='checkmark'/>
-        Order Approved
-      </OrderApproved>
+        <Body1
+          style={{
+            marginTop: '5px',
+          }}
+        >
+          {formatDate(date)}
+        </Body1>
+        <OrderStatusDiv>
+          <CrossStyled />
+          <OrderStatusFont>Order Rejected</OrderStatusFont>
+        </OrderStatusDiv>
+      </div>
     );
   }
-  console.log('status', status);
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '20px',
-      }}
-    >
-      <div>
-        <div style={{ color: 'var(--Black, #101010)'}}>
-          <h4
-            style={{
-              fontFamily: 'Public Sans',
-              fontSize: '25px',
-              fontStyle: 'normal',
-              fontWeight: 700,
-              lineHeight: 'normal',
-            }}
-          >
-            Order No. {orderNumber}
-          </h4>
+  if (order.status === OrderStatus.OrderApproved) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'start',
+          marginBottom: '20px',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            marginTop: '10px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
+        >
+          <Heading4Bold>Order No. {orderNumber}</Heading4Bold>
+          <ViewOrderButton onClick={() => viewOrder(orderNumber)}>
+            <Body1>View Order</Body1>
+            <ArrowIcon />
+          </ViewOrderButton>
         </div>
-        <div style={{ color: 'var(--Black, #101010)'}}>
-          <h5
-            style={{
-              fontFamily: 'Public Sans',
-              fontSize: '20px',
-              fontStyle: 'normal',
-              fontWeight: 400,
-              lineHeight: 'normal',
-            }}
-            
-          >{formatDate(date)}
-          </h5>
-        </div>
-        
-        {statusElement}
+
+        <Body1
+          style={{
+            marginTop: '5px',
+          }}
+        >
+          {formatDate(date)}
+        </Body1>
+        <OrderStatusApprovedDiv>
+          <CheckStyled />
+          <OrderStatusFont>Order Approved</OrderStatusFont>
+        </OrderStatusApprovedDiv>
       </div>
-      <ViewOrderButton type="button" onClick={() => viewOrder(orderNumber)}>
-        {/** DO NOT USE IMAGE Please use the icon in the feather library! */}
-        View order <ArrowIcon />
-      </ViewOrderButton>
-    </div>
-  );
+    );
+  }
+  if (order.status === OrderStatus.OrderSubmitted) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'start',
+          marginBottom: '20px',
+          flexDirection: 'column',
+        }}
+      >
+        <div
+          style={{
+            marginTop: '10px',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
+        >
+          <Heading4Bold>Order No. {orderNumber}</Heading4Bold>
+          <ViewOrderButton onClick={() => viewOrder(orderNumber)}>
+            <Body1>View Order</Body1>
+            <ArrowIcon />
+          </ViewOrderButton>
+        </div>
+
+        <Body1
+          style={{
+            marginTop: '5px',
+          }}
+        >
+          {formatDate(date)}
+        </Body1>
+        <OrderStatusSubmittedDiv>
+          <LoaderStyled />
+          <OrderStatusFont>Order Submitted</OrderStatusFont>
+        </OrderStatusSubmittedDiv>
+      </div>
+    );
+  }
+  return <p>error occured</p>;
 }

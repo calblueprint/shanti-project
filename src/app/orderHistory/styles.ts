@@ -23,12 +23,12 @@ export const OrderHistoryContainer = styled.div`
   align-items: center;
   border-radius: 10px;
   background: var(--White, #fff);
-  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.10);
-  width: 900px; // Width of the outer box
-  height: 1021px;
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 800px; // Width of the outer box
+  height: 700px;
   overflow: scroll;
   margin-top: 10px;
-  padding: 10pxeç; // Ensure there's no padding pushing the internal boxes inward
+  padding: 0; // Ensure there's no padding pushing the internal boxes inward
 `;
 
 export const OrderHistoryBox = styled.div`
@@ -42,4 +42,8 @@ export const OrderHistoryBox = styled.div`
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
+`;
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
 `;

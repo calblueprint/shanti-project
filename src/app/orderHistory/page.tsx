@@ -1,10 +1,16 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { Heading1 } from '@/styles/fonts';
 import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistoryBox';
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
-import Footer from '../../components/FooterFolder/Footer';
-import { OrderHistoryContainer, OutterBox, NavBarMovedUP } from './styles';
+
+import {
+  OrderHistoryContainer,
+  OutterBox,
+  NavBarMovedUP,
+  Fullscreen,
+} from './styles';
 import BackButton from '../../components/BackButton/BackButton';
 
 function OrderHistory() {
@@ -20,11 +26,11 @@ function OrderHistory() {
   }, []);
 
   return (
-    <div>
+    <Fullscreen>
       <NavBarMovedUP />
       <OutterBox>
         <BackButton destination="./profileScreen" />
-        <h1>Order History</h1>
+        <Heading1>Order History</Heading1>
         <OrderHistoryContainer>
           {orderIds.length > 0 ? (
             orderIds.map((orderId: number) => (
@@ -35,8 +41,7 @@ function OrderHistory() {
           )}
         </OrderHistoryContainer>
       </OutterBox>
-      <Footer />
-    </div>
+    </Fullscreen>
   );
 }
 
