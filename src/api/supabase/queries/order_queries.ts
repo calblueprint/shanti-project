@@ -61,7 +61,7 @@ function sortOrdersByCreated(orders: Order[]): Order[] {
  * @param Order[] - An array of Order objects.
  * @returns Promise<Order[]> - An array of Order objects.
  */
-export async function  fetchOrdersByUser(): Promise<Order[]> {
+export async function fetchOrdersByUser(): Promise<Order[]> {
   const user = await fetchUser();
   const userId = user.id;
   const { data, error } = await supabase
@@ -212,8 +212,6 @@ export async function fetchRecentOrderProducts(): Promise<OrderProduct[]> {
   return orderProducts;
 }
 
-
-
 export async function updateOrderPickupId(orderId: number, pickupId: number) {
   await supabase
     .from('order')
@@ -229,7 +227,3 @@ export async function updateCartPickupId(pickupId: number) {
     .update({ pickup_time_id: pickupId })
     .eq('id', cartId);
 }
-
-
-
-

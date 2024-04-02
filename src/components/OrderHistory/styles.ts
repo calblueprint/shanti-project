@@ -73,15 +73,15 @@ export const OrderApproved = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center; /* Assuming you want the checkmark and text to be at the start */
-  background-color: #CEE8BE; /* Or the exact color from the image */
+  background-color: #cee8be; /* Or the exact color from the image */
   color: white;
   color: var(--Black, #101010);
-  font-family: "Public Sans";
+  font-family: 'Public Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  
+
   border-radius: 20px; /* Adjust for the exact curvature you want */
   gap: 14px; /* Space between the checkmark and text */
   width: 245px;
@@ -97,15 +97,15 @@ export const OrderReject = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center; /* Assuming you want the checkmark and text to be at the start */
-  background-color: #FDD; /* Or the exact color from the image */
+  background-color: #fdd; /* Or the exact color from the image */
   color: white;
   color: var(--Black, #101010);
-  font-family: "Public Sans";
+  font-family: 'Public Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  
+
   border-radius: 20px; /* Adjust for the exact curvature you want */
   gap: 14px; /* Space between the checkmark and text */
   width: 245px;
@@ -121,15 +121,15 @@ export const OrderReady = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center; /* Assuming you want the checkmark and text to be at the start */
-  background-color: #FDD; /* Or the exact color from the image */
+  background-color: #fdd; /* Or the exact color from the image */
   color: white;
   color: var(--Black, #101010);
-  font-family: "Public Sans";
+  font-family: 'Public Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  
+
   border-radius: 20px; /* Adjust for the exact curvature you want */
   gap: 14px; /* Space between the checkmark and text */
   width: 245px;
