@@ -6,7 +6,7 @@ import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchCartItemsWithQuantity } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Normal700Text, Heading4Bold } from '@/styles/fonts';
+import {Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
 import { Pickup, User, ProductWithQuantity } from '@/schema/schema';

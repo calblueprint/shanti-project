@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Body1, Body2 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
