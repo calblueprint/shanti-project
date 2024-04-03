@@ -7,7 +7,7 @@ import {
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
-import { Normal700Text } from '../../styles/fonts';
+import { Heading5Bold, Heading5, Heading4Bold, Heading1, Normal700Text, Body1 } from '../../styles/fonts';
 import { fetchRecentOrderProducts } from '../../api/supabase/queries/order_queries';
 import { OrderProduct, ProductWithQuantity } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
@@ -21,6 +21,9 @@ import {
   InformationContainer,
   InformationText,
   QtyText,
+  BackButtonDiv,
+  OutterBox,
+  OutterDiv
 } from './styles';
 
 export default function App() {
@@ -39,16 +42,23 @@ export default function App() {
   return (
     <main>
       <NavBar />
-      <BackButton destination="/storefront" />
+      <OutterDiv>
+        <BackButtonDiv>
+
+          <BackButton destination="/storefront" />
+          </BackButtonDiv>
       <DeliveryContainer>
+       
         <InformationContainer>
-          <Normal700Text style={{ marginBottom: '38px', fontSize: '40px' }}>
+          <Heading1 style={{ marginBottom: '38px'}}>
             Shipping
-          </Normal700Text>
-          <Normal700Text>Name</Normal700Text>
-          <InformationText>Ethan Auyeung</InformationText>
-          <Normal700Text>Address</Normal700Text>
-          <InformationText>123 Telegraph Ave</InformationText>
+          </Heading1>
+          <Heading5Bold>Name</Heading5Bold>
+          <Heading5>Ethan Auyeung</Heading5>
+          <Heading5Bold>Address</Heading5Bold>
+          <Heading5>123 Telegraph Ave, Berkeley 94704</Heading5>
+          <Heading5Bold>Phone Number</Heading5Bold>
+          <Heading5>+1 510-123-4567</Heading5>
         </InformationContainer>
         <OrderContainer>
           <OrderSummary cart={cart} numberOfItems={numberOfItems} />
@@ -59,6 +69,7 @@ export default function App() {
           </OrderButton>
         </OrderContainer>
       </DeliveryContainer>
+      </OutterDiv>
     </main>
   );
 }
