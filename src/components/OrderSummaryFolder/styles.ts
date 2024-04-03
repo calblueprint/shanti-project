@@ -104,3 +104,42 @@ export const WhiteBackgroundDiv = styled.div`
   flex-grow: 1;
   overflow: hidden;
 `;
+
+
+export const ContainerDiv = styled.div`
+  width: 350px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+`;
+
+export const TotalDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+  background-color: ${COLORS.lightGrey};
+`;
+
+export const OrderRow = styled.tr`
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const OrderTable = styled.table`
+  width: 100%;
+  max-height: 200px;
+`;
+
+export const OrderTableBody = styled.tbody`
+  overflow: scroll;
+`;
