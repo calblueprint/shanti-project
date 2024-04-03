@@ -10,11 +10,19 @@ import Footer from '../../components/FooterFolder/Footer';
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
-  justify-content: space-around;
-  width: 1000px;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 750px;
+  width: 100%;
+`;
+
+export const ImageBackground = styled.div`
+  width: 200px;
+  height: 200px;
+  background-color: ${COLORS.lightGrey};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CartItemsDiv = styled.div`
@@ -24,6 +32,7 @@ export const CartItemsDiv = styled.div`
   border-radius: 10px;
   width: 750px;
   overflow: auto;
+  gap: 32px;
 `;
 
 export const BackDiv = styled.button`
@@ -50,8 +59,6 @@ export const TrashIcon = styled(Trash2)`
   width: 30px;
   height: 30px;
   color: black;
-  margin-right: 30px;
-  margin-top: 28px;
 `;
 
 export const NavBarZeroIndex = styled(NavBar)`
@@ -79,7 +86,6 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   width: 200px;
   height: 50px;
-  margin-top: 20px;
 `;
 
 export const QuantityButton = styled.div`
@@ -103,6 +109,7 @@ export const PlusMinusButton = styled.button`
   border-color: transparent;
   font-size: 20px;
   color: ${COLORS.navy};
+  cursor: pointer;
 `;
 
 export const Label = styled.p`
@@ -111,7 +118,6 @@ export const Label = styled.p`
 
 export const LabelBox = styled.div`
   width: 150px;
-  height: 100%;
 `;
 
 export const PageDiv = styled.div`
@@ -120,6 +126,7 @@ export const PageDiv = styled.div`
   flex-direction: column;
   padding: 32px;
   gap: 32px;
+  background-color: ${COLORS.offWhite};
 `;
 
 export const ContentDiv = styled.div`

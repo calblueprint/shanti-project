@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Body2, Body2Light, Heading4Bold } from '@/styles/fonts';
 import { removeCartItem } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -9,6 +10,7 @@ import {
   TransparentButton,
   Label,
   LabelBox,
+  ImageBackground,
 } from './styles';
 
 import Buttons from './Buttons';
@@ -36,31 +38,31 @@ export default function CartItem(props: {
   }
 
   return (
-    <div>
-      <FavoriteDiv key={cartItemProduct.id}>
+    <FavoriteDiv key={cartItemProduct.id}>
+      <ImageBackground>
         <img
           src={cartItemProduct.photo}
           alt={cartItemProduct.name}
-          style={{ width: '150px', height: '150px' }}
+          style={{ width: '150px', height: '150px', objectFit: 'cover' }}
         />
-        <LabelBox>
-          <Label>{cartItemProduct.name}</Label>
-          <p>Category: {cartItemProduct.category}</p>
-        </LabelBox>
-        <Buttons
-          productNumber={cartItemProduct.id}
-          quantity={cartItemProduct.quantity}
-          setNumberOfItems={setNumberOfItems}
-          numberOfItems={numberOfItems}
-          count={count}
-          setCount={setCount}
-          setCart={setCart}
-          cart={cart}
-        />
-        <TransparentButton onClick={() => removeProduct()}>
-          <TrashIcon />
-        </TransparentButton>
-      </FavoriteDiv>
-    </div>
+      </ImageBackground>
+      <LabelBox>
+        <Heading4Bold>{cartItemProduct.name}</Heading4Bold>
+        <Body2>Category: {cartItemProduct.category}</Body2>
+      </LabelBox>
+      <Buttons
+        productNumber={cartItemProduct.id}
+        quantity={cartItemProduct.quantity}
+        setNumberOfItems={setNumberOfItems}
+        numberOfItems={numberOfItems}
+        count={count}
+        setCount={setCount}
+        setCart={setCart}
+        cart={cart}
+      />
+      <TransparentButton onClick={() => removeProduct()}>
+        <TrashIcon />
+      </TransparentButton>
+    </FavoriteDiv>
   );
 }

@@ -53,16 +53,14 @@ export default function Buttons(props: {
   // used hyphen instead of dash for display
 
   return (
-    <ButtonsWrapper>
-      <QuantityButton>
-        <PlusMinusButton type="button" onClick={decreaseQuantity}>
-          –
-        </PlusMinusButton>
-        <span>{count}</span>
-        <PlusMinusButton type="button" onClick={increaseQuantity}>
-          +
-        </PlusMinusButton>
-      </QuantityButton>
-    </ButtonsWrapper>
+    <QuantityButton>
+      <PlusMinusButton type="button" onClick={decreaseQuantity}>
+        –
+      </PlusMinusButton>
+      <span>{count}</span>
+      <PlusMinusButton type="button" onClick={increaseQuantity}>
+        +
+      </PlusMinusButton>
+    </QuantityButton>
   );
 }
