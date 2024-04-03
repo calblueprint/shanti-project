@@ -92,16 +92,21 @@ export const ItemButtons = styled.button`
 `;
 
 export const StorefrontWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 295px);
+  grid-gap: 2%;
+  padding-top: 20px;
+  justify-content: center;
+  padding-bottom: 150px;
 `;
 
 export const StorefrontItem = styled.div`
   width: calc(25% - 40px);
   margin-bottom: 50px;
+`;
+
+export const StorefrontBox = styled.div`
+  margin: auto;
 `;
 
 export const ShopAllText = styled.h1`

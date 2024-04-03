@@ -10,7 +10,7 @@ export const BackDiv = styled.button`
   color: ${COLORS.black};
   background-color: transparent;
   border: transparent;
-  margin-left: 0px;
+  margin-left: 2%;
   margin-top: 55px;
   gap: 5px;
 `;
