@@ -12,6 +12,7 @@ import {
   CartTotalCircle,
   UserProfileIcon,
   ShoppingCartIcon,
+  IconWithLabelLink,
 } from '../../components/NavBarFolder/styles';
 
 import { Product, StorefrontButtons } from '../../schema/schema';
@@ -22,7 +23,6 @@ import {
   BackButton,
   FrontArrow,
   BackArrow,
-  IconWithLabelLink,
 } from './styles';
 
 import ProductButtons from './productButtons';
