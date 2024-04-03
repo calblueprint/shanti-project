@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-import { Body2 } from '@/styles/fonts';
+import { Body2, Body2Bold } from '@/styles/fonts';
 import { totalNumberOfItemsInCart } from '../../api/supabase/queries/cart_queries';
 
 import {
@@ -52,7 +52,9 @@ export default function NavBar({ ...rest }) {
         <IconWithLabelLink href="../cart">
           <ShoppingCartIcon />
           <Body2>Cart</Body2>
-          <CartTotalCircle $isZero={isZero}>{data}</CartTotalCircle>
+          <CartTotalCircle $isZero={isZero}>
+            <Body2Bold>{data}</Body2Bold>
+          </CartTotalCircle>
         </IconWithLabelLink>
       </ButtonsDiv>
     </NavBarComp>

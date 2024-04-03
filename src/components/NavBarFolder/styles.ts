@@ -5,14 +5,18 @@ import Link from 'next/link';
 import COLORS from '../../styles/colors';
 
 export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
-  width: 20px;
-  height: 20px;
-  background: ${COLORS.marineBlue};
-  border-radius: 50%;
-  text-align: center;
-  transform: translate(19px, -58px);
-  color: ${COLORS.white};
   display: ${props => (props.$isZero ? 'none' : 'content')};
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${COLORS.white};
+  background: ${COLORS.marineBlue};
 `;
 
 export const UserProfileIcon = styled(User)`
@@ -40,6 +44,7 @@ export const ButtonsDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const LocationDiv = styled.div`
@@ -65,4 +70,5 @@ export const IconWithLabelLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   color: ${COLORS.black};
+  position: relative;
 `;
