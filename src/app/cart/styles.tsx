@@ -17,6 +17,15 @@ export const FavoriteDiv = styled.div`
   margin-top: 30px;
 `;
 
+export const CartItemsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: 750px;
+  overflow: scroll;
+`;
+
 export const BackDiv = styled.button`
   display: flex;
   flex-direction: row;
@@ -106,8 +115,18 @@ export const LabelBox = styled.div`
 `;
 
 export const PageDiv = styled.div`
+  height: 100%;
   display: flex;
-  flex-flow: row;
+  flex-direction: column;
+  padding: 32px;
+  gap: 32px;
+`;
+
+export const ContentDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
 `;
 
 export const OrderSummaryDiv = styled.div`
@@ -139,7 +158,7 @@ export const OrderTotalDiv = styled.div`
 export const LeftColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 50px;
+  gap: 16px;
 `;
 
 export const CheckoutButton = styled.button`
@@ -168,8 +187,6 @@ export const Qty = styled.p`
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 200px;
-  margin-top: 100px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`

@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
+import { Heading1 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
@@ -14,10 +15,12 @@ import {
 import CartItem from './cartItem';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
+  CartItemsDiv,
   PageDiv,
   CheckoutButton,
   LeftColumnDiv,
   RightColumnDiv,
+  ContentDiv,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -51,29 +54,33 @@ export default function OrderPage() {
       <NavBar />
 
       <PageDiv>
-        <LeftColumnDiv>
-          <BackButton destination="./storefront" />
-          <h1>Cart</h1>
-          {cart.map(cartItem => (
-            <CartItem
-              key={cartItem.id}
-              cartItemProduct={cartItem}
-              setCart={setCart}
-              cart={cart}
-              setNumberOfItems={setNumberOfItems}
-              numberOfItems={numberOfItems}
-            />
-          ))}
-        </LeftColumnDiv>
-        <RightColumnDiv>
-          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-          <CheckoutButton
-            // change this function so that the flow makes sense and that there is items within the cart
-            onClick={() => checkDelivery()}
-          >
-            Check Out
-          </CheckoutButton>
-        </RightColumnDiv>
+        <BackButton destination="./storefront" />
+        <ContentDiv>
+          <LeftColumnDiv>
+            <Heading1>Cart</Heading1>
+            <CartItemsDiv>
+              {cart.map(cartItem => (
+                <CartItem
+                  key={cartItem.id}
+                  cartItemProduct={cartItem}
+                  setCart={setCart}
+                  cart={cart}
+                  setNumberOfItems={setNumberOfItems}
+                  numberOfItems={numberOfItems}
+                />
+              ))}
+            </CartItemsDiv>
+          </LeftColumnDiv>
+          <RightColumnDiv>
+            <OrderSummary cart={cart} numberOfItems={numberOfItems} />
+            <CheckoutButton
+              // change this function so that the flow makes sense and that there is items within the cart
+              onClick={() => checkDelivery()}
+            >
+              Check Out
+            </CheckoutButton>
+          </RightColumnDiv>
+        </ContentDiv>
       </PageDiv>
     </div>
   );

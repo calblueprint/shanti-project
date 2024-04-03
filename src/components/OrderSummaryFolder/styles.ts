@@ -1,3 +1,4 @@
+import COLORS from '@/styles/colors';
 import styled from 'styled-components';
 
 export const OrderSummaryDiv = styled.div`
@@ -32,13 +33,12 @@ export const Qty = styled.p`
 `;
 
 export const WhiteBackgroundDiv = styled.div`
-  border-radius: 8px;
-  background: var(--White, #fff);
-  height: 480px;
-  width: 350px;
-  padding-top: 20px;
-
-  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+  background: ${COLORS.white};
+  padding: 24px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const HeaderShiftRight = styled.h2`
@@ -53,22 +53,41 @@ export const PShiftLeft = styled.p`
   margin-left: 15px;
 `;
 
-export const OrderSummaryHeaderDiv = styled.div`
+
+export const ContainerDiv = styled.div`
+  width: 350px;
+  height: 400px;
   display: flex;
-  width: 300px;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-  margin-bottom: 10px;
-`;
-
-export const ItemNameDiv = styled.div`
-  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  height: 25px;
 `;
 
-export const AlignItemCenter = styled.div`
-  margin-left: 10px;
-  margin-top: 10px;
+export const TotalDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+  background-color: ${COLORS.lightGrey};
+`;
+
+export const OrderRow = styled.tr`
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const OrderTable = styled.table`
+  width: 100%;
+  max-height: 200px;
+`;
+
+export const OrderTableBody = styled.tbody`
+  overflow: scroll;
 `;

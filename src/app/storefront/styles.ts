@@ -47,7 +47,6 @@ export const CategoryButtonLabel = styled.p<{ $selected?: boolean }>`
 `;
 
 export const IndividualContainer = styled.div`
-  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,9 +61,13 @@ export const ItemContainer = styled.div`
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   position: flex;
   align-items: center;
+  padding-left: 32px;
+  padding-right: 32px;
+  max-width: 750px;
+  width: 100%;
 `;
 
 export const NavButton = styled.button`
