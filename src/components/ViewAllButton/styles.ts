@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import COLORS from '../../styles/colors';
 
-export const ViewAllDiv = styled.button`
+export const ViewAllDiv = styled.div`
   display: flex;
   align-items: center;
   color: ${COLORS.black};
@@ -13,8 +12,4 @@ export const ViewAllDiv = styled.button`
   }
 `;
 
-export const ImageWithSize = styled(Image)`
-    width={23}
-    height={23}
-
-`;
+export const placeholder = "Remove this if there is any more exports in this file."

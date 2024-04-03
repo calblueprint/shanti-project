@@ -9,7 +9,7 @@ export const BackLink = styled(Link)`
   align-items: center;
   justify-content: space-between;
   color: ${COLORS.black};
-  width: 56px;
+  width: 75px;
   gap: 5px;
   &:hover {
     text-decoration: underline;
@@ -17,6 +17,6 @@ export const BackLink = styled(Link)`
 `;
 
 export const ArrowLeftIcon = styled(ArrowLeft)`
-  width: 17px;
-  height: 17px;
+  width: 24px;
+  height: 24px;
 `;

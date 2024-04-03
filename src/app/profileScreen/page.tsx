@@ -11,6 +11,8 @@ import {
   Body2Bold,
   Body1,
   Body2,
+  Heading4Bold,
+  Body2Light,
 } from '@/styles/fonts';
 import {
   addOrRemoveProductFromFavorite,
@@ -39,10 +41,11 @@ import {
   ContentContainer,
   FlexContainer,
   PageContainer,
+  AccountContent,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import { TransparentButton } from '../favorites/styles';
+import { ImageLinkWrapper, TransparentButton } from '../favorites/styles';
 
 function FavoriteSection(props: {
   Favorites: Product[];
@@ -55,45 +58,43 @@ function FavoriteSection(props: {
     setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
   }
   return (
-    <main>
-      <FavoritesContainer>
-        <HeaderDiv>
-          <Heading2>Favorites</Heading2>
-          <ViewAllButton destination="./favorites" />
-        </HeaderDiv>
-        {Favorites.slice(0, 2).map(favorite => (
-          <FavoriteDiv key={favorite.id}>
+    <FavoritesContainer>
+      <HeaderDiv>
+        <Heading4Bold>Favorites</Heading4Bold>
+        <ViewAllButton destination="./favorites" />
+      </HeaderDiv>
+      {Favorites.slice(0, 2).map(favorite => (
+        <FavoriteDiv key={favorite.id}>
+          {/* Doesn't have an href, but figma states clickable images */}
+          <ImageLinkWrapper href="">
             <img
               src={favorite.photo}
               alt={favorite.name}
               style={{ width: '75px', height: '75px' }}
             />
-            <ProductNameDiv>
-              <Body1Bold>{favorite.name}</Body1Bold>
-              <Body2>Category: {favorite.category}</Body2>
-            </ProductNameDiv>
-            <TransparentButton
-              onClick={() => clickFunctions({ fav: favorite })}
-            >
-              <HeartIcon />
-            </TransparentButton>
-          </FavoriteDiv>
-        ))}
-      </FavoritesContainer>
-    </main>
+          </ImageLinkWrapper>
+
+          <ProductNameDiv>
+            <Body2Bold>{favorite.name}</Body2Bold>
+            <Body3>Category: {favorite.category}</Body3>
+          </ProductNameDiv>
+          <TransparentButton onClick={() => clickFunctions({ fav: favorite })}>
+            <HeartIcon />
+          </TransparentButton>
+        </FavoriteDiv>
+      ))}
+    </FavoritesContainer>
   );
 }
 
 function OrderHistorySection() {
   return (
-    <main>
-      <OrderHistory>
-        <HeaderDiv>
-          <Heading2>Order History</Heading2>
-          <ViewAllButton destination="./orderHistory" />
-        </HeaderDiv>
-      </OrderHistory>
-    </main>
+    <OrderHistory>
+      <HeaderDiv>
+        <Heading4Bold>Order History</Heading4Bold>
+        <ViewAllButton destination="./orderHistory" />
+      </HeaderDiv>
+    </OrderHistory>
   );
 }
 function AccountDetailSectionDelivery(props: { user: User }) {
@@ -107,67 +108,31 @@ function AccountDetailSectionDelivery(props: { user: User }) {
   }
 
   useEffect(() => {
-    getUserAddress();
-  }, []);
-  return (
-    <main>
-      <AccountDetails>
-        <Heading2>Account Details</Heading2>
-        <HeadingSpacing>
-          <Body2Bold>Email</Body2Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body1>{user?.email}</Body1>
-        </TextSpacing>
-        <HeadingSpacing>
-          <Body2>Name</Body2>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body3>
-            {user?.first_name} {user?.last_name}
-          </Body3>
-        </TextSpacing>
-        <HeadingSpacing>
-          <Body2>Address</Body2>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body1>
-            {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-          </Body1>
-        </TextSpacing>
-      </AccountDetails>
-    </main>
-  );
-}
-function AccountDetailSectionPickUp(props: { user: User }) {
-  const { user } = props;
+    if (user.delivery_allowed) getUserAddress();
+  }, [user]);
 
   return (
-    <main>
-      <AccountDetails>
-        <Heading2>Account Details</Heading2>
-        <HeadingSpacing>
-          <Body1Bold>Email</Body1Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body2>{user?.email}</Body2>
-        </TextSpacing>
-        <HeadingSpacing>
-          <Body1Bold>Name</Body1Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body2>
-            {user?.first_name} {user?.last_name}
-          </Body2>
-        </TextSpacing>
-        <HeadingSpacing>
-          <Body1Bold>Phone Number</Body1Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body2>+1 510-123-4567 {/* User?.phone */}</Body2>
-        </TextSpacing>
-      </AccountDetails>
-    </main>
+    <AccountDetails>
+      <AccountContent>
+        <Heading4Bold>Account Details</Heading4Bold>
+        <Body1Bold>Email</Body1Bold>
+        <Body2Light>{user?.email}</Body2Light>
+        <Body1Bold>Name</Body1Bold>
+        <Body2Light>
+          {user?.first_name} {user?.last_name}
+        </Body2Light>
+        {user.delivery_allowed ? (
+          <>
+            <Body1Bold>Address</Body1Bold>
+            <Body2Light>
+              {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+            </Body2Light>
+          </>
+        ) : null}
+        <Body1Bold>Phone Number</Body1Bold>
+        <Body2Light>+1 510-123-4567 {/* User?.phone */}</Body2Light>
+      </AccountContent>
+    </AccountDetails>
   );
 }
 
@@ -211,36 +176,30 @@ export default function Profile() {
         hideProgressBar
       />
       <NavBar />
-      <FlexContainer>
-        <MainContainer>
-          <BackButton destination="./storefront" />
-          <Heading1>My Profile</Heading1>
-          <ContentContainer>
-            <AccountDiv>
-              {user.delivery_allowed ? (
-                <AccountDetailSectionDelivery user={user} />
-              ) : (
-                <AccountDetailSectionPickUp user={user} />
-              )}
-              <LogOutButton onClick={() => showToastMessage()}>
-                Log Out
-              </LogOutButton>
-            </AccountDiv>
-            <InfoDiv>
-              <OrderHistorySection />
-              <FavoriteSection
-                Favorites={Favorites}
-                setFavorites={setFavorites}
-              />
-            </InfoDiv>
-          </ContentContainer>
+      <MainContainer>
+        <BackButton destination="./storefront" />
+        <Heading1>My Profile</Heading1>
+        <ContentContainer>
+          <AccountDiv>
+            <AccountDetailSectionDelivery user={user} />
+            <LogOutButton onClick={() => showToastMessage()}>
+              <Body1Bold>Log Out</Body1Bold>
+            </LogOutButton>
+          </AccountDiv>
+          <InfoDiv>
+            <OrderHistorySection />
+            <FavoriteSection
+              Favorites={Favorites}
+              setFavorites={setFavorites}
+            />
+          </InfoDiv>
+        </ContentContainer>
 
-          {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
+        {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
         <LogOutButton onClick={() => router.push('/favorites')}>
           Favorites
         </LogOutButton> */}
-        </MainContainer>
-      </FlexContainer>
+      </MainContainer>
     </PageContainer>
   );
 }

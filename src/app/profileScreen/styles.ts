@@ -22,7 +22,6 @@ export const HeadingBack = styled.div`
 
 export const AccountDetails = styled.div`
   width: 100%;
-  height: 100%;
   border-radius: 10px;
   background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -30,23 +29,25 @@ export const AccountDetails = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 32px;
+  gap: 32px;
+`;
+
+export const AccountContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const OrderHistory = styled.div`
   width: 100%;
-  height: 100%;
   border-radius: 10px;
   background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-  padding-top: 23px;
-  padding-right: 23px;
-  padding-left: 23px;
-  padding-bottom: 23px;
+  padding: 24px;
 `;
 
 export const FavoritesContainer = styled.div`
   width: 100%;
-  height: 100%;
   border-radius: 10px;
   background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -66,8 +67,9 @@ export const LogOutButton = styled.button`
   font-weight: 600;
   line-height: normal;
   border: transparent;
-  border-radius: 5px;
-  padding: 8px;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
 `;
 
 export const PopUp = styled(ToastContainer)`
@@ -87,10 +89,9 @@ export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  padding: 16px;
 `;
 
 export const HeartIcon = styled(Heart)`
@@ -114,6 +115,9 @@ export const HeaderDiv = styled.div`
 
 export const ProductNameDiv = styled.div`
   width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 export const BlankSpace = styled.div`
@@ -129,8 +133,8 @@ export const Fullscreen = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 100vh;
 `;
 
 export const FlexContainer = styled.div`
@@ -149,7 +153,8 @@ export const FlexContainer = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
+  padding: 48px;
 `;
 
 export const ContentContainer = styled.div`
@@ -163,15 +168,13 @@ export const ContentContainer = styled.div`
 export const AccountDiv = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  gap: 32px;
 `;
 
 export const InfoDiv = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 32px;
   width: 500px;
-  height: 500px;
 `;
