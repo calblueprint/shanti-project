@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Body1, Body2 } from '@/styles/fonts';
+import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -51,21 +52,28 @@ function formatDate(date: string | undefined): string {
   return `${month} ${day}, ${year}`;
 }
 
-export default function FavoritesPage() {
+export default function OrderPage() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
-  const currOrderId = 32;
-  const [order, setOrder] = useState<Order>();
-
-  async function fetchProducts() {
-    const data = (await fetchOrderProductsbyOrderId(
-      currOrderId,
-    )) as ProductWithQuantity[];
-    const currOrder = await getOrderById(currOrderId);
-    setOrders(data);
-    setOrder(currOrder);
+  const searchParams = useSearchParams();
+  const orderIDFromSearch = searchParams.get('orderID');
+  let currOrderId = 0;
+  if (orderIDFromSearch !== null) {
+    currOrderId = parseInt(orderIDFromSearch, 10);
+  } else {
+    currOrderId = 32;
   }
 
+  const [order, setOrder] = useState<Order>();
+
   useEffect(() => {
+    async function fetchProducts() {
+      const data = (await fetchOrderProductsbyOrderId(
+        currOrderId,
+      )) as ProductWithQuantity[];
+      const currOrder = await getOrderById(currOrderId);
+      setOrders(data);
+      setOrder(currOrder);
+    }
     fetchProducts();
   }, []);
 
@@ -75,7 +83,8 @@ export default function FavoritesPage() {
 
       <OutterBox>
         <BackButtonDiv>
-          <BackButton destination="./profileScreen" />
+          <BackButton destination="./orderHistory" />
+          <BackButton destination="./orderHistory" />
         </BackButtonDiv>
         <OutterDiv>
           <Heading>{formatDate(order?.created_at)}</Heading>
