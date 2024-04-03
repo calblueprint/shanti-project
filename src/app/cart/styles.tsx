@@ -23,7 +23,7 @@ export const CartItemsDiv = styled.div`
   align-items: center;
   border-radius: 10px;
   width: 750px;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 export const BackDiv = styled.button`
@@ -130,7 +130,7 @@ export const ContentDiv = styled.div`
 `;
 
 export const OrderSummaryDiv = styled.div`
-  overflow: scroll;
+  overflow: auto;
   width: 350px;
   height: 300px;
 `;

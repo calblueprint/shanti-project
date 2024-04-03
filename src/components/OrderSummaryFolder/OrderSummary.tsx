@@ -2,14 +2,15 @@
 
 import { Body1, Body1Bold, Body2Light, Heading3Bold } from '@/styles/fonts';
 import {
-  OrderSummaryDiv,
-  HeaderShiftRight,
-  OrderTotalDiv,
+  // HeaderShiftLeft,
+  // OrderSummaryDiv,
+  // HeaderShiftRight,
+  // OrderTotalDiv,
+  // PShiftLeft,
   WhiteBackgroundDiv,
-  AlignItemCenter,
-  ItemSummaryDiv,
-  Qty,
-  PShiftRight,
+  // ItemSummaryDiv,
+  // Qty,
+  // PShiftRight,
   ContainerDiv,
   TotalDiv,
   OrderRow,
@@ -96,7 +97,7 @@ export default function OrderSummary(props: {
             </OrderRow>
           </thead>
           <OrderTableBody>
-            {cartItems.map(cartItem => (
+            {cart.map(cartItem => (
               <OrderRow key={cartItem.id}>
                 <td>
                   <Body1>{cartItem.name}</Body1>
