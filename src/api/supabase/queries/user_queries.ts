@@ -119,7 +119,7 @@ export async function fetchUserAddress(uuid: string) {
       .eq('user_id', uuid)
       .single();
 
-    console.log('test', error);
+    console.log('test', user);
 
     if (error) {
       console.error('Error fetching user data:', error);
