@@ -55,7 +55,7 @@ export default function App() {
           </Normal700Text>
           <Normal700Text>Name</Normal700Text>
           <InformationText>
-            {`${Profile?.first_name  } ${  Profile?.last_name}`}
+            {`${Profile?.first_name} ${Profile?.last_name}`}
           </InformationText>
           <Normal700Text>Address</Normal700Text>
           <InformationText>
