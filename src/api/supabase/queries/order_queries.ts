@@ -5,6 +5,7 @@ import { Order, OrderProduct, Product } from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import { fetchProductByID } from './product_queries';
 import supabase from '../createClient';
+import { randomUUID } from 'crypto';
 
 /**
  * Fetches all orders from the database.
@@ -40,7 +41,7 @@ export async function createOrder() {
 
   await supabase
     .from('users')
-    .update({ cart_id: order.id })
+    .update({ cart_id: order.ID })
     .match({ id: user.id });
 }
 

@@ -5,7 +5,7 @@ import {
   fetchUser,
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
-
+import { createOrder } from '@/api/supabase/queries/order_queries';
 import { Body2, Heading3Bold } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -31,6 +31,7 @@ export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
   const [userAddress, setUserAddress] = useState<Address>();
+  createOrder();
 
   useEffect(() => {
     async function fetchProducts() {

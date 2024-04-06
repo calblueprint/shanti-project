@@ -131,9 +131,9 @@ function AccountDetailSectionDelivery(props: { user: User }) {
           <Body2>Name</Body2>
         </HeadingSpacing>
         <TextSpacing>
-          <Body3>
+          <Body1>
             {user?.first_name} {user?.last_name}
-          </Body3>
+          </Body1>
         </TextSpacing>
         <HeadingSpacing>
           <Body2>Address</Body2>

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
-import { fetchCurrentOrdersByUser } from '@/api/supabase/queries/order_queries';
+import { fetchCurrentOrdersByUser, createOrder} from '@/api/supabase/queries/order_queries';
 import { Body2Bold, Body2, Heading3Bold } from '@/styles/fonts';
 import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
 
@@ -45,7 +45,7 @@ export default function OrderConfirmationPickUp() {
       const pickup = await fetchPickupTimesByID(currOrder[0].pickup_time_id);
       setPickupTime(pickup);
     }
-
+    createOrder();
     fetchProducts();
     setUserDetails();
   }, []);
