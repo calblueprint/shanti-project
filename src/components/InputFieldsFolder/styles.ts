@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const Input1 = styled.input<{ $pickColor?: boolean }>`
-  color: ${props => (props.$pickColor ? '#203354' : 'black')};
-  background: ${props => (props.$pickColor ? '#ADD8E6' : '#FFFFFF')};
+  color: ${props => (props.$pickColor ? '#203354' : COLORS.black)};
+  background: ${props => (props.$pickColor ? '#ADD8E6' : COLORS.white)};
   stroke-width: 1px;
   width: 420px;
   height: 40px;
@@ -12,12 +12,8 @@ export const Input1 = styled.input<{ $pickColor?: boolean }>`
   border-color: ${COLORS.black};
 `;
 
-export const FormHeaders = styled.p`
+export const FormHeaders = styled.div`
   color: ${COLORS.black};
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   margin-top: 20px;
   margin-bottom: 10px;
 `;
@@ -27,23 +23,19 @@ export const Input = styled.input<{
   $wrongLogin?: boolean;
 }>`
   &:focus {
-    border: 1.5px solid #1b3679;
-    background: #f5fbff;
+    border: 1.5px solid ${COLORS.navy};
+    background: ${COLORS.skyBlue};
     outline: none;
-    color: #1b3679;
+    color: ${COLORS.navy};
   }
   stroke-width: 1px;
-  color: #000000;
-  border: 1.5px solid ${props => (props.$wrongLogin ? '#B60000' : 'black')};
-  background: ${props => (props.$pickColor ? '#ffdddd' : 'white')};
+  color: ${COLORS.black};
+  border: 1.5px solid
+    ${props => (props.$wrongLogin ? COLORS.darkRed : COLORS.black)};
+  background: ${props => (props.$pickColor ? COLORS.lightRed : COLORS.white)};
   width: 420px;
   height: 40px;
   padding-left: 10px;
-`;
-
-export const wrong = styled.div`
-  color: red;
-  background: pink;
 `;
 
 export const EyeOffIcon = styled(EyeOff)`

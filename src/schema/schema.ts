@@ -11,17 +11,15 @@ export type User = {
   address_id: string; // UUID
   fav_items: number[]; // JSONB with item as key and quantity as value
   num_pets: number; // Integer value containing number of pets
-  phone_number: string; // User's phone number for pick up orders
-  pet_prescription: number[]; // JSONB with pet_name as key and perscription as value
+  phone_numbers: string; // User's phone number for pick up orders
+  pet_prescription: string[]; // JSONB with pet_name as key and perscription as value
 };
 
 export enum OrderStatus {
-  ApprovalInProgress = 'Approval in Progress',
-  OrderApproved = 'Order Approved',
-  OrderProcessing = 'Order Processing',
-  ReadyForPickup = 'Ready for Pickup',
-  OutForDelivery = 'Out for Delivery',
-  Completed = 'Completed',
+  OrderRejected = 'Rejected',
+  OrderApproved = 'Confirmed',
+  OrderSubmitted = 'Submitted',
+  OrderReady = 'Ready',
 }
 
 export type Order = {
@@ -78,4 +76,9 @@ export type Address = {
   city: string;
   zipcode: string;
   user_id: number;
+};
+
+export type StorefrontButtons = {
+  id: number;
+  name: string;
 };

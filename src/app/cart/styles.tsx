@@ -17,17 +17,6 @@ export const FavoriteDiv = styled.div`
   margin-top: 30px;
 `;
 
-export const OutterFavoriteDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  width: 1000px;
-  height: 700px;
-  overflow: scroll;
-  margin-top: 10px;
-`;
-
 export const BackDiv = styled.button`
   display: flex;
   flex-direction: row;

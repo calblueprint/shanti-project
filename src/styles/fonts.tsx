@@ -152,3 +152,11 @@ export const Body3 = styled.p`
   font-weight: 400;
   line-height: normal;
 `;
+
+export const OrderStatusFont = styled.p`
+  font-family: 'Public Sans', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;

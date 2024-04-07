@@ -13,6 +13,9 @@ export const BackDiv = styled.button`
   margin-left: 0px;
   margin-top: 55px;
   gap: 5px;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const ImageWithSize = styled(Image)`

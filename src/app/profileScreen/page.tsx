@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
@@ -36,6 +36,7 @@ import {
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
+  Fullscreen,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -66,11 +67,8 @@ function FavoriteSection(props: {
               style={{ width: '75px', height: '75px' }}
             />
             <ProductNameDiv>
-              <p>
-                {favorite.name}
-                <br />
-                Product ID: {favorite.id}
-              </p>
+              <Body1Bold>{favorite.name}</Body1Bold>
+              <Body2>Category: {favorite.category}</Body2>
             </ProductNameDiv>
             <TransparentButton
               onClick={() => clickFunctions({ fav: favorite })}
@@ -90,7 +88,7 @@ function OrderHistorySection() {
       <OrderHistory>
         <HeaderDiv>
           <Heading2>Order History</Heading2>
-          <ViewAllButton destination="./orderPage" />
+          <ViewAllButton destination="./orderHistory" />
         </HeaderDiv>
       </OrderHistory>
     </main>
@@ -215,7 +213,7 @@ export default function Profile() {
     return <p>Error Loading User</p>;
   }
   return (
-    <main>
+    <Fullscreen>
       <NavBarMovedUP />
       <HeadingBack>
         <BackButtonDiv>
@@ -223,6 +221,12 @@ export default function Profile() {
         </BackButtonDiv>
         <Heading1>My Profile</Heading1>
       </HeadingBack>
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        limit={1}
+        hideProgressBar
+      />
 
       {user.delivery_allowed ? (
         <AccountDetailSectionDelivery user={user} />
@@ -236,6 +240,6 @@ export default function Profile() {
         Favorites
       </LogOutButton> */}
       <BlankSpace />
-    </main>
+    </Fullscreen>
   );
 }

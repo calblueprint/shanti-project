@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Heading4 } from '@/styles/fonts';
 import { FormHeaders, Input } from './styles';
 
 export default function InputFields(props: {
@@ -38,7 +39,9 @@ export default function InputFields(props: {
   return (
     <main>
       <div id="userInfo">
-        <FormHeaders>{text}</FormHeaders>
+        <FormHeaders>
+          <Heading4>{text}</Heading4>
+        </FormHeaders>
         <Input
           $pickColor={isError}
           $wrongLogin={isError}
