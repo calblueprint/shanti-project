@@ -43,7 +43,7 @@ export const OrderHistory = styled.div`
   width: 600px;
   height: 350px;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background-color: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   padding-top: 23px;
   padding-right: 23px;
