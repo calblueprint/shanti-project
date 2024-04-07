@@ -1,5 +1,4 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
@@ -24,7 +23,6 @@ import {
   ProductWithQuantity,
   Product,
   User,
-  OrderStatus,
 } from '@/schema/schema';
 import ViewAllButton from '@/components/ViewAllButton/ViewAllButton';
 import {
@@ -146,92 +144,94 @@ function OrderHistorySection(props: { Orders: Order[] }) {
 
   if (firstOrderProducts.length > 0) {
     let backgroundColor = 'transparent';
-    if (Orders[0].status === OrderStatus.Submitted) {
+    if (Orders[0].status === 'Submitted') {
       backgroundColor = '#CEE8BE';
-    } else if (Orders[0].status === OrderStatus.Rejected) {
+    } else if (Orders[0].status === 'Rejected') {
       backgroundColor = '#FFDDDD';
-    } else if (Orders[0].status === OrderStatus.Complete) {
+    } else if (Orders[0].status === 'Completed') {
       backgroundColor = '#C7DDFF';
     }
     let icon;
-    if (Orders[0].status === OrderStatus.Submitted) {
+    if (Orders[0].status === 'Submitted') {
       icon = <CheckCircle />;
-    } else if (Orders[0].status === OrderStatus.Rejected) {
+    } else if (Orders[0].status === 'Rejected') {
       icon = <X />;
-    } else if (Orders[0].status === OrderStatus.Complete) {
+    } else if (Orders[0].status === 'Completed') {
       icon = <Check />;
     } else {
       icon = null;
     }
     return (
-      <OrderHistory>
-        <HeaderDiv>
-          <Heading2>Order History</Heading2>
-          <ViewAllButton destination="./orderPage" />
-        </HeaderDiv>
-        <div
-          style={{
-            marginTop: '20px',
-            width: '100%',
-          }}
-        >
-          <Body1Bold
-            style={{
-              marginTop: '20px',
-            }}
-          >
-            Order No. {Orders[0].id}
-          </Body1Bold>
-          <Body2
-            style={{
-              marginTop: '5px',
-            }}
-          >
-            {fD}
-          </Body2>
+      <main>
+        <OrderHistory>
+          <HeaderDiv>
+            <Heading2>Order History</Heading2>
+            <ViewAllButton destination="./orderPage" />
+          </HeaderDiv>
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 'fit-content',
-              padding: '5px 10px',
-              borderRadius: '20px', // adjust the border radius to make it more oval-shaped
-              background: backgroundColor,
               marginTop: '20px',
-              marginBottom: '15px',
+              width: '100%',
             }}
           >
-            {icon}
-            <Body2Bold style={{ marginLeft: '13px' }}>
-              {Orders[0].status}
-            </Body2Bold>
-          </div>
-          <MostRecentOrder>
-            {firstOrderProducts.map(product => (
-              <div
-                key={product.id}
-                style={{
-                  width: '102px',
-                  height: '102px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <img
-                  src={product.photo}
-                  alt={product.name}
+            <Body1Bold
+              style={{
+                marginTop: '20px',
+              }}
+            >
+              Order No. {Orders[0].id}
+            </Body1Bold>
+            <Body2
+              style={{
+                marginTop: '5px',
+              }}
+            >
+              {fD}
+            </Body2>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 'fit-content',
+                padding: '5px 10px',
+                borderRadius: '20px', // adjust the border radius to make it more oval-shaped
+                background: backgroundColor,
+                marginTop: '20px',
+                marginBottom: '15px',
+              }}
+            >
+              {icon}
+              <Body2Bold style={{ marginLeft: '13px' }}>
+                {Orders[0].status}
+              </Body2Bold>
+            </div>
+            <MostRecentOrder>
+              {firstOrderProducts.map(product => (
+                <div
+                  key={product.id}
                   style={{
                     width: '102px',
                     height: '102px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
-                />
-              </div>
-            ))}
-          </MostRecentOrder>
-        </div>
-      </OrderHistory>
+                >
+                  <img
+                    src={product.photo}
+                    alt={product.name}
+                    style={{
+                      width: '102px',
+                      height: '102px',
+                    }}
+                  />
+                </div>
+              ))}
+            </MostRecentOrder>
+          </div>
+        </OrderHistory>
+      </main>
     );
   }
   return null;
@@ -259,32 +259,34 @@ function AccountDetailSectionDelivery(props: { user: User }) {
     getUserAddress();
   }, []);
   return (
-    <AccountDetails>
-      <Heading2>Account Details</Heading2>
-      <HeadingSpacing>
-        <Body2Bold>Email</Body2Bold>
-      </HeadingSpacing>
-      <TextSpacing>
-        <Body3>{user?.email}</Body3>
-      </TextSpacing>
-      <HeadingSpacing>
-        <Body2>Name</Body2>
-      </HeadingSpacing>
-      <TextSpacing>
-        <Body3>
-          {user?.first_name} {user?.last_name}
-        </Body3>
-      </TextSpacing>
-      <HeadingSpacing>
-        <Body2>Address</Body2>
-      </HeadingSpacing>
-      <TextSpacing>
-        <Body1>
-          {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-        </Body1>
-      </TextSpacing>
-      <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
-    </AccountDetails>
+    <main>
+      <AccountDetails>
+        <Heading2>Account Details</Heading2>
+        <HeadingSpacing>
+          <Body2Bold>Email</Body2Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body3>{user?.email}</Body3>
+        </TextSpacing>
+        <HeadingSpacing>
+          <Body2>Name</Body2>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body3>
+            {user?.first_name} {user?.last_name}
+          </Body3>
+        </TextSpacing>
+        <HeadingSpacing>
+          <Body2>Address</Body2>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body1>
+            {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+          </Body1>
+        </TextSpacing>
+        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
+      </AccountDetails>
+    </main>
   );
 }
 function AccountDetailSectionPickUp(props: { user: User }) {
@@ -303,30 +305,32 @@ function AccountDetailSectionPickUp(props: { user: User }) {
   };
 
   return (
-    <AccountDetails>
-      <Heading2>Account Details</Heading2>
-      <HeadingSpacing>
-        <Body1Bold>Email</Body1Bold>
-      </HeadingSpacing>
-      <TextSpacing>
-        <Body2>{user?.email}</Body2>
-      </TextSpacing>
-      <HeadingSpacing>
-        <Body1Bold>Name</Body1Bold>
-      </HeadingSpacing>
-      <TextSpacing>
-        <Body2>
-          {user?.first_name} {user?.last_name}
-        </Body2>
-      </TextSpacing>
-      <HeadingSpacing>
-        <Body1Bold>Phone Number</Body1Bold>
-      </HeadingSpacing>
-      <TextSpacing>
-        <Body2>+1 510-123-4567 {/* User?.phone */}</Body2>
-      </TextSpacing>
-      <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
-    </AccountDetails>
+    <main>
+      <AccountDetails>
+        <Heading2>Account Details</Heading2>
+        <HeadingSpacing>
+          <Body1Bold>Email</Body1Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body2>{user?.email}</Body2>
+        </TextSpacing>
+        <HeadingSpacing>
+          <Body1Bold>Name</Body1Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body2>
+            {user?.first_name} {user?.last_name}
+          </Body2>
+        </TextSpacing>
+        <HeadingSpacing>
+          <Body1Bold>Phone Number</Body1Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body2>+1 510-123-4567 {/* User?.phone */}</Body2>
+        </TextSpacing>
+        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
+      </AccountDetails>
+    </main>
   );
 }
 
@@ -375,7 +379,10 @@ export default function Profile() {
       )}
       <OrderHistorySection Orders={Orders} />
       <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
-
+      {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
+      <LogOutButton onClick={() => router.push('/favorites')}>
+        Favorites
+      </LogOutButton> */}
       <BlankSpace />
     </main>
   );
