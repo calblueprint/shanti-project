@@ -13,6 +13,7 @@ export const BackDiv = styled.button`
   margin-left: 0px;
   margin-top: 55px;
   gap: 5px;
+  margin-bottom: 25px;
 `;
 
 export const ImageWithSize = styled(Image)`

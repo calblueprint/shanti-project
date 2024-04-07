@@ -6,7 +6,7 @@ import {
   fetchUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
-import { Body2, Heading3Bold } from '@/styles/fonts';
+import { Body1, Body2Light, Heading3Bold, Heading4Bold } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
@@ -16,18 +16,20 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-  HeaderText,
-  OutterBox,
-  Label,
   LabelBox,
   ScrollDiv,
-  AddressText,
-  DateText,
-  CenterBox,
-  AddressDiv,
+  ShippingDetailsDiv,
+  BottomColumnDiv,
+  LeftColumnDiv,
+  RightColumnDiv,
+  DetailsHeader,
+  PageDiv,
+  TopColumnDiv,
+  CenterDiv,
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
+import { Body1Bold } from '../orderPage/styles';
 
 export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
@@ -52,17 +54,18 @@ export default function OrderConfirmationDelivery() {
   }, []);
 
   return (
-    <div>
+    <main>
       <NavBar />
-
-      <BackButton destination="./storefront" />
-      <CenterBox>
-        <OutterBox>
+      <CenterDiv>
+      <PageDiv>
+        <BottomColumnDiv>
+        <LeftColumnDiv>
+        <BackButton destination="./storefront" />
           <Heading3Bold>
-            Thank you, {user?.first_name}. Your order has been placed.
+            Your order has been submitted
           </Heading3Bold>
           <OutterFavoriteDiv>
-            <DateText>Order No. {user?.cart_id}</DateText>
+            <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
             <ScrollDiv>
               {Cart.map(cartItem => (
                 <FavoriteDiv key={cartItem.id}>
@@ -72,26 +75,41 @@ export default function OrderConfirmationDelivery() {
                     style={{
                       width: '150px',
                       height: '150px',
-                      marginLeft: '80px',
-                      marginRight: '100px',
+                      marginLeft: '30px',
                     }}
                   />
                   <LabelBox>
-                    <Label>{cartItem.name}</Label>
-                    <p>Category: {cartItem.category}</p>
+                    <Body1Bold>{cartItem.name}</Body1Bold>
+                    <Body2Light>Category: {cartItem.category}</Body2Light>
                   </LabelBox>
                 </FavoriteDiv>
               ))}
             </ScrollDiv>
-            <AddressDiv>
-              <Body2>
-                Shipping Address: {userAddress?.street}, {userAddress?.city},{' '}
-                {userAddress?.zipcode}
-              </Body2>
-            </AddressDiv>
           </OutterFavoriteDiv>
-        </OutterBox>
-      </CenterBox>
-    </div>
+        </LeftColumnDiv>
+        <RightColumnDiv>
+          <ShippingDetailsDiv>
+            <Heading3Bold>
+              Delivery Information
+            </Heading3Bold>
+            <DetailsHeader>
+              Estimated Date
+            </DetailsHeader>
+            <Body1>
+              date
+            </Body1>
+            <DetailsHeader>
+              Location
+            </DetailsHeader>
+              <Body1>
+              {userAddress?.street}, {userAddress?.city},{' '} {userAddress?.zipcode}
+              </Body1>
+          </ShippingDetailsDiv>
+        </RightColumnDiv>
+      </BottomColumnDiv>
+      </PageDiv>
+      </CenterDiv>
+
+    </main>
   );
 }
