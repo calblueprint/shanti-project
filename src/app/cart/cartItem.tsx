@@ -58,7 +58,7 @@ export default function CartItem(props: {
           cart={cart}
         />
         <TransparentButton onClick={() => removeProduct()}>
-          <TrashIcon />
+          <TrashIcon style={{ cursor: 'pointer' }} />
         </TransparentButton>
       </FavoriteDiv>
     </div>

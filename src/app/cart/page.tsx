@@ -19,6 +19,8 @@ import {
   CheckoutButton,
   LeftColumnDiv,
   RightColumnDiv,
+  Heading,
+  BackButtonDiv
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -50,11 +52,12 @@ export default function OrderPage() {
   return (
     <div>
       <NavBar />
-
       <PageDiv>
         <LeftColumnDiv>
-          <BackButton destination="./storefront" />
-          <h1>Cart</h1>
+        <BackButtonDiv>
+          <BackButton destination="./profileScreen" />
+        </BackButtonDiv>
+          <Heading>Cart</Heading>
           <OutterFavoriteDiv>
             {cart.map(cartItem => (
               <CartItem

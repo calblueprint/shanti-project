@@ -116,9 +116,41 @@ export const LabelBox = styled.div`
   height: 100%;
 `;
 
-export const PageDiv = styled.div`
+export const PageDiv1 = styled.div`
   display: flex;
-  flex-flow: row;
+  flex-direction: row;
+  min-height: 100%; /*or 100vh */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+
+export const BackButtonDiv1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+  margin-bottom: 55px;
+  text-align: left;
+  width: 800px;
+`;
+
+export const Heading1 = styled.h1`
+  font-family: 'Public Sans', sans-serif;
+  color: black;
+  margin-bottom: 0px;
+  font-size: 30px;
+`;
+
+export const Wrapper = styled.div`
+  min-height: 100%; /*or 100vh */
+  position: relative;
+  background: var(--Light-Periwinkle, #f4f7ff);
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 10px;
+  padding-left: 10px;
+  gap: 50px;
 `;
 
 export const OrderSummaryDiv = styled.div`
@@ -147,13 +179,13 @@ export const OrderTotalDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const LeftColumnDiv = styled.div`
+export const LeftColumnDiv1 = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 50px;
 `;
 
-export const CheckoutButton = styled.button`
+export const CheckoutButton1 = styled.button`
   background: #1b3679;
 
   height: 40px;
@@ -176,7 +208,7 @@ export const Qty = styled.p`
   padding-left: 290px;
 `;
 
-export const RightColumnDiv = styled.div`
+export const RightColumnDiv1 = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 200px;
@@ -207,4 +239,48 @@ export const HeaderShiftLeft = styled.h2`
 
 export const PShiftLeft = styled.p`
   margin-left: 15px;
+`;
+
+export const PageDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  padding: 20px;
+`;
+
+export const LeftColumnDiv = styled.div`
+  flex: 1;
+  padding-right: 20px;
+`;
+
+export const RightColumnDiv = styled.div`
+  flex: 1;
+  padding-left: 20px;
+`;
+
+export const Heading = styled.h1`
+  font-family: 'Public Sans', sans-serif;
+  color: black;
+  margin-bottom: 20px;
+  font-size: 30px;
+`;
+
+export const BackButtonDiv = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const CheckoutButton = styled.button`
+  background: #1b3679;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+
+  &:hover {
+    background: #0e2351;
+  }
 `;
