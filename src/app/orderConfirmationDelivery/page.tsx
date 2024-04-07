@@ -24,7 +24,6 @@ import {
   RightColumnDiv,
   DetailsHeader,
   PageDiv,
-  TopColumnDiv,
   CenterDiv,
 } from './styles';
 
@@ -57,59 +56,49 @@ export default function OrderConfirmationDelivery() {
     <main>
       <NavBar />
       <CenterDiv>
-      <PageDiv>
-        <BottomColumnDiv>
-        <LeftColumnDiv>
-        <BackButton destination="./storefront" />
-          <Heading3Bold>
-            Your order has been submitted
-          </Heading3Bold>
-          <OutterFavoriteDiv>
-            <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
-            <ScrollDiv>
-              {Cart.map(cartItem => (
-                <FavoriteDiv key={cartItem.id}>
-                  <img
-                    src={cartItem.photo}
-                    alt={cartItem.name}
-                    style={{
-                      width: '150px',
-                      height: '150px',
-                      marginLeft: '30px',
-                    }}
-                  />
-                  <LabelBox>
-                    <Body1Bold>{cartItem.name}</Body1Bold>
-                    <Body2Light>Category: {cartItem.category}</Body2Light>
-                  </LabelBox>
-                </FavoriteDiv>
-              ))}
-            </ScrollDiv>
-          </OutterFavoriteDiv>
-        </LeftColumnDiv>
-        <RightColumnDiv>
-          <ShippingDetailsDiv>
-            <Heading3Bold>
-              Delivery Information
-            </Heading3Bold>
-            <DetailsHeader>
-              Estimated Date
-            </DetailsHeader>
-            <Body1>
-              date
-            </Body1>
-            <DetailsHeader>
-              Location
-            </DetailsHeader>
-              <Body1>
-              {userAddress?.street}, {userAddress?.city},{' '} {userAddress?.zipcode}
-              </Body1>
-          </ShippingDetailsDiv>
-        </RightColumnDiv>
-      </BottomColumnDiv>
-      </PageDiv>
+        <PageDiv>
+          <BottomColumnDiv>
+            <LeftColumnDiv>
+              <BackButton destination="./storefront" />
+              <Heading3Bold>Your order has been submitted</Heading3Bold>
+              <OutterFavoriteDiv>
+                <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
+                <ScrollDiv>
+                  {Cart.map(cartItem => (
+                    <FavoriteDiv key={cartItem.id}>
+                      <img
+                        src={cartItem.photo}
+                        alt={cartItem.name}
+                        style={{
+                          width: '150px',
+                          height: '150px',
+                          marginLeft: '30px',
+                        }}
+                      />
+                      <LabelBox>
+                        <Body1Bold>{cartItem.name}</Body1Bold>
+                        <Body2Light>Category: {cartItem.category}</Body2Light>
+                      </LabelBox>
+                    </FavoriteDiv>
+                  ))}
+                </ScrollDiv>
+              </OutterFavoriteDiv>
+            </LeftColumnDiv>
+            <RightColumnDiv>
+              <ShippingDetailsDiv>
+                <Heading3Bold>Delivery Information</Heading3Bold>
+                <DetailsHeader>Estimated Date</DetailsHeader>
+                <Body1>date</Body1>
+                <DetailsHeader>Location</DetailsHeader>
+                <Body1>
+                  {userAddress?.street}, {userAddress?.city},{' '}
+                  {userAddress?.zipcode}
+                </Body1>
+              </ShippingDetailsDiv>
+            </RightColumnDiv>
+          </BottomColumnDiv>
+        </PageDiv>
       </CenterDiv>
-
     </main>
   );
 }

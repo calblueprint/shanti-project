@@ -130,8 +130,6 @@ export const HeaderText = styled.h3`
   line-height: normal;
 `;
 
-
-
 export const ShippingDetailsDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -149,13 +147,12 @@ export const ShippingDetailsDiv = styled.div`
 `;
 
 export const DetailsHeader = styled.p`
-color: var(--Navy, #1B3679);
+  color: var(--Navy, #1b3679);
   font-family: Public Sans, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-
 `;
 
 export const DetailsText = styled.p`
