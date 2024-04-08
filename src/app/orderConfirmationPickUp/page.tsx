@@ -70,7 +70,7 @@ export default function OrderConfirmationPickUp() {
       <CenterBox>
         <OutterBox>
           <Heading3Bold>
-            Thank you, {user?.first_name}. Your order has been placed.
+            Thank you, {user?.first_name}. Your order has been submitted.
           </Heading3Bold>
 
           <OutterFavoriteDiv>
