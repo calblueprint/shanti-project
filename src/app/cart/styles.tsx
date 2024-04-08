@@ -268,7 +268,7 @@ export const DeliveryContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const Container = styled.div`
@@ -279,7 +279,7 @@ export const Container = styled.div`
 export const InformationContainer = styled.div`
   width: 100%;
   height: 100%;
-  margin: 40px;
+  margin-left: 25px;
 `;
 
 export const OutterDiv = styled.div`
@@ -339,6 +339,7 @@ export const BackButtonDiv = styled.div`
   text-align: left;
   width: 800px;
   margin-left: 110px;
+  margin-bottom: 40px;
 `;
 
 export const CheckoutButton = styled.button`
