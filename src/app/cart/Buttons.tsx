@@ -55,11 +55,19 @@ export default function Buttons(props: {
   return (
     <ButtonsWrapper>
       <QuantityButton>
-        <PlusMinusButton type="button" onClick={decreaseQuantity}>
+        <PlusMinusButton
+          type="button"
+          style={{ cursor: 'pointer' }}
+          onClick={decreaseQuantity}
+        >
           –
         </PlusMinusButton>
         <span>{count}</span>
-        <PlusMinusButton type="button" onClick={increaseQuantity}>
+        <PlusMinusButton
+          type="button"
+          style={{ cursor: 'pointer' }}
+          onClick={increaseQuantity}
+        >
           +
         </PlusMinusButton>
       </QuantityButton>

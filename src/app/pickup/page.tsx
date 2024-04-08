@@ -38,7 +38,6 @@ import {
 
 function DateInfoComponent(date: { date: unknown }) {
   const date1 = new Date(date.date as string);
-
   const daysOfWeek = [
     'Sunday',
     'Monday',
@@ -82,6 +81,7 @@ export default function Pickup() {
     }
     fetchProducts();
     fetchTimes();
+    console.log(Time);
   }, []);
 
   useEffect(() => {

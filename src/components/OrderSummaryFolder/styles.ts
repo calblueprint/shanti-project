@@ -6,7 +6,6 @@ export const OrderSummaryDiv = styled.div`
   height: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `;
 
 export const ItemSummaryDiv = styled.div`
@@ -34,10 +33,9 @@ export const Qty = styled.p`
 export const WhiteBackgroundDiv = styled.div`
   border-radius: 8px;
   background: var(--White, #fff);
-  height: 480px;
+  height: 455px;
   width: 350px;
-  padding-top: 20px;
-
+  padding: 20px;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
 
@@ -65,7 +63,6 @@ export const OrderSummaryHeaderDiv = styled.div`
 export const ItemNameDiv = styled.div`
   width: 200px;
   overflow: hidden;
-  height: 25px;
 `;
 
 export const AlignItemCenter = styled.div`
