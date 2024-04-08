@@ -15,20 +15,12 @@ import {
 import CartItem from './cartItem';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
-  PageDiv,
-  CheckoutButton,
-  LeftColumnDiv,
-  RightColumnDiv,
   OrderButton,
   DeliveryContainer,
   OrderContainer,
-  Container,
-  Heading,
   BackButtonDiv,
-  RightColumnDiv1,
   InformationContainer,
-  LeftColumnDiv1,
-  OutterDiv
+  OutterDiv,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -61,13 +53,12 @@ export default function OrderPage() {
     <div>
       <NavBar />
       <OutterDiv>
-      <BackButtonDiv>
+        <BackButtonDiv>
           <BackButton destination="/storefront" />
-          </BackButtonDiv>
-      <DeliveryContainer>
-        
+        </BackButtonDiv>
+        <DeliveryContainer>
           <InformationContainer>
-          <Heading1 style={{ marginBottom: '38px'}}>Cart</Heading1>
+            <Heading1 style={{ marginBottom: '38px' }}>Cart</Heading1>
             {cart.map(cartItem => (
               <CartItem
                 key={cartItem.id}
@@ -79,15 +70,11 @@ export default function OrderPage() {
               />
             ))}
           </InformationContainer>
-        <OrderContainer>
-          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-          <OrderButton
-            onClick={() => checkDelivery()}
-          >
-            Check Out
-          </OrderButton>
-        </OrderContainer>
-      </DeliveryContainer>
+          <OrderContainer>
+            <OrderSummary cart={cart} numberOfItems={numberOfItems} />
+            <OrderButton onClick={() => checkDelivery()}>Check Out</OrderButton>
+          </OrderContainer>
+        </DeliveryContainer>
       </OutterDiv>
     </div>
   );

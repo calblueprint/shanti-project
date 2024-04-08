@@ -22,7 +22,7 @@ import {
   InformationContainer,
   InformationText,
   BackButtonDiv,
-  OutterDiv
+  OutterDiv,
 } from './styles';
 
 export default function App() {
@@ -52,30 +52,28 @@ export default function App() {
       <OutterDiv>
         <BackButtonDiv>
           <BackButton destination="/storefront" />
-          </BackButtonDiv>
-      <DeliveryContainer>
-        <InformationContainer>
-          <Heading1 style={{ marginBottom: '38px'}}>
-            Shipping
-          </Heading1>
-          <Normal700Text>Name</Normal700Text>
-          <InformationText>
-            {`${Profile?.first_name} ${Profile?.last_name}`}
-          </InformationText>
-          <Normal700Text>Address</Normal700Text>
-          <InformationText>
-            {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-          </InformationText>
-        </InformationContainer>
-        <OrderContainer>
-          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-          <OrderButton
-            onClick={() => router.push('/orderConfirmationDelivery')}
-          >
-            Place Order
-          </OrderButton>
-        </OrderContainer>
-      </DeliveryContainer>
+        </BackButtonDiv>
+        <DeliveryContainer>
+          <InformationContainer>
+            <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
+            <Normal700Text>Name</Normal700Text>
+            <InformationText>
+              {`${Profile?.first_name} ${Profile?.last_name}`}
+            </InformationText>
+            <Normal700Text>Address</Normal700Text>
+            <InformationText>
+              {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+            </InformationText>
+          </InformationContainer>
+          <OrderContainer>
+            <OrderSummary cart={cart} numberOfItems={numberOfItems} />
+            <OrderButton
+              onClick={() => router.push('/orderConfirmationDelivery')}
+            >
+              Place Order
+            </OrderButton>
+          </OrderContainer>
+        </DeliveryContainer>
       </OutterDiv>
     </main>
   );

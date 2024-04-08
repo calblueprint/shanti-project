@@ -85,7 +85,6 @@ export const Heading5Bold = styled.p`
   font-weight: 600;
   line-height: normal;
   margin-bottom: 28px;
-  
 `;
 
 export const Heading5 = styled.p`
@@ -103,7 +102,6 @@ export const Body1 = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  
 `;
 
 export const Body1Bold = styled.p`

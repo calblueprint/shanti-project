@@ -282,7 +282,6 @@ export const InformationContainer = styled.div`
   margin: 40px;
 `;
 
-
 export const OutterDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -339,7 +338,7 @@ export const BackButtonDiv = styled.div`
   flex-direction: row;
   text-align: left;
   width: 800px;
-  margin-left: 40px;
+  margin-left: 110px;
 `;
 
 export const CheckoutButton = styled.button`
