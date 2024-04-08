@@ -11,6 +11,7 @@ import {
   Body2Bold,
   Body1,
   Body2,
+  Heading4,
 } from '@/styles/fonts';
 import {
   addOrRemoveProductFromFavorite,
@@ -154,7 +155,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
       backgroundColor = '#CEE8BE';
     } else if (Orders[0].status === 'Rejected') {
       backgroundColor = '#FFDDDD';
-    } else if (Orders[0].status === 'Completed') {
+    } else if (Orders[0].status === 'Confirmed') {
       backgroundColor = '#C7DDFF';
     }
     let icon;
@@ -162,7 +163,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
       icon = <CheckCircle />;
     } else if (Orders[0].status === 'Rejected') {
       icon = <X />;
-    } else if (Orders[0].status === 'Completed') {
+    } else if (Orders[0].status === 'Confirmed') {
       icon = <Check />;
     } else {
       icon = null;
@@ -172,7 +173,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
         <OrderHistory>
           <HeaderDiv>
             <Heading2>Order History</Heading2>
-            <ViewAllButton destination="./orderPage" />
+            <ViewAllButton destination="./orderHistory" />
           </HeaderDiv>
           <div
             style={{
@@ -241,7 +242,24 @@ function OrderHistorySection(props: { Orders: Order[] }) {
       </main>
     );
   }
-  return null;
+  return (
+    <main>
+      <OrderHistory>
+        <HeaderDiv>
+          <Heading2>Order History</Heading2>
+          <ViewAllButton destination="./orderHistory" />
+        </HeaderDiv>
+        <div
+          style={{
+            marginTop: '20px',
+            width: '100%',
+          }}
+        >
+          <Heading4>No Current Orders to Display</Heading4>
+        </div>
+      </OrderHistory>
+    </main>
+  );
 }
 function AccountDetailSectionDelivery(props: { user: User }) {
   const { user } = props;

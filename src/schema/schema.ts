@@ -17,7 +17,7 @@ export type User = {
 
 export enum OrderStatus {
   Submitted = 'Submitted',
-  Complete = 'Completed',
+  Complete = 'Confirmed',
   Rejected = 'Rejected',
 }
 
