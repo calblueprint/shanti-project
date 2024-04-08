@@ -7,13 +7,13 @@ import {
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '@/api/supabase/queries/cart_queries';
-import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
 import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
+import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   HeaderShiftLeft,
