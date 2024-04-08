@@ -5,9 +5,16 @@ import COLORS from '../../styles/colors';
 export const DeliveryContainer = styled.div`
   margin-left: 80px;
   margin-right: 80px;
+  margin-bottom: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const OutterBox = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -49,6 +56,7 @@ export const QuantityText = styled.div`
 export const InformationContainer = styled.div`
   width: 730px;
   height: 400px;
+  margin: 40px;
 `;
 
 export const InformationText = styled.div`
@@ -133,4 +141,17 @@ export const OrderButton = styled.button`
 
 export const NavBarMovedUP = styled(NavBar)`
   position: static;
+`;
+
+export const BackButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  width: 800px;
+  margin-left: 40px;
+`;
+
+export const OutterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
