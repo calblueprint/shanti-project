@@ -11,7 +11,6 @@ import {
 import { Product } from '../../schema/schema';
 
 export default function ProductButtons(props: {
-  key: number;
   value: string;
   setFiltredProducts: (category: Product[]) => void;
   content: string;
@@ -21,7 +20,6 @@ export default function ProductButtons(props: {
   clickedButton: number;
 }) {
   const {
-    key,
     value,
     content,
     setFiltredProducts,
@@ -88,7 +86,7 @@ export default function ProductButtons(props: {
     <IndividualContainer>
       <Button
         $pickColor={index === clickedButton}
-        key={key}
+        key={value}
         value={value}
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
           applyFilter(e)
