@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Body1Bold, Body2 } from '@/styles/fonts';
+import { Body1Bold, Body2, Body3 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -21,6 +21,7 @@ import {
   TransparentButton,
   ViewItem,
   Fullscreen,
+  Hover,
 } from './styles';
 
 import { Product } from '../../schema/schema';
@@ -28,6 +29,7 @@ import { Product } from '../../schema/schema';
 export default function FavoritesPage() {
   const [Favorites, setFavorites] = useState<Product[]>([]);
   const router = useRouter();
+  const [hovering, setHovering] = useState(false);
 
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
@@ -68,7 +70,12 @@ export default function FavoritesPage() {
 
               <TransparentButton
                 onClick={() => clickFunctions({ fav: favorite })}
+                onMouseEnter={() => setHovering(true)}
+                onMouseLeave={() => setHovering(false)}
               >
+                <Hover $ishovering={hovering}>
+                  <Body3>Remove from favorites</Body3>
+                </Hover>
                 <HeartIcon />
               </TransparentButton>
             </FavoriteDiv>

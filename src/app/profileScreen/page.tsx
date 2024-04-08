@@ -37,6 +37,7 @@ import {
   BlankSpace,
   HeaderDiv,
   Fullscreen,
+  Hover,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,6 +48,8 @@ function FavoriteSection(props: {
   setFavorites: (category: Product[]) => void;
 }) {
   const { Favorites, setFavorites } = props;
+  const [hovering, setHovering] = useState(false);
+
   async function clickFunctions(props2: { fav: Product }) {
     const { fav } = props2;
     addOrRemoveProductFromFavorite(fav, false);
@@ -72,7 +75,12 @@ function FavoriteSection(props: {
             </ProductNameDiv>
             <TransparentButton
               onClick={() => clickFunctions({ fav: favorite })}
+              onMouseEnter={() => setHovering(true)}
+              onMouseLeave={() => setHovering(false)}
             >
+              <Hover $ishovering={hovering}>
+                <Body3>Remove from favorites</Body3>
+              </Hover>
               <HeartIcon />
             </TransparentButton>
           </FavoriteDiv>
