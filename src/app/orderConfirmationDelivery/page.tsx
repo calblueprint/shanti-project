@@ -16,7 +16,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
-
   LabelBox,
   ScrollDiv,
   ShippingDetailsDiv,
@@ -26,7 +25,6 @@ import {
   DetailsHeader,
   PageDiv,
   CenterDiv,
-
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';

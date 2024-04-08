@@ -16,7 +16,6 @@ export const BackDiv = styled.button`
   &:hover {
     text-decoration: underline;
   }
-
 `;
 
 export const ImageWithSize = styled(Image)`
