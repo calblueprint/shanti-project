@@ -14,11 +14,11 @@ import {
 import CartItem from './cartItem';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
-  OutterFavoriteDiv,
   PageDiv,
   CheckoutButton,
   LeftColumnDiv,
   RightColumnDiv,
+  Fullscreen,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -48,25 +48,23 @@ export default function OrderPage() {
   };
 
   return (
-    <div>
+    <Fullscreen>
       <NavBar />
 
       <PageDiv>
         <LeftColumnDiv>
           <BackButton destination="./storefront" />
           <h1>Cart</h1>
-          <OutterFavoriteDiv>
-            {cart.map(cartItem => (
-              <CartItem
-                key={cartItem.id}
-                cartItemProduct={cartItem}
-                setCart={setCart}
-                cart={cart}
-                setNumberOfItems={setNumberOfItems}
-                numberOfItems={numberOfItems}
-              />
-            ))}
-          </OutterFavoriteDiv>
+          {cart.map(cartItem => (
+            <CartItem
+              key={cartItem.id}
+              cartItemProduct={cartItem}
+              setCart={setCart}
+              cart={cart}
+              setNumberOfItems={setNumberOfItems}
+              numberOfItems={numberOfItems}
+            />
+          ))}
         </LeftColumnDiv>
         <RightColumnDiv>
           <OrderSummary cart={cart} numberOfItems={numberOfItems} />
@@ -78,6 +76,6 @@ export default function OrderPage() {
           </CheckoutButton>
         </RightColumnDiv>
       </PageDiv>
-    </div>
+    </Fullscreen>
   );
 }

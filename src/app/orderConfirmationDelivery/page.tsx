@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import {
   fetchUser,
-  fetchUserAddress,
+  fetchCurrentUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
 import { Body1, Body2Light, Heading3Bold, Heading4Bold } from '@/styles/fonts';
@@ -16,6 +16,7 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 import {
   FavoriteDiv,
   OutterFavoriteDiv,
+
   LabelBox,
   ScrollDiv,
   ShippingDetailsDiv,
@@ -25,6 +26,7 @@ import {
   DetailsHeader,
   PageDiv,
   CenterDiv,
+
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
@@ -44,7 +46,7 @@ export default function OrderConfirmationDelivery() {
     async function setUserDetails() {
       const fetchedUser = await fetchUser();
       setUser(fetchedUser);
-      const address = await fetchUserAddress(fetchedUser.id);
+      const address = await fetchCurrentUserAddress();
       setUserAddress(address);
     }
 

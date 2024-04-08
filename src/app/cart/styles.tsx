@@ -12,20 +12,9 @@ export const FavoriteDiv = styled.div`
   flex-direction: row;
   align-items: start;
   justify-content: space-around;
-  width: 1000px;
+  width: 900px;
   margin-bottom: 50px;
   margin-top: 30px;
-`;
-
-export const OutterFavoriteDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  width: 1000px;
-  height: 700px;
-  overflow: scroll;
-  margin-top: 10px;
 `;
 
 export const BackDiv = styled.button`
@@ -150,7 +139,7 @@ export const OrderTotalDiv = styled.div`
 export const LeftColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 50px;
+  margin-left: 25px;
 `;
 
 export const CheckoutButton = styled.button`
@@ -179,7 +168,7 @@ export const Qty = styled.p`
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 200px;
+  margin-left: 50px;
   margin-top: 100px;
 `;
 
@@ -207,4 +196,9 @@ export const HeaderShiftLeft = styled.h2`
 
 export const PShiftLeft = styled.p`
   margin-left: 15px;
+`;
+
+export const Fullscreen = styled.div`
+  width: 100%;
+  height: 100%;
 `;
