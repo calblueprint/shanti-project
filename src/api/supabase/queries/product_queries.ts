@@ -1,4 +1,4 @@
-import { Product } from '../../../schema/schema';
+import { Product, StorefrontButtons } from '../../../schema/schema';
 import supabase from '../createClient';
 import { fetchUser } from './user_queries';
 
@@ -85,14 +85,31 @@ export async function filterProduct(productType: string): Promise<Product[]> {
   return products;
 }
 
+export async function convertCategoryToNumber(
+  productType: string,
+): Promise<StorefrontButtons> {
+  const { data: buttonVal, error } = await supabase
+    .from('storefront_buttons')
+    .select('*')
+    .eq('name', productType)
+    .single();
+
+  if (error) {
+    throw new Error(`Error fetching products: ${error.message}`);
+  }
+  return buttonVal.id;
+}
+
 export async function fetchUnprescribedCategory(
   productType: string,
 ): Promise<Product[]> {
+  const productTypeConverted = await convertCategoryToNumber(productType);
+
   const { data: products, error } = await supabase
     .from('product')
     .select('*')
     .eq('prescribed', false)
-    .eq('category', productType);
+    .eq('category', productTypeConverted);
   if (error) {
     throw new Error(`Error fetching products: ${error.message}`);
   }

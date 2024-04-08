@@ -327,7 +327,7 @@ function AccountDetailSectionPickUp(props: { user: User }) {
           <Body1Bold>Phone Number</Body1Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body2>+1 510-123-4567 {/* User?.phone */}</Body2>
+          <Body2> {user?.phone_numbers}</Body2>
         </TextSpacing>
       </AccountDetails>
     </main>
