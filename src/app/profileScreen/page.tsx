@@ -48,6 +48,9 @@ import {
   BlankSpace,
   HeaderDiv,
   MostRecentOrder,
+  ColumnDiv,
+  LogOutDiv,
+  Fullscreen,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -106,7 +109,9 @@ function OrderHistorySection(props: { Orders: Order[] }) {
   useEffect(() => {
     async function fetchFirstOrderProducts() {
       if (Orders.length > 0) {
-        const firstOrder = Orders[0];
+        const firstOrder = Orders.filter(
+          order => order.order_product_id_array.length !== 0,
+        )[0];
         const firstOrderProductIds = firstOrder.order_product_id_array.slice(
           0,
           3,
@@ -216,6 +221,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    marginRight: '20px',
                   }}
                 >
                   <img
@@ -239,17 +245,6 @@ function OrderHistorySection(props: { Orders: Order[] }) {
 function AccountDetailSectionDelivery(props: { user: User }) {
   const { user } = props;
   const [UserAddress, setUserAddress] = useState<Address>();
-  const router = useRouter();
-
-  const showToastMessage = () => {
-    signOut();
-    toast("You've been Logged Out! Redirecting...", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setTimeout(() => {
-      router.push('/login');
-    }, 3000);
-  };
 
   useEffect(() => {
     async function getUserAddress() {
@@ -284,25 +279,12 @@ function AccountDetailSectionDelivery(props: { user: User }) {
             {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
           </Body1>
         </TextSpacing>
-        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
       </AccountDetails>
     </main>
   );
 }
 function AccountDetailSectionPickUp(props: { user: User }) {
   const { user } = props;
-
-  const router = useRouter();
-
-  const showToastMessage = () => {
-    signOut();
-    toast("You've been Logged Out! Redirecting...", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setTimeout(() => {
-      router.push('/login');
-    }, 3000);
-  };
 
   return (
     <main>
@@ -328,8 +310,28 @@ function AccountDetailSectionPickUp(props: { user: User }) {
         <TextSpacing>
           <Body2>+1 510-123-4567 {/* User?.phone */}</Body2>
         </TextSpacing>
-        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
       </AccountDetails>
+    </main>
+  );
+}
+function LogoutSection() {
+  const router = useRouter();
+
+  const showToastMessage = () => {
+    signOut();
+    toast("You've been Logged Out! Redirecting...", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setTimeout(() => {
+      router.push('/login');
+    }, 3000);
+  };
+
+  return (
+    <main>
+      <LogOutDiv>
+        <LogOutButton onClick={() => showToastMessage()}>Log Out</LogOutButton>
+      </LogOutDiv>
     </main>
   );
 }
@@ -363,27 +365,32 @@ export default function Profile() {
     return <p>Error Loading User</p>;
   }
   return (
-    <main>
+    <Fullscreen>
       <NavBarMovedUP />
-      <HeadingBack>
-        <BackButtonDiv>
-          <BackButton destination="./storefront" />
-        </BackButtonDiv>
-        <Heading1>My Profile</Heading1>
-      </HeadingBack>
-
-      {user.delivery_allowed ? (
-        <AccountDetailSectionDelivery user={user} />
-      ) : (
-        <AccountDetailSectionPickUp user={user} />
-      )}
-      <OrderHistorySection Orders={Orders} />
-      <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
-      {/* <PopUp closeButton={false} autoClose={3000} hideProgressBar limit={1} />
-      <LogOutButton onClick={() => router.push('/favorites')}>
-        Favorites
-      </LogOutButton> */}
+      <ColumnDiv>
+        <MostRecentOrder>
+          <HeadingBack>
+            <BackButtonDiv>
+              <BackButton destination="./storefront" />
+            </BackButtonDiv>
+            <Heading1>My Profile</Heading1>
+          </HeadingBack>
+          <HeadingBack />
+        </MostRecentOrder>
+        <MostRecentOrder>
+          {user.delivery_allowed ? (
+            <AccountDetailSectionDelivery user={user} />
+          ) : (
+            <AccountDetailSectionPickUp user={user} />
+          )}
+          <OrderHistorySection Orders={Orders} />
+        </MostRecentOrder>
+        <MostRecentOrder>
+          <LogoutSection />
+          <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
+        </MostRecentOrder>
+      </ColumnDiv>
       <BlankSpace />
-    </main>
+    </Fullscreen>
   );
 }

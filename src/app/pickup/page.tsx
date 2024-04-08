@@ -3,7 +3,11 @@
 // import { GlobalStyle } from "@/styles/components";
 import { ArrowLeft } from 'react-feather';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
-import { fetchCartItemsWithQuantity } from '@/api/supabase/queries/cart_queries';
+import {
+  fetchCartItemsWithQuantity,
+  totalNumberOfItemsInCart,
+} from '@/api/supabase/queries/cart_queries';
+import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Heading4Bold } from '@/styles/fonts';
@@ -61,12 +65,14 @@ function DateInfoComponent(date: { date: unknown }) {
 
 export default function Pickup() {
   const [Cart, setCart] = useState<ProductWithQuantity[]>([]);
+  const [numberOfItems, setNumberOfItems] = useState(0);
   const router = useRouter();
   const [Time, setTimes] = useState<Pickup[]>([]);
   const [Profile, setProfile] = useState<User>();
   const [selectedPickupIndex, setSelectedPickupIndex] = useState<number>(0);
   useEffect(() => {
     async function fetchProducts() {
+      setNumberOfItems(await totalNumberOfItemsInCart());
       const data = await fetchCartItemsWithQuantity(); // change the function to grab the cartItems as products
       setCart(data);
     }
@@ -140,26 +146,7 @@ export default function Pickup() {
           </PickupContainer>
         </ForceColumnDiv>
         <RightColumnDiv>
-          <WhiteBackgroundDiv>
-            <HeaderShiftLeft>Order Summary</HeaderShiftLeft>
-            <Qty>Qty.</Qty>
-            <OrderSummaryDiv>
-              {Cart.map(cart => (
-                <ItemSummaryDiv key={cart.id}>
-                  <PShiftLeft>{cart.name}</PShiftLeft>
-                  <PShiftRight>{cart.quantity}</PShiftRight>
-                </ItemSummaryDiv>
-              ))}
-            </OrderSummaryDiv>
-            <OrderTotalDiv>
-              <HeaderShiftLeft>Order Total</HeaderShiftLeft>
-              <HeaderShiftRight
-              // change with the actual cart total
-              >
-                {Cart.reduce((acc, item) => acc + item.quantity, 0)}
-              </HeaderShiftRight>
-            </OrderTotalDiv>
-          </WhiteBackgroundDiv>
+          <OrderSummary cart={Cart} numberOfItems={numberOfItems} />
 
           <CheckoutButton
             onClick={async () => {

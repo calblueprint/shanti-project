@@ -16,12 +16,13 @@ export const HeadingSpacing = styled.div`
 `;
 
 export const HeadingBack = styled.div`
-  margin-left: 300px;
+  width: 500px;
+  margin-right: 75px;
 `;
 
 export const AccountDetails = styled.div`
-  margin-left: 300px;
   margin-top: 50px;
+  margin-right: 30px;
   width: 500px;
   height: 350px;
   border-radius: 10px;
@@ -37,9 +38,7 @@ export const AccountDetails = styled.div`
 `;
 
 export const OrderHistory = styled.div`
-  margin-left: 900px;
-  margin-top: -350px;
-  margin-bottom: 47px;
+  margin-top: 50px;
   width: 600px;
   height: 350px;
   border-radius: 10px;
@@ -52,7 +51,8 @@ export const OrderHistory = styled.div`
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-left: 900px;
+  margin-top: 50px;
+
   width: 600px;
   height: 350px;
   border-radius: 10px;
@@ -76,15 +76,7 @@ export const LogOutButton = styled.button`
   border: transparent;
   border-radius: 5px;
   width: 405px;
-  height: 300px;
-  z-index: 1000;
-  margin-top: 115px;
-  padding-top: 10px;
-  margin-left: 15px;
-  margin-right: 2px;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  height: 70px;
 `;
 /* transform: translateY(200px); */
 
@@ -147,4 +139,20 @@ export const Fullscreen = styled.div`
 export const MostRecentOrder = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+export const ColumnDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`;
+
+export const LogOutDiv = styled.div`
+  margin-top: 50px;
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 350px;
 `;
