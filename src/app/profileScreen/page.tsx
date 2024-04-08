@@ -13,7 +13,6 @@ import {
   Body2,
 } from '@/styles/fonts';
 import {
-  addOrRemoveProductFromFavorite,
   arrayOfFavorites,
   fetchUser,
   fetchUserAddress,
@@ -30,31 +29,21 @@ import {
   TextSpacing,
   OrderHistory,
   FavoritesContainer,
-  ProductNameDiv,
-  FavoriteDiv,
-  HeartIcon,
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
   Fullscreen,
-  Hover,
 } from './styles';
+import IndividualItem from './individualItem';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import { TransparentButton } from '../favorites/styles';
 
 function FavoriteSection(props: {
   Favorites: Product[];
   setFavorites: (category: Product[]) => void;
 }) {
   const { Favorites, setFavorites } = props;
-  const [hovering, setHovering] = useState(false);
 
-  async function clickFunctions(props2: { fav: Product }) {
-    const { fav } = props2;
-    addOrRemoveProductFromFavorite(fav, false);
-    setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
-  }
   return (
     <main>
       <FavoritesContainer>
@@ -63,27 +52,12 @@ function FavoriteSection(props: {
           <ViewAllButton destination="./favorites" />
         </HeaderDiv>
         {Favorites.slice(0, 2).map(favorite => (
-          <FavoriteDiv key={favorite.id}>
-            <img
-              src={favorite.photo}
-              alt={favorite.name}
-              style={{ width: '75px', height: '75px' }}
-            />
-            <ProductNameDiv>
-              <Body1Bold>{favorite.name}</Body1Bold>
-              <Body2>Category: {favorite.category}</Body2>
-            </ProductNameDiv>
-            <TransparentButton
-              onClick={() => clickFunctions({ fav: favorite })}
-              onMouseEnter={() => setHovering(true)}
-              onMouseLeave={() => setHovering(false)}
-            >
-              <Hover $ishovering={hovering}>
-                <Body3>Remove from favorites</Body3>
-              </Hover>
-              <HeartIcon />
-            </TransparentButton>
-          </FavoriteDiv>
+          <IndividualItem
+            key={favorite.id}
+            favorite={favorite}
+            setFavorites={setFavorites}
+            Favorites={Favorites}
+          />
         ))}
       </FavoritesContainer>
     </main>
