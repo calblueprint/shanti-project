@@ -11,7 +11,7 @@ import {
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
-import { Normal700Text, Heading1 } from '../../styles/fonts';
+import { Heading1, Normal700Text } from '../../styles/fonts';
 import { ProductWithQuantity, User, Address } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
