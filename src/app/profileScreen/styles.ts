@@ -156,3 +156,11 @@ export const LogOutDiv = styled.div`
   width: 500px;
   height: 350px;
 `;
+
+export const MessageDiv = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+`;
