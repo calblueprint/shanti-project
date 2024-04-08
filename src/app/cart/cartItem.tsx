@@ -9,6 +9,7 @@ import {
   TransparentButton,
   Label,
   LabelBox,
+  ImageDiv
 } from './styles';
 
 import Buttons from './Buttons';
@@ -38,11 +39,12 @@ export default function CartItem(props: {
   return (
     <div>
       <FavoriteDiv key={cartItemProduct.id}>
+        <ImageDiv>
         <img
           src={cartItemProduct.photo}
           alt={cartItemProduct.name}
-          style={{ width: '150px', height: '150px' }}
-        />
+          style={{ width: '130px', height: '130px', padding: '20px' }}/>
+          </ImageDiv>
         <LabelBox>
           <Label>{cartItemProduct.name}</Label>
           <p>Category: {cartItemProduct.category}</p>

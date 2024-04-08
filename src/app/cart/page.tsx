@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import BackButton from '../../components/BackButton/BackButton';
+import { Heading1 } from '../../styles/fonts';
 
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 
@@ -18,8 +19,16 @@ import {
   CheckoutButton,
   LeftColumnDiv,
   RightColumnDiv,
+  OrderButton,
+  DeliveryContainer,
+  OrderContainer,
+  Container,
   Heading,
-  BackButtonDiv
+  BackButtonDiv,
+  RightColumnDiv1,
+  InformationContainer,
+  LeftColumnDiv1,
+  OutterDiv
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -51,31 +60,35 @@ export default function OrderPage() {
   return (
     <div>
       <NavBar />
-      <PageDiv>
-        <LeftColumnDiv>
-          <BackButton destination="./storefront" />
-          <h1>Cart</h1>
-          {cart.map(cartItem => (
-            <CartItem
-              key={cartItem.id}
-              cartItemProduct={cartItem}
-              setCart={setCart}
-              cart={cart}
-              setNumberOfItems={setNumberOfItems}
-              numberOfItems={numberOfItems}
-            />
-          ))}
-        </LeftColumnDiv>
-        <RightColumnDiv>
+      <OutterDiv>
+      <BackButtonDiv>
+          <BackButton destination="/storefront" />
+          </BackButtonDiv>
+      <DeliveryContainer>
+        
+          <InformationContainer>
+          <Heading1 style={{ marginBottom: '38px'}}>Cart</Heading1>
+            {cart.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                cartItemProduct={cartItem}
+                setCart={setCart}
+                cart={cart}
+                setNumberOfItems={setNumberOfItems}
+                numberOfItems={numberOfItems}
+              />
+            ))}
+          </InformationContainer>
+        <OrderContainer>
           <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-          <CheckoutButton
-            // change this function so that the flow makes sense and that there is items within the cart
+          <OrderButton
             onClick={() => checkDelivery()}
           >
             Check Out
-          </CheckoutButton>
-        </RightColumnDiv>
-      </PageDiv>
+          </OrderButton>
+        </OrderContainer>
+      </DeliveryContainer>
+      </OutterDiv>
     </div>
   );
 }

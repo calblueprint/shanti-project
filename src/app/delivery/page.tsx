@@ -11,7 +11,7 @@ import {
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
-import { Normal700Text } from '../../styles/fonts';
+import { Heading1, Normal700Text } from '../../styles/fonts';
 import { ProductWithQuantity, User, Address } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
@@ -22,9 +22,7 @@ import {
   InformationContainer,
   InformationText,
   BackButtonDiv,
-  OutterDiv,
-  Normal700Text,
-  Heading1
+  OutterDiv
 } from './styles';
 
 export default function App() {
@@ -56,7 +54,6 @@ export default function App() {
           <BackButton destination="/storefront" />
           </BackButtonDiv>
       <DeliveryContainer>
-       
         <InformationContainer>
           <Heading1 style={{ marginBottom: '38px'}}>
             Shipping
