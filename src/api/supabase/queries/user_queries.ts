@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-//
-
 import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
@@ -119,8 +115,6 @@ export async function fetchUserAddress(uuid: string) {
       .eq('user_id', uuid)
       .single();
 
-    console.log('test', user);
-
     if (error) {
       console.error('Error fetching user data:', error);
     }
@@ -143,7 +137,9 @@ export async function fetchCurrentUserAddress() {
       .from('address')
       .select('*')
       .eq('user_id', user.id)
+      .limit(1)
       .single();
+    console.log(address);
 
     if (error) {
       console.error('Error fetching user data:', error);

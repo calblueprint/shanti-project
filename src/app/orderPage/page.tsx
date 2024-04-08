@@ -84,7 +84,6 @@ export default function OrderPage() {
       <OutterBox>
         <BackButtonDiv>
           <BackButton destination="./orderHistory" />
-          <BackButton destination="./orderHistory" />
         </BackButtonDiv>
         <OutterDiv>
           <Heading>{formatDate(order?.created_at)}</Heading>
@@ -93,7 +92,6 @@ export default function OrderPage() {
             <Body1Bold>{order?.status}</Body1Bold>{' '}
           </StatusButton>
         </OutterDiv>
-
         <OutterFavoriteDiv>
           {orders.map(product => (
             <FavoriteDiv key={product.id}>

@@ -18,6 +18,7 @@ import {
   CheckoutButton,
   LeftColumnDiv,
   RightColumnDiv,
+  Fullscreen,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -47,7 +48,7 @@ export default function OrderPage() {
   };
 
   return (
-    <div>
+    <Fullscreen>
       <NavBar />
 
       <PageDiv>
@@ -75,6 +76,6 @@ export default function OrderPage() {
           </CheckoutButton>
         </RightColumnDiv>
       </PageDiv>
-    </div>
+    </Fullscreen>
   );
 }

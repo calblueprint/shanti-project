@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import {
   fetchUser,
-  fetchUserAddress,
+  fetchCurrentUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
 import { Body2, Heading3Bold } from '@/styles/fonts';
@@ -41,7 +41,7 @@ export default function OrderConfirmationDelivery() {
     async function setUserDetails() {
       const fetchedUser = await fetchUser();
       setUser(fetchedUser);
-      const address = await fetchUserAddress(fetchedUser.id);
+      const address = await fetchCurrentUserAddress();
       setUserAddress(address);
     }
 
