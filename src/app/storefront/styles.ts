@@ -92,11 +92,12 @@ export const ItemButtons = styled.button`
 `;
 
 export const StorefrontWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 295px);
+  grid-gap: 2%;
+  padding-top: 20px;
+  justify-content: center;
+  padding-bottom: 150px;
 `;
 
 export const StorefrontItem = styled.div`
@@ -246,4 +247,7 @@ export const BackButton = styled.button<{ $reachedEnd?: boolean }>`
 export const Fullscreen = styled.div`
   width: 100%;
   height: 100%;
+`;
+export const StorefrontBox = styled.div`
+  margin: auto;
 `;
