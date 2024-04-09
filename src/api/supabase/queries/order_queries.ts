@@ -67,7 +67,8 @@ export async function fetchOrdersByUser(): Promise<Order[]> {
   const { data, error } = await supabase
     .from('order')
     .select('*')
-    .eq('user_id', userId);
+    .eq('user_id', userId)
+    .neq('status', 'In Progress');
 
   if (error) {
     throw new Error(`Error fetching orders for user: ${error.message}`);

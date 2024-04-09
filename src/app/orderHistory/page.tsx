@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Heading1 } from '@/styles/fonts';
+import { Heading1, Body1 } from '@/styles/fonts';
 import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistoryBox';
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
 import Footer from '../../components/FooterFolder/Footer';
@@ -37,7 +37,7 @@ function OrderHistory() {
               <OrderDetailsWithProducts key={orderId} orderId={orderId} />
             ))
           ) : (
-            <div>Loading...</div>
+            <Body1>No Order</Body1>
           )}
         </OrderHistoryContainer>
       </OutterBox>
