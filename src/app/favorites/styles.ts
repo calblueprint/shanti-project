@@ -93,3 +93,19 @@ export const Fullscreen = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const Hover = styled.div<{ $ishovering?: boolean }>`
+  visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
+  margin-bottom: 7px;
+  transform: translate(-10px, 0px);
+  color: black;
+  border: none;
+  width: 156px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--Light-Periwinkle, #f4f7ff);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+  padding-top: 6px;
+  position: relative;
+  text-align: center;
+`;
