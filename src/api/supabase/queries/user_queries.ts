@@ -144,7 +144,6 @@ export async function fetchCurrentUserAddress() {
     if (error) {
       console.error('Error fetching user data:', error);
     }
-
     return address;
   } catch (error) {
     console.error('Error:', error);
