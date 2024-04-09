@@ -43,7 +43,7 @@ export default function App() {
       <StorefrontBox>
         <Storefront products={FilteredProducts} />
       </StorefrontBox>
-     
+
       <Footer />
     </Fullscreen>
   );
