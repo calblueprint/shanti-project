@@ -35,6 +35,10 @@ export const CartItemsDiv = styled.div`
   gap: 32px;
 `;
 
+export const ImageDiv = styled.div`
+  width: 130px;
+`;
+
 export const BackDiv = styled.button`
   display: flex;
   flex-direction: row;
@@ -74,6 +78,7 @@ export const FooterMoved = styled(Footer)`
 export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
+  padding-left: 40px;
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
@@ -120,15 +125,6 @@ export const LabelBox = styled.div`
   width: 150px;
 `;
 
-export const PageDiv = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-  gap: 32px;
-  background-color: ${COLORS.offWhite};
-`;
-
 export const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -140,6 +136,7 @@ export const OrderSummaryDiv = styled.div`
   overflow: auto;
   width: 350px;
   height: 300px;
+  padding: 20px;
 `;
 
 export const ItemSummaryDiv = styled.div`
@@ -147,8 +144,6 @@ export const ItemSummaryDiv = styled.div`
   flex-direction: row;
   margin-bottom: 20px;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
 `;
 
 export const OrderTotalDiv = styled.div`
@@ -162,13 +157,13 @@ export const OrderTotalDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const LeftColumnDiv = styled.div`
+export const LeftColumnDiv1 = styled.div`
   display: flex;
   flex-flow: column;
   gap: 16px;
 `;
 
-export const CheckoutButton = styled.button`
+export const CheckoutButton1 = styled.button`
   background: #1b3679;
 
   height: 40px;
@@ -191,7 +186,7 @@ export const Qty = styled.p`
   padding-left: 290px;
 `;
 
-export const RightColumnDiv = styled.div`
+export const RightColumnDiv1 = styled.div`
   display: flex;
   flex-flow: column;
 `;
@@ -220,4 +215,139 @@ export const HeaderShiftLeft = styled.h2`
 
 export const PShiftLeft = styled.p`
   margin-left: 15px;
+`;
+
+export const PageDiv = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 32px;
+  background-color: ${COLORS.offWhite};
+`;
+
+// export const PageDiv = styled.div`
+//   display: flex;
+//   flex-direction: col;
+//   flex-wrap: wrap;
+//   justify-content: space-evenly;
+//   padding: 20px;
+// `;
+
+export const LeftColumnDiv = styled.div`
+  flex: 1;
+  padding-right: 20px;
+`;
+
+export const InformationText = styled.div`
+  width: 730px;
+  height: 50px;
+  border-radius: 4px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  border: 1px solid ${COLORS.neutralGrey};
+  background: ${COLORS.lightGrey};
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 20px;
+`;
+
+export const DeliveryContainer = styled.div`
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: col;
+`;
+
+export const InformationContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-left: 25px;
+`;
+
+export const OutterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const OrderButton = styled.button`
+  margin-top: 26px;
+  width: 350px;
+  height: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  background: ${COLORS.navy};
+  border-radius: 8px;
+  color: ${COLORS.white};
+  font-size: 20px;
+  font-family: 'Public Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
+export const OrderSummary = styled.div`
+  width: 350px;
+  height: 360px;
+  border-radius: 8px;
+  background: ${COLORS.white};
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.15);
+  align-items: center;
+`;
+
+export const OrderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+`;
+
+export const RightColumnDiv = styled.div`
+  flex: 1;
+  padding-left: 20px;
+`;
+
+export const Heading = styled.h1`
+  font-family: 'Public Sans', sans-serif;
+  color: black;
+  margin-bottom: 20px;
+  font-size: 30px;
+`;
+
+export const BackButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  width: 800px;
+  margin-left: 110px;
+  margin-bottom: 40px;
+`;
+
+export const CheckoutButton = styled.button`
+  background: #1b3679;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+
+  &:hover {
+    background: #0e2351;
+  }
 `;

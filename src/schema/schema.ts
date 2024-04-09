@@ -16,10 +16,9 @@ export type User = {
 };
 
 export enum OrderStatus {
-  OrderRejected = 'Rejected',
-  OrderApproved = 'Confirmed',
-  OrderSubmitted = 'Submitted',
-  OrderReady = 'Ready',
+  Submitted = 'Submitted',
+  Complete = 'Confirmed',
+  Rejected = 'Rejected',
 }
 
 export type Order = {

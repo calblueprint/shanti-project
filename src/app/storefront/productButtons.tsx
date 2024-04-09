@@ -1,5 +1,3 @@
-// 'use client';
-
 import React from 'react';
 
 import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
@@ -22,7 +20,6 @@ export default function ProductButtons(props: {
   content: string;
   setCategoryWord: (word: string) => void;
   index: number;
-  id: number;
   setClickedButton: (clicked: number) => void;
   clickedButton: number;
 }) {
@@ -30,7 +27,6 @@ export default function ProductButtons(props: {
     value,
     content,
     setFiltredProducts,
-    id,
     setCategoryWord,
     index,
     setClickedButton,
@@ -77,6 +73,7 @@ export default function ProductButtons(props: {
     // Applying the filter to the categories of the product
 
     if (category !== 'All') {
+      console.log(category);
       const products = await filterUserProducts(category);
       if (products !== null) {
         setFiltredProducts(products);
@@ -93,8 +90,7 @@ export default function ProductButtons(props: {
     <IndividualContainer>
       <CategoryButton
         $selected={index === clickedButton}
-        key={id}
-        value={value}
+        key={value}
         onClick={e => applyFilter(e)}
       />
       <CategoryButtonLabel $selected={index === clickedButton}>

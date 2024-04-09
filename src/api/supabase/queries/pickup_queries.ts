@@ -59,7 +59,7 @@ export async function fetchNRecentPickupTimes(n: number): Promise<Pickup[]> {
   const { data: getTimes, error } = await supabase
     .from('pickup_times')
     .select('*')
-    .order('start_time', { ascending: false })
+    .order('start_time', { ascending: true })
     .limit(n);
 
   if (error) {

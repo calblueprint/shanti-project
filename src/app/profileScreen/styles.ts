@@ -17,7 +17,8 @@ export const HeadingSpacing = styled.div`
 `;
 
 export const HeadingBack = styled.div`
-  margin-left: 300px;
+  width: 500px;
+  margin-right: 75px;
 `;
 
 export const AccountDetails = styled.div`
