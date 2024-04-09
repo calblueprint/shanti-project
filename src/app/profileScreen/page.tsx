@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
@@ -387,6 +387,12 @@ export default function Profile() {
   return (
     <Fullscreen>
       <NavBarMovedUP />
+      <ToastContainer
+        position="top-center"
+        autoClose={500}
+        limit={1}
+        hideProgressBar
+      />
       <ColumnDiv>
         <MostRecentOrder>
           <HeadingBack>
