@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import {
   Heading2,
   Body3,
+  Heading3,
   Heading1,
   Body1Bold,
   Body2Bold,
@@ -53,6 +54,7 @@ import {
   ColumnDiv,
   LogOutDiv,
   Fullscreen,
+  MessageDiv,
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
@@ -68,6 +70,39 @@ function FavoriteSection(props: {
     addOrRemoveProductFromFavorite(fav, false);
     setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
   }
+  if (Favorites.length > 0) {
+    return (
+      <main>
+        <FavoritesContainer>
+          <HeaderDiv>
+            <Heading2>Favorites</Heading2>
+            <ViewAllButton destination="./favorites" />
+          </HeaderDiv>
+          {Favorites.slice(0, 2).map(favorite => (
+            <FavoriteDiv key={favorite.id}>
+              <img
+                src={favorite.photo}
+                alt={favorite.name}
+                style={{ width: '75px', height: '75px' }}
+              />
+              <ProductNameDiv>
+                <p>
+                  {favorite.name}
+                  <br />
+                  Product ID: {favorite.id}
+                </p>
+              </ProductNameDiv>
+              <TransparentButton
+                onClick={() => clickFunctions({ fav: favorite })}
+              >
+                <HeartIcon />
+              </TransparentButton>
+            </FavoriteDiv>
+          ))}
+        </FavoritesContainer>
+      </main>
+    );
+  }
   return (
     <main>
       <FavoritesContainer>
@@ -75,27 +110,9 @@ function FavoriteSection(props: {
           <Heading2>Favorites</Heading2>
           <ViewAllButton destination="./favorites" />
         </HeaderDiv>
-        {Favorites.slice(0, 2).map(favorite => (
-          <FavoriteDiv key={favorite.id}>
-            <img
-              src={favorite.photo}
-              alt={favorite.name}
-              style={{ width: '75px', height: '75px' }}
-            />
-            <ProductNameDiv>
-              <p>
-                {favorite.name}
-                <br />
-                Product ID: {favorite.id}
-              </p>
-            </ProductNameDiv>
-            <TransparentButton
-              onClick={() => clickFunctions({ fav: favorite })}
-            >
-              <HeartIcon />
-            </TransparentButton>
-          </FavoriteDiv>
-        ))}
+        <MessageDiv>
+          <Heading3>No Favorite Items</Heading3>
+        </MessageDiv>
       </FavoritesContainer>
     </main>
   );
@@ -114,37 +131,39 @@ function OrderHistorySection(props: { Orders: Order[] }) {
         const firstOrder = Orders.filter(
           order => order.order_product_id_array.length !== 0,
         )[0];
-        //handleErrorlater
-        const firstOrderProductIds = firstOrder.order_product_id_array.slice(
-          0,
-          3,
-        );
+        // handleErrorlater
+        if (firstOrder) {
+          const firstOrderProductIds = firstOrder.order_product_id_array.slice(
+            0,
+            3,
+          );
 
-        const productIds = await Promise.all(
-          firstOrderProductIds.map(productId =>
-            fetchOrderProductById(productId).then(
-              orderproduct => orderproduct.product_id,
+          const productIds = await Promise.all(
+            firstOrderProductIds.map(productId =>
+              fetchOrderProductById(productId).then(
+                orderproduct => orderproduct.product_id,
+              ),
             ),
-          ),
-        );
+          );
 
-        const productArray = await Promise.all(
-          productIds.map(async productId =>
-            fetchProductWithQuantityById(productId).then(product => product),
-          ),
-        );
+          const productArray = await Promise.all(
+            productIds.map(async productId =>
+              fetchProductWithQuantityById(productId).then(product => product),
+            ),
+          );
 
-        setFirstOrderProducts(productArray);
+          setFirstOrderProducts(productArray);
 
-        const timestamp = firstOrder.created_at;
-        const date = new Date(timestamp);
-        const options: Intl.DateTimeFormatOptions = {
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric',
-        };
-        const formattedDate = date.toLocaleDateString('en-US', options);
-        setFormattedDate(formattedDate);
+          const timestamp = firstOrder.created_at;
+          const date = new Date(timestamp);
+          const options: Intl.DateTimeFormatOptions = {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          };
+          const formattedDate = date.toLocaleDateString('en-US', options);
+          setFormattedDate(formattedDate);
+        }
       }
     }
     fetchFirstOrderProducts();
@@ -250,14 +269,9 @@ function OrderHistorySection(props: { Orders: Order[] }) {
           <Heading2>Order History</Heading2>
           <ViewAllButton destination="./orderHistory" />
         </HeaderDiv>
-        <div
-          style={{
-            marginTop: '20px',
-            width: '100%',
-          }}
-        >
-          <Heading4>No Current Orders to Display</Heading4>
-        </div>
+        <MessageDiv>
+          <Heading3>No Current Orders to Display</Heading3>
+        </MessageDiv>
       </OrderHistory>
     </main>
   );
@@ -278,13 +292,7 @@ function AccountDetailSectionDelivery(props: { user: User }) {
       <AccountDetails>
         <Heading2>Account Details</Heading2>
         <HeadingSpacing>
-          <Body2Bold>Email</Body2Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body3>{user?.email}</Body3>
-        </TextSpacing>
-        <HeadingSpacing>
-          <Body2>Name</Body2>
+          <Body2Bold>Name</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
           <Body3>
@@ -292,12 +300,25 @@ function AccountDetailSectionDelivery(props: { user: User }) {
           </Body3>
         </TextSpacing>
         <HeadingSpacing>
-          <Body2>Address</Body2>
+          <Body2Bold>Email</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body1>
+          <Body3>{user?.email}</Body3>
+        </TextSpacing>
+
+        <HeadingSpacing>
+          <Body2Bold>Phone</Body2Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body3>{user?.phone_numbers}</Body3>
+        </TextSpacing>
+        <HeadingSpacing>
+          <Body2Bold>Address</Body2Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body3>
             {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-          </Body1>
+          </Body3>
         </TextSpacing>
       </AccountDetails>
     </main>
@@ -382,7 +403,7 @@ export default function Profile() {
     getUser();
   }, []);
   if (user === undefined) {
-    return <p>Error Loading User</p>;
+    return <p> Loading User</p>;
   }
   return (
     <Fullscreen>
