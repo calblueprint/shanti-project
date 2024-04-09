@@ -179,3 +179,8 @@ export const InfoDiv = styled.div`
   gap: 32px;
   width: 500px;
 `;
+
+export const MostRecentOrder = styled.div`
+display: flex;
+flex-direction: row;
+`;
