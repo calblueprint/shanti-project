@@ -89,3 +89,8 @@ export type StorefrontButtons = {
   id: number;
   name: string;
 };
+
+export type DeliveryTime = {
+  delivery_group: DeliveryGroup;
+  delivery_time: Date;
+}
