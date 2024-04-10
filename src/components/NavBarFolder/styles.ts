@@ -1,26 +1,29 @@
 import styled from 'styled-components';
 
 import { User, ShoppingCart } from 'react-feather';
+import Link from 'next/link';
 import COLORS from '../../styles/colors';
 
 export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
-  width: 20px;
-  height: 20px;
-  background: ${COLORS.marineBlue};
-  border-radius: 50%;
-  text-align: center;
-  transform: translate(19px, -58px);
-  color: ${COLORS.white};
   display: ${props => (props.$isZero ? 'none' : 'content')};
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${COLORS.white};
+  background: ${COLORS.marineBlue};
 `;
 
 export const UserProfileIcon = styled(User)`
-  margin-left: 5px;
   color: ${COLORS.black};
 `;
 
 export const ShoppingCartIcon = styled(ShoppingCart)`
-  margin-left: 3px;
   color: ${COLORS.black};
 `;
 
@@ -28,23 +31,20 @@ export const NavBarComp = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: 140px;
-  padding-top: 20px;
+  align-items: center;
+  padding: 16px 32px;
   position: relative;
   width: 100%;
   background: ${COLORS.lightPeriwinkle};
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
-  z-index: 100;
 `;
 
 export const ButtonsDiv = styled.div`
-  width: 200px;
+  width: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding-top: 15px;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const LocationDiv = styled.div`
@@ -64,15 +64,11 @@ export const Addie = styled.p`
   margin-bottom: 30px;
 `;
 
-export const ProfileButton = styled.button`
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-`;
-export const ProfileFont = styled.div`
-  margin-left: 5px;
-  font-size: 18px;
-  font-style: normal;
+export const IconWithLabelLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
   color: ${COLORS.black};
+  position: relative;
 `;

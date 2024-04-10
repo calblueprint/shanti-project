@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ButtonsWrapper, QuantityButton, PlusMinusButton } from './styles';
+import {   QuantityButton, PlusMinusButton } from './styles';
 
 import {
   decreaseFromCart,
@@ -53,7 +53,7 @@ export default function Buttons(props: {
   // used hyphen instead of dash for display
 
   return (
-    <ButtonsWrapper>
+    
       <QuantityButton>
         <PlusMinusButton
           type="button"
@@ -71,6 +71,6 @@ export default function Buttons(props: {
           +
         </PlusMinusButton>
       </QuantityButton>
-    </ButtonsWrapper>
+   
   );
 }
