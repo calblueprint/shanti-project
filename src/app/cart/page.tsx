@@ -3,8 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
-import BackButton from '../../components/BackButton/BackButton';
 import { Heading1 } from '@/styles/fonts';
+import BackButton from '../../components/BackButton/BackButton';
 
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 
@@ -15,12 +15,6 @@ import {
 import CartItem from './cartItem';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
-  OrderButton,
-  DeliveryContainer,
-  OrderContainer,
-  BackButtonDiv,
-  InformationContainer,
-  OutterDiv,
   CartItemsDiv,
   PageDiv,
   CheckoutButton,
@@ -82,7 +76,7 @@ export default function OrderPage() {
             <CheckoutButton
               // change this function so that the flow makes sense and that there is items within the cart
               onClick={() => checkDelivery()}
-              disabled={numberOfItems == 0}
+              disabled={numberOfItems === 0}
             >
               Check Out
             </CheckoutButton>
