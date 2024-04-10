@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Body1Bold, Body2 } from '@/styles/fonts';
+import { Body1Bold, Body2, Heading1 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -21,6 +21,7 @@ import {
   TransparentButton,
   ViewItem,
   Fullscreen,
+  ImageLinkWrapper,
 } from './styles';
 
 import { Product } from '../../schema/schema';
@@ -48,15 +49,17 @@ export default function FavoritesPage() {
       <NavBar />
       <OutterBox>
         <BackButton destination="./profileScreen" />
-        <h1>Favorites</h1>
+        <Heading1>Favorites</Heading1>
         <OutterFavoriteDiv>
           {Favorites.map(favorite => (
             <FavoriteDiv key={favorite.id}>
-              <img
-                src={favorite.photo}
-                alt={favorite.name}
-                style={{ width: '150px', height: '150px' }}
-              />
+              <ImageLinkWrapper href={'' + favorite.id}>
+                <img
+                  src={favorite.photo}
+                  alt={favorite.name}
+                  style={{ width: '150px', height: '150px' }}
+                />
+              </ImageLinkWrapper>
 
               <ProductNameDiv>
                 <Body1Bold>{favorite.name}</Body1Bold>

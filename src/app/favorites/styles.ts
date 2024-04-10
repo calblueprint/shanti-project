@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import { Heart } from 'react-feather';
+import Link from "next/link";
+import COLORS from '@/styles/colors';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -58,6 +60,7 @@ export const HeartIcon = styled(Heart)`
 export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
+  cursor:pointer;
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
@@ -93,3 +96,16 @@ export const Fullscreen = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const ImageLinkWrapper = styled(Link)`
+width:100px;
+height:100px;
+background-color:${COLORS.lightGrey};
+padding:32px;
+margin-bottom:8px;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow: 1px 1px 4px 1px rgba(0,0,0,.1);
+`;
+
