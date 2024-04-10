@@ -1,10 +1,3 @@
-export enum DeliveryGroup {
-  Group1 = 'Group1',
-  Group2 = 'Group2',
-  Group3 = 'Group3',
-  Group4 = 'Group4',
-};
-
 export type User = {
   id: string; // UUID
   email: string;
@@ -20,7 +13,7 @@ export type User = {
   num_pets: number; // Integer value containing number of pets
   phone_numbers: string; // User's phone number for pick up orders
   pet_prescription: string[]; // JSONB with pet_name as key and perscription as value
-  delivery_group: DeliveryGroup; // When someone's order will be delivered 
+  delivery_group: number; // When someone's order will be delivered 
 };
 
 export enum OrderStatus {
@@ -91,6 +84,6 @@ export type StorefrontButtons = {
 };
 
 export type DeliveryTime = {
-  delivery_group: DeliveryGroup;
+  delivery_group: number;
   delivery_time: Date;
 }
