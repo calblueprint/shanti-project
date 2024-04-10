@@ -164,3 +164,18 @@ export const MessageDiv = styled.div`
   align-items: center;
   height: 250px;
 `;
+
+export const Hover = styled.div<{ $ishovering?: boolean }>`
+  visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
+  margin-bottom: 7px;
+  color: black;
+  border: none;
+  width: 156px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--Light-Periwinkle, #f4f7ff);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+  padding-top: 6px;
+  position: relative;
+  text-align: center;
+`;
