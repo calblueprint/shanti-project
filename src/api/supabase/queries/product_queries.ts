@@ -103,6 +103,7 @@ export async function convertCategoryToNumber(
 export async function fetchUnprescribedCategory(
   productType: string,
 ): Promise<Product[]> {
+  console.log(productType);
   const productTypeConverted = await convertCategoryToNumber(productType);
 
   const { data: products, error } = await supabase

@@ -16,21 +16,12 @@ import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
-  HeaderShiftLeft,
-  OrderSummaryDiv,
-  HeaderShiftRight,
-  OrderTotalDiv,
-  PShiftLeft,
-  WhiteBackgroundDiv,
   BackDiv,
   Backtext,
   PageDiv,
   CheckoutButton,
-  ItemSummaryDiv,
   ForceColumnDiv,
   RightColumnDiv,
-  Qty,
-  PShiftRight,
   PickupContent,
   PickupContainer,
   PickupTimeButton,

@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { fetchButtonCategories } from '@/api/supabase/queries/button_queries';
-import { Button, Label, IndividualContainer } from './styles';
+import {
+  CategoryButton,
+  CategoryButtonLabel,
+  IndividualContainer,
+} from './styles';
 
 import {
   fetchUserProducts,
@@ -42,11 +46,8 @@ export default function ProductButtons(props: {
       if (buttonCategories[i].name === category) {
         const ind = buttonCategories[i].id - 1;
         if (ind === clickedButton) {
-          // const tempArray = [...IsClickedButton];
-          // tempArray[ind] = !tempArray[ind];
-          // tempArray[0] = true;
           setCategoryWord('All');
-          // setIsClickedButton(tempArray);
+
           setClickedButton(0);
 
           if (productItem !== null) {
@@ -55,10 +56,8 @@ export default function ProductButtons(props: {
           return;
         }
         setClickedButton(ind);
-        // const arrayOfFalse = [false, false, false, false];
-        // arrayOfFalse[ind] = true;
+
         setCategoryWord(buttonCategories[i].name);
-        // setIsClickedButton(arrayOfFalse);
 
         break;
       }
@@ -69,7 +68,6 @@ export default function ProductButtons(props: {
     // Applying the filter to the categories of the product
 
     if (category !== 'All') {
-      console.log(category);
       const products = await filterUserProducts(category);
       if (products !== null) {
         setFiltredProducts(products);
@@ -84,15 +82,14 @@ export default function ProductButtons(props: {
 
   return (
     <IndividualContainer>
-      <Button
-        $pickColor={index === clickedButton}
+      <CategoryButton
+        $selected={index === clickedButton}
         key={value}
-        value={value}
-        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-          applyFilter(e)
-        }
+        onClick={e => applyFilter(e)}
       />
-      <Label $pickColor={index === clickedButton}>{content}</Label>
+      <CategoryButtonLabel $selected={index === clickedButton}>
+        {content}
+      </CategoryButtonLabel>
     </IndividualContainer>
   );
 }

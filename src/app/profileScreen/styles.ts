@@ -4,10 +4,10 @@ import { ToastContainer } from 'react-toastify';
 
 import { Heart } from 'react-feather';
 
+import COLORS from '@/styles/colors';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
-import COLORS from '@/styles/colors';
 
 export const TextSpacing = styled.div`
   margin-top: 10px;

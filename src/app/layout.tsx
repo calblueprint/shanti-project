@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
+// eslint-disable-next-line camelcase
 import { Public_Sans } from 'next/font/google';
 
-const publicSans =  Public_Sans({ subsets: ['latin'] });
+const publicSans = Public_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Shanti Project',

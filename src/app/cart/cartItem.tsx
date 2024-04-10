@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { Body2, Heading4Bold } from '@/styles/fonts';
 import { removeCartItem } from '../../api/supabase/queries/cart_queries';
-import { Body2,Body2Light,Heading4Bold } from '@/styles/fonts';
 import {
   FavoriteDiv,
   TrashIcon,
   TransparentButton,
-  Label,
+ 
   LabelBox,
-  ImageDiv,
+ 
   ImageBackground,
 } from './styles';
 
