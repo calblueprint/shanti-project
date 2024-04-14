@@ -93,4 +93,4 @@ export type StorefrontButtons = {
 export type DeliveryTime = {
   delivery_group: number;
   delivery_time: Date;
-}
+};
