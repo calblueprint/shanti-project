@@ -50,39 +50,39 @@ export default function OrderPage() {
   };
 
   return (
-    <div>
+    <PageDiv>
       <NavBar />
-
-      <PageDiv>
+      <div style={{ marginTop: '30px', marginLeft: '50px' }}>
         <BackButton destination="./storefront" />
-        <ContentDiv>
-          <LeftColumnDiv>
-            <Heading1>Cart</Heading1>
-            <CartItemsDiv>
-              {cart.map(cartItem => (
-                <CartItem
-                  key={cartItem.id}
-                  cartItemProduct={cartItem}
-                  setCart={setCart}
-                  cart={cart}
-                  setNumberOfItems={setNumberOfItems}
-                  numberOfItems={numberOfItems}
-                />
-              ))}
-            </CartItemsDiv>
-          </LeftColumnDiv>
-          <RightColumnDiv>
-            <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-            <CheckoutButton
-              // change this function so that the flow makes sense and that there is items within the cart
-              onClick={() => checkDelivery()}
-              disabled={numberOfItems === 0}
-            >
-              Check Out
-            </CheckoutButton>
-          </RightColumnDiv>
-        </ContentDiv>
-      </PageDiv>
-    </div>
+      </div>
+
+      <ContentDiv>
+        <LeftColumnDiv>
+          <Heading1>Cart</Heading1>
+          <CartItemsDiv>
+            {cart.map(cartItem => (
+              <CartItem
+                key={cartItem.id}
+                cartItemProduct={cartItem}
+                setCart={setCart}
+                cart={cart}
+                setNumberOfItems={setNumberOfItems}
+                numberOfItems={numberOfItems}
+              />
+            ))}
+          </CartItemsDiv>
+        </LeftColumnDiv>
+        <RightColumnDiv>
+          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
+          <CheckoutButton
+            // change this function so that the flow makes sense and that there is items within the cart
+            onClick={() => checkDelivery()}
+            disabled={numberOfItems === 0}
+          >
+            Check Out
+          </CheckoutButton>
+        </RightColumnDiv>
+      </ContentDiv>
+    </PageDiv>
   );
 }
