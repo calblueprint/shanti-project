@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { StorefrontWrapper } from './styles';
+import { StorefrontItemsWrapper } from './styles';
 
 import IndividualItem from './IndividualItem';
 
@@ -19,7 +19,7 @@ function Storefront({ products }: { products: Product[] }) {
   }, []);
 
   return (
-    <StorefrontWrapper>
+    <StorefrontItemsWrapper>
       {products.map(productVal => (
         <IndividualItem
           products={Favorites}
@@ -27,7 +27,7 @@ function Storefront({ products }: { products: Product[] }) {
           key={productVal.id}
         />
       ))}
-    </StorefrontWrapper>
+    </StorefrontItemsWrapper>
   );
 }
 
