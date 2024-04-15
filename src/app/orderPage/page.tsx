@@ -89,7 +89,7 @@ export default function OrderPage() {
           <Heading>{formatDate(order?.created_at)}</Heading>
           <StatusButton>
             {' '}
-            <Body1Bold>{order?.status}</Body1Bold>{' '}
+            <Body1Bold>{order?.order_status}</Body1Bold>{' '}
           </StatusButton>
         </OutterDiv>
         <OutterFavoriteDiv>

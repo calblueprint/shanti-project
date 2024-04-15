@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
 //
 
-import { Order, OrderProduct, Product } from '../../../schema/schema';
+import {
+  Order,
+  OrderProduct,
+  OrderStatus,
+  Product,
+} from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import { fetchProductByID } from './product_queries';
 import supabase from '../createClient';
@@ -33,13 +38,14 @@ export async function createOrder() {
     .insert({ user_id: user.id })
     .select('*')
     .single();
-
+  console.log(order);
   if (error) {
     throw new Error(`Error creating order: ${error.message}`);
   }
 
+  console.log(order.id);
   await supabase
-    .from('users')
+    .from('profiles')
     .update({ cart_id: order.id })
     .match({ id: user.id });
 }
@@ -68,7 +74,7 @@ export async function fetchOrdersByUser(): Promise<Order[]> {
     .from('order')
     .select('*')
     .eq('user_id', userId)
-    .neq('status', 'In Progress');
+    .neq('order_status', 'In Progress');
 
   if (error) {
     throw new Error(`Error fetching orders for user: ${error.message}`);
@@ -227,4 +233,42 @@ export async function updateCartPickupId(pickupId: number) {
     .from('order')
     .update({ pickup_time_id: pickupId })
     .eq('id', cartId);
+}
+
+/* Update the status of an order */
+export async function updateOrderStatus(
+  orderId: number,
+  orderStatus: OrderStatus,
+) {
+  await supabase
+    .from('order')
+    .update({ order_status: orderStatus })
+    .eq('id', orderId);
+}
+/**
+ * Gets user's most recent order
+ * @returns Promise<Order> - The most recent Order object, or throws an error if no order is found.
+ */
+export async function fetchCartIdFromUserfetchMostRecentOrderByUser(): Promise<Order> {
+  const user = await fetchUser();
+  const userId = user.id;
+  const { data, error } = await supabase
+    .from('order')
+    .select('*')
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false }) // Order by creation date in descending order
+    .limit(1); // Limit to only one order
+
+  if (error) {
+    throw new Error(
+      `Error fetching most recent order for user: ${error.message}`,
+    );
+  }
+
+  if (data.length === 0) {
+    throw new Error('No orders found for the user.');
+  }
+
+  // Return the first order in the data array
+  return data[0];
 }

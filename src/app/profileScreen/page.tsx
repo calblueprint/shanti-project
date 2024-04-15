@@ -171,19 +171,19 @@ function OrderHistorySection(props: { Orders: Order[] }) {
 
   if (firstOrderProducts.length > 0) {
     let backgroundColor = 'transparent';
-    if (Orders[0].status === 'Submitted') {
+    if (Orders[0].order_status === 'Submitted') {
       backgroundColor = '#CEE8BE';
-    } else if (Orders[0].status === 'Rejected') {
+    } else if (Orders[0].order_status === 'Rejected') {
       backgroundColor = '#FFDDDD';
-    } else if (Orders[0].status === 'Confirmed') {
+    } else if (Orders[0].order_status === 'Confirmed') {
       backgroundColor = '#C7DDFF';
     }
     let icon;
-    if (Orders[0].status === 'Submitted') {
+    if (Orders[0].order_status === 'Submitted') {
       icon = <CheckCircle />;
-    } else if (Orders[0].status === 'Rejected') {
+    } else if (Orders[0].order_status === 'Rejected') {
       icon = <X />;
-    } else if (Orders[0].status === 'Confirmed') {
+    } else if (Orders[0].order_status === 'Confirmed') {
       icon = <Check />;
     } else {
       icon = null;
@@ -230,7 +230,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
             >
               {icon}
               <Body2Bold style={{ marginLeft: '13px' }}>
-                {Orders[0].status}
+                {Orders[0].order_status}
               </Body2Bold>
             </div>
             <MostRecentOrder>
