@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { Heart } from 'react-feather';
 
+import COLORS from '@/styles/colors';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
@@ -26,7 +27,7 @@ export const AccountDetails = styled.div`
   width: 500px;
   height: 350px;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -42,7 +43,7 @@ export const OrderHistory = styled.div`
   width: 600px;
   height: 350px;
   border-radius: 10px;
-  background-color: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   padding-top: 23px;
   padding-right: 23px;
@@ -56,7 +57,7 @@ export const FavoritesContainer = styled.div`
   width: 600px;
   height: 350px;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   padding-top: 23px;
   padding-right: 23px;
@@ -65,7 +66,7 @@ export const FavoritesContainer = styled.div`
 `;
 
 export const LogOutButton = styled.button`
-  background: #1b3679;
+  background: ${COLORS.navy};
   color: #fff;
   text-align: center;
   font-size: 20px;

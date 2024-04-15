@@ -3,8 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
+import { Heading1 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
-import { Heading1 } from '../../styles/fonts';
 
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 
@@ -15,12 +15,12 @@ import {
 import CartItem from './cartItem';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
-  OrderButton,
-  DeliveryContainer,
-  OrderContainer,
-  BackButtonDiv,
-  InformationContainer,
-  OutterDiv,
+  CartItemsDiv,
+  PageDiv,
+  CheckoutButton,
+  LeftColumnDiv,
+  RightColumnDiv,
+  ContentDiv,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -52,30 +52,37 @@ export default function OrderPage() {
   return (
     <div>
       <NavBar />
-      <OutterDiv>
-        <BackButtonDiv>
-          <BackButton destination="/storefront" />
-        </BackButtonDiv>
-        <DeliveryContainer>
-          <InformationContainer>
-            <Heading1 style={{ marginBottom: '38px' }}>Cart</Heading1>
-            {cart.map(cartItem => (
-              <CartItem
-                key={cartItem.id}
-                cartItemProduct={cartItem}
-                setCart={setCart}
-                cart={cart}
-                setNumberOfItems={setNumberOfItems}
-                numberOfItems={numberOfItems}
-              />
-            ))}
-          </InformationContainer>
-          <OrderContainer>
+
+      <PageDiv>
+        <BackButton destination="./storefront" />
+        <ContentDiv>
+          <LeftColumnDiv>
+            <Heading1>Cart</Heading1>
+            <CartItemsDiv>
+              {cart.map(cartItem => (
+                <CartItem
+                  key={cartItem.id}
+                  cartItemProduct={cartItem}
+                  setCart={setCart}
+                  cart={cart}
+                  setNumberOfItems={setNumberOfItems}
+                  numberOfItems={numberOfItems}
+                />
+              ))}
+            </CartItemsDiv>
+          </LeftColumnDiv>
+          <RightColumnDiv>
             <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-            <OrderButton onClick={() => checkDelivery()}>Check Out</OrderButton>
-          </OrderContainer>
-        </DeliveryContainer>
-      </OutterDiv>
+            <CheckoutButton
+              // change this function so that the flow makes sense and that there is items within the cart
+              onClick={() => checkDelivery()}
+              disabled={numberOfItems === 0}
+            >
+              Check Out
+            </CheckoutButton>
+          </RightColumnDiv>
+        </ContentDiv>
+      </PageDiv>
     </div>
   );
 }

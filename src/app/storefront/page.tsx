@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { Heading1Bold } from '@/styles/fonts';
 import Storefront from './storefrontItems';
 
 import Footer from '../../components/FooterFolder/Footer';
-import { ShopAllText, Fullscreen, StorefrontBox } from './styles';
+import { StorefrontWrapper } from './styles';
 import { fetchUserProducts } from '../../api/supabase/queries/product_queries';
 import { Product } from '../../schema/schema';
 
@@ -31,7 +32,7 @@ export default function App() {
   }, []);
 
   return (
-    <Fullscreen>
+    <div>
       <StoreFrontNavBar
         setFilteredProducts={setFilteredProducts}
         setCategoryWord={setCategoryWord}
@@ -39,12 +40,12 @@ export default function App() {
         setClickedButton={setClickedButton}
       />
 
-      <ShopAllText>Shop {CategoryWord}</ShopAllText>
-      <StorefrontBox>
+      <StorefrontWrapper>
+        <Heading1Bold>Shop {CategoryWord}</Heading1Bold>
         <Storefront products={FilteredProducts} />
-      </StorefrontBox>
+      </StorefrontWrapper>
 
       <Footer />
-    </Fullscreen>
+    </div>
   );
 }

@@ -10,9 +10,7 @@ import {
   Heading1,
   Body1Bold,
   Body2Bold,
-  Body1,
   Body2,
-  Heading4,
 } from '@/styles/fonts';
 import {
   addOrRemoveProductFromFavorite,
