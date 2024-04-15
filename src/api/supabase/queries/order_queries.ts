@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
 //
 
-import { Order, OrderProduct, OrderStatus, Product } from '../../../schema/schema';
+import {
+  Order,
+  OrderProduct,
+  OrderStatus,
+  Product,
+} from '../../../schema/schema';
 import { fetchUser } from './user_queries';
 import { fetchProductByID } from './product_queries';
 import supabase from '../createClient';
@@ -33,18 +38,17 @@ export async function createOrder() {
     .insert({ user_id: user.id })
     .select('*')
     .single();
-    console.log(order);
+  console.log(order);
   if (error) {
     throw new Error(`Error creating order: ${error.message}`);
   }
 
-  console.log(order.id)
+  console.log(order.id);
   await supabase
     .from('profiles')
     .update({ cart_id: order.id })
     .match({ id: user.id });
 }
-
 
 /**
  * gets all orders by user id and sorted it by creation data
@@ -232,17 +236,20 @@ export async function updateCartPickupId(pickupId: number) {
 }
 
 /* Update the status of an order */
-export async function updateOrderStatus(orderId: number, orderStatus: OrderStatus) {
+export async function updateOrderStatus(
+  orderId: number,
+  orderStatus: OrderStatus,
+) {
   await supabase
     .from('order')
-    .update({order_status: orderStatus})
+    .update({ order_status: orderStatus })
     .eq('id', orderId);
 }
 /**
  * Gets user's most recent order
  * @returns Promise<Order> - The most recent Order object, or throws an error if no order is found.
  */
- export async function fetchCartIdFromUserfetchMostRecentOrderByUser(): Promise<Order> {
+export async function fetchCartIdFromUserfetchMostRecentOrderByUser(): Promise<Order> {
   const user = await fetchUser();
   const userId = user.id;
   const { data, error } = await supabase
@@ -253,7 +260,9 @@ export async function updateOrderStatus(orderId: number, orderStatus: OrderStatu
     .limit(1); // Limit to only one order
 
   if (error) {
-    throw new Error(`Error fetching most recent order for user: ${error.message}`);
+    throw new Error(
+      `Error fetching most recent order for user: ${error.message}`,
+    );
   }
 
   if (data.length === 0) {

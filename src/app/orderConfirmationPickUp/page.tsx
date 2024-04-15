@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
-import { fetchCurrentOrdersByUser, getOrderById } from '@/api/supabase/queries/order_queries';
+import {
+  fetchCurrentOrdersByUser,
+  getOrderById,
+} from '@/api/supabase/queries/order_queries';
 import {
   Body1,
   Body1Bold,
@@ -12,7 +15,8 @@ import {
   Heading3Bold,
   Heading4Bold,
 } from '@/styles/fonts';
-import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
+import { useSearchParams } from 'next/navigation';
+import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -39,7 +43,6 @@ import {
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
-import { useSearchParams } from 'next/navigation';
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
@@ -47,11 +50,12 @@ export default function OrderConfirmationPickUp() {
   const [pickupTime, setPickupTime] = useState<Pickup>();
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
-  console.log(orderIDFromSearch);
 
   useEffect(() => {
     async function fetchProducts() {
-      const cartItems = (await fetchCartItemsWithQuantity()) as Product[];
+      const cartItems = (await fetchCartItemsWithQuantityByID(
+        orderIDFromSearch,
+      )) as Product[];
       setCart(cartItems);
     }
 
@@ -94,7 +98,7 @@ export default function OrderConfirmationPickUp() {
 
               <OutterFavoriteDiv>
                 <TextDiv1>
-                  <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
+                  <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
                 </TextDiv1>
                 <ScrollDiv>
                   {Cart.map(cartItem => (

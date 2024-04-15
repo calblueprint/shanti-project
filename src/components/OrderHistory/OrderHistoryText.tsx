@@ -28,7 +28,6 @@ function formatDate(isoString: string) {
 interface OrderDetailsProps {
   date: string;
   orderNumber: string;
-  status: string; // Define more statuses if needed
   order: Order;
 }
 

@@ -22,6 +22,7 @@ export async function fetchCartItem(cartItemID: number): Promise<CartItem> {
     .select('*')
     .eq('id', cartItemID)
     .single();
+
   if (error) {
     throw new Error(`Error fetching cart item: ${error.message}`);
   }
@@ -214,4 +215,50 @@ export async function fetchCartIdFromUser() {
   const user = await fetchUser();
   const cartID = user.cart_id;
   return cartID;
+}
+/**
+ * get cart items in a user's cart by cart_id
+ * @returns Promise<CartItem[]> - An array of CartItem objects.
+ */
+export async function fetchCartById(cartId: string): Promise<CartItem[]> {
+  const { data, error } = await supabase
+    .from('order')
+    .select('*')
+    .match({ id: cartId })
+    .limit(1);
+
+  if (error) {
+    throw new Error(`Error fetching cart: ${error.message}`);
+  }
+  const products = data[0].order_product_id_array;
+  if (products !== null && products !== undefined) {
+    const productPromises = products.map(async (productID: number) => {
+      const product = await fetchCartItem(productID);
+      return product;
+    });
+    const fetchedProducts = await Promise.all(productPromises);
+    return fetchedProducts;
+  }
+
+  return [] as CartItem[];
+}
+
+export async function fetchCartItemsWithQuantityByID(
+  id: string | null,
+): Promise<ProductWithQuantity[]> {
+  if (id == null) throw new Error('no cartID');
+  const cart = await fetchCartById(id);
+  const productPromises = cart.map(async (item: CartItem) => {
+    const product = await fetchProductByID(item.product_id);
+    return {
+      name: product.name,
+      quantity: item.quantity,
+      photo: product.photo,
+      id: product.id,
+      category: await convertButtonNumberToCategory(product.category),
+    };
+  });
+
+  const fetchedProducts = await Promise.all(productPromises);
+  return fetchedProducts;
 }

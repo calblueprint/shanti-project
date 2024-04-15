@@ -7,9 +7,10 @@ import {
 } from '@/api/supabase/queries/user_queries';
 
 import { Body1, Body2Light, Heading3Bold, Heading4Bold } from '@/styles/fonts';
+import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
-import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
+import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -34,10 +35,14 @@ export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
   const [userAddress, setUserAddress] = useState<Address>();
-
+  const searchParams = useSearchParams();
+  const orderIDFromSearch = searchParams.get('orderID');
   useEffect(() => {
     async function fetchProducts() {
-      const cartItems = (await fetchCartItemsWithQuantity()) as Product[];
+      const cartItems = (await fetchCartItemsWithQuantityByID(
+        orderIDFromSearch,
+      )) as Product[];
+      console.log(cartItems);
       setCart(cartItems);
     }
 
@@ -62,7 +67,7 @@ export default function OrderConfirmationDelivery() {
               <BackButton destination="./storefront" />
               <Heading3Bold>Your order has been submitted</Heading3Bold>
               <OutterFavoriteDiv>
-                <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
+                <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
                 <ScrollDiv>
                   {Cart.map(cartItem => (
                     <FavoriteDiv key={cartItem.id}>
