@@ -13,7 +13,6 @@ export const FavoriteDiv = styled.div`
   margin-bottom: 50px;
   margin-top: 30px;
   margin-right: 20px;
-
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -109,7 +108,6 @@ export const NavBarMovedUP = styled(NavBar)`
 
 export const Label = styled.p`
   margin-top: 20px;
-  
 `;
 
 export const LabelBox1 = styled.div`
@@ -124,7 +122,6 @@ export const LabelBox = styled.div`
   padding: 20px;
   gap: 50px;
   margin-right: 30px;
-
 `;
 
 export const HeaderText = styled.h3`
@@ -256,7 +253,6 @@ export const WhiteBackgroundDiv = styled.div`
   padding-top: 20px;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
-
 
 export const BottomColumnDiv = styled.div`
   display: flex;
