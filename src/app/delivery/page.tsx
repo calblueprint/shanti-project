@@ -8,11 +8,12 @@ import {
 } from '@/api/supabase/queries/user_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import {
+  fetchCartIdFromUser,
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
 import { Heading1, Normal700Text } from '../../styles/fonts';
-import { ProductWithQuantity, User, Address } from '../../schema/schema';
+import { ProductWithQuantity, User, Address, OrderStatus } from '../../schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
@@ -24,6 +25,7 @@ import {
   BackButtonDiv,
   OutterDiv,
 } from './styles';
+import { createOrder, fetchCurrentOrdersByUser, updateOrderStatus } from '@/api/supabase/queries/order_queries';
 
 export default function App() {
   const [numberOfItems, setNumberOfItems] = useState(0);
@@ -68,7 +70,16 @@ export default function App() {
           <OrderContainer>
             <OrderSummary cart={cart} numberOfItems={numberOfItems} />
             <OrderButton
-              onClick={() => router.push('/orderConfirmationDelivery')}
+              onClick={async () => {
+                const firstOrder = (await fetchCartIdFromUser());
+                await updateOrderStatus(firstOrder, OrderStatus.Submitted);
+                await createOrder();
+                const newestOrder = (await fetchCartIdFromUser());
+                await updateOrderStatus(newestOrder, OrderStatus.inProgress);
+                console.log(newestOrder)
+                router.push('/orderConfirmationDelivery')
+              }
+              }
             >
               Place Order
             </OrderButton>

@@ -208,3 +208,9 @@ export async function fetchCartItemsWithQuantity(): Promise<
 
   return fetchedProducts;
 }
+
+export async function fetchCartIdFromUser() {
+  const user = await fetchUser();
+  const cartID = user.cart_id;
+  return cartID;
+}
