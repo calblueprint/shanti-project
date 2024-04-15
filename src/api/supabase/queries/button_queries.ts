@@ -12,6 +12,21 @@ export async function fetchButtonCategories(): Promise<StorefrontButtons[]> {
   return buttons;
 }
 
+export async function convertButtonNumberToCategory(
+  id: string,
+): Promise<string> {
+  const { data: buttonsCategory, error } = await supabase
+    .from('storefront_buttons')
+    .select('*')
+    .eq('id', id)
+    .single();
+  if (error) {
+    throw new Error(`Error fetching buttons: ${error.message}`);
+  }
+
+  return buttonsCategory.name;
+}
+
 export async function fetchButton() {
   return 0;
 }

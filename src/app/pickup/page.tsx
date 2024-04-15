@@ -16,21 +16,12 @@ import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
-  HeaderShiftLeft,
-  OrderSummaryDiv,
-  HeaderShiftRight,
-  OrderTotalDiv,
-  PShiftLeft,
-  WhiteBackgroundDiv,
   BackDiv,
   Backtext,
   PageDiv,
   CheckoutButton,
-  ItemSummaryDiv,
   ForceColumnDiv,
   RightColumnDiv,
-  Qty,
-  PShiftRight,
   PickupContent,
   PickupContainer,
   PickupTimeButton,
@@ -62,7 +53,7 @@ function DateInfoComponent(date: { date: unknown }) {
 
 //
 
-export default function Pickup() {
+export default function PickUp() {
   const [Cart, setCart] = useState<ProductWithQuantity[]>([]);
   const [numberOfItems, setNumberOfItems] = useState(0);
   const router = useRouter();
@@ -81,7 +72,6 @@ export default function Pickup() {
     }
     fetchProducts();
     fetchTimes();
-    console.log(Time);
   }, []);
 
   useEffect(() => {
