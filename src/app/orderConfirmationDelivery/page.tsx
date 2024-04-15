@@ -93,7 +93,7 @@ export default function OrderConfirmationDelivery() {
               <ShippingDetailsDiv>
                 <Heading3Bold>Delivery Information</Heading3Bold>
                 <DetailsHeader>Estimated Date</DetailsHeader>
-                <Body1>date</Body1>
+                <Body1>{user?.delivery_group}</Body1>
                 <DetailsHeader>Location</DetailsHeader>
                 <Body1>
                   {userAddress?.street}, {userAddress?.city},{' '}
