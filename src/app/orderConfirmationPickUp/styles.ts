@@ -8,10 +8,12 @@ export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-start;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
+  margin-right: 20px;
+
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -24,14 +26,33 @@ export const OutterFavoriteDiv = styled.div`
   width: 800px;
   max-height: 100%;
   margin-top: 20px;
-  margin-bottom: 30px;
-  margin-right: 40px;
+  margin-right: 60px;
   margin-left: 60px;
+  padding-right: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
 `;
 
 export const ScrollDiv = styled.div`
   overflow: scroll;
   width: 100%;
+`;
+
+export const ImageDiv = styled.div`
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.08);
+  width: 150px;
+  height: 150px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Wrapper = styled.div`
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BackDiv = styled.button`
@@ -88,14 +109,22 @@ export const NavBarMovedUP = styled(NavBar)`
 
 export const Label = styled.p`
   margin-top: 20px;
+  
+`;
+
+export const LabelBox1 = styled.div`
+  width: 250px;
+  height: 100%;
+  padding: 20px;
 `;
 
 export const LabelBox = styled.div`
   width: 150px;
   height: 100%;
   padding: 20px;
-  margin-left: 30px;
-  gap: 35px;
+  gap: 50px;
+  margin-right: 30px;
+
 `;
 
 export const HeaderText = styled.h3`
@@ -225,9 +254,9 @@ export const WhiteBackgroundDiv = styled.div`
   height: 430px;
   width: 350px;
   padding-top: 20px;
-
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
+
 
 export const BottomColumnDiv = styled.div`
   display: flex;

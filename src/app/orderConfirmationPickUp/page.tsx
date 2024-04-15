@@ -25,9 +25,12 @@ import {
   FavoriteDiv,
   OutterFavoriteDiv,
   LabelBox,
+  LabelBox1,
   ScrollDiv,
   ShippingDetailsDiv,
+  ImageDiv,
   BottomColumnDiv,
+  Wrapper,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
@@ -67,10 +70,8 @@ export default function OrderConfirmationPickUp() {
       startTime == null
         ? ['0', '0', '0']
         : startTime?.substring(0, 10).split('-');
-    const dateStr = `${date[2]}/${date[1]}/${date[0]}`;
-    const start = startTime?.substring(11, 16);
-    const end = endTime?.substring(11, 16);
-    return `${dateStr} (${start} - ${end})`;
+    const dateStr = `${date[1]}/${date[2]}/${date[0]}`;
+    return `${dateStr}`;
   }
 
   return (
@@ -86,6 +87,7 @@ export default function OrderConfirmationPickUp() {
               <TextDiv>
                 <Heading3Bold>Your order has been submitted</Heading3Bold>
               </TextDiv>
+              
               <OutterFavoriteDiv>
                 <TextDiv1>
                   <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
@@ -93,32 +95,40 @@ export default function OrderConfirmationPickUp() {
                 <ScrollDiv>
                   {Cart.map(cartItem => (
                     <FavoriteDiv key={cartItem.id}>
+                      <ImageDiv>
                       <img
                         src={cartItem.photo}
                         alt={cartItem.name}
                         style={{
-                          width: '150px',
-                          height: '150px',
-                          marginLeft: '30px',
+                          width: '100px',
+                          height: '100px',
+                        
                         }}
                       />
-                      <LabelBox>
+                      </ImageDiv>
+                      <LabelBox1>
                         <Body1Bold>{cartItem.name}</Body1Bold>
+                        <br />
                         <Body2Light>Category: {cartItem.category}</Body2Light>
+                      </LabelBox1>
+                      <LabelBox>
+                        <Body1Bold>Quantity: {cartItem.quantity}</Body1Bold>                        
                       </LabelBox>
                     </FavoriteDiv>
+
                   ))}
                 </ScrollDiv>
               </OutterFavoriteDiv>
+              
             </LeftColumnDiv>
             <RightColumnDiv>
               <ShippingDetailsDiv>
                 <Heading3Bold>Delivery Information</Heading3Bold>
-                <DetailsHeader>Pick Up Date</DetailsHeader>
-                <Body1>{organizePickupTime()}</Body1>
+                <DetailsHeader>Time Slot</DetailsHeader>
+                <Body1>{organizePickupTime()} (10:00 am - 12:30 pm)</Body1>
                 <DetailsHeader>Location</DetailsHeader>
                 <Body1>
-                  Location: 3170 23rd Street, San Francisco, CA 94110
+                  3170 23rd Street, San Francisco, CA 94110
                 </Body1>
               </ShippingDetailsDiv>
             </RightColumnDiv>
