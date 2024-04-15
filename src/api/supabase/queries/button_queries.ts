@@ -13,8 +13,8 @@ export async function fetchButtonCategories(): Promise<StorefrontButtons[]> {
 }
 
 export async function convertButtonNumberToCategory(
-  id: number,
-): Promise<StorefrontButtons> {
+  id: string,
+): Promise<string> {
   const { data: buttonsCategory, error } = await supabase
     .from('storefront_buttons')
     .select('*')
@@ -24,7 +24,7 @@ export async function convertButtonNumberToCategory(
     throw new Error(`Error fetching buttons: ${error.message}`);
   }
 
-  return buttonsCategory;
+  return buttonsCategory.name;
 }
 
 export async function fetchButton() {

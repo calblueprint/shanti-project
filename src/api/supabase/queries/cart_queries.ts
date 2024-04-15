@@ -3,7 +3,7 @@ import supabase from '../createClient';
 import { fetchUser } from './user_queries';
 import { Product, ProductWithQuantity } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
-import { convertButtonNumbertoCategory } from './button_queries';
+import { convertButtonNumberToCategory } from './button_queries';
 // define cart item type
 export type CartItem = {
   id: number;
@@ -200,7 +200,7 @@ export async function fetchCartItemsWithQuantity(): Promise<
       quantity: item.quantity,
       photo: product.photo,
       id: product.id,
-      category: await convertButtonNumbertoCategory(product.category),
+      category: await convertButtonNumberToCategory(product.category),
     };
   });
 
