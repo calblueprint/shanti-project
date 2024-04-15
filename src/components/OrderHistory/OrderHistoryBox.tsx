@@ -53,7 +53,7 @@ export default function OrderDetailsWithProducts({
       <OrderHistoryText
         date={order.created_at}
         orderNumber={order.id.toString()}
-        status={order.status}
+        status={order.order_status}
         order={order}
       />
       <ImageCarousel images={imageUrls} />

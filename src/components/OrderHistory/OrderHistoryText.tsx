@@ -40,7 +40,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
     const queryString = querystring.stringify({ orderID });
     router.push(`/orderPage?${queryString}`);
   };
-  if (order.status === OrderStatus.Rejected) {
+  if (order.order_status === OrderStatus.Rejected) {
     return (
       <div
         style={{
@@ -81,7 +81,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
       </div>
     );
   }
-  if (order.status === OrderStatus.Complete) {
+  if (order.order_status === OrderStatus.Complete) {
     return (
       <div
         style={{
@@ -122,7 +122,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
       </div>
     );
   }
-  if (order.status === OrderStatus.Submitted) {
+  if (order.order_status === OrderStatus.Submitted) {
     return (
       <div
         style={{

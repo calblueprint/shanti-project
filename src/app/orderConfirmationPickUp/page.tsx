@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
-import { fetchCurrentOrdersByUser } from '@/api/supabase/queries/order_queries';
+import { fetchCurrentOrdersByUser, getOrderById } from '@/api/supabase/queries/order_queries';
 import {
   Body1,
   Body1Bold,
@@ -39,11 +39,15 @@ import {
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
+import { useSearchParams } from 'next/navigation';
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
   const [pickupTime, setPickupTime] = useState<Pickup>();
+  const searchParams = useSearchParams();
+  const orderIDFromSearch = searchParams.get('orderID');
+  console.log(orderIDFromSearch);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -54,8 +58,8 @@ export default function OrderConfirmationPickUp() {
     async function setUserDetails() {
       const fetchedUser = await fetchUser();
       setUser(fetchedUser);
-      const currOrder = await fetchCurrentOrdersByUser();
-      const pickup = await fetchPickupTimesByID(currOrder[0].pickup_time_id);
+      const currOrder = await getOrderById(Number(orderIDFromSearch));
+      const pickup = await fetchPickupTimesByID(currOrder.pickup_time_id);
       setPickupTime(pickup);
     }
 

@@ -4,15 +4,16 @@
 import { ArrowLeft } from 'react-feather';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import {
+  fetchCartIdFromUser,
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
-import { updateCartPickupId } from '@/api/supabase/queries/order_queries';
-import { Pickup, User, ProductWithQuantity } from '@/schema/schema';
+import { updateCartPickupId, updateOrderStatus, createOrder } from '@/api/supabase/queries/order_queries';
+import { Pickup, User, ProductWithQuantity, OrderStatus } from '@/schema/schema';
 import OrderSummary from '../../components/OrderSummaryFolder/OrderSummary';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import {
@@ -142,7 +143,14 @@ export default function PickUp() {
             onClick={async () => {
               if (selectedPickupIndex !== 0) {
                 await updateCartPickupId(selectedPickupIndex); // TODO double check if this is correct
-                router.push('/orderConfirmationPickUp');
+                const firstOrder = (await fetchCartIdFromUser());
+                await updateOrderStatus(firstOrder, OrderStatus.Submitted);
+                await createOrder();
+                const newestOrder = (await fetchCartIdFromUser());
+                console.log(newestOrder);
+                await updateOrderStatus(newestOrder, OrderStatus.inProgress);
+                router.push(`/orderConfirmationPickUp?${firstOrder}`);
+                
               } else {
                 // TODO handle the case where they didn't select a time!
               }
