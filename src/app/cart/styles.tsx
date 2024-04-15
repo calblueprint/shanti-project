@@ -33,6 +33,7 @@ export const CartItemsDiv = styled.div`
   width: 750px;
   overflow: auto;
   gap: 32px;
+  margin-top: 20px;
 `;
 
 export const ImageDiv = styled.div`
@@ -130,7 +131,9 @@ export const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 32px;
+  gap: 100px;
+  padding-left: 50px;
+  background-color: ${COLORS.offWhite};
 `;
 
 export const BackButtonDiv1 = styled.div`
@@ -242,17 +245,18 @@ export const PShiftLeft = styled.p`
 `;
 
 export const PageDiv = styled.div`
-  height: 100%;
+  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 32px;
-  gap: 32px;
+
   background-color: ${COLORS.offWhite};
 `;
 
 export const LeftColumnDiv = styled.div`
   flex: 1;
   padding-right: 20px;
+  margin-top: 20px;
 `;
 
 export const InformationText = styled.div`
@@ -334,6 +338,7 @@ export const OrderContainer = styled.div`
 
 export const RightColumnDiv = styled.div`
   flex: 1;
+  margin-top: 30px;
   padding-left: 20px;
 `;
 

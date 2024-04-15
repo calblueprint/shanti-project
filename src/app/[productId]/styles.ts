@@ -15,24 +15,29 @@ export const BackButton = styled.button`
 
 export const DescriptionContainer = styled.div`
   display: flex;
-  margin: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
   width: 1440px;
   height: 400px;
 `;
 
 export const ImageContainer = styled.div`
   margin: 50px;
-  width: 350px;
-  height: 350 px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   margin-left: 200px;
-  margin-right: 200px;
+  background-color: ${COLORS.lightGrey};
 `;
 
 export const TextContainer = styled.div`
   margin-left: 70px;
   width: 440px;
   height: 350px;
+  margin-top: 50px;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -83,7 +88,7 @@ export const AddToCartButton = styled.button`
 export const ToastPopUP = styled(ToastContainer)`
   position: fixed;
   z-index: 100;
-  transform: translatey(130px);
+  transform: translatey(90px);
 `;
 
 export const Fullscreen = styled.div`
