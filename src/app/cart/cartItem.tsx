@@ -7,9 +7,7 @@ import {
   FavoriteDiv,
   TrashIcon,
   TransparentButton,
- 
   LabelBox,
- 
   ImageBackground,
 } from './styles';
 

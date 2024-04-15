@@ -88,6 +88,7 @@ export async function filterProduct(productType: string): Promise<Product[]> {
 export async function convertCategoryToNumber(
   productType: string,
 ): Promise<StorefrontButtons> {
+  console.log(productType);
   const { data: buttonVal, error } = await supabase
     .from('storefront_buttons')
     .select('*')

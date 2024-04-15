@@ -68,6 +68,7 @@ export default function ProductButtons(props: {
     // Applying the filter to the categories of the product
 
     if (category !== 'All') {
+      console.log(category);
       const products = await filterUserProducts(category);
       if (products !== null) {
         setFiltredProducts(products);
@@ -85,6 +86,7 @@ export default function ProductButtons(props: {
       <CategoryButton
         $selected={index === clickedButton}
         key={value}
+        value={value}
         onClick={e => applyFilter(e)}
       />
       <CategoryButtonLabel $selected={index === clickedButton}>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {   QuantityButton, PlusMinusButton } from './styles';
+import { QuantityButton, PlusMinusButton } from './styles';
 
 import {
   decreaseFromCart,
@@ -53,24 +53,22 @@ export default function Buttons(props: {
   // used hyphen instead of dash for display
 
   return (
-    
-      <QuantityButton>
-        <PlusMinusButton
-          type="button"
-          style={{ cursor: 'pointer' }}
-          onClick={decreaseQuantity}
-        >
-          –
-        </PlusMinusButton>
-        <span>{count}</span>
-        <PlusMinusButton
-          type="button"
-          style={{ cursor: 'pointer' }}
-          onClick={increaseQuantity}
-        >
-          +
-        </PlusMinusButton>
-      </QuantityButton>
-   
+    <QuantityButton>
+      <PlusMinusButton
+        type="button"
+        style={{ cursor: 'pointer' }}
+        onClick={decreaseQuantity}
+      >
+        –
+      </PlusMinusButton>
+      <span>{count}</span>
+      <PlusMinusButton
+        type="button"
+        style={{ cursor: 'pointer' }}
+        onClick={increaseQuantity}
+      >
+        +
+      </PlusMinusButton>
+    </QuantityButton>
   );
 }

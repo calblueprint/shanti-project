@@ -53,11 +53,11 @@ export default function FavoritesPage() {
         <OutterFavoriteDiv>
           {Favorites.map(favorite => (
             <FavoriteDiv key={favorite.id}>
-              <ImageLinkWrapper href={`${  favorite.id}`}>
+              <ImageLinkWrapper href={`${favorite.id}`}>
                 <img
                   src={favorite.photo}
                   alt={favorite.name}
-                  style={{ width: '150px', height: '150px' }}
+                  style={{ width: '100px', height: '100px' }}
                 />
               </ImageLinkWrapper>
 

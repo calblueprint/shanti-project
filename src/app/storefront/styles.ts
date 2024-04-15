@@ -97,7 +97,7 @@ export const ImageLinkWrapper = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
 
 export const StorefrontWrapper = styled.div`

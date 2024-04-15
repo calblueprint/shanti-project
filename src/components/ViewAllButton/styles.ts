@@ -12,4 +12,4 @@ export const ViewAllDiv = styled.div`
   }
 `;
 
-export const placeHolder = "";
+export const placeHolder = '';

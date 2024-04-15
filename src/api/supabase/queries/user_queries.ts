@@ -1,6 +1,8 @@
+import { Lekton } from 'next/font/google';
 import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
+import { convertButtonNumberToCategory } from './button_queries';
 
 /**
  * fetchUser is a function that fetches the user data from the database and returns the user object.
