@@ -30,7 +30,6 @@ import {
   ShippingDetailsDiv,
   ImageDiv,
   BottomColumnDiv,
-  Wrapper,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
@@ -65,7 +64,6 @@ export default function OrderConfirmationPickUp() {
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
-    const endTime = pickupTime?.end_time.toLocaleString();
     const date =
       startTime == null
         ? ['0', '0', '0']
@@ -87,7 +85,6 @@ export default function OrderConfirmationPickUp() {
               <TextDiv>
                 <Heading3Bold>Your order has been submitted</Heading3Bold>
               </TextDiv>
-              
               <OutterFavoriteDiv>
                 <TextDiv1>
                   <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
@@ -96,15 +93,14 @@ export default function OrderConfirmationPickUp() {
                   {Cart.map(cartItem => (
                     <FavoriteDiv key={cartItem.id}>
                       <ImageDiv>
-                      <img
-                        src={cartItem.photo}
-                        alt={cartItem.name}
-                        style={{
-                          width: '100px',
-                          height: '100px',
-                        
-                        }}
-                      />
+                        <img
+                          src={cartItem.photo}
+                          alt={cartItem.name}
+                          style={{
+                            width: '100px',
+                            height: '100px',
+                          }}
+                        />
                       </ImageDiv>
                       <LabelBox1>
                         <Body1Bold>{cartItem.name}</Body1Bold>
@@ -112,14 +108,12 @@ export default function OrderConfirmationPickUp() {
                         <Body2Light>Category: {cartItem.category}</Body2Light>
                       </LabelBox1>
                       <LabelBox>
-                        <Body1Bold>Quantity: {cartItem.quantity}</Body1Bold>                        
+                        <Body1Bold>Quantity: {cartItem.quantity}</Body1Bold>
                       </LabelBox>
                     </FavoriteDiv>
-
                   ))}
                 </ScrollDiv>
               </OutterFavoriteDiv>
-              
             </LeftColumnDiv>
             <RightColumnDiv>
               <ShippingDetailsDiv>
@@ -127,9 +121,7 @@ export default function OrderConfirmationPickUp() {
                 <DetailsHeader>Time Slot</DetailsHeader>
                 <Body1>{organizePickupTime()} (10:00 am - 12:30 pm)</Body1>
                 <DetailsHeader>Location</DetailsHeader>
-                <Body1>
-                  3170 23rd Street, San Francisco, CA 94110
-                </Body1>
+                <Body1>3170 23rd Street, San Francisco, CA 94110</Body1>
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>

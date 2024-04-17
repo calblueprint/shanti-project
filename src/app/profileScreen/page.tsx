@@ -332,10 +332,10 @@ function AccountDetailSectionPickUp(props: { user: User }) {
       <AccountDetails>
         <Heading2>Account Details</Heading2>
         <HeadingSpacing>
-          <Body1Bold>Email</Body1Bold>
+          <Body1Bold>Email hi</Body1Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body2>{user?.email}</Body2>
+          <Body1>{user?.email}</Body1>
         </TextSpacing>
         <HeadingSpacing>
           <Body1Bold>Name</Body1Bold>

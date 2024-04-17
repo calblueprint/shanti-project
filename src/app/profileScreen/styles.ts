@@ -75,8 +75,8 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
   border-radius: 5px;
-  width: 405px;
-  height: 70px;
+  width: 500px;
+  height: 55px;
 `;
 /* transform: translateY(200px); */
 
@@ -154,7 +154,7 @@ export const LogOutDiv = styled.div`
   display: flex;
   justify-content: center;
   width: 500px;
-  height: 350px;
+  height: 100%;
 `;
 
 export const MessageDiv = styled.div`

@@ -13,7 +13,6 @@ export const FavoriteDiv = styled.div`
   margin-bottom: 50px;
   margin-top: 30px;
   margin-right: 20px;
-
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -27,9 +26,8 @@ export const OutterFavoriteDiv = styled.div`
   max-height: 100%;
   margin-top: 20px;
   margin-right: 60px;
-  margin-left: 60px;
-  padding-right: 20px;
-  padding-left: 10px;
+  margin-left: 40px;
+  padding-right: 15px;
   padding-top: 10px;
 `;
 
@@ -109,7 +107,6 @@ export const NavBarMovedUP = styled(NavBar)`
 
 export const Label = styled.p`
   margin-top: 20px;
-  
 `;
 
 export const LabelBox1 = styled.div`
@@ -124,7 +121,6 @@ export const LabelBox = styled.div`
   padding: 20px;
   gap: 50px;
   margin-right: 30px;
-
 `;
 
 export const HeaderText = styled.h3`
@@ -235,7 +231,6 @@ export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
   align-items: start;
-  margin-left: 10px;
   width: 100%;
 `;
 
@@ -244,7 +239,7 @@ export const BackButtonDiv = styled.div`
   flex-direction: row;
   text-align: left;
   width: 800px;
-  margin-left: 80px;
+  margin-left: 60px;
   margin-bottom: 40px;
 `;
 
@@ -257,7 +252,6 @@ export const WhiteBackgroundDiv = styled.div`
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
 
-
 export const BottomColumnDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -265,6 +259,7 @@ export const BottomColumnDiv = styled.div`
   justify-content: space-around;
   width: 100%;
   margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 30px;
   gap: 30px;
 `;
@@ -272,7 +267,7 @@ export const BottomColumnDiv = styled.div`
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 60px;
+  margin-left: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -291,6 +286,7 @@ export const PageDiv = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  margin-bottom: 40px;
 `;
 
 export const ShippingDetailsDiv = styled.div`
@@ -300,7 +296,7 @@ export const ShippingDetailsDiv = styled.div`
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-  width: 467px;
+  width: 475px;
   height: auto;
   max-height: 100%;
   padding: 36px 34px;
