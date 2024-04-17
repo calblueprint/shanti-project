@@ -53,6 +53,7 @@ export const HeartIcon = styled(Heart)`
   height: 30px;
   fill: #333286;
   margin-right: 25px;
+  margin-bottom: 40px;
 `;
 
 export const TransparentButton = styled.button`
@@ -96,6 +97,7 @@ export const Fullscreen = styled.div`
 
 export const Hover = styled.div<{ $ishovering?: boolean }>`
   visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
+  transform: translate(-10px, 0px);
   margin-bottom: 7px;
   color: black;
   border: none;

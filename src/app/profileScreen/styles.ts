@@ -108,6 +108,7 @@ export const HeartIcon = styled(Heart)`
   width: 25px;
   height: 25px;
   fill: #333286;
+  margin-bottom: 40px;
 `;
 
 export const BackButtonDiv = styled.div`
@@ -167,6 +168,7 @@ export const MessageDiv = styled.div`
 
 export const Hover = styled.div<{ $ishovering?: boolean }>`
   visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
+  transform: translate(0px, -1px);
   margin-bottom: 7px;
   color: black;
   border: none;
