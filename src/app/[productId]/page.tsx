@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
-import { Body1, Heading1, Body2Light } from '@/styles/fonts';
+import { Body1, Heading1, Body2Light, Body2Bold } from '@/styles/fonts';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +13,7 @@ import {
   DescriptionContainer,
   ToastPopUP,
   Fullscreen,
+  LeftColumnDiv
 } from './styles';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
@@ -53,11 +54,10 @@ export default function ItemDisplay({
         limit={1}
         hideProgressBar
       />
-      <div style={{ marginLeft: '250px', marginTop: '50px' }}>
-        <BackButton destination="./storefront" />
-      </div>
 
       <DescriptionContainer>
+        <LeftColumnDiv>
+        <BackButton destination="./storefront" />
         <ImageContainer>
           <img
             src={Item?.photo}
@@ -65,19 +65,19 @@ export default function ItemDisplay({
             style={{ width: '400px', height: '400px' }}
           />
         </ImageContainer>
+        </LeftColumnDiv>
         <TextContainer>
           <Heading1>{Item?.name}</Heading1>
           <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
-            {Item?.category}
+            <b>Category:</b> {Item?.category}
           </Body1>
           <Buttons productNumber={params.productId} />
-          <Body2Light style={{ paddingTop: '50px' }}>
-            Product ID: {Item?.id}
-          </Body2Light>
-          <Body2Light style={{ paddingTop: '20px' }}>
+          <Body2Bold style={{ paddingTop: '40px' }}>
             Product Details:
+          </Body2Bold>
+          <Body2Light style={{ paddingTop: '20px' }}>
+            {Item?.description}
           </Body2Light>
-          <Body2Light>{Item?.description}</Body2Light>
         </TextContainer>
       </DescriptionContainer>
     </Fullscreen>

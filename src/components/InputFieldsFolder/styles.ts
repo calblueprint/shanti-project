@@ -4,7 +4,7 @@ import COLORS from '../../styles/colors';
 
 export const Input1 = styled.input<{ $pickColor?: boolean }>`
   color: ${props => (props.$pickColor ? '#203354' : COLORS.black)};
-  background: ${props => (props.$pickColor ? '#ADD8E6' : COLORS.white)};
+  background: ${props => (props.$pickColor ? '#ADD8E6' : COLORS.lightGrey)};
   stroke-width: 1px;
   width: 420px;
   height: 40px;
@@ -31,8 +31,8 @@ export const Input = styled.input<{
   stroke-width: 1px;
   color: ${COLORS.black};
   border: 1.5px solid
-    ${props => (props.$wrongLogin ? COLORS.darkRed : COLORS.black)};
-  background: ${props => (props.$pickColor ? COLORS.lightRed : COLORS.white)};
+    ${props => (props.$wrongLogin ? COLORS.darkRed : COLORS.neutralGrey)};
+  background: ${props => (props.$pickColor ? COLORS.lightRed : COLORS.lightGrey)};
   width: 420px;
   height: 40px;
   padding-left: 10px;
