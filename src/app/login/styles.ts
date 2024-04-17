@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import COLORS from '../../styles/colors';
 
 export const LoginBox = styled.div`
+  display: flex;
   width: 500px;
   height: 420px;
-  border: 1px solid ${COLORS.neutralGrey};
   justify-self: center;
   align-self: center;
+  background-color: ${COLORS.white};
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 10px;
 `;
 
 export const LoginContent = styled.div`
@@ -15,7 +18,6 @@ export const LoginContent = styled.div`
   flex-direction: column;
   align-self: center;
   justify-self: center;
-  margin-top: 30px;
   text-color: ${COLORS.black};
 `;
 
@@ -78,8 +80,10 @@ export const Fullscreen = styled.div`
   width: 100%;
   height: 100vh;
   display: grid;
+  background-color: ${COLORS.lightGrey};
 `;
 
 export const InputField = styled.div`
   position: relative;
+  background-color: ${COLORS.lightGrey};
 `;

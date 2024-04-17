@@ -2,42 +2,37 @@ import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import COLORS from '../../styles/colors';
 
-export const BackButton = styled.button`
+
+export const LeftColumnDiv = styled.div`
   display: flex;
-  padding-top: 230px;
-  padding-left: 30px;
-  width: 100px;
-  height: 40px;
-  background-color: transparent;
-  border-color: transparent;
-  font-size: 15px;
+  flex-direction: column;
+  gap: 25px;
 `;
 
 export const DescriptionContainer = styled.div`
   display: flex;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-top: 50px;
   width: 1440px;
   height: 400px;
+  justify-content: space-around;
+  align-self: center;
+  justify-self: center;
 `;
 
 export const ImageContainer = styled.div`
-  margin: 50px;
   width: 500px;
   height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-left: 200px;
   background-color: ${COLORS.lightGrey};
 `;
 
 export const TextContainer = styled.div`
-  margin-left: 70px;
   width: 440px;
   height: 350px;
-  margin-top: 50px;
+  margin-top: 41px;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -46,7 +41,7 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   width: 450px;
   height: 50px;
-  margin-top: 20px;
+  margin-top: 40px;
 `;
 
 export const QuantityButton = styled.div`
@@ -94,4 +89,5 @@ export const ToastPopUP = styled(ToastContainer)`
 export const Fullscreen = styled.div`
   width: 100%;
   height: 100%;
+  display: grid;
 `;
