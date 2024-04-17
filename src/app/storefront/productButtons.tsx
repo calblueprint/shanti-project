@@ -9,7 +9,7 @@ import {
 } from '../../api/supabase/queries/product_queries';
 
 import { Product } from '../../schema/schema';
-
+/* hello */
 export default function ProductButtons(props: {
   value: string;
   setFiltredProducts: (category: Product[]) => void;
