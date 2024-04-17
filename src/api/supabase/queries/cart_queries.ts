@@ -200,12 +200,11 @@ export async function fetchCartItemsWithQuantity(): Promise<
       quantity: item.quantity,
       photo: product.photo,
       id: product.id,
-      category: await convertButtonNumbertoCategory(product.category),
+      category: product.category,
     };
   });
 
   const fetchedProducts = await Promise.all(productPromises);
-  console.log(fetchedProducts);
 
   return fetchedProducts;
 }

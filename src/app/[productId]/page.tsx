@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
+import { Body1, Heading1, Body2Light } from '@/styles/fonts';
 import { fetchProductByID } from '../../api/supabase/queries/product_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,6 +30,9 @@ export default function ItemDisplay({
     async function fetchProducts() {
       try {
         const response = await fetchProductByID(params.productId);
+        response.category = await convertButtonNumberToCategory(
+          response.category,
+        );
         if (response) {
           setItem(response);
         }
@@ -48,24 +53,31 @@ export default function ItemDisplay({
         limit={1}
         hideProgressBar
       />
-      <BackButton destination="./storefront" />
+      <div style={{ marginLeft: '250px', marginTop: '50px' }}>
+        <BackButton destination="./storefront" />
+      </div>
+
       <DescriptionContainer>
         <ImageContainer>
           <img
             src={Item?.photo}
             alt={Item?.name}
-            style={{ width: '350px', height: '350px' }}
+            style={{ width: '400px', height: '400px' }}
           />
         </ImageContainer>
         <TextContainer>
-          <h1>{Item?.name}</h1>
-          <h4 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
+          <Heading1>{Item?.name}</Heading1>
+          <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             {Item?.category}
-          </h4>
+          </Body1>
           <Buttons productNumber={params.productId} />
-          <p style={{ paddingTop: '50px' }}>Product ID: {Item?.id}</p>
-          <p style={{ paddingTop: '20px' }}>Product Details:</p>
-          <p>{Item?.description}</p>
+          <Body2Light style={{ paddingTop: '50px' }}>
+            Product ID: {Item?.id}
+          </Body2Light>
+          <Body2Light style={{ paddingTop: '20px' }}>
+            Product Details:
+          </Body2Light>
+          <Body2Light>{Item?.description}</Body2Light>
         </TextContainer>
       </DescriptionContainer>
     </Fullscreen>

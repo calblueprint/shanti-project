@@ -10,15 +10,36 @@ import Footer from '../../components/FooterFolder/Footer';
 export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 750px;
   width: 100%;
-  margin-bottom: 50px;
-  margin-top: 30px;
+`;
+
+export const ImageBackground = styled.div`
+  width: 200px;
+  height: 200px;
+  background-color: ${COLORS.lightGrey};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CartItemsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: 750px;
+  overflow: auto;
+  gap: 32px;
+  margin-top: 20px;
 `;
 
 export const ImageDiv = styled.div`
-  width: 130px;
+  width: 30px;
+  height: 30px;
+  color: ${COLORS.black};
 `;
 
 export const BackDiv = styled.button`
@@ -49,12 +70,6 @@ export const TrashIcon = styled(Trash2)`
   margin-top: 28px;
 `;
 
-export const NavBarZeroIndex = styled(NavBar)`
-  z-index: 0;
-  position: fixed;
-  margin-bottom: 100px;
-`;
-
 export const FooterMoved = styled(Footer)`
   transform: translateY(300px);
 `;
@@ -63,6 +78,7 @@ export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
   padding-left: 40px;
+  margin-bottom: 25px;
 `;
 
 export const NavBarMovedUP = styled(NavBar)`
@@ -89,6 +105,7 @@ export const QuantityButton = styled.div`
   background-color: ${COLORS.white};
   border: 2px solid ${COLORS.navy};
   color: ${COLORS.navy};
+  cursor: pointer;
 `;
 
 export const PlusMinusButton = styled.button`
@@ -108,17 +125,15 @@ export const Label = styled.p`
 
 export const LabelBox = styled.div`
   width: 150px;
-  height: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
 `;
 
-export const PageDiv1 = styled.div`
+export const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
-  min-height: 100%; /*or 100vh */
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  gap: 100px;
+  padding-left: 50px;
+  background-color: ${COLORS.offWhite};
 `;
 
 export const BackButtonDiv1 = styled.div`
@@ -145,7 +160,7 @@ export const Wrapper = styled.div`
 `;
 
 export const OrderSummaryDiv = styled.div`
-  overflow: scroll;
+  overflow: auto;
   width: 350px;
   height: 300px;
   padding: 20px;
@@ -172,7 +187,7 @@ export const OrderTotalDiv = styled.div`
 export const LeftColumnDiv1 = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 50px;
+  gap: 16px;
 `;
 
 export const CheckoutButton1 = styled.button`
@@ -201,8 +216,6 @@ export const Qty = styled.p`
 export const RightColumnDiv1 = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 200px;
-  margin-top: 100px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`
@@ -232,16 +245,18 @@ export const PShiftLeft = styled.p`
 `;
 
 export const PageDiv = styled.div`
+  height: auto;
+  width: 100%;
   display: flex;
-  flex-direction: col;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 20px;
+  flex-direction: column;
+
+  background-color: ${COLORS.offWhite};
 `;
 
 export const LeftColumnDiv = styled.div`
   flex: 1;
   padding-right: 20px;
+  margin-top: 20px;
 `;
 
 export const InformationText = styled.div`
@@ -323,6 +338,7 @@ export const OrderContainer = styled.div`
 
 export const RightColumnDiv = styled.div`
   flex: 1;
+  margin-top: 30px;
   padding-left: 20px;
 `;
 
@@ -343,6 +359,7 @@ export const BackButtonDiv = styled.div`
 `;
 
 export const CheckoutButton = styled.button`
+  width: 350px;
   background: #1b3679;
   color: white;
   border: none;

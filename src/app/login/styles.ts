@@ -76,7 +76,7 @@ export const EyeIcon = styled(Eye)`
 
 export const Fullscreen = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: grid;
 `;
 

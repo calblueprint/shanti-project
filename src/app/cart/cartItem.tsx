@@ -1,15 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { Body2, Heading4Bold } from '@/styles/fonts';
 import { removeCartItem } from '../../api/supabase/queries/cart_queries';
-
 import {
   FavoriteDiv,
   TrashIcon,
   TransparentButton,
-  Label,
   LabelBox,
-  ImageDiv,
+  ImageBackground,
 } from './styles';
 
 import Buttons from './Buttons';
@@ -37,33 +36,31 @@ export default function CartItem(props: {
   }
 
   return (
-    <div>
-      <FavoriteDiv key={cartItemProduct.id}>
-        <ImageDiv>
-          <img
-            src={cartItemProduct.photo}
-            alt={cartItemProduct.name}
-            style={{ width: '130px', height: '130px', padding: '20px' }}
-          />
-        </ImageDiv>
-        <LabelBox>
-          <Label>{cartItemProduct.name}</Label>
-          <p>Category: {cartItemProduct.category}</p>
-        </LabelBox>
-        <Buttons
-          productNumber={cartItemProduct.id}
-          quantity={cartItemProduct.quantity}
-          setNumberOfItems={setNumberOfItems}
-          numberOfItems={numberOfItems}
-          count={count}
-          setCount={setCount}
-          setCart={setCart}
-          cart={cart}
+    <FavoriteDiv key={cartItemProduct.id}>
+      <ImageBackground>
+        <img
+          src={cartItemProduct.photo}
+          alt={cartItemProduct.name}
+          style={{ width: '150px', height: '150px', objectFit: 'cover' }}
         />
-        <TransparentButton onClick={() => removeProduct()}>
-          <TrashIcon style={{ cursor: 'pointer' }} />
-        </TransparentButton>
-      </FavoriteDiv>
-    </div>
+      </ImageBackground>
+      <LabelBox>
+        <Heading4Bold>{cartItemProduct.name}</Heading4Bold>
+        <Body2>Category: {cartItemProduct.category}</Body2>
+      </LabelBox>
+      <Buttons
+        productNumber={cartItemProduct.id}
+        quantity={cartItemProduct.quantity}
+        setNumberOfItems={setNumberOfItems}
+        numberOfItems={numberOfItems}
+        count={count}
+        setCount={setCount}
+        setCart={setCart}
+        cart={cart}
+      />
+      <TransparentButton onClick={() => removeProduct()}>
+        <TrashIcon style={{ cursor: 'pointer' }} />
+      </TransparentButton>
+    </FavoriteDiv>
   );
 }
