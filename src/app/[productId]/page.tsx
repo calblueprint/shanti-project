@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
-import { Body1, Heading1, Body2Light, Body2Bold } from '@/styles/fonts';
-import { fetchProductByID } from '../../api/supabase/queries/product_queries';
+import { Body1, Heading1, Body2Light, Body2Bold, Body3 } from '@/styles/fonts';
+import { fetchProductByID, fetchUserProducts } from '../../api/supabase/queries/product_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,9 +13,13 @@ import {
   DescriptionContainer,
   ToastPopUP,
   Fullscreen,
-  LeftColumnDiv
+  LeftColumnDiv,
+  FavoritePopup,
+  HeartContainer,
+  HeartIcon,
+  TopRightContainer
 } from './styles';
-
+import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import { Product } from '../../schema/schema';
 import Buttons from './Buttons';
@@ -26,6 +30,10 @@ export default function ItemDisplay({
   params: { productId: number };
 }) {
   const [Item, setItem] = useState<Product>();
+  const [IsFavorite, setIsFavorite] = useState(
+    false
+  );
+  const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -34,8 +42,12 @@ export default function ItemDisplay({
         response.category = await convertButtonNumberToCategory(
           response.category,
         );
+        const data = (await fetchUserProducts()) as Product[];
+
+        setIsFavorite(!!data.find(item => item.id === params.productId))
         if (response) {
           setItem(response);
+          setFilteredProducts(data);
         }
       } catch (error) {
         // console.error(error);
@@ -44,6 +56,11 @@ export default function ItemDisplay({
 
     fetchProducts();
   }, [params.productId]);
+
+  async function handleFavorite() {
+    await addOrRemoveProductFromFavorite(await fetchProductByID(params.productId), !IsFavorite);
+    setIsFavorite(!IsFavorite);
+  }
 
   return (
     <Fullscreen>
@@ -67,8 +84,18 @@ export default function ItemDisplay({
         </ImageContainer>
         </LeftColumnDiv>
         <TextContainer>
+        <TopRightContainer>
           <Heading1>{Item?.name}</Heading1>
-          <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
+          <HeartContainer onClick={() => handleFavorite()}>
+        <FavoritePopup>
+          <Body3>
+            {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+          </Body3>
+        </FavoritePopup>
+        <HeartIcon $favorited={IsFavorite} />
+      </HeartContainer>
+      </TopRightContainer>
+      <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             <b>Category:</b> {Item?.category}
           </Body1>
           <Buttons productNumber={params.productId} />

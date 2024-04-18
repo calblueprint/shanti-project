@@ -112,6 +112,7 @@ export async function arrayOfFavorites(): Promise<Product[]> {
   return arrayOfProducts;
 }
 
+
 /**
  * fetchUserAddress: Get's a user's address based on their UUID
  * @param uuid: String containing the uuid of the user
