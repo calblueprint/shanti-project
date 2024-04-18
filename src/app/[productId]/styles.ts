@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
+import { Body3 } from '@/styles/fonts';
+import { Heart } from 'react-feather';
 import COLORS from '../../styles/colors';
-
 
 export const LeftColumnDiv = styled.div`
   display: flex;
@@ -17,6 +18,12 @@ export const DescriptionContainer = styled.div`
   justify-content: space-around;
   align-self: center;
   justify-self: center;
+`;
+
+export const TopRightContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 440px;
 `;
 
 export const ImageContainer = styled.div`
@@ -66,6 +73,7 @@ export const PlusMinusButton = styled.button`
   font-size: 20px;
   color: ${COLORS.navy};
 `;
+
 export const AddToCartButton = styled.button`
   width: 265px;
   height: 50px;
@@ -78,6 +86,45 @@ export const AddToCartButton = styled.button`
   line-height: normal;
   color: ${COLORS.white};
   border-color: transparent;
+`;
+
+export const HeartIcon = styled(Heart)<{ $favorited: boolean }>`
+  width: 30px;
+  height: 30px;
+  color: ${props => (props.$favorited ? COLORS.marineBlue : COLORS.black)};
+  fill: ${props => (props.$favorited ? COLORS.marineBlue : 'none')};
+  position: relative;
+`;
+
+export const HeartContainer = styled.button`
+  right: 16px;
+  top: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
+export const FavoritePopup = styled.div`
+  position: absolute;
+  visibility: hidden;
+  width: 150px;
+  border-radius: 8px;
+  padding: 8px;
+  // Find better way to refactor this, it shouldn't need a calc
+  transform: translate(calc(-50% + 15px), -40px);
+  z-index: 1;
+
+  color: ${COLORS.black};
+  background: ${COLORS.lightPeriwinkle};
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+
+  ${Body3} {
+    display: inline;
+  }
+
+  ${HeartContainer}:hover & {
+    visibility: visible;
+  }
 `;
 
 export const ToastPopUP = styled(ToastContainer)`
