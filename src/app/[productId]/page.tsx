@@ -62,7 +62,7 @@ export default function ItemDisplay({
           <img
             src={Item?.photo}
             alt={Item?.name}
-            style={{ width: '400px', height: '400px' }}
+            style={{ width: '400px', height: '400px', objectFit: 'cover' }}
           />
         </ImageContainer>
         <TextContainer>

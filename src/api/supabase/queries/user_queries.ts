@@ -10,12 +10,19 @@ import { convertButtonNumberToCategory } from './button_queries';
  */
 export async function fetchUser(): Promise<User> {
   const {
-    data: { user },
+    data: { session },
     error,
-  } = await supabase.auth.getUser();
+  } = await supabase.auth.getSession();
+
   if (error) {
-    throw new Error(`Error fetching user: ${error.message}`);
+    throw new Error(`Error fetching session: ${error.message}`);
   }
+
+  if (!session) {
+    throw new Error(`Session is null`);
+  }
+
+  const user = session.user;
 
   if (user !== null) {
     const { data, error: error1 } = await supabase
