@@ -13,7 +13,6 @@ import {
   Body2,
 } from '@/styles/fonts';
 import {
-  addOrRemoveProductFromFavorite,
   arrayOfFavorites,
   fetchUser,
   fetchCurrentUserAddress,
@@ -55,7 +54,6 @@ import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
 import IndividualItem from './individualItem';
 
-
 function FavoriteSection(props: {
   Favorites: Product[];
   setFavorites: (category: Product[]) => void;
@@ -71,11 +69,11 @@ function FavoriteSection(props: {
           </HeaderDiv>
           {Favorites.slice(0, 2).map(favorite => (
             <IndividualItem
-            key={favorite.id}
-            favorite={favorite}
-            setFavorites={setFavorites}
-            Favorites={Favorites}
-          />
+              key={favorite.id}
+              favorite={favorite}
+              setFavorites={setFavorites}
+              Favorites={Favorites}
+            />
           ))}
         </FavoritesContainer>
       </main>
