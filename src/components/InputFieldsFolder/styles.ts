@@ -32,7 +32,8 @@ export const Input = styled.input<{
   color: ${COLORS.black};
   border: 1.5px solid
     ${props => (props.$wrongLogin ? COLORS.darkRed : COLORS.neutralGrey)};
-  background: ${props => (props.$pickColor ? COLORS.lightRed : COLORS.lightGrey)};
+  background: ${props =>
+    props.$pickColor ? COLORS.lightRed : COLORS.lightGrey};
   width: 420px;
   height: 40px;
   padding-left: 10px;

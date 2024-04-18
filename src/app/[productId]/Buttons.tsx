@@ -11,7 +11,6 @@ import {
 
 import { addToCart } from '../../api/supabase/queries/cart_queries';
 
-
 export default function Buttons(props: { productNumber: number }) {
   const [quantity, setQuantity] = useState<number>(1);
   const { productNumber } = props;
@@ -36,11 +35,11 @@ export default function Buttons(props: { productNumber: number }) {
     <ButtonsWrapper>
       <QuantityButton>
         <PlusMinusButton type="button" onClick={decreaseQuantity}>
-          <Minus size="20"/>
+          <Minus size="20" />
         </PlusMinusButton>
         <Body1Bold>{quantity}</Body1Bold>
         <PlusMinusButton type="button" onClick={increaseQuantity}>
-          <Plus size="20"/>
+          <Plus size="20" />
         </PlusMinusButton>
       </QuantityButton>
 

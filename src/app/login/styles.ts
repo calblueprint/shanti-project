@@ -9,7 +9,7 @@ export const LoginBox = styled.div`
   justify-self: center;
   align-self: center;
   background-color: ${COLORS.white};
-  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 `;
 

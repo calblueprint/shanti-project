@@ -17,20 +17,20 @@ export default function IndividualItem(props: {
 }) {
   const { favorite, Favorites, setFavorites } = props;
   const [hovering, setHovering] = useState(false);
-  
+
   useEffect(() => {
     async function changeCategory() {
-        try {
-            favorite.category = await convertButtonNumberToCategory(
-              favorite.category,
-            );
-          } catch (error) {
-            // console.error(error);
-          }
+      try {
+        favorite.category = await convertButtonNumberToCategory(
+          favorite.category,
+        );
+      } catch (error) {
+        // console.error(error);
       }
+    }
 
-      changeCategory();
-  }, []);
+    changeCategory();
+  }, [favorite]);
 
   async function clickFunctions(props2: { fav: Product }) {
     const { fav } = props2;
@@ -40,12 +40,12 @@ export default function IndividualItem(props: {
 
   return (
     <FavoriteDiv key={favorite.id}>
-              <img
-                src={favorite.photo}
-                alt={favorite.name}
-                style={{ width: '75px', height: '75px' }}
-              />
-                <ProductNameDiv>
+      <img
+        src={favorite.photo}
+        alt={favorite.name}
+        style={{ width: '75px', height: '75px' }}
+      />
+      <ProductNameDiv>
         <Body1Bold>{favorite.name}</Body1Bold>
         <Body2>Category: {favorite.category}</Body2>
       </ProductNameDiv>
@@ -59,6 +59,6 @@ export default function IndividualItem(props: {
         </Hover>
         <HeartIcon />
       </TransparentButton>
-            </FavoriteDiv>
+    </FavoriteDiv>
   );
 }

@@ -26,20 +26,20 @@ export default function IndividualItem(props: {
   const { favorite, Favorites, setFavorites } = props;
   const router = useRouter();
   const [hovering, setHovering] = useState(false);
-  
+
   useEffect(() => {
     async function changeCategory() {
-        try {
-            favorite.category = await convertButtonNumberToCategory(
-              favorite.category,
-            );
-          } catch (error) {
-            // console.error(error);
-          }
+      try {
+        favorite.category = await convertButtonNumberToCategory(
+          favorite.category,
+        );
+      } catch (error) {
+        // console.error(error);
       }
+    }
 
-      changeCategory();
-  }, []);
+    changeCategory();
+  }, [favorite]);
 
   async function clickFunctions(props2: { fav: Product }) {
     const { fav } = props2;

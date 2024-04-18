@@ -4,17 +4,11 @@ import { useState, useEffect } from 'react';
 import { Heading1 } from '@/styles/fonts';
 import BackButton from '../../components/BackButton/BackButton';
 
-import {
-  arrayOfFavorites,
-} from '../../api/supabase/queries/user_queries';
+import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
-import {
-  OutterFavoriteDiv,
-  OutterBox,
-  Fullscreen,
-} from './styles';
+import { OutterFavoriteDiv, OutterBox, Fullscreen } from './styles';
 import IndividualItem from './individualItem';
 
 import { Product } from '../../schema/schema';
@@ -39,11 +33,11 @@ export default function FavoritesPage() {
         <OutterFavoriteDiv>
           {Favorites.map(favorite => (
             <IndividualItem
-            key={favorite.id}
-            favorite={favorite}
-            setFavorites={setFavorites}
-            Favorites={Favorites}
-          />
+              key={favorite.id}
+              favorite={favorite}
+              setFavorites={setFavorites}
+              Favorites={Favorites}
+            />
           ))}
         </OutterFavoriteDiv>
       </OutterBox>

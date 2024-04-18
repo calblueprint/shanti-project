@@ -3,7 +3,10 @@
 import { useEffect, useState } from 'react';
 import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import { Body1, Heading1, Body2Light, Body2Bold, Body3 } from '@/styles/fonts';
-import { fetchProductByID, fetchUserProducts } from '../../api/supabase/queries/product_queries';
+import {
+  fetchProductByID,
+  fetchUserProducts,
+} from '../../api/supabase/queries/product_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,7 +20,7 @@ import {
   FavoritePopup,
   HeartContainer,
   HeartIcon,
-  TopRightContainer
+  TopRightContainer,
 } from './styles';
 import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
 import NavBar from '../../components/NavBarFolder/NavBar';
@@ -30,9 +33,7 @@ export default function ItemDisplay({
   params: { productId: number };
 }) {
   const [Item, setItem] = useState<Product>();
-  const [IsFavorite, setIsFavorite] = useState(
-    false
-  );
+  const [IsFavorite, setIsFavorite] = useState(false);
   const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function ItemDisplay({
         );
         const data = (await fetchUserProducts()) as Product[];
 
-        setIsFavorite(!!data.find(item => item.id === params.productId))
+        setIsFavorite(!!data.find(item => item.id === params.productId));
         if (response) {
           setItem(response);
           setFilteredProducts(data);
@@ -58,7 +59,10 @@ export default function ItemDisplay({
   }, [params.productId]);
 
   async function handleFavorite() {
-    await addOrRemoveProductFromFavorite(await fetchProductByID(params.productId), !IsFavorite);
+    await addOrRemoveProductFromFavorite(
+      await fetchProductByID(params.productId),
+      !IsFavorite,
+    );
     setIsFavorite(!IsFavorite);
   }
 
@@ -74,34 +78,32 @@ export default function ItemDisplay({
 
       <DescriptionContainer>
         <LeftColumnDiv>
-        <BackButton destination="./storefront" />
-        <ImageContainer>
-          <img
-            src={Item?.photo}
-            alt={Item?.name}
-            style={{ width: '400px', height: '400px' }}
-          />
-        </ImageContainer>
+          <BackButton destination="./storefront" />
+          <ImageContainer>
+            <img
+              src={Item?.photo}
+              alt={Item?.name}
+              style={{ width: '400px', height: '400px' }}
+            />
+          </ImageContainer>
         </LeftColumnDiv>
         <TextContainer>
-        <TopRightContainer>
-          <Heading1>{Item?.name}</Heading1>
-          <HeartContainer onClick={() => handleFavorite()}>
-        <FavoritePopup>
-          <Body3>
-            {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
-          </Body3>
-        </FavoritePopup>
-        <HeartIcon $favorited={IsFavorite} />
-      </HeartContainer>
-      </TopRightContainer>
-      <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
+          <TopRightContainer>
+            <Heading1>{Item?.name}</Heading1>
+            <HeartContainer onClick={() => handleFavorite()}>
+              <FavoritePopup>
+                <Body3>
+                  {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                </Body3>
+              </FavoritePopup>
+              <HeartIcon $favorited={IsFavorite} />
+            </HeartContainer>
+          </TopRightContainer>
+          <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             <b>Category:</b> {Item?.category}
           </Body1>
           <Buttons productNumber={params.productId} />
-          <Body2Bold style={{ paddingTop: '40px' }}>
-            Product Details:
-          </Body2Bold>
+          <Body2Bold style={{ paddingTop: '40px' }}>Product Details:</Body2Bold>
           <Body2Light style={{ paddingTop: '20px' }}>
             {Item?.description}
           </Body2Light>

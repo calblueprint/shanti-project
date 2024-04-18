@@ -69,7 +69,6 @@ export const TransparentButton = styled.button`
   cursor: pointer;
 `;
 
-
 export const Hover = styled.div<{ $ishovering?: boolean }>`
   visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
   transform: translate(-10px, 0px);
