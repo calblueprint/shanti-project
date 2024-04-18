@@ -17,8 +17,9 @@ import {
   Heading4Bold,
   Body2Light,
 } from '@/styles/fonts';
-import { fetchCartItemsWithQuantity } from '../../api/supabase/queries/cart_queries';
 import { useSearchParams } from 'next/navigation';
+
+
 import BackButton from '../../components/BackButton/BackButton';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
@@ -39,6 +40,7 @@ import {
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
+  Wrapper2,
   PageDiv,
   CenterDiv,
   BackButtonDiv,
@@ -47,6 +49,7 @@ import {
 
 import { Product, User, Pickup } from '../../schema/schema';
 import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
+
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
@@ -76,7 +79,6 @@ export default function OrderConfirmationPickUp() {
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
-    const endTime = pickupTime?.end_time.toLocaleString();
     const date =
       startTime == null
         ? ['0', '0', '0']
@@ -138,6 +140,7 @@ export default function OrderConfirmationPickUp() {
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>
+
         </PageDiv>
       </CenterDiv>
     </div>
