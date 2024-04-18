@@ -30,6 +30,7 @@ import {
 
 import { Product, User, Address } from '../../schema/schema';
 import { Body1Bold } from '../orderPage/styles';
+import { BackButtonDiv } from '../orderConfirmationPickUp/styles';
 
 export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
@@ -62,6 +63,9 @@ export default function OrderConfirmationDelivery() {
       <NavBar />
       <CenterDiv>
         <PageDiv>
+          <BackButtonDiv>
+            <BackButton destination="./storefront" />
+          </BackButtonDiv>
           <BottomColumnDiv>
             <LeftColumnDiv>
               <BackButton destination="./storefront" />
@@ -81,8 +85,10 @@ export default function OrderConfirmationDelivery() {
                         }}
                       />
                       <LabelBox>
-                        <Body1Bold>{cartItem.name}</Body1Bold>
-                        <Body2Light>Category: {cartItem.category}</Body2Light>
+                      <div>
+                        <span style={{ display: 'inline-block', fontWeight: 'bold', marginRight: '4px' }}>Quantity:</span>
+                        <span style={{ display: 'inline-block', fontSize: '16px' }}>{cartItem.quantity}</span>
+                      </div>
                       </LabelBox>
                     </FavoriteDiv>
                   ))}

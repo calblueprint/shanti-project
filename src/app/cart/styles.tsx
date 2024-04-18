@@ -65,8 +65,9 @@ export const Backtext = styled.p`
 export const TrashIcon = styled(Trash2)`
   width: 30px;
   height: 30px;
-  color: black;
+  color: navy;
   margin-right: 30px;
+  margin-left: 50px;
   margin-top: 28px;
 `;
 
@@ -102,6 +103,8 @@ export const QuantityButton = styled.div`
   width: 165px;
   height: 50px;
   border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
   background-color: ${COLORS.white};
   border: 2px solid ${COLORS.navy};
   color: ${COLORS.navy};
@@ -373,3 +376,13 @@ export const CheckoutButton = styled.button`
     background: #0e2351;
   }
 `;
+
+export const CategorySpacing = styled.div`
+  margin-top: 15px;
+`;
+
+export const OrderSumSectionSpacing = styled.div`
+  margin-left: 195px;
+`;
+
+

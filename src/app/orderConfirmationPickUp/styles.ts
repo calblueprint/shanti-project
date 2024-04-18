@@ -242,7 +242,7 @@ export const BackButtonDiv = styled.div`
   text-align: left;
   width: 800px;
   margin-left: 80px;
-  margin-bottom: 40px;
+  margin-top: 40px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`
@@ -302,7 +302,7 @@ export const ShippingDetailsDiv = styled.div`
   padding: 36px 34px;
   gap: 33px;
   max-height: 100%;
-  margin-top: 93px;
+  margin-top: 205px;
   margin-bottom: 30px;
   margin-right: 40px;
 `;
