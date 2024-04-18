@@ -85,10 +85,25 @@ export default function OrderConfirmationDelivery() {
                         }}
                       />
                       <LabelBox>
-                      <div>
-                        <span style={{ display: 'inline-block', fontWeight: 'bold', marginRight: '4px' }}>Quantity:</span>
-                        <span style={{ display: 'inline-block', fontSize: '16px' }}>{cartItem.quantity}</span>
-                      </div>
+                        <div>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontWeight: 'bold',
+                              marginRight: '4px',
+                            }}
+                          >
+                            Quantity:
+                          </span>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontSize: '16px',
+                            }}
+                          >
+                            {cartItem.quantity}
+                          </span>
+                        </div>
                       </LabelBox>
                     </FavoriteDiv>
                   ))}

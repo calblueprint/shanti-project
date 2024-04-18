@@ -86,7 +86,7 @@ export default function OrderConfirmationPickUp() {
     <div>
       <NavBar />
       <CenterDiv>
-        <PageDiv>     
+        <PageDiv>
           <BackButtonDiv>
             <BackButton destination="./storefront" />
           </BackButtonDiv>
@@ -115,12 +115,29 @@ export default function OrderConfirmationPickUp() {
                       <LabelBox1>
                         <Body1Bold>{cartItem.name}</Body1Bold>
                         <br />
-                        <Body2Light style={{ marginTop: '-10px' }}>Category: {cartItem.category}</Body2Light>
+                        <Body2Light style={{ marginTop: '-10px' }}>
+                          Category: {cartItem.category}
+                        </Body2Light>
                       </LabelBox1>
                       <LabelBox>
                         <div>
-                          <span style={{ display: 'inline-block', fontWeight: 'bold', marginRight: '4px' }}>Quantity:</span>
-                          <span style={{ display: 'inline-block', fontSize: '16px' }}>{cartItem.quantity}</span>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontWeight: 'bold',
+                              marginRight: '4px',
+                            }}
+                          >
+                            Quantity:
+                          </span>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontSize: '16px',
+                            }}
+                          >
+                            {cartItem.quantity}
+                          </span>
                         </div>
                       </LabelBox>
                     </FavoriteDiv>

@@ -384,5 +384,3 @@ export const CategorySpacing = styled.div`
 export const OrderSumSectionSpacing = styled.div`
   margin-left: 195px;
 `;
-
-
