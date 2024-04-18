@@ -17,7 +17,6 @@ import {
   EyeIcon,
 } from './login/styles';
 
-
 export default function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
