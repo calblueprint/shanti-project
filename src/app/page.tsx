@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import supabase from '@/api/supabase/createClient';
 import { Body1, Heading1 } from '@/styles/fonts';
+import LoginForm from '@/components/LoginFormFolder/LoginForm';
 
 import {
   Fullscreen,
@@ -15,7 +16,7 @@ import {
   EyeOffIcon,
   EyeIcon,
 } from './login/styles';
-import LoginForm from '@/components/LoginFormFolder/LoginForm';
+
 
 export default function App() {
   const [email, setEmail] = useState('');
