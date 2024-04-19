@@ -78,8 +78,10 @@ export default function Footer({ ...rest }) {
             <Body2New
               style={{ cursor: 'pointer' }}
               onClick={() => {
-                window.location.href =
-                  'https://maps.app.goo.gl/LJWvkdhwrRMhjEZs7';
+                window.open(
+                  'https://maps.app.goo.gl/LJWvkdhwrRMhjEZs7',
+                  '_blank'
+                );
               }}
             >
               <MySpan>SEE ON MAP</MySpan>
