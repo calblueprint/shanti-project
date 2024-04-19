@@ -35,6 +35,7 @@ import {
   InformationText,
   BackButtonDiv,
   OutterDiv,
+  InformationField, Label, Input 
 } from './styles';
 
 export default function App() {
@@ -58,6 +59,8 @@ export default function App() {
     fetchProducts();
   }, []);
 
+  
+
   return (
     <main>
       <NavBar />
@@ -66,7 +69,18 @@ export default function App() {
           <BackButton destination="/storefront" />
         </BackButtonDiv>
         <DeliveryContainer>
-          <InformationContainer>
+          
+        <InformationContainer>
+            <Label>Name</Label>
+            <Input/>{`${Profile?.first_name} ${Profile?.last_name}`}<Input/>
+            <Label>Address</Label>
+            <Input/>{UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}<Input/>
+            <Label>Phone Number</Label>
+            <Input/>{Profile?.phone_numbers}<Input/>
+
+        </InformationContainer>
+
+          {/* <InformationContainer>
             <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
             <Normal700Text>Name</Normal700Text>
             <InformationText>
@@ -76,7 +90,7 @@ export default function App() {
             <InformationText>
               {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
             </InformationText>
-          </InformationContainer>
+          </InformationContainer> */}
           <OrderContainer>
             <OrderSummary cart={cart} numberOfItems={numberOfItems} />
             <OrderButton

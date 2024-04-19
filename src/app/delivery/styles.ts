@@ -53,28 +53,7 @@ export const QuantityText = styled.div`
   text-align: right;
 `;
 
-export const InformationContainer = styled.div`
-  width: 730px;
-  height: 400px;
-  margin: 40px;
-`;
 
-export const InformationText = styled.div`
-  width: 730px;
-  height: 50px;
-  border-radius: 4px;
-  margin-top: 14px;
-  margin-bottom: 14px;
-  border: 1px solid ${COLORS.neutralGrey};
-  background: ${COLORS.lightGrey};
-  display: flex; /* Use flexbox */
-  align-items: center; /* Center vertically */
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  padding-left: 20px;
-`;
 
 export const OrderContainer = styled.div`
   margin-top: 50px;
@@ -155,3 +134,43 @@ export const OutterDiv = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+
+export const InformationContainer = styled.div`
+  width: 629px;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background: ${COLORS.white}; /* Assuming white is defined in your COLORS */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px 25px;
+
+`;
+
+export const InformationField = styled.div`
+  width: 100%;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+`;
+
+export const Label = styled.div`
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 20px; /* Space between label and input */
+`;
+
+export const Input = styled.div`
+  width: calc(100% - 40px); /* Subtracting padding */
+  height: 50px;
+  border-radius: 4px;
+  padding-left: 20px;
+  font-size: 20px;
+`;
+
