@@ -80,7 +80,7 @@ export default function Footer({ ...rest }) {
               onClick={() => {
                 window.open(
                   'https://maps.app.goo.gl/LJWvkdhwrRMhjEZs7',
-                  '_blank'
+                  '_blank',
                 );
               }}
             >
