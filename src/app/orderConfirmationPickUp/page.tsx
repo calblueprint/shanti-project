@@ -95,7 +95,6 @@ export default function OrderConfirmationPickUp() {
               <TextDiv>
                 <Heading3Bold>Your order has been submitted</Heading3Bold>
               </TextDiv>
-
               <OutterFavoriteDiv>
                 <TextDiv1>
                   <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
@@ -116,10 +115,30 @@ export default function OrderConfirmationPickUp() {
                       <LabelBox1>
                         <Body1Bold>{cartItem.name}</Body1Bold>
                         <br />
-                        <Body2Light>Category: {cartItem.category}</Body2Light>
+                        <Body2Light style={{ marginTop: '-10px' }}>
+                          Category: {cartItem.category}
+                        </Body2Light>
                       </LabelBox1>
                       <LabelBox>
-                        <Body1Bold>Quantity: {cartItem.quantity}</Body1Bold>
+                        <div>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontWeight: 'bold',
+                              marginRight: '4px',
+                            }}
+                          >
+                            Quantity:
+                          </span>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontSize: '16px',
+                            }}
+                          >
+                            {cartItem.quantity}
+                          </span>
+                        </div>
                       </LabelBox>
                     </FavoriteDiv>
                   ))}
@@ -128,7 +147,7 @@ export default function OrderConfirmationPickUp() {
             </LeftColumnDiv>
             <RightColumnDiv>
               <ShippingDetailsDiv>
-                <Heading3Bold>Delivery Information</Heading3Bold>
+                <Heading3Bold>Pickup Information</Heading3Bold>
                 <DetailsHeader>Time Slot</DetailsHeader>
                 <Body1>{organizePickupTime()} (10:00 am - 12:30 pm)</Body1>
                 <DetailsHeader>Location</DetailsHeader>

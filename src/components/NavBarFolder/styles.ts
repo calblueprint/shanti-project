@@ -10,8 +10,8 @@ export const CartTotalCircle = styled.div<{ $isZero?: boolean }>`
   height: 24px;
   border-radius: 50%;
   position: absolute;
-  top: -12px;
-  right: -12px;
+  top: -13px;
+  right: -13px;
   display: flex;
   justify-content: center;
   align-items: center;
