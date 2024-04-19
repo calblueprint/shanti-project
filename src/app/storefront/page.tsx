@@ -24,7 +24,6 @@ export default function App() {
         const data = (await fetchUserProducts()) as Product[];
         setFilteredProducts(data);
       } catch (error) {
-        // console.log(error);
       }
     }
 
