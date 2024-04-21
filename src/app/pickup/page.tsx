@@ -130,7 +130,13 @@ export default function PickUp() {
               <Heading4Bold>Time Slot</Heading4Bold>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between',width: "660px" }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '660px',
+              }}
+            >
               {Time.map(time => (
                 <PickupTimeButton
                   key={time.id}
