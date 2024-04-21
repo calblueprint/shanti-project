@@ -43,9 +43,11 @@ export const BackDiv = styled.button`
 export const OutterBox = styled.div`
   width: 800px;
   height: 100%;
-
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
 `;
 
 export const Backtext = styled.p`
@@ -58,12 +60,29 @@ export const HeartIcon = styled(Heart)`
   height: 30px;
   fill: #333286;
   margin-right: 25px;
+  margin-bottom: 40px;
 `;
 
 export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
   cursor: pointer;
+`;
+
+export const Hover = styled.div<{ $ishovering?: boolean }>`
+  visibility: ${props => (props.$ishovering ? 'visible' : 'hidden')};
+  transform: translate(-10px, 0px);
+  margin-bottom: 7px;
+  color: black;
+  border: none;
+  width: 156px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--Light-Periwinkle, #f4f7ff);
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.2);
+  padding-top: 6px;
+  position: relative;
+  text-align: center;
 `;
 
 export const NavBarMovedUP = styled(NavBar)`

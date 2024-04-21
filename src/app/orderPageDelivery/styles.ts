@@ -233,7 +233,7 @@ export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 20px;
-  margin-top: 123px;
+  margin-top: 84px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`
@@ -244,4 +244,22 @@ export const WhiteBackgroundDiv = styled.div`
   padding-top: 20px;
 
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+`;
+
+export const StatusButton = styled.button`
+  margin-left: auto;
+  margin-right: 0;
+  color: black;
+  text-align: center;
+  width: 210px;
+  height: 30px;
+  flex-shrink: 0;
+  padding-top: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+  border: none;
+  border-radius: 16.5px;
+  background: var(--Baby-Blue, #c7ddff);
+  margin-bottom: 14px;
 `;

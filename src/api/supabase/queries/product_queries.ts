@@ -88,7 +88,6 @@ export async function filterProduct(productType: string): Promise<Product[]> {
 export async function convertCategoryToNumber(
   productType: string,
 ): Promise<StorefrontButtons> {
-  console.log(productType);
   const { data: buttonVal, error } = await supabase
     .from('storefront_buttons')
     .select('*')
@@ -104,7 +103,6 @@ export async function convertCategoryToNumber(
 export async function fetchUnprescribedCategory(
   productType: string,
 ): Promise<Product[]> {
-  console.log(productType);
   const productTypeConverted = await convertCategoryToNumber(productType);
 
   const { data: products, error } = await supabase

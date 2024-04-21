@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { ToastContainer } from 'react-toastify';
 import COLORS from '../../styles/colors';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
@@ -262,4 +263,10 @@ export const HeaderShiftLeft = styled.h2`
 
 export const PShiftLeft = styled.p`
   margin-left: 15px;
+`;
+
+export const ToastPopUP = styled(ToastContainer)`
+  position: fixed;
+  z-index: 100;
+  transform: translatey(90px);
 `;

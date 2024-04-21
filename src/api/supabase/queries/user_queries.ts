@@ -1,8 +1,6 @@
-import { Lekton } from 'next/font/google';
 import supabase from '../createClient';
 import { User, Product } from '../../../schema/schema';
 import { fetchProductByID } from './product_queries';
-import { convertButtonNumberToCategory } from './button_queries';
 
 /**
  * fetchUser is a function that fetches the user data from the database and returns the user object.
@@ -55,12 +53,12 @@ export async function fetchUserByUUID(uuid: string) {
       .single();
 
     if (error) {
-      console.error('Error fetching user data:', error);
+      throw new Error(`Error fetching user data: ${error.message}`);
     }
 
     return user;
   } catch (error) {
-    console.error('Error:', error);
+    throw new Error(`Error`);
     throw error;
   }
 }
@@ -125,13 +123,12 @@ export async function fetchUserAddress(uuid: string) {
       .single();
 
     if (error) {
-      console.error('Error fetching user data:', error);
+      throw new Error(`Error fetching user data: ${error.message}`);
     }
 
     return user;
   } catch (error) {
-    console.error('Error:', error);
-    throw error;
+    throw new Error(`Error:`);
   }
 }
 
@@ -148,7 +145,6 @@ export async function fetchCurrentUserAddress() {
       .eq('user_id', user.id)
       .limit(1)
       .single();
-    console.log(address);
 
     if (error) {
       console.error('Error fetching user data:', error);

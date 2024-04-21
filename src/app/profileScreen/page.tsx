@@ -12,8 +12,8 @@ import {
   Body2Bold,
   Body2,
 } from '@/styles/fonts';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import {
-  addOrRemoveProductFromFavorite,
   arrayOfFavorites,
   fetchUser,
   fetchCurrentUserAddress,
@@ -42,9 +42,6 @@ import {
   TextSpacing,
   OrderHistory,
   FavoritesContainer,
-  ProductNameDiv,
-  FavoriteDiv,
-  HeartIcon,
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
@@ -56,18 +53,13 @@ import {
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import { TransparentButton } from '../favorites/styles';
+import IndividualItem from './individualItem';
 
 function FavoriteSection(props: {
   Favorites: Product[];
   setFavorites: (category: Product[]) => void;
 }) {
   const { Favorites, setFavorites } = props;
-  async function clickFunctions(props2: { fav: Product }) {
-    const { fav } = props2;
-    addOrRemoveProductFromFavorite(fav, false);
-    setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
-  }
   if (Favorites.length > 0) {
     return (
       <main>
@@ -77,25 +69,12 @@ function FavoriteSection(props: {
             <ViewAllButton destination="./favorites" />
           </HeaderDiv>
           {Favorites.slice(0, 2).map(favorite => (
-            <FavoriteDiv key={favorite.id}>
-              <img
-                src={favorite.photo}
-                alt={favorite.name}
-                style={{ width: '75px', height: '75px' }}
-              />
-              <ProductNameDiv>
-                <p>
-                  {favorite.name}
-                  <br />
-                  Product ID: {favorite.id}
-                </p>
-              </ProductNameDiv>
-              <TransparentButton
-                onClick={() => clickFunctions({ fav: favorite })}
-              >
-                <HeartIcon />
-              </TransparentButton>
-            </FavoriteDiv>
+            <IndividualItem
+              key={favorite.id}
+              favorite={favorite}
+              setFavorites={setFavorites}
+              Favorites={Favorites}
+            />
           ))}
         </FavoritesContainer>
       </main>
@@ -383,11 +362,6 @@ export default function Profile() {
 
   const [Orders, setOrder] = useState<Order[]>([]);
 
-  async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[];
-    setFavorites(data);
-  }
-
   async function fetchOrders() {
     const data = (await fetchOrdersByUserIdSorted()) as Order[];
     setOrder(data);
@@ -398,10 +372,18 @@ export default function Profile() {
     setUser(data);
   }
   useEffect(() => {
+    async function fetchProducts() {
+      const data = (await arrayOfFavorites()) as Product[];
+
+      console.log(data);
+      // console.log(data);
+      setFavorites(data);
+    }
     fetchProducts();
     fetchOrders();
     getUser();
   }, []);
+
   if (user === undefined) {
     return <p> Loading User</p>;
   }
