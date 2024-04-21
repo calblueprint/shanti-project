@@ -10,13 +10,13 @@ export const BackLink = styled(Link)`
   justify-content: space-between;
   color: ${COLORS.black};
   width: 75px;
-  gap: 5px;
+
   &:hover {
     text-decoration: underline;
   }
 `;
 
 export const ArrowLeftIcon = styled(ArrowLeft)`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 `;

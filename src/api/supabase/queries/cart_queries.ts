@@ -206,7 +206,6 @@ export async function fetchCartItemsWithQuantity(): Promise<
   });
 
   const fetchedProducts = await Promise.all(productPromises);
-  console.log(fetchedProducts);
 
   return fetchedProducts;
 }

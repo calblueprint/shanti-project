@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
-import { Body1, Heading1, Body2Light } from '@/styles/fonts';
-import { fetchProductByID } from '../../api/supabase/queries/product_queries';
+import { Body1, Heading1, Body2Light, Body2Bold, Body3 } from '@/styles/fonts';
+import {
+  fetchProductByID,
+  fetchUserProducts,
+} from '../../api/supabase/queries/product_queries';
 import BackButton from '../../components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,8 +16,13 @@ import {
   DescriptionContainer,
   ToastPopUP,
   Fullscreen,
+  LeftColumnDiv,
+  FavoritePopup,
+  HeartContainer,
+  HeartIcon,
+  TopRightContainer,
 } from './styles';
-
+import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
 import NavBar from '../../components/NavBarFolder/NavBar';
 import { Product } from '../../schema/schema';
 import Buttons from './Buttons';
@@ -25,6 +33,8 @@ export default function ItemDisplay({
   params: { productId: number };
 }) {
   const [Item, setItem] = useState<Product>();
+  const [IsFavorite, setIsFavorite] = useState(false);
+  const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -33,8 +43,12 @@ export default function ItemDisplay({
         response.category = await convertButtonNumberToCategory(
           response.category,
         );
+        const data = (await fetchUserProducts()) as Product[];
+
+        setIsFavorite(!!data.find(item => item.id === params.productId));
         if (response) {
           setItem(response);
+          setFilteredProducts(data);
         }
       } catch (error) {
         // console.error(error);
@@ -43,6 +57,14 @@ export default function ItemDisplay({
 
     fetchProducts();
   }, [params.productId]);
+
+  async function handleFavorite() {
+    await addOrRemoveProductFromFavorite(
+      await fetchProductByID(params.productId),
+      !IsFavorite,
+    );
+    setIsFavorite(!IsFavorite);
+  }
 
   return (
     <Fullscreen>
@@ -53,31 +75,38 @@ export default function ItemDisplay({
         limit={1}
         hideProgressBar
       />
-      <div style={{ marginLeft: '250px', marginTop: '50px' }}>
-        <BackButton destination="./storefront" />
-      </div>
 
       <DescriptionContainer>
-        <ImageContainer>
-          <img
-            src={Item?.photo}
-            alt={Item?.name}
-            style={{ width: '400px', height: '400px' }}
-          />
-        </ImageContainer>
+        <LeftColumnDiv>
+          <BackButton destination="./storefront" />
+          <ImageContainer>
+            <img
+              src={Item?.photo}
+              alt={Item?.name}
+              style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+            />
+          </ImageContainer>
+        </LeftColumnDiv>
         <TextContainer>
-          <Heading1>{Item?.name}</Heading1>
+          <TopRightContainer>
+            <Heading1>{Item?.name}</Heading1>
+            <HeartContainer onClick={() => handleFavorite()}>
+              <FavoritePopup>
+                <Body3>
+                  {IsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                </Body3>
+              </FavoritePopup>
+              <HeartIcon $favorited={IsFavorite} />
+            </HeartContainer>
+          </TopRightContainer>
           <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
-            {Item?.category}
+            <b>Category:</b> {Item?.category}
           </Body1>
           <Buttons productNumber={params.productId} />
-          <Body2Light style={{ paddingTop: '50px' }}>
-            Product ID: {Item?.id}
-          </Body2Light>
+          <Body2Bold style={{ paddingTop: '40px' }}>Product Details:</Body2Bold>
           <Body2Light style={{ paddingTop: '20px' }}>
-            Product Details:
+            {Item?.description}
           </Body2Light>
-          <Body2Light>{Item?.description}</Body2Light>
         </TextContainer>
       </DescriptionContainer>
     </Fullscreen>

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { ToastContainer } from 'react-toastify';
 import COLORS from '../../styles/colors';
 
 import NavBar from '../../components/NavBarFolder/NavBar';

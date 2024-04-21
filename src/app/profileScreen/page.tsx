@@ -12,8 +12,8 @@ import {
   Body2Bold,
   Body2,
 } from '@/styles/fonts';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import {
-  addOrRemoveProductFromFavorite,
   arrayOfFavorites,
   fetchUser,
   fetchCurrentUserAddress,
@@ -31,7 +31,7 @@ import {
   fetchOrderProductById,
   fetchProductWithQuantityById,
 } from '@/api/supabase/queries/order_queries';
-import { Check, CheckCircle, X } from 'react-feather';
+import { Check, CheckCircle, X, Send } from 'react-feather';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -42,9 +42,6 @@ import {
   TextSpacing,
   OrderHistory,
   FavoritesContainer,
-  ProductNameDiv,
-  FavoriteDiv,
-  HeartIcon,
   BackButtonDiv,
   BlankSpace,
   HeaderDiv,
@@ -56,18 +53,13 @@ import {
 } from './styles';
 import { signOut } from '../../api/supabase/auth/auth';
 import 'react-toastify/dist/ReactToastify.css';
-import { TransparentButton } from '../favorites/styles';
+import IndividualItem from './individualItem';
 
 function FavoriteSection(props: {
   Favorites: Product[];
   setFavorites: (category: Product[]) => void;
 }) {
   const { Favorites, setFavorites } = props;
-  async function clickFunctions(props2: { fav: Product }) {
-    const { fav } = props2;
-    addOrRemoveProductFromFavorite(fav, false);
-    setFavorites(Favorites.filter(Prod => Prod.id !== fav.id));
-  }
   if (Favorites.length > 0) {
     return (
       <main>
@@ -77,25 +69,12 @@ function FavoriteSection(props: {
             <ViewAllButton destination="./favorites" />
           </HeaderDiv>
           {Favorites.slice(0, 2).map(favorite => (
-            <FavoriteDiv key={favorite.id}>
-              <img
-                src={favorite.photo}
-                alt={favorite.name}
-                style={{ width: '75px', height: '75px' }}
-              />
-              <ProductNameDiv>
-                <p>
-                  {favorite.name}
-                  <br />
-                  Product ID: {favorite.id}
-                </p>
-              </ProductNameDiv>
-              <TransparentButton
-                onClick={() => clickFunctions({ fav: favorite })}
-              >
-                <HeartIcon />
-              </TransparentButton>
-            </FavoriteDiv>
+            <IndividualItem
+              key={favorite.id}
+              favorite={favorite}
+              setFavorites={setFavorites}
+              Favorites={Favorites}
+            />
           ))}
         </FavoritesContainer>
       </main>
@@ -170,7 +149,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
   if (firstOrderProducts.length > 0) {
     let backgroundColor = 'transparent';
     if (Orders[0].order_status === 'Submitted') {
-      backgroundColor = '#CEE8BE';
+      backgroundColor = 'var(--Greyish, #E6E6E6)';
     } else if (Orders[0].order_status === 'Rejected') {
       backgroundColor = '#FFDDDD';
     } else if (Orders[0].order_status === 'Confirmed') {
@@ -178,7 +157,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
     }
     let icon;
     if (Orders[0].order_status === 'Submitted') {
-      icon = <CheckCircle />;
+      icon = <Send />;
     } else if (Orders[0].order_status === 'Rejected') {
       icon = <X />;
     } else if (Orders[0].order_status === 'Confirmed') {
@@ -329,12 +308,7 @@ function AccountDetailSectionPickUp(props: { user: User }) {
     <main>
       <AccountDetails>
         <Heading2>Account Details</Heading2>
-        <HeadingSpacing>
-          <Body1Bold>Email</Body1Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body2>{user?.email}</Body2>
-        </TextSpacing>
+
         <HeadingSpacing>
           <Body1Bold>Name</Body1Bold>
         </HeadingSpacing>
@@ -343,6 +317,13 @@ function AccountDetailSectionPickUp(props: { user: User }) {
             {user?.first_name} {user?.last_name}
           </Body2>
         </TextSpacing>
+        <HeadingSpacing>
+          <Body1Bold>Email</Body1Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body2>{user?.email}</Body2>
+        </TextSpacing>
+
         <HeadingSpacing>
           <Body1Bold>Phone Number</Body1Bold>
         </HeadingSpacing>
@@ -381,11 +362,6 @@ export default function Profile() {
 
   const [Orders, setOrder] = useState<Order[]>([]);
 
-  async function fetchProducts() {
-    const data = (await arrayOfFavorites()) as Product[];
-    setFavorites(data);
-  }
-
   async function fetchOrders() {
     const data = (await fetchOrdersByUserIdSorted()) as Order[];
     setOrder(data);
@@ -396,10 +372,18 @@ export default function Profile() {
     setUser(data);
   }
   useEffect(() => {
+    async function fetchProducts() {
+      const data = (await arrayOfFavorites()) as Product[];
+
+      console.log(data);
+      // console.log(data);
+      setFavorites(data);
+    }
     fetchProducts();
     fetchOrders();
     getUser();
   }, []);
+
   if (user === undefined) {
     return <p> Loading User</p>;
   }

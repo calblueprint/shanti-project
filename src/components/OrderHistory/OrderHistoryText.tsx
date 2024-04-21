@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import querystring from 'querystring';
 import { Heading4Bold, Body1, OrderStatusFont } from '@/styles/fonts';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import {
   ViewOrderButton,
   ArrowIcon,
@@ -34,10 +35,24 @@ interface OrderDetailsProps {
 export default function OrderDetails(props: OrderDetailsProps) {
   const { date, orderNumber, order } = props;
   const router = useRouter();
+  const [deliveryEnabled, setDeliveryEnabled] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function fetchDelivery() {
+      const data = await fetchUser();
+      setDeliveryEnabled(data.delivery_allowed);
+    }
+
+    fetchDelivery();
+  }, []);
 
   const viewOrder = (orderID: string) => {
     const queryString = querystring.stringify({ orderID });
-    router.push(`/orderPage?${queryString}`);
+    if (deliveryEnabled) {
+      router.push(`/orderPageDelivery?${queryString}`);
+    } else {
+      router.push(`/orderPage?${queryString}`);
+    }
   };
   if (order.order_status === OrderStatus.Rejected) {
     return (

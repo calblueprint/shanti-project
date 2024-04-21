@@ -1,6 +1,6 @@
 'use client';
 
-import { Body1, Body2, Heading2Bold, Body1Bold } from '@/styles/fonts';
+import { Body1, Heading2Bold, Body1Bold, Body2Light } from '@/styles/fonts';
 import {
   OrderSummaryDiv,
   HeaderShiftRight,
@@ -24,8 +24,8 @@ export default function OrderSummary(props: {
       <Heading2Bold>Order Summary</Heading2Bold>
       <AlignItemCenter>
         <OrderSummaryHeaderDiv>
-          <Body2>Product Name</Body2>
-          <Body2>Qty.</Body2>
+          <Body2Light>PRODUCT NAME</Body2Light>
+          <Body2Light>QTY</Body2Light>
         </OrderSummaryHeaderDiv>
         <OrderSummaryDiv>
           {cart.map(cartItem => (
