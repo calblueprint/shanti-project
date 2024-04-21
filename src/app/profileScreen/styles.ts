@@ -92,22 +92,10 @@ export const LogOutButton = styled.button`
   font-weight: 600;
   line-height: normal;
   border: transparent;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  border-radius: 5px;
-  width: 405px;
-  height: 50px;
-=======
-=======
->>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   border-radius: 10px;
   width: 500px;
   height: 55px;
   margin-top: 40px;
-<<<<<<< HEAD
->>>>>>> b287da7 (temp)
-=======
->>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
 `;
 /* transform: translateY(200px); */
 

@@ -5,16 +5,16 @@ import { Heart } from 'react-feather';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 export const FavoriteDiv = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-width: 100%;
-margin-bottom: 50px;
-margin-top: 30px;
-margin-right: 20px;
-margin-left: 40px;
-gap: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-left: 40px;
+  gap: 70px;
 `;
 
 export const BottomColumnDiv = styled.div`
@@ -25,7 +25,7 @@ export const BottomColumnDiv = styled.div`
   width: 100%;
   margin-left: 10px;
   margin-bottom: 30px;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const ScrollDiv = styled.div`
@@ -48,10 +48,10 @@ export const LabelBox = styled.div`
   height: 100%;
 `;
 
-export const OutterFavoriteDiv = styled.div`  
+export const OutterFavoriteDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
@@ -60,6 +60,7 @@ export const OutterFavoriteDiv = styled.div`
   overflow: scroll;
   margin-top: 20px;
   padding-top: 15px;
+  margin-left: 60px;
 `;
 
 export const BackDiv = styled.button`
@@ -185,7 +186,6 @@ export const StatusButton = styled.button<{ status: string }>`
   }};
 `;
 
-
 export const Body1Bold = styled.p`
   font-size: 16px;
   font-style: normal;
@@ -242,12 +242,14 @@ export const RightColumnDiv = styled.div`
   align-items: start;
   margin-left: 10px;
   width: 100%;
+  margin-top: 8px;
 `;
 
 export const TextDiv1 = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+  background-color: pink;
 `;
 
 export const TextDiv = styled.div`

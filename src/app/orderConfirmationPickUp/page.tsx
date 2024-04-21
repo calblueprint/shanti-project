@@ -55,13 +55,10 @@ export default function OrderConfirmationPickUp() {
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
 
-
   useEffect(() => {
     async function fetchProducts() {
-      
       const cartItems = (await fetchCartItemsWithQuantityByID(
         orderIDFromSearch,
-        
       )) as Product[];
       setCart(cartItems);
     }
@@ -161,7 +158,6 @@ export default function OrderConfirmationPickUp() {
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>
-
         </PageDiv>
       </CenterDiv>
     </div>

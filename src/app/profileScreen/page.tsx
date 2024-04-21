@@ -87,12 +87,9 @@ function FavoriteSection(props: {
                 style={{ width: '100px', height: '100px' }}
               />
               <ProductNameDiv>
-                <Body1Bold>
-                  {favorite.name} </Body1Bold>
-                  <Spacing />
-                  <Body2Light>
-                  Category: {favorite.category}
-                  </Body2Light>
+                <Body1Bold>{favorite.name} </Body1Bold>
+                <Spacing />
+                <Body2Light>Category: {favorite.category}</Body2Light>
               </ProductNameDiv>
               <TransparentButton
                 onClick={() => clickFunctions({ fav: favorite })}
@@ -436,7 +433,7 @@ export default function Profile() {
           <OrderHistorySection Orders={Orders} />
         </MostRecentOrder>
         <MostRecentOrder>
-          <LogoutSection /> 
+          <LogoutSection />
           <FavoriteSection Favorites={Favorites} setFavorites={setFavorites} />
         </MostRecentOrder>
       </ColumnDiv>

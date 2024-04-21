@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { ArrowRight } from 'react-feather';
 import COLORS from '../../styles/colors';
 
-
 export const ViewAllDiv = styled.div`
   width: 80px;
   gap: 5px;

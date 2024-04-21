@@ -99,14 +99,12 @@ export const Label = styled.p`
   margin-top: 20px;
 `;
 
-
 export const ImageDiv = styled.p`
   width: 150px;
   height: 150px;
   align-items: center;
   justify-content: center;
   display: flex;
-
 `;
 
 export const LabelBox = styled.div`
@@ -243,7 +241,6 @@ export const WhiteBackgroundDiv = styled.div`
   padding-top: 20px;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
-
 
 export const Wrapper2 = styled.div`
   display: flex;
