@@ -374,13 +374,7 @@ export default function Profile() {
   useEffect(() => {
     async function fetchProducts() {
       const data = (await arrayOfFavorites()) as Product[];
-      console.log(data);
-      data.forEach(
-        async product =>
-          (product.category = await convertButtonNumberToCategory(
-            product.category,
-          )),
-      );
+
       console.log(data);
       // console.log(data);
       setFavorites(data);
@@ -389,7 +383,7 @@ export default function Profile() {
     fetchOrders();
     getUser();
   }, []);
-  
+
   if (user === undefined) {
     return <p> Loading User</p>;
   }

@@ -8,7 +8,7 @@ export default function LoginForm(props: {
   isError: boolean;
   showPassword: boolean;
 }) {
-  const { isError, changeUserName, changePassword, showPassword} = props;
+  const { isError, changeUserName, changePassword, showPassword } = props;
   return (
     <div>
       <InputFields
