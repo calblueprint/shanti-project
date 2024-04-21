@@ -371,7 +371,7 @@ export default function Profile() {
     const data = await fetchUser();
     setUser(data);
   }
- 
+
   useEffect(() => {
     async function fetchProducts() {
       const data = (await arrayOfFavorites()) as Product[];

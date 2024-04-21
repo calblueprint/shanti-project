@@ -46,14 +46,14 @@ export default function OrderDetails(props: OrderDetailsProps) {
     fetchDelivery();
   }, []);
 
-  const viewOrder = (orderID: string) => {
+  async function viewOrder(orderID: string) {
     const queryString = querystring.stringify({ orderID });
     if (deliveryEnabled) {
       router.push(`/orderPageDelivery?${queryString}`);
     } else {
       router.push(`/orderPage?${queryString}`);
     }
-  };
+  }
   if (order.order_status === OrderStatus.Rejected) {
     return (
       <div
