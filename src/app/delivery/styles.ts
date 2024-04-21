@@ -156,7 +156,7 @@ export const InformationField = styled.div`
 `;
 
 export const Label = styled.div`
-  color: var(--Black, #101010);
+  color: ${COLORS.black};
   font-family: 'Public Sans';
   font-size: 25px;
   font-style: normal;
@@ -171,21 +171,13 @@ export const Input = styled.div`
   border-radius: 4px;
   padding-left: 20px;
   font-size: 20px;
-  color: var(--Black, #101010);
+  color: ${COLORS.black};
 
   /* Body 1 - Text */
   font-family: 'Public Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-`;
-
-export const Heading4Bold = styled.p`
-  font-family: 'Public Sans', sans-serif;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 700;
   line-height: normal;
 `;
 

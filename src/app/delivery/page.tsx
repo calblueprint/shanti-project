@@ -35,9 +35,9 @@ import {
   InformationField,
   Label,
   Input,
-  Heading4Bold,
   ForceColumnDiv,
 } from './styles';
+import { Heading1Bold } from '../../styles/fonts';
 
 export default function App() {
   const [numberOfItems, setNumberOfItems] = useState(0);
@@ -70,9 +70,9 @@ export default function App() {
               <BackButton destination="/storefront" />
             </BackButtonDiv>
 
-            <Heading4Bold style={{ marginLeft: '41px', marginTop: '20px' }}>
-              Delivery
-            </Heading4Bold>
+            <Heading1Bold style={{ marginLeft: '41px', marginTop: '20px' }}>
+              Shipping
+            </Heading1Bold>
 
             <InformationContainer>
               <Label>Name</Label>
