@@ -23,6 +23,10 @@ export const OutterFavoriteDiv = styled.div`
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+<<<<<<< HEAD
+=======
+  width: 700px;
+>>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   max-height: 100%;
   max-width: 750px;
   margin-top: 20px;
@@ -37,23 +41,6 @@ export const ScrollDiv = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   max-width: 100%;
-`;
-
-export const ImageDiv = styled.div`
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.08);
-  width: 150px;
-  height: 150px;
-  margin-left: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Wrapper = styled.div`
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const BackDiv = styled.button`
@@ -112,18 +99,19 @@ export const Label = styled.p`
   margin-top: 20px;
 `;
 
-export const LabelBox1 = styled.div`
-  width: 250px;
-  height: 100%;
-  padding: 20px;
+
+export const ImageDiv = styled.p`
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
 `;
 
 export const LabelBox = styled.div`
   width: 150px;
   height: 100%;
-  padding: 20px;
-  gap: 50px;
-  margin-right: 30px;
 `;
 
 export const HeaderText = styled.h3`
@@ -270,8 +258,12 @@ export const BottomColumnDiv = styled.div`
   align-items: space-evenly;
   justify-content: space-around;
   width: 100%;
+<<<<<<< HEAD
   margin-left: 20px;
   margin-right: 20px;
+=======
+  margin-left: 10px;
+>>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   margin-bottom: 30px;
   gap: 10px;
 `;
@@ -314,7 +306,11 @@ export const ShippingDetailsDiv = styled.div`
   padding: 36px 34px;
   gap: 33px;
   max-height: 100%;
+<<<<<<< HEAD
   margin-top: 75px;
+=======
+  margin-top: 93px;
+>>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   margin-bottom: 30px;
   margin-right: 40px;
 `;

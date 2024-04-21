@@ -172,7 +172,10 @@ export const RowDiv = styled.div`
   height: 400px;
   margin-bottom: 20px;
   margin-top: 20px;
+<<<<<<< HEAD
 >>>>>>> b287da7 (temp)
+=======
+>>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
 `;
 
 export const OrderStatusDiv = styled.div`
