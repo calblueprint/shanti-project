@@ -9,7 +9,6 @@ import {
 import {
   Body1,
   Body2,
-  Body2Light,
   Heading3Bold,
   Heading4Bold,
 } from '@/styles/fonts';

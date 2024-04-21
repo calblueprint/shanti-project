@@ -389,6 +389,7 @@ export default function Profile() {
     fetchOrders();
     getUser();
   }, []);
+  
   if (user === undefined) {
     return <p> Loading User</p>;
   }
