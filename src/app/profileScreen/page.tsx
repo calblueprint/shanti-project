@@ -374,10 +374,15 @@ export default function Profile() {
   useEffect(() => {
     async function fetchProducts() {
       const data = (await arrayOfFavorites()) as Product[];
-
-      console.log(data);
-      // console.log(data);
-      setFavorites(data);
+      const mapCategories = await Promise.all(
+        data.map(async product => {
+          const updateCategory = await convertButtonNumberToCategory(
+            product.category,
+          );
+          return { ...product, category: updateCategory };
+        }),
+      );
+      setFavorites(mapCategories);
     }
     fetchProducts();
     fetchOrders();
