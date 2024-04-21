@@ -37,6 +37,7 @@ import {
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
+  Wrapper2,
   PageDiv,
   CenterDiv,
   BackButtonDiv,
@@ -155,6 +156,7 @@ export default function OrderConfirmationPickUp() {
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>
+
         </PageDiv>
       </CenterDiv>
     </div>
