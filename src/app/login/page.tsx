@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import Image from 'next/image';
 import supabase from '@/api/supabase/createClient';
 import { Body1, Heading1 } from '@/styles/fonts';
@@ -39,6 +40,16 @@ export default function App() {
       window.location.href = '/storefront';
     }
   };
+  
+  async function applyFilter(
+    e: React.KeyboardEvent<HTMLButtonElement>,
+  ) {
+      const keypressed = e.code;
+      if (keypressed === 'Enter') {
+        handleLogin();
+      }
+  }
+    
 
   return (
     <Fullscreen>
@@ -78,7 +89,7 @@ export default function App() {
           )}
 
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-          <Button style={{ cursor: 'pointer' }} onClick={handleLogin}>
+          <Button style={{ cursor: 'pointer' }} onClick={handleLogin} >
             <Body1>Log In</Body1>
           </Button>
         </LoginContent>
