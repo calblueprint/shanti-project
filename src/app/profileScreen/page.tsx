@@ -31,7 +31,7 @@ import {
   fetchOrderProductById,
   fetchProductWithQuantityById,
 } from '@/api/supabase/queries/order_queries';
-import { Check, CheckCircle, X } from 'react-feather';
+import { Check, CheckCircle, X, Send } from 'react-feather';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
@@ -170,7 +170,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
   if (firstOrderProducts.length > 0) {
     let backgroundColor = 'transparent';
     if (Orders[0].order_status === 'Submitted') {
-      backgroundColor = '#CEE8BE';
+      backgroundColor = 'var(--Greyish, #E6E6E6)';
     } else if (Orders[0].order_status === 'Rejected') {
       backgroundColor = '#FFDDDD';
     } else if (Orders[0].order_status === 'Confirmed') {
@@ -178,7 +178,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
     }
     let icon;
     if (Orders[0].order_status === 'Submitted') {
-      icon = <CheckCircle />;
+      icon = <Send />;
     } else if (Orders[0].order_status === 'Rejected') {
       icon = <X />;
     } else if (Orders[0].order_status === 'Confirmed') {
@@ -329,12 +329,7 @@ function AccountDetailSectionPickUp(props: { user: User }) {
     <main>
       <AccountDetails>
         <Heading2>Account Details</Heading2>
-        <HeadingSpacing>
-          <Body1Bold>Email</Body1Bold>
-        </HeadingSpacing>
-        <TextSpacing>
-          <Body2>{user?.email}</Body2>
-        </TextSpacing>
+
         <HeadingSpacing>
           <Body1Bold>Name</Body1Bold>
         </HeadingSpacing>
@@ -343,6 +338,13 @@ function AccountDetailSectionPickUp(props: { user: User }) {
             {user?.first_name} {user?.last_name}
           </Body2>
         </TextSpacing>
+        <HeadingSpacing>
+          <Body1Bold>Email</Body1Bold>
+        </HeadingSpacing>
+        <TextSpacing>
+          <Body2>{user?.email}</Body2>
+        </TextSpacing>
+
         <HeadingSpacing>
           <Body1Bold>Phone Number</Body1Bold>
         </HeadingSpacing>

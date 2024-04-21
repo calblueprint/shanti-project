@@ -30,7 +30,9 @@ function OrderHistory() {
       <NavBarMovedUP />
       <OutterBox>
         <BackButton destination="./profileScreen" />
-        <Heading1>Order History</Heading1>
+        <div style={{ marginTop: '40px', marginBottom: '20px' }}>
+          <Heading1>Order History</Heading1>
+        </div>
         <OrderHistoryContainer>
           {orderIds.length > 0 ? (
             orderIds.map((orderId: number) => (

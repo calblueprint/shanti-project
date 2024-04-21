@@ -165,8 +165,8 @@ export const GalleryImage = styled.img`
 
 export const RowDiv = styled.div`
   width: 700px;
-  height: 400px;
-  margin-bottom: 50px;
+  height: 300px;
+  margin-bottom: 20px;
 `;
 
 export const OrderStatusDiv = styled.div`
