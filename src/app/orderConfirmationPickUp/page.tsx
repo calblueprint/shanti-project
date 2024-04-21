@@ -40,6 +40,7 @@ import {
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
+  Wrapper2,
   PageDiv,
   CenterDiv,
   BackButtonDiv,
@@ -77,7 +78,6 @@ export default function OrderConfirmationPickUp() {
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
-    const endTime = pickupTime?.end_time.toLocaleString();
     const date =
       startTime == null
         ? ['0', '0', '0']
@@ -159,6 +159,7 @@ export default function OrderConfirmationPickUp() {
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>
+
         </PageDiv>
       </CenterDiv>
     </div>
