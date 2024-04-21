@@ -9,10 +9,10 @@ export const FavoriteDiv = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 750px;
+  width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
-  margin-right: 10px;
+  margin-right: 20px;
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -22,36 +22,20 @@ export const OutterFavoriteDiv = styled.div`
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 800px;
   max-height: 100%;
-  max-width: 750px;
   margin-top: 20px;
-  margin-right: 10px;
-  margin-left: 20px;
-  padding-right: 7px;
-  padding-top: 7px;
+  margin-right: 60px;
+  margin-left: 60px;
+  padding-right: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
 `;
 
 export const ScrollDiv = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   max-width: 100%;
-`;
-
-export const ImageDiv = styled.div`
-  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.08);
-  width: 150px;
-  height: 150px;
-  margin-left: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Wrapper = styled.div`
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const BackDiv = styled.button`
@@ -110,18 +94,9 @@ export const Label = styled.p`
   margin-top: 20px;
 `;
 
-export const LabelBox1 = styled.div`
-  width: 250px;
-  height: 100%;
-  padding: 20px;
-`;
-
 export const LabelBox = styled.div`
   width: 150px;
   height: 100%;
-  padding: 20px;
-  gap: 50px;
-  margin-right: 30px;
 `;
 
 export const HeaderText = styled.h3`
@@ -226,13 +201,14 @@ export const LeftColumnDiv = styled.div`
   flex-flow: column;
   justify-content: space-evenly;
   align-items: space-evenly;
-  width: 800px;
+  width: 100%;
 `;
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-  align-items: left;
-  width: 475px;
+  align-items: start;
+  margin-left: 10px;
+  width: 100%;
 `;
 
 export const BackButtonDiv = styled.div`
@@ -240,9 +216,8 @@ export const BackButtonDiv = styled.div`
   flex-direction: row;
   text-align: left;
   width: 800px;
-  margin-left: 40px;
+  margin-left: 80px;
   margin-bottom: 40px;
-  margin-top: 20px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`
@@ -254,14 +229,6 @@ export const WhiteBackgroundDiv = styled.div`
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
 
-
-export const Wrapper2 = styled.div`
-  display: flex;
-  flex-direction: col;
-  align-items: space-evenly;
-  justify-content: space-around;
-`;
-
 export const BottomColumnDiv = styled.div`
   display: flex;
   flex-direction: row;
@@ -269,17 +236,16 @@ export const BottomColumnDiv = styled.div`
   justify-content: space-around;
   width: 100%;
   margin-left: 20px;
-  margin-right: 20px;
   margin-bottom: 30px;
-  gap: 10px;
+  gap: 30px;
 `;
 
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-left: 60px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export const TextDiv1 = styled.div`
@@ -296,25 +262,22 @@ export const PageDiv = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  position: relative;
-  margin-bottom: 40px;
 `;
 
 export const ShippingDetailsDiv = styled.div`
-  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-  width: 475px;
+  width: 467px;
   height: auto;
   max-height: 100%;
   padding: 36px 34px;
   gap: 33px;
   max-height: 100%;
-  margin-top: 75px;
+  margin-top: 93px;
   margin-bottom: 30px;
   margin-right: 40px;
 `;
@@ -332,7 +295,6 @@ export const CenterDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   width: 100%;
   padding: 20px;
 `;

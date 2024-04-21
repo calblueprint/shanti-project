@@ -11,9 +11,6 @@ export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  max-width: 750px;
-  width: 100%;
 `;
 
 export const ImageBackground = styled.div`
@@ -30,7 +27,6 @@ export const CartItemsDiv = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  width: 750px;
   overflow: auto;
   gap: 32px;
   margin-top: 20px;
@@ -65,8 +61,9 @@ export const Backtext = styled.p`
 export const TrashIcon = styled(Trash2)`
   width: 30px;
   height: 30px;
-  color: black;
+  color: navy;
   margin-right: 30px;
+  margin-left: 50px;
   margin-top: 28px;
 `;
 
@@ -77,7 +74,7 @@ export const FooterMoved = styled(Footer)`
 export const TransparentButton = styled.button`
   background-color: transparent;
   border: transparent;
-  padding-left: 40px;
+  margin-left: 40px;
   margin-bottom: 25px;
 `;
 
@@ -102,10 +99,13 @@ export const QuantityButton = styled.div`
   width: 165px;
   height: 50px;
   border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
   background-color: ${COLORS.white};
   border: 2px solid ${COLORS.navy};
   color: ${COLORS.navy};
   cursor: pointer;
+  margin-left: 200px;
 `;
 
 export const PlusMinusButton = styled.button`
@@ -125,13 +125,13 @@ export const Label = styled.p`
 
 export const LabelBox = styled.div`
   width: 150px;
+  margin-left: 50px;
 `;
 
 export const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 100px;
   padding-left: 50px;
   background-color: ${COLORS.offWhite};
 `;
@@ -372,4 +372,12 @@ export const CheckoutButton = styled.button`
   &:hover {
     background: #0e2351;
   }
+`;
+
+export const CategorySpacing = styled.div`
+  margin-top: 15px;
+`;
+
+export const OrderSumSectionSpacing = styled.div`
+  margin-left: 135px;
 `;

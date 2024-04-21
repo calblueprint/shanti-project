@@ -26,7 +26,11 @@ export default function Buttons(props: { productNumber: number }) {
   // used hyphen instead of dash for display
   const changeCart = () => {
     addToCart(productNumber, quantity);
-    toast(`you have added ${quantity} items to the cart!`);
+    if (quantity <= 1) {
+      toast(`you have added ${quantity} item to the cart!`);
+    } else {
+      toast(`you have added ${quantity} items to the cart!`);
+    }
   };
 
   return (

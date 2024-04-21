@@ -9,6 +9,7 @@ import {
   TransparentButton,
   LabelBox,
   ImageBackground,
+  CategorySpacing,
 } from './styles';
 
 import Buttons from './Buttons';
@@ -46,7 +47,9 @@ export default function CartItem(props: {
       </ImageBackground>
       <LabelBox>
         <Heading4Bold>{cartItemProduct.name}</Heading4Bold>
-        <Body2>Category: {cartItemProduct.category}</Body2>
+        <CategorySpacing>
+          <Body2>Category: {cartItemProduct.category}</Body2>
+        </CategorySpacing>
       </LabelBox>
       <Buttons
         productNumber={cartItemProduct.id}
