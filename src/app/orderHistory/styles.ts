@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
+import COLORS from '@/styles/colors';
 
 export const FooterMoved = styled(Footer)`
   left: 0;
@@ -13,8 +14,9 @@ export const NavBarMovedUP = styled(NavBar)`
 `;
 
 export const OutterBox = styled.div`
-  width: 900px;
-  margin: 0 auto; // This will center the OutterBox
+  width: 800px;
+  margin-top: 40px;
+  margin-bottom: 70px;
 `;
 
 export const OrderHistoryContainer = styled.div`
@@ -22,13 +24,12 @@ export const OrderHistoryContainer = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  background: var(--White, #fff);
+  background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px; // Width of the outer box
-  height: 700px;
-  overflow: scroll;
+  height: auto;
   margin-top: 10px;
-  padding: 0; // Ensure there's no padding pushing the internal boxes inward
+  padding-top: 40px;
 `;
 
 export const OrderHistoryBox = styled.div`
@@ -46,4 +47,8 @@ export const OrderHistoryBox = styled.div`
 export const Fullscreen = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: ${COLORS.offWhite};
 `;

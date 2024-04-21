@@ -77,7 +77,7 @@ export const LogOutButton = styled.button`
   border: transparent;
   border-radius: 5px;
   width: 405px;
-  height: 70px;
+  height: 50px;
 `;
 /* transform: translateY(200px); */
 
@@ -112,7 +112,8 @@ export const HeartIcon = styled(Heart)`
 `;
 
 export const BackButtonDiv = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  margin-top: 50px;
 `;
 
 export const HeaderDiv = styled.div`
