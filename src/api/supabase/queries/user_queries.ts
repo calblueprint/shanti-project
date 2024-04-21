@@ -22,7 +22,7 @@ export async function fetchUser(): Promise<User> {
     throw new Error(`Session is null`);
   }
 
-  const {user} = session;
+  const { user } = session;
 
   if (user !== null) {
     const { data, error: error1 } = await supabase
