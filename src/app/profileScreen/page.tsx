@@ -375,13 +375,6 @@ export default function Profile() {
     async function fetchProducts() {
       const data = (await arrayOfFavorites()) as Product[];
       console.log(data);
-      data.forEach(
-        async product =>
-          (product.category = await convertButtonNumberToCategory(
-            product.category,
-          )),
-      );
-      console.log(data);
       // console.log(data);
       setFavorites(data);
     }
