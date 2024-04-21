@@ -9,7 +9,6 @@ import {
 import querystring from 'querystring';
 import {
   createOrder,
-  fetchCurrentOrdersByUser,
   updateOrderStatus,
 } from '@/api/supabase/queries/order_queries';
 import BackButton from '../../components/BackButton/BackButton';
@@ -18,7 +17,6 @@ import {
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
-import { Heading1, Normal700Text } from '../../styles/fonts';
 import {
   ProductWithQuantity,
   User,
@@ -32,7 +30,6 @@ import {
   OrderContainer,
   OrderButton,
   InformationContainer,
-  InformationText,
   BackButtonDiv,
   OutterDiv,
   InformationField,
