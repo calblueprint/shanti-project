@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Check, X, Send } from 'react-feather';
 import {
   Body1,
   Body2Light,
@@ -11,7 +10,9 @@ import {
   Heading2,
   Body1Bold,
 } from '@/styles/fonts';
+import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { useSearchParams } from 'next/navigation';
+import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import BackButton from '../../components/BackButton/BackButton';
 
 import {
@@ -28,22 +29,19 @@ import {
   DetailsHeader,
   RightColumnDiv,
   TextDiv,
-  TextDiv1,
-  OutterBox,
-  OutterDiv,
   ImageDiv,
   BottomColumnDiv,
   ShippingDetailsDiv,
   LabelBox,
+  TextDiv2,
   LeftColumnDiv,
   ScrollDiv,
-  ProductNameDiv,
   PageDiv,
   CenterDiv,
-  StatusButton,
+  TextDiv1,
 } from './styles';
 
-import { ProductWithQuantity, Order } from '../../schema/schema';
+import { ProductWithQuantity, Order, Pickup, User } from '../../schema/schema';
 
 function formatDate(date: string | undefined): string {
   if (!date) return '';
@@ -71,8 +69,18 @@ function formatDate(date: string | undefined): string {
   return `${month} ${day}, ${year}`;
 }
 
+function formatTime(date: string | undefined): string {
+  if (!date) return '';
+
+  const hour = date.substring(11, 13);
+  const minute = date.substring(14, 16);
+
+  return `${hour}:${minute}`;
+}
+
 export default function OrderPage() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
+  const [pickupTime, setPickupTime] = useState<Pickup>();
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
   let currOrderId = 0;
@@ -80,6 +88,13 @@ export default function OrderPage() {
     currOrderId = parseInt(orderIDFromSearch, 10);
   } else {
     currOrderId = 32;
+  }
+
+  async function setUserDetails() {
+    const fetchedUser = await fetchUser();
+    const currOrder = await getOrderById(Number(orderIDFromSearch));
+    const pickup = await fetchPickupTimesByID(currOrder.pickup_time_id);
+    setPickupTime(pickup);
   }
 
   const [order, setOrder] = useState<Order>();
@@ -94,9 +109,19 @@ export default function OrderPage() {
       setOrder(currOrder);
     }
     fetchProducts();
-  }, []);
+    setUserDetails();
+  });
 
-  const status = order?.order_status?.toLowerCase() || 'default';
+  function organizePickupTime() {
+    const startTime = pickupTime?.start_time.toLocaleString();
+
+    const date =
+      startTime == null
+        ? ['0', '0', '0']
+        : startTime?.substring(0, 10).split('-');
+    const dateStr = `${date[1]}/${date[2]}/${date[0]}`;
+    return `${dateStr}`;
+  }
 
   return (
     <div>
@@ -136,25 +161,7 @@ export default function OrderPage() {
                         </Body2Light>
                       </LabelBox>
                       <LabelBox>
-                        <div>
-                          <span
-                            style={{
-                              display: 'inline-block',
-                              fontWeight: 'bold',
-                              marginRight: '4px',
-                            }}
-                          >
-                            Quantity:
-                          </span>
-                          <span
-                            style={{
-                              display: 'inline-block',
-                              fontSize: '16px',
-                            }}
-                          >
-                            {product.quantity}
-                          </span>
-                        </div>
+                        <Body1Bold>Quantity: {product.quantity}</Body1Bold>
                       </LabelBox>
                     </FavoriteDiv>
                   ))}
@@ -165,6 +172,7 @@ export default function OrderPage() {
               <ShippingDetailsDiv>
                 <Heading3Bold>Pickup Information</Heading3Bold>
                 <DetailsHeader>Time Slot</DetailsHeader>
+                <Body1>{organizePickupTime()} (10:00 am - 12:30 pm)</Body1>
                 <DetailsHeader>Location</DetailsHeader>
                 <Body1>3170 23rd Street, San Francisco, CA 94110</Body1>
               </ShippingDetailsDiv>

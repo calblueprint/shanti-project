@@ -119,8 +119,8 @@ export const SVGWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  min-height: 100%;  
-  width:100%;
+  min-height: 100%;
+  width: 100%;
   position: relative;
   background: var(--Light-Periwinkle, #f4f7ff);
   display: flex;

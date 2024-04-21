@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Check, CheckCircle, X, Send } from 'react-feather';
 
 import querystring from 'querystring';
 import { Heading4Bold, Body1, OrderStatusFont, Body2 } from '@/styles/fonts';

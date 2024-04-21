@@ -28,10 +28,10 @@ export const OutterBox = styled.div`
   width: 800px;
   margin-top: 40px;
   margin-bottom: 70px;
+  min-height: 50px;
 `;
 
 export const OrderHistoryContainer = styled.div`
-  
   display: flex;
   flex-direction: column;
   align-items: center;

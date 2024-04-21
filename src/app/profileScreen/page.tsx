@@ -5,7 +5,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
-  Body3,
   Heading3,
   Heading1,
   Body1Bold,
@@ -32,7 +31,7 @@ import {
   fetchOrderProductById,
   fetchProductWithQuantityById,
 } from '@/api/supabase/queries/order_queries';
-import { Check, CheckCircle, X, Send } from 'react-feather';
+import { Check, X, Send } from 'react-feather';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,

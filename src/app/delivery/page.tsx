@@ -9,7 +9,6 @@ import {
 import querystring from 'querystring';
 import {
   createOrder,
-  fetchCurrentOrdersByUser,
   updateOrderStatus,
 } from '@/api/supabase/queries/order_queries';
 import BackButton from '../../components/BackButton/BackButton';
