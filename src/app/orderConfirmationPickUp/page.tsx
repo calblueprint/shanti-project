@@ -6,41 +6,45 @@ import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import { getOrderById } from '@/api/supabase/queries/order_queries';
 import {
+  Body2Bold,
+  Body2,
+  Heading3Bold,
   Body1,
   Body1Bold,
-  Body2Light,
-  Heading3Bold,
   Heading4Bold,
+  Body2Light,
 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
-import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
+import { fetchCartItemsWithQuantity,fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import {
-  TextDiv,
-  TextDiv1,
-  BackButtonDiv,
   FavoriteDiv,
+  ColDiv,
   OutterFavoriteDiv,
+  TextDiv1,
+  OutterBox,
+  Label,
   LabelBox,
-  LabelBox1,
   ScrollDiv,
   ShippingDetailsDiv,
   ImageDiv,
   BottomColumnDiv,
-  Wrapper,
+  LabelBox1,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
   PageDiv,
   CenterDiv,
+  BackButtonDiv,
+  TextDiv,
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
-
+ 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
@@ -93,7 +97,7 @@ export default function OrderConfirmationPickUp() {
               </TextDiv>
               <OutterFavoriteDiv>
                 <TextDiv1>
-                  <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
+                  <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
                 </TextDiv1>
                 <ScrollDiv>
                   {Cart.map(cartItem => (
