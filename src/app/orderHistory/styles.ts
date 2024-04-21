@@ -1,9 +1,9 @@
 // styles.ts (for styled-components)
 import styled from 'styled-components';
+import COLORS from '@/styles/colors';
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
-import COLORS from '@/styles/colors';
 
 export const FooterMoved = styled(Footer)`
   left: 0;
