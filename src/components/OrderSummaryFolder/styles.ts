@@ -1,3 +1,4 @@
+import COLORS from '@/styles/colors';
 import styled from 'styled-components';
 
 export const OrderSummaryDiv = styled.div`
@@ -37,6 +38,10 @@ export const WhiteBackgroundDiv = styled.div`
   width: 350px;
   padding: 20px;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 `;
 
 export const HeaderShiftRight = styled.h2`
@@ -57,7 +62,8 @@ export const OrderSummaryHeaderDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: ${COLORS.marineBlue};
 `;
 
 export const ItemNameDiv = styled.div`

@@ -7,7 +7,6 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import Footer from '../../components/FooterFolder/Footer';
 
-
 export const PickupContainer = styled.div`
   width: 730px;
   height: 400px;
