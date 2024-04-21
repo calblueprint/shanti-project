@@ -26,7 +26,7 @@ export const PickupContent = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding-left: 20px;
+  // padding-left: 20px;
 `;
 
 export const PickupTimeButton = styled.button<{ $isSelected?: boolean }>`
