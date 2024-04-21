@@ -203,7 +203,7 @@ export const OrderStatusApprovedDiv = styled.div`
 export const OrderStatusSubmittedDiv = styled.div`
   width: 300px;
   height: 35px;
-  background: var(--Greyish, #E6E6E6);
+  background: var(--Greyish, #e6e6e6);
   display: flex;
   justify-content: center;
   align-items: center;

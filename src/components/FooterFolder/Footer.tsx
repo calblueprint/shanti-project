@@ -26,7 +26,7 @@ import {
 export default function Footer({ ...rest }) {
   const router = useRouter();
   return (
-    <main {...rest}>
+    
       <Wrapper>
         <ContactDiv>
           <Heading>Contact Us</Heading>
@@ -122,6 +122,6 @@ export default function Footer({ ...rest }) {
           }}
         />
       </Wrapper>
-    </main>
+   
   );
 }

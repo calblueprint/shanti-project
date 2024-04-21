@@ -9,32 +9,28 @@ export const BackLink = styled(Link)`
   align-items: center;
   justify-content: space-between;
   color: ${COLORS.black};
-<<<<<<< HEAD
-<<<<<<< HEAD
-  width: 75px;
-
-=======
   width: 60px;
+<<<<<<< HEAD
 >>>>>>> b287da7 (temp)
 =======
   width: 60px;
 >>>>>>> b287da7 (temp)
+=======
+>>>>>>> 46a8b03 (fixed after rebasing)
   &:hover {
     text-decoration: underline;
   }
 `;
 
 export const ArrowLeftIcon = styled(ArrowLeft)`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  width: 20px;
-  height: 20px;
-=======
   width: 18px;
   height: 18px;
+<<<<<<< HEAD
 >>>>>>> b287da7 (temp)
 =======
   width: 18px;
   height: 18px;
 >>>>>>> b287da7 (temp)
+=======
+>>>>>>> 46a8b03 (fixed after rebasing)
 `;

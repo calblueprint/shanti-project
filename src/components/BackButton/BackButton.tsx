@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { Body2Bold } from '@/styles/fonts';
-=======
-import { Body1, Body2Bold } from '@/styles/fonts';
->>>>>>> b287da7 (temp)
+
 import { BackLink, ArrowLeftIcon } from './styles';
 
 export default function BackButton(props: { destination: string }) {
