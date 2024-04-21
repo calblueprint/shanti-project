@@ -13,6 +13,7 @@ export const FavoriteDiv = styled.div`
   margin-bottom: 50px;
   margin-top: 30px;
   margin-right: 20px;
+  gap: 40px;
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -22,13 +23,13 @@ export const OutterFavoriteDiv = styled.div`
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-  width: 800px;
+  width: 700px;
   max-height: 100%;
   margin-top: 20px;
   margin-right: 60px;
   margin-left: 60px;
   padding-right: 20px;
-  padding-left: 10px;
+  padding-left: 40px;
   padding-top: 10px;
 `;
 
@@ -92,6 +93,16 @@ export const NavBarMovedUP = styled(NavBar)`
 
 export const Label = styled.p`
   margin-top: 20px;
+`;
+
+
+export const ImageDiv = styled.p`
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+
 `;
 
 export const LabelBox = styled.div`
@@ -235,9 +246,9 @@ export const BottomColumnDiv = styled.div`
   align-items: space-evenly;
   justify-content: space-around;
   width: 100%;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-bottom: 30px;
-  gap: 30px;
+  gap: 10px;
 `;
 
 export const TextDiv = styled.div`
@@ -251,9 +262,7 @@ export const TextDiv = styled.div`
 export const TextDiv1 = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  margin-left: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
 `;
 
 export const PageDiv = styled.div`

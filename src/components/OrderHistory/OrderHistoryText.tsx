@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import { Check, CheckCircle, X, Send } from 'react-feather';
 
 import querystring from 'querystring';
-import { Heading4Bold, Body1, OrderStatusFont } from '@/styles/fonts';
+import { Heading4Bold, Body1, Body2, OrderStatusFont } from '@/styles/fonts';
 import {
   ViewOrderButton,
   ArrowIcon,
@@ -11,7 +12,7 @@ import {
   OrderStatusApprovedDiv,
   CrossStyled,
   OrderStatusSubmittedDiv,
-  LoaderStyled,
+  SendStyle,
 } from './styles'; // Adjust the import path as necessary
 import { Order, OrderStatus } from '../../schema/schema';
 
@@ -61,7 +62,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         >
           <Heading4Bold>Order No. {orderNumber}</Heading4Bold>
           <ViewOrderButton onClick={() => viewOrder(orderNumber)}>
-            <Body1>View Order</Body1>
+            <Body2>View Order</Body2>
             <ArrowIcon />
           </ViewOrderButton>
         </div>
@@ -102,7 +103,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         >
           <Heading4Bold>Order No. {orderNumber}</Heading4Bold>
           <ViewOrderButton onClick={() => viewOrder(orderNumber)}>
-            <Body1>View Order</Body1>
+            <Body2>View Order</Body2>
             <ArrowIcon />
           </ViewOrderButton>
         </div>
@@ -143,7 +144,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
         >
           <Heading4Bold>Order No. {orderNumber}</Heading4Bold>
           <ViewOrderButton onClick={() => viewOrder(orderNumber)}>
-            <Body1>View Order</Body1>
+            <Body2>View Order</Body2>
             <ArrowIcon />
           </ViewOrderButton>
         </div>
@@ -156,7 +157,7 @@ export default function OrderDetails(props: OrderDetailsProps) {
           {formatDate(date)}
         </Body1>
         <OrderStatusSubmittedDiv>
-          <LoaderStyled />
+          <SendStyle />
           <OrderStatusFont>Order Submitted</OrderStatusFont>
         </OrderStatusSubmittedDiv>
       </div>
