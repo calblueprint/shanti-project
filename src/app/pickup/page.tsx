@@ -42,7 +42,6 @@ import {
   ToastPopUP,
 } from './styles';
 
-
 function DateInfoComponent(date: { date: unknown }) {
   const date1 = new Date(date.date as string);
   const daysOfWeek = [
@@ -127,11 +126,22 @@ export default function PickUp() {
             </PickupContent>
             <Heading4Bold>Phone Number</Heading4Bold>
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginBottom: '10px',
+              }}
+            >
               <Heading4Bold>Time Slot</Heading4Bold>
             </div>
-            <div style={{marginBottom: '10px' }}> <Body1>Pick Up times: 10:00 AM - 12:00 PM</Body1> </div>
-            <div><Body1>Location: 3170 23rd Street, San Francisco, CA 94110</Body1></div>
+            <div style={{ marginBottom: '10px' }}>
+              {' '}
+              <Body1>Pick Up times: 10:00 AM - 12:00 PM</Body1>{' '}
+            </div>
+            <div>
+              <Body1>Location: 3170 23rd Street, San Francisco, CA 94110</Body1>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               {Time.map(time => (
                 <PickupTimeButton
@@ -171,7 +181,7 @@ export default function PickUp() {
                 const queryString = querystring.stringify({ orderID });
                 router.push(`/orderConfirmationPickUp?${queryString}`);
               }
-              if (selectedPickupIndex === 0){
+              if (selectedPickupIndex === 0) {
                 toast(`You must select a pick-up date!`);
               }
             }}
