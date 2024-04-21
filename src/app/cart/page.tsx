@@ -21,6 +21,7 @@ import {
   LeftColumnDiv,
   RightColumnDiv,
   ContentDiv,
+  OrderSumSectionSpacing,
 } from './styles';
 
 import { ProductWithQuantity } from '../../schema/schema';
@@ -73,14 +74,16 @@ export default function OrderPage() {
           </CartItemsDiv>
         </LeftColumnDiv>
         <RightColumnDiv>
-          <OrderSummary cart={cart} numberOfItems={numberOfItems} />
-          <CheckoutButton
-            // change this function so that the flow makes sense and that there is items within the cart
-            onClick={() => checkDelivery()}
-            disabled={numberOfItems === 0}
-          >
-            Check Out
-          </CheckoutButton>
+          <OrderSumSectionSpacing>
+            <OrderSummary cart={cart} numberOfItems={numberOfItems} />
+            <CheckoutButton
+              // change this function so that the flow makes sense and that there is items within the cart
+              onClick={() => checkDelivery()}
+              disabled={numberOfItems === 0}
+            >
+              Check Out
+            </CheckoutButton>
+          </OrderSumSectionSpacing>
         </RightColumnDiv>
       </ContentDiv>
     </PageDiv>
