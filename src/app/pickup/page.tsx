@@ -1,6 +1,9 @@
 'use client';
 
 // import { GlobalStyle } from "@/styles/components";
+
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { ArrowLeft } from 'react-feather';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import querystring from 'querystring';
@@ -11,7 +14,7 @@ import {
 } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Heading4Bold } from '@/styles/fonts';
+import { Body1, Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import {
   updateCartPickupId,
@@ -36,7 +39,9 @@ import {
   PickupContent,
   PickupContainer,
   PickupTimeButton,
+  ToastPopUP,
 } from './styles';
+
 
 function DateInfoComponent(date: { date: unknown }) {
   const date1 = new Date(date.date as string);
@@ -100,6 +105,12 @@ export default function PickUp() {
   return (
     <div>
       <NavBar />
+      <ToastPopUP
+        position="top-right"
+        autoClose={500}
+        limit={1}
+        hideProgressBar
+      />
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>
@@ -116,10 +127,11 @@ export default function PickUp() {
             </PickupContent>
             <Heading4Bold>Phone Number</Heading4Bold>
             <PickupContent>{Profile?.phone_numbers}</PickupContent>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
               <Heading4Bold>Time Slot</Heading4Bold>
             </div>
-
+            <div style={{marginBottom: '10px' }}> <Body1>Pick Up times: 10:00 AM - 12:00 PM</Body1> </div>
+            <div><Body1>Location: 3170 23rd Street, San Francisco, CA 94110</Body1></div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               {Time.map(time => (
                 <PickupTimeButton
@@ -142,8 +154,6 @@ export default function PickUp() {
                 </PickupTimeButton>
               ))}
             </div>
-            <div> Pick Up times: 10:00 AM - 12:00 PM </div>
-            <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
         </ForceColumnDiv>
         <RightColumnDiv>
@@ -157,12 +167,12 @@ export default function PickUp() {
                 await updateOrderStatus(orderID, OrderStatus.Submitted);
                 await createOrder();
                 const newestOrder = await fetchCartIdFromUser();
-                console.log(newestOrder);
                 await updateOrderStatus(newestOrder, OrderStatus.inProgress);
                 const queryString = querystring.stringify({ orderID });
                 router.push(`/orderConfirmationPickUp?${queryString}`);
-              } else {
-                // TODO handle the case where they didn't select a time!
+              }
+              if (selectedPickupIndex === 0){
+                toast(`You must select a pick-up date!`);
               }
             }}
           >
