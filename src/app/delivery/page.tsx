@@ -35,7 +35,11 @@ import {
   InformationText,
   BackButtonDiv,
   OutterDiv,
-  InformationField, Label, Input, Heading4Bold, ForceColumnDiv
+  InformationField,
+  Label,
+  Input,
+  Heading4Bold,
+  ForceColumnDiv,
 } from './styles';
 
 export default function App() {
@@ -59,34 +63,35 @@ export default function App() {
     fetchProducts();
   }, []);
 
-  
-
   return (
     <main>
       <NavBar />
       <OutterDiv>
-   
-
         <DeliveryContainer>
-        <ForceColumnDiv>
-        <BackButtonDiv>
-          <BackButton destination="/storefront" />
-        </BackButtonDiv>
+          <ForceColumnDiv>
+            <BackButtonDiv>
+              <BackButton destination="/storefront" />
+            </BackButtonDiv>
 
-        <Heading4Bold style={{marginLeft:"41px", marginTop:"20px"}}>Delivery</Heading4Bold>
+            <Heading4Bold style={{ marginLeft: '41px', marginTop: '20px' }}>
+              Delivery
+            </Heading4Bold>
 
-        <InformationContainer>
-
-            <Label>Name</Label>
-            <Input/>{`${Profile?.first_name} ${Profile?.last_name}`}<Input/>
-            <Label>Address</Label>
-            <Input/>{UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}<Input/>
-            <Label>Phone Number</Label>
-            <Input/>{Profile?.phone_numbers}<Input/>
-
-        </InformationContainer>
-        </ForceColumnDiv>
-
+            <InformationContainer>
+              <Label>Name</Label>
+              <Input />
+              {`${Profile?.first_name} ${Profile?.last_name}`}
+              <Input />
+              <Label>Address</Label>
+              <Input />
+              {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+              <Input />
+              <Label>Phone Number</Label>
+              <Input />
+              {Profile?.phone_numbers}
+              <Input />
+            </InformationContainer>
+          </ForceColumnDiv>
 
           <OrderContainer>
             <OrderSummary cart={cart} numberOfItems={numberOfItems} />
@@ -110,18 +115,14 @@ export default function App() {
   );
 }
 
-
-
-
-
-          // {/* <InformationContainer>
-          //   <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
-          //   <Normal700Text>Name</Normal700Text>
-          //   <InformationText>
-          //     {`${Profile?.first_name} ${Profile?.last_name}`}
-          //   </InformationText>
-          //   <Normal700Text>Address</Normal700Text>
-          //   <InformationText>
-          //     {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-          //   </InformationText>
-          // </InformationContainer> */}
+// {/* <InformationContainer>
+//   <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
+//   <Normal700Text>Name</Normal700Text>
+//   <InformationText>
+//     {`${Profile?.first_name} ${Profile?.last_name}`}
+//   </InformationText>
+//   <Normal700Text>Address</Normal700Text>
+//   <InformationText>
+//     {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+//   </InformationText>
+// </InformationContainer> */}

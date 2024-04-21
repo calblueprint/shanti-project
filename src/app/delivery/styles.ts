@@ -53,8 +53,6 @@ export const QuantityText = styled.div`
   text-align: right;
 `;
 
-
-
 export const OrderContainer = styled.div`
   margin-top: 50px;
   width: 350px;
@@ -135,7 +133,6 @@ export const OutterDiv = styled.div`
   flex-direction: column;
 `;
 
-
 export const InformationContainer = styled.div`
   width: 629px;
   height: 327px;
@@ -146,9 +143,8 @@ export const InformationContainer = styled.div`
   align-items: left;
   background: ${COLORS.white}; /* Assuming white is defined in your COLORS */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px 25px;
-
 `;
 
 export const InformationField = styled.div`
@@ -161,7 +157,7 @@ export const InformationField = styled.div`
 
 export const Label = styled.div`
   color: var(--Black, #101010);
-  font-family: "Public Sans";
+  font-family: 'Public Sans';
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -178,21 +174,20 @@ export const Input = styled.div`
   color: var(--Black, #101010);
 
   /* Body 1 - Text */
-  font-family: "Public Sans";
+  font-family: 'Public Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  `;
+`;
 
-  export const Heading4Bold = styled.p`
+export const Heading4Bold = styled.p`
   font-family: 'Public Sans', sans-serif;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 `;
-
 
 export const ForceColumnDiv = styled.div`
   display: flex;

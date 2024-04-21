@@ -36,7 +36,7 @@ import {
   PickupContent,
   PickupContainer,
   PickupTimeButton,
-  InformationContainer
+  InformationContainer,
 } from './styles';
 
 function DateInfoComponent(date: { date: unknown }) {

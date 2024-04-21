@@ -275,6 +275,6 @@ export const InformationContainer = styled.div`
   align-items: left;
   background: ${COLORS.white}; /* Assuming white is defined in your COLORS */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px 25px;
 `;

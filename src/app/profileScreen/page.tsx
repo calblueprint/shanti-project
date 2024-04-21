@@ -360,7 +360,7 @@ function LogoutSection() {
     signOut();
     toast("You've been Logged Out! Redirecting...", {
       position: toast.POSITION.TOP_CENTER,
-    });  
+    });
     setTimeout(() => {
       router.push('/login');
     }, 3000);
