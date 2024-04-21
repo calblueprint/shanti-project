@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import {
   fetchCurrentOrdersByUser,
   getOrderById,
@@ -34,13 +35,11 @@ import {
   LabelBox,
   ScrollDiv,
   ShippingDetailsDiv,
-  ImageDiv,
   BottomColumnDiv,
-  LabelBox1,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
-  Wrapper2,
+  ImageDiv,
   PageDiv,
   CenterDiv,
   BackButtonDiv,
@@ -56,10 +55,13 @@ export default function OrderConfirmationPickUp() {
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
 
+
   useEffect(() => {
     async function fetchProducts() {
+      
       const cartItems = (await fetchCartItemsWithQuantityByID(
         orderIDFromSearch,
+        
       )) as Product[];
       setCart(cartItems);
     }
@@ -116,13 +118,13 @@ export default function OrderConfirmationPickUp() {
                           }}
                         />
                       </ImageDiv>
-                      <LabelBox1>
+                      <LabelBox>
                         <Body1Bold>{cartItem.name}</Body1Bold>
                         <br />
                         <Body2Light style={{ marginTop: '-10px' }}>
                           Category: {cartItem.category}
                         </Body2Light>
-                      </LabelBox1>
+                      </LabelBox>
                       <LabelBox>
                         <div>
                           <span

@@ -9,14 +9,23 @@ export const BackLink = styled(Link)`
   align-items: center;
   justify-content: space-between;
   color: ${COLORS.black};
+<<<<<<< HEAD
   width: 75px;
 
+=======
+  width: 60px;
+>>>>>>> b287da7 (temp)
   &:hover {
     text-decoration: underline;
   }
 `;
 
 export const ArrowLeftIcon = styled(ArrowLeft)`
+<<<<<<< HEAD
   width: 20px;
   height: 20px;
+=======
+  width: 18px;
+  height: 18px;
+>>>>>>> b287da7 (temp)
 `;

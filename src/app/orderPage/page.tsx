@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Body1, Body2 } from '@/styles/fonts';
+import { Check, X, Send } from 'react-feather';
+import { Body1, Body2Light, Heading3Bold, Heading4Bold, Body2, Heading2, Body1Bold } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -14,13 +15,23 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import {
   FavoriteDiv,
-  Body1Bold,
   OutterFavoriteDiv,
   BackButtonDiv,
+  DetailsHeader,
+  RightColumnDiv,
+  TextDiv,
+  TextDiv1,
   OutterBox,
   OutterDiv,
-  Heading,
+  ImageDiv,
+  BottomColumnDiv,
+  ShippingDetailsDiv,
+  LabelBox,
+  LeftColumnDiv,
+  ScrollDiv,
   ProductNameDiv,
+  PageDiv,
+  CenterDiv,
   StatusButton,
 } from './styles';
 
@@ -76,40 +87,87 @@ export default function OrderPage() {
     }
     fetchProducts();
   }, []);
+  
+  const status = order?.order_status?.toLowerCase() || 'default';
 
   return (
     <div>
       <NavBar />
+      <CenterDiv>
+        <PageDiv>
+          <BackButtonDiv>
+            <BackButton destination="./storefront" />
+          </BackButtonDiv>
+          <BottomColumnDiv>
+            <LeftColumnDiv>
+              <TextDiv>
+              <Heading2>{formatDate(order?.created_at)}</Heading2>
+              </TextDiv>
+              <OutterFavoriteDiv>
+                <TextDiv1>
+                  <Heading4Bold>Order No</Heading4Bold>
+                </TextDiv1>
+                <ScrollDiv>
+                {orders.map(product => (
+                  <FavoriteDiv key={product.id}>
+                    <ImageDiv>
+                    <img
+                      src={product.photo}
+                      alt={product.name}
+                      width={150}
+                      height={150}
+                      style={{ marginTop: '0' }}
+                    />
+                    </ImageDiv>
 
-      <OutterBox>
-        <BackButtonDiv>
-          <BackButton destination="./orderHistory" />
-        </BackButtonDiv>
-        <OutterDiv>
-          <Heading>{formatDate(order?.created_at)}</Heading>
-          <StatusButton>
-            {' '}
-            <Body1Bold>{order?.order_status}</Body1Bold>{' '}
-          </StatusButton>
-        </OutterDiv>
-        <OutterFavoriteDiv>
-          {orders.map(product => (
-            <FavoriteDiv key={product.id}>
-              <img
-                src={product.photo}
-                alt={product.name}
-                width={150}
-                height={150}
-                style={{ marginTop: '0' }}
-              />
-              <ProductNameDiv>
-                <Body1>{product.name}</Body1>
-                <Body2>Category: {product.category}</Body2>
-              </ProductNameDiv>
-            </FavoriteDiv>
-          ))}
-        </OutterFavoriteDiv>
-      </OutterBox>
+                      <LabelBox>
+                        <Body1Bold>{product.name}</Body1Bold>
+                        <br />
+                        <Body2Light style={{ marginTop: '-10px' }}>
+                          Category: {product.category}
+                        </Body2Light>
+                      </LabelBox>
+                      <LabelBox>
+                        <div>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontWeight: 'bold',
+                              marginRight: '4px',
+                            }}
+                          >
+                            Quantity:
+                          </span>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontSize: '16px',
+                            }}
+                          >
+                            {product.quantity}
+                          </span>
+                        </div>
+                      </LabelBox>
+                    </FavoriteDiv>
+                  ))}
+                </ScrollDiv>
+              </OutterFavoriteDiv>
+            </LeftColumnDiv>
+            <RightColumnDiv>
+              <ShippingDetailsDiv>
+                <Heading3Bold>Pickup Information</Heading3Bold>
+                <DetailsHeader>Time Slot</DetailsHeader>
+                <DetailsHeader>Location</DetailsHeader>
+                <Body1>3170 23rd Street, San Francisco, CA 94110</Body1>
+              </ShippingDetailsDiv>
+            </RightColumnDiv>
+          </BottomColumnDiv>
+
+        </PageDiv>
+      </CenterDiv>
     </div>
   );
 }
+
+
+

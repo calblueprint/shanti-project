@@ -21,9 +21,8 @@ export const HeadingBack = styled.div`
   margin-right: 75px;
 `;
 
-export const AccountDetails = styled.div`
-  margin-top: 50px;
-  margin-right: 30px;
+export const AccountDetailsDeliv = styled.div`
+  margin-top: 40px;
   width: 500px;
   height: 350px;
   border-radius: 10px;
@@ -35,25 +34,41 @@ export const AccountDetails = styled.div`
   padding-top: 29px;
   padding-right: 29px;
   padding-left: 29px;
-  padding-bottom: 29px;
+  padding-bottom: 32px;
+`;
+
+export const AccountDetailsPickUp = styled.div`
+  margin-top: 40px;
+  width: 500px;
+  height: 310px;
+  border-radius: 10px;
+  background: ${COLORS.white};
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top: 29px;
+  padding-right: 29px;
+  padding-left: 29px;
+  padding-bottom: 32px;
+  margin-bottom: 40px;
 `;
 
 export const OrderHistory = styled.div`
-  margin-top: 50px;
+  margin-top: 40px;
   width: 600px;
   height: 350px;
   border-radius: 10px;
   background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-  padding-top: 23px;
-  padding-right: 23px;
-  padding-left: 23px;
-  padding-bottom: 23px;
+  padding-top: 29px;
+  padding-right: 29px;
+  padding-left: 29px;
+  padding-bottom: 29px;
+  margin-left: 60px;
 `;
 
 export const FavoritesContainer = styled.div`
-  margin-top: 50px;
-
   width: 600px;
   height: 350px;
   border-radius: 10px;
@@ -63,6 +78,8 @@ export const FavoritesContainer = styled.div`
   padding-right: 23px;
   padding-left: 23px;
   padding-bottom: 23px;
+  margin-left: 30px;
+  margin-top: 40px;
 `;
 
 export const LogOutButton = styled.button`
@@ -75,9 +92,16 @@ export const LogOutButton = styled.button`
   font-weight: 600;
   line-height: normal;
   border: transparent;
+<<<<<<< HEAD
   border-radius: 5px;
   width: 405px;
   height: 50px;
+=======
+  border-radius: 10px;
+  width: 500px;
+  height: 55px;
+  margin-top: 40px;
+>>>>>>> b287da7 (temp)
 `;
 /* transform: translateY(200px); */
 
@@ -100,7 +124,7 @@ export const FavoriteDiv = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-top: 30px;
 `;
 
@@ -112,8 +136,13 @@ export const HeartIcon = styled(Heart)`
 `;
 
 export const BackButtonDiv = styled.div`
+<<<<<<< HEAD
   margin-bottom: 30px;
   margin-top: 50px;
+=======
+  margin-top: 50px;  
+  margin-bottom: 40px;
+>>>>>>> b287da7 (temp)
 `;
 
 export const HeaderDiv = styled.div`
@@ -126,6 +155,11 @@ export const HeaderDiv = styled.div`
 
 export const ProductNameDiv = styled.div`
   width: 250px;
+`;
+
+export const Spacing = styled.div`
+  height: 10px;
+  width: 100%;
 `;
 
 export const BlankSpace = styled.div`
@@ -151,7 +185,6 @@ export const ColumnDiv = styled.div`
 `;
 
 export const LogOutDiv = styled.div`
-  margin-top: 50px;
   margin-right: 30px;
   display: flex;
   justify-content: center;

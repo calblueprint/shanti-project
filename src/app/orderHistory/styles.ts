@@ -13,6 +13,17 @@ export const NavBarMovedUP = styled(NavBar)`
   position: relative;
 `;
 
+export const BackButtonDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  text-align: left;
+  width: 800px;
+  padding-right: 40px;
+`;
+
 export const OutterBox = styled.div`
   width: 800px;
   margin-top: 40px;
@@ -20,16 +31,29 @@ export const OutterBox = styled.div`
 `;
 
 export const OrderHistoryContainer = styled.div`
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+<<<<<<< HEAD
   background: ${COLORS.white};
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px; // Width of the outer box
   height: auto;
   margin-top: 10px;
   padding-top: 40px;
+=======
+  background: var(--White, #fff);
+  background-color: pink;
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 800px; // Width of the outer box
+  height: 700px;
+  overflow: scroll;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding: 0; // Ensure there's no padding pushing the internal boxes inward
+>>>>>>> b287da7 (temp)
 `;
 
 export const OrderHistoryBox = styled.div`

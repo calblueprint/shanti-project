@@ -12,7 +12,8 @@ export const FavoriteDiv = styled.div`
   width: 750px;
   margin-bottom: 50px;
   margin-top: 30px;
-  margin-right: 10px;
+  margin-right: 20px;
+  gap: 40px;
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -25,10 +26,11 @@ export const OutterFavoriteDiv = styled.div`
   max-height: 100%;
   max-width: 750px;
   margin-top: 20px;
-  margin-right: 10px;
-  margin-left: 20px;
-  padding-right: 7px;
-  padding-top: 7px;
+  margin-right: 60px;
+  margin-left: 60px;
+  padding-right: 20px;
+  padding-left: 40px;
+  padding-top: 10px;
 `;
 
 export const ScrollDiv = styled.div`
@@ -285,9 +287,7 @@ export const TextDiv = styled.div`
 export const TextDiv1 = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 10px;
-  margin-left: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
 `;
 
 export const PageDiv = styled.div`
