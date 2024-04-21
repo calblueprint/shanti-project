@@ -13,7 +13,7 @@ import {
   totalNumberOfItemsInCart,
 } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Body1, Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import {

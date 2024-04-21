@@ -4,10 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
-import {
-  fetchCurrentOrdersByUser,
-  getOrderById,
-} from '@/api/supabase/queries/order_queries';
+import { getOrderById } from '@/api/supabase/queries/order_queries';
 import {
   Body1,
   Body1Bold,
@@ -73,7 +70,6 @@ export default function OrderConfirmationPickUp() {
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
-    const endTime = pickupTime?.end_time.toLocaleString();
     const date =
       startTime == null
         ? ['0', '0', '0']
