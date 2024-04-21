@@ -64,7 +64,7 @@ export async function fetchProductByID(productId: number): Promise<Product> {
   if (error) {
     throw new Error(`Error fetching product: ${error.message}`);
   }
- 
+
   return product;
 }
 
