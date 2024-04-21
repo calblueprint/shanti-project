@@ -35,7 +35,7 @@ import {
   InformationText,
   BackButtonDiv,
   OutterDiv,
-  InformationField, Label, Input 
+  InformationField, Label, Input, Heading4Bold, ForceColumnDiv
 } from './styles';
 
 export default function App() {
@@ -65,12 +65,18 @@ export default function App() {
     <main>
       <NavBar />
       <OutterDiv>
+   
+
+        <DeliveryContainer>
+        <ForceColumnDiv>
         <BackButtonDiv>
           <BackButton destination="/storefront" />
         </BackButtonDiv>
-        <DeliveryContainer>
-          
+
+        <Heading4Bold style={{marginLeft:"41px", marginTop:"20px"}}>Delivery</Heading4Bold>
+
         <InformationContainer>
+
             <Label>Name</Label>
             <Input/>{`${Profile?.first_name} ${Profile?.last_name}`}<Input/>
             <Label>Address</Label>
@@ -79,18 +85,9 @@ export default function App() {
             <Input/>{Profile?.phone_numbers}<Input/>
 
         </InformationContainer>
+        </ForceColumnDiv>
 
-          {/* <InformationContainer>
-            <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
-            <Normal700Text>Name</Normal700Text>
-            <InformationText>
-              {`${Profile?.first_name} ${Profile?.last_name}`}
-            </InformationText>
-            <Normal700Text>Address</Normal700Text>
-            <InformationText>
-              {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-            </InformationText>
-          </InformationContainer> */}
+
           <OrderContainer>
             <OrderSummary cart={cart} numberOfItems={numberOfItems} />
             <OrderButton
@@ -112,3 +109,19 @@ export default function App() {
     </main>
   );
 }
+
+
+
+
+
+          // {/* <InformationContainer>
+          //   <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
+          //   <Normal700Text>Name</Normal700Text>
+          //   <InformationText>
+          //     {`${Profile?.first_name} ${Profile?.last_name}`}
+          //   </InformationText>
+          //   <Normal700Text>Address</Normal700Text>
+          //   <InformationText>
+          //     {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+          //   </InformationText>
+          // </InformationContainer> */}

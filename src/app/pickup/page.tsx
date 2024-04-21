@@ -36,6 +36,7 @@ import {
   PickupContent,
   PickupContainer,
   PickupTimeButton,
+  InformationContainer
 } from './styles';
 
 function DateInfoComponent(date: { date: unknown }) {
@@ -110,12 +111,21 @@ export default function PickUp() {
             <Heading4Bold style={{ marginBottom: '38px', fontSize: '40px' }}>
               Pick Up
             </Heading4Bold>
-            <Heading4Bold>Name</Heading4Bold>
+            <InformationContainer>
+              <Heading4Bold>Name</Heading4Bold>
+              <PickupContent>
+                {Profile?.first_name} {Profile?.last_name}
+              </PickupContent>
+              <Heading4Bold>Phone Number</Heading4Bold>
+              <PickupContent>{Profile?.phone_numbers}</PickupContent>
+            </InformationContainer>
+            {/* <Heading4Bold>Name</Heading4Bold>
             <PickupContent>
               {Profile?.first_name} {Profile?.last_name}
             </PickupContent>
             <Heading4Bold>Phone Number</Heading4Bold>
-            <PickupContent>{Profile?.phone_numbers}</PickupContent>
+            <PickupContent>{Profile?.phone_numbers}</PickupContent> */}
+
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Heading4Bold>Time Slot</Heading4Bold>
             </div>

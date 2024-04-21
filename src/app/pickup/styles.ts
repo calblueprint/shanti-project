@@ -9,19 +9,19 @@ import Footer from '../../components/FooterFolder/Footer';
 export const PickupContainer = styled.div`
   width: 730px;
   height: 400px;
-  padding-left: 22px;
+  // padding-left: 22px;
 `;
 
 export const PickupContent = styled.div`
-  width: 730px;
+  // width: 730px;
   height: 50px;
-  border-radius: 4px;
+  // border-radius: 4px;
   margin-top: 14px;
   margin-bottom: 14px;
-  border: 1px solid ${COLORS.neutralGrey};
-  background: ${COLORS.lightGrey};
+  // border: 1px solid ${COLORS.neutralGrey};
+  // background: ${COLORS.lightGrey};
   display: flex; /* Use flexbox */
-  align-items: center; /* Center vertically */
+  align-items: left; /* Vertically center the child items */
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -262,4 +262,19 @@ export const HeaderShiftLeft = styled.h2`
 
 export const PShiftLeft = styled.p`
   margin-left: 15px;
+`;
+
+export const InformationContainer = styled.div`
+  width: 629px;
+  height: 215;
+  // margin: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background: ${COLORS.white}; /* Assuming white is defined in your COLORS */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px 25px;
 `;

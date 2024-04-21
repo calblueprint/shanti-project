@@ -138,6 +138,7 @@ export const OutterDiv = styled.div`
 
 export const InformationContainer = styled.div`
   width: 629px;
+  height: 327px;
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -159,9 +160,11 @@ export const InformationField = styled.div`
 `;
 
 export const Label = styled.div`
-  font-size: 20px;
+  color: var(--Black, #101010);
+  font-family: "Public Sans";
+  font-size: 25px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
   margin-right: 20px; /* Space between label and input */
 `;
@@ -172,5 +175,27 @@ export const Input = styled.div`
   border-radius: 4px;
   padding-left: 20px;
   font-size: 20px;
+  color: var(--Black, #101010);
+
+  /* Body 1 - Text */
+  font-family: "Public Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  `;
+
+  export const Heading4Bold = styled.p`
+  font-family: 'Public Sans', sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `;
 
+
+export const ForceColumnDiv = styled.div`
+  display: flex;
+  flex-flow: column;
+  margin-left: 50px;
+`;
