@@ -54,7 +54,7 @@ export default function OrderConfirmationDelivery() {
 
     fetchProducts();
     setUserDetails();
-  }, );
+  });
 
   return (
     <main>

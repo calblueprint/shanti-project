@@ -39,7 +39,7 @@ import {
   TextDiv1,
 } from './styles';
 
-import { ProductWithQuantity, Order, Pickup, User } from '../../schema/schema';
+import { ProductWithQuantity, Order, Pickup } from '../../schema/schema';
 
 function formatDate(date: string | undefined): string {
   if (!date) return '';
@@ -89,7 +89,6 @@ export default function OrderPage() {
   }
 
   async function setUserDetails() {
-    const fetchedUser = await fetchUser();
     const currOrder = await getOrderById(Number(orderIDFromSearch));
     const pickup = await fetchPickupTimesByID(currOrder.pickup_time_id);
     setPickupTime(pickup);
