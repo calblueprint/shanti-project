@@ -38,12 +38,10 @@ export async function createOrder() {
     .insert({ user_id: user.id })
     .select('*')
     .single();
-  console.log(order);
   if (error) {
     throw new Error(`Error creating order: ${error.message}`);
   }
 
-  console.log(order.id);
   await supabase
     .from('profiles')
     .update({ cart_id: order.id })

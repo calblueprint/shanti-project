@@ -6,8 +6,18 @@ import {
   fetchCurrentUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
-import { Body1, Body2Light, Heading3Bold, Heading4Bold } from '@/styles/fonts';
+import {
+  Body1,
+  Body2,
+  Body2Light,
+  Heading3Bold,
+  Heading4Bold,
+} from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
+import {
+  DeliveryTimes,
+  fetchDeliveryTimes,
+} from '@/api/supabase/queries/delivery_queries';
 import BackButton from '../../components/BackButton/BackButton';
 
 import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
@@ -26,6 +36,7 @@ import {
   DetailsHeader,
   PageDiv,
   CenterDiv,
+  Quantity,
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
@@ -37,12 +48,12 @@ export default function OrderConfirmationDelivery() {
   const [userAddress, setUserAddress] = useState<Address>();
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
+  const [delivTimes, setDelivTimes] = useState<DeliveryTimes[]>([]);
   useEffect(() => {
     async function fetchProducts() {
       const cartItems = (await fetchCartItemsWithQuantityByID(
         orderIDFromSearch,
       )) as Product[];
-      console.log(cartItems);
       setCart(cartItems);
     }
 
@@ -52,10 +63,38 @@ export default function OrderConfirmationDelivery() {
       const address = await fetchCurrentUserAddress();
       setUserAddress(address);
     }
+    async function fetchDelivTimes() {
+      const deliv = await fetchDeliveryTimes();
+      setDelivTimes(deliv);
+    }
 
     fetchProducts();
     setUserDetails();
+    fetchDelivTimes();
   }, []);
+
+  function organizeDelivTime() {
+    const userGrp = user?.delivery_group == null ? 1 : user?.delivery_group;
+    const Time = delivTimes[userGrp]?.delivery_time.toLocaleString();
+    const date =
+      Time == null ? ['0', '0', '0'] : Time?.substring(0, 10).split('-');
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    const dateStr = `${months[parseInt(date[1], 10)]} ${date[2]}, ${date[0]}`;
+    return `${dateStr}`;
+  }
 
   return (
     <main>
@@ -84,6 +123,11 @@ export default function OrderConfirmationDelivery() {
                         <Body1Bold>{cartItem.name}</Body1Bold>
                         <Body2Light>Category: {cartItem.category}</Body2Light>
                       </LabelBox>
+                      <Quantity>
+                        <Body2>
+                          <b>Quantity:</b> {cartItem.quantity}
+                        </Body2>
+                      </Quantity>
                     </FavoriteDiv>
                   ))}
                 </ScrollDiv>
@@ -93,7 +137,7 @@ export default function OrderConfirmationDelivery() {
               <ShippingDetailsDiv>
                 <Heading3Bold>Delivery Information</Heading3Bold>
                 <DetailsHeader>Estimated Date</DetailsHeader>
-                <Body1>{user?.delivery_group}</Body1>
+                <Body1>{organizeDelivTime()}</Body1>
                 <DetailsHeader>Location</DetailsHeader>
                 <Body1>
                   {userAddress?.street}, {userAddress?.city},{' '}

@@ -8,11 +8,17 @@ export const FavoriteDiv = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
-  gap: 120px;
+`;
+
+export const Quantity = styled.div`
+  display: flex;
+  align-self: center;
+  justify-content: flex-start;
+  margin-right: 40px;
 `;
 
 export const OrderDetailsDiv = styled.div`
@@ -216,16 +222,18 @@ export const OrderTotalDiv = styled.div`
 `;
 
 export const LeftColumnDiv = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   align-items: space-evenly;
+  gap: 20px;
 `;
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
   margin-left: 20px;
-  margin-top: 127px;
+  margin-top: 123px;
 `;
 
 export const WhiteBackgroundDiv = styled.div`
