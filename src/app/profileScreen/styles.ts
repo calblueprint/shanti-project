@@ -130,16 +130,8 @@ export const HeartIcon = styled(Heart)`
 `;
 
 export const BackButtonDiv = styled.div`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  margin-bottom: 30px;
   margin-top: 50px;
-=======
-=======
->>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
-  margin-top: 50px;  
   margin-bottom: 40px;
->>>>>>> b287da7 (temp)
 `;
 
 export const HeaderDiv = styled.div`

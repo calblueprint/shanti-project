@@ -1,6 +1,6 @@
 // styles.ts
 import styled from 'styled-components';
-import { X, Check, Send, Loader } from 'react-feather';
+import { X, Check, Send } from 'react-feather';
 import COLORS from '../../styles/colors';
 
 export const containerStyle = styled.div`

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Body2, Body2Bold } from '@/styles/fonts';
+import { Body2 } from '@/styles/fonts';
 import { ArrowRightIcon, ViewAllDiv } from './styles';
 
 export default function BackButton(props: { destination: string }) {

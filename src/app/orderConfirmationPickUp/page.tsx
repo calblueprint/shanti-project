@@ -4,14 +4,8 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
-import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
+import { getOrderById } from '@/api/supabase/queries/order_queries';
 import {
-  fetchCurrentOrdersByUser,
-  getOrderById,
-} from '@/api/supabase/queries/order_queries';
-import {
-  Body2Bold,
-  Body2,
   Heading3Bold,
   Body1,
   Body1Bold,
@@ -26,11 +20,8 @@ import NavBar from '../../components/NavBarFolder/NavBar';
 
 import {
   FavoriteDiv,
-  ColDiv,
   OutterFavoriteDiv,
   TextDiv1,
-  OutterBox,
-  Label,
   LabelBox,
   ScrollDiv,
   ShippingDetailsDiv,
@@ -73,7 +64,7 @@ export default function OrderConfirmationPickUp() {
 
     fetchProducts();
     setUserDetails();
-  }, []);
+  });
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();

@@ -10,7 +10,7 @@ import {
   totalNumberOfItemsInCart,
 } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import {
@@ -157,7 +157,6 @@ export default function PickUp() {
                 await updateOrderStatus(orderID, OrderStatus.Submitted);
                 await createOrder();
                 const newestOrder = await fetchCartIdFromUser();
-                console.log(newestOrder);
                 await updateOrderStatus(newestOrder, OrderStatus.inProgress);
                 const queryString = querystring.stringify({ orderID });
                 router.push(`/orderConfirmationPickUp?${queryString}`);

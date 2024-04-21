@@ -23,10 +23,7 @@ export const OutterFavoriteDiv = styled.div`
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-<<<<<<< HEAD
-=======
   width: 700px;
->>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   max-height: 100%;
   max-width: 750px;
   margin-top: 20px;
@@ -99,7 +96,7 @@ export const Label = styled.p`
   margin-top: 20px;
 `;
 
-export const ImageDiv = styled.p`
+export const ImageDiv = styled.div`
   width: 150px;
   height: 150px;
   align-items: center;
@@ -255,12 +252,8 @@ export const BottomColumnDiv = styled.div`
   align-items: space-evenly;
   justify-content: space-around;
   width: 100%;
-<<<<<<< HEAD
   margin-left: 20px;
   margin-right: 20px;
-=======
-  margin-left: 10px;
->>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   margin-bottom: 30px;
   gap: 10px;
 `;
@@ -290,7 +283,6 @@ export const PageDiv = styled.div`
 `;
 
 export const ShippingDetailsDiv = styled.div`
-  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -303,11 +295,7 @@ export const ShippingDetailsDiv = styled.div`
   padding: 36px 34px;
   gap: 33px;
   max-height: 100%;
-<<<<<<< HEAD
   margin-top: 75px;
-=======
-  margin-top: 93px;
->>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
   margin-bottom: 30px;
   margin-right: 40px;
 `;

@@ -6,7 +6,7 @@ import {
   fetchCurrentUserAddress,
 } from '@/api/supabase/queries/user_queries';
 
-import { Body1, Body2Light, Heading3Bold, Heading4Bold } from '@/styles/fonts';
+import { Body1, Heading3Bold, Heading4Bold } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -29,7 +29,6 @@ import {
 } from './styles';
 
 import { Product, User, Address } from '../../schema/schema';
-import { Body1Bold } from '../orderPage/styles';
 import { BackButtonDiv } from '../orderConfirmationPickUp/styles';
 
 export default function OrderConfirmationDelivery() {
@@ -43,7 +42,6 @@ export default function OrderConfirmationDelivery() {
       const cartItems = (await fetchCartItemsWithQuantityByID(
         orderIDFromSearch,
       )) as Product[];
-      console.log(cartItems);
       setCart(cartItems);
     }
 
@@ -56,7 +54,7 @@ export default function OrderConfirmationDelivery() {
 
     fetchProducts();
     setUserDetails();
-  }, []);
+  }, );
 
   return (
     <main>

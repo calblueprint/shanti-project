@@ -104,6 +104,7 @@ export const BackButtonDiv = styled.div`
   gap: 200px;
   margin-bottom: 50px;
   margin-top: 50px;
+  margin-left: 60px;
   text-align: left;
   width: 800px;
 `;
@@ -231,7 +232,7 @@ export const ShippingDetailsDiv = styled.div`
   padding: 36px 34px;
   gap: 33px;
   max-height: 100%;
-  margin-top: 93px;
+  margin-top: 52px;
   margin-bottom: 30px;
   margin-right: 40px;
 `;
@@ -248,15 +249,21 @@ export const RightColumnDiv = styled.div`
 export const TextDiv1 = styled.div`
   display: flex;
   flex-direction: row;
+  margin-left: 40px;
   margin-top: 20px;
-  background-color: pink;
 `;
 
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 60px;
-  margin-top: 20px;
+`;
+
+export const TextDiv2 = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 40px;
+  margin-top: 5px;
   margin-bottom: 20px;
 `;
 
