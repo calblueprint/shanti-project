@@ -55,7 +55,7 @@ import {
 import { Body1Bold } from '../orderPage/styles';
 import { BackButtonDiv } from '../orderConfirmationPickUp/styles';
 
-export default function OrderConfirmationDelivery() {
+export default function OrderPageDelivery() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
@@ -156,7 +156,7 @@ export default function OrderConfirmationDelivery() {
         <PageDiv>
           <BottomColumnDiv>
             <LeftColumnDiv>
-              <BackButton destination="./storefront" />
+              <BackButton destination="./orderHistory" />
               <Heading2Bold>Order No. {orderIDFromSearch}</Heading2Bold>
               <OutterFavoriteDiv>
                 <Body1>Order Date: {organizeOrderDate()}</Body1>
