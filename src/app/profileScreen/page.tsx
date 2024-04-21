@@ -12,6 +12,7 @@ import {
   Body2Bold,
   Body2,
 } from '@/styles/fonts';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import {
   arrayOfFavorites,
   fetchUser,
@@ -363,6 +364,13 @@ export default function Profile() {
 
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
+    data.forEach(
+      async product =>
+        (product.category = await convertButtonNumberToCategory(
+          product.category,
+        )),
+    );
+    console.log(data);
     setFavorites(data);
   }
 

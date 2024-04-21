@@ -183,6 +183,7 @@ export default function PickUp() {
               }
               if (selectedPickupIndex === 0) {
                 toast(`You must select a pick-up date!`);
+                toast.clearWaitingQueue();
               }
             }}
           >

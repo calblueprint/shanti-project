@@ -269,5 +269,5 @@ export const ToastPopUP = styled(ToastContainer)`
   position: fixed;
   z-index: 100;
   transform: translatey(90px);
-  background-color: ${COLORS.lightRed};
+ 
 `;

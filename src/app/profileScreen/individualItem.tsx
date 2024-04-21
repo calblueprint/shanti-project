@@ -18,19 +18,19 @@ export default function IndividualItem(props: {
   const { favorite, Favorites, setFavorites } = props;
   const [hovering, setHovering] = useState(false);
 
-  useEffect(() => {
-    async function changeCategory() {
-      try {
-        favorite.category = await convertButtonNumberToCategory(
-          favorite.category,
-        );
-      } catch (error) {
-        // console.error(error);
-      }
-    }
+  // useEffect(() => {
+  //   // async function changeCategory() {
+  //   //   try {
+  //   //     favorite.category = await convertButtonNumberToCategory(
+  //   //       favorite.category,
+  //   //     );
+  //   //   } catch (error) {
+  //   //     // console.error(error);
+  //   //   }
+  //   // }
 
-    changeCategory();
-  }, [favorite]);
+  //   // changeCategory();
+  // }, []);
 
   async function clickFunctions(props2: { fav: Product }) {
     const { fav } = props2;

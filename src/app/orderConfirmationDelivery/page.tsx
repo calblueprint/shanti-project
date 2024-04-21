@@ -93,7 +93,9 @@ export default function OrderConfirmationDelivery() {
       'November',
       'December',
     ];
-    const dateStr = `${months[parseInt(date[1], 10)]} ${date[2]}, ${date[0]}`;
+    const dateStr = `${months[parseInt(date[1], 10) - 1]} ${date[2]}, ${
+      date[0]
+    }`;
     return `${dateStr}`;
   }
 
