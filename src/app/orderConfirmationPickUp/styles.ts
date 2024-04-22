@@ -23,6 +23,7 @@ export const OutterFavoriteDiv = styled.div`
   border-radius: 10px;
   background: var(--White, #fff);
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 700px;
   max-height: 100%;
   max-width: 750px;
   margin-top: 20px;
@@ -112,18 +113,9 @@ export const Label = styled.p`
   margin-top: 20px;
 `;
 
-export const LabelBox1 = styled.div`
-  width: 250px;
-  height: 100%;
-  padding: 20px;
-`;
-
 export const LabelBox = styled.div`
   width: 150px;
   height: 100%;
-  padding: 20px;
-  gap: 50px;
-  margin-right: 30px;
 `;
 
 export const HeaderText = styled.h3`
@@ -233,7 +225,10 @@ export const LeftColumnDiv = styled.div`
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0c497ffa604d1a861f8fac67277446b2133764a5
   align-items: left;
   width: 475px;
 `;
@@ -243,9 +238,13 @@ export const BackButtonDiv = styled.div`
   flex-direction: row;
   text-align: left;
   width: 800px;
+<<<<<<< HEAD
 
   margin-left: 40px;
 
+=======
+  margin-left: 40px;
+>>>>>>> 0c497ffa604d1a861f8fac67277446b2133764a5
   margin-bottom: 40px;
   margin-top: 20px;
 `;
@@ -281,7 +280,6 @@ export const BottomColumnDiv = styled.div`
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: row;
-
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;

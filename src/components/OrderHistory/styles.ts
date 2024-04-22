@@ -175,7 +175,11 @@ export const RowDiv = styled.div`
 <<<<<<< HEAD
 >>>>>>> b287da7 (temp)
 =======
+<<<<<<< HEAD
 >>>>>>> b287da7 (temp)
+=======
+>>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
+>>>>>>> 0c497ffa604d1a861f8fac67277446b2133764a5
 `;
 
 export const OrderStatusDiv = styled.div`

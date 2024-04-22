@@ -39,6 +39,7 @@ import {
   AccountDetailsDeliv,
   AccountDetailsPickUp,
   HeadingBack,
+  Spacing,
   HeadingSpacing,
   TextSpacing,
   OrderHistory,

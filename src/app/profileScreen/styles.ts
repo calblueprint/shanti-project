@@ -147,8 +147,8 @@ export const Hover = styled.div<{ $ishovering?: boolean }>`
 `;
 
 export const BackButtonDiv = styled.div`
-  margin-bottom: 30px;
   margin-top: 50px;
+  margin-bottom: 40px;
 `;
 
 export const HeaderDiv = styled.div`

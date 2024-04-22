@@ -67,6 +67,15 @@ function formatDate(date: string | undefined): string {
   return `${month} ${day}, ${year}`;
 }
 
+function formatTime(date: string | undefined): string {
+  if (!date) return '';
+
+  const hour = date.substring(11, 13);
+  const minute = date.substring(14, 16);
+
+  return `${hour}:${minute}`;
+}
+
 export default function OrderPage() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
   const [pickupTime, setPickupTime] = useState<Pickup>();

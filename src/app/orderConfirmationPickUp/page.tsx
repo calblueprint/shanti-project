@@ -13,7 +13,6 @@ import {
   Body2Light,
 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
-import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -38,6 +37,7 @@ import {
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
+import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
