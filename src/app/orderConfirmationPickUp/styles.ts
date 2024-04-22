@@ -27,14 +27,9 @@ export const OutterFavoriteDiv = styled.div`
   max-width: 750px;
   margin-top: 20px;
   margin-right: 60px;
-<<<<<<< HEAD
   margin-left: 60px;
   padding-right: 20px;
   padding-left: 40px;
-=======
-  margin-left: 40px;
-  padding-right: 15px;
->>>>>>> 83a7d69 (new branch)
   padding-top: 10px;
 `;
 
@@ -238,13 +233,9 @@ export const LeftColumnDiv = styled.div`
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-<<<<<<< HEAD
+
   align-items: left;
   width: 475px;
-=======
-  align-items: start;
-  width: 100%;
->>>>>>> 83a7d69 (new branch)
 `;
 
 export const BackButtonDiv = styled.div`
@@ -252,11 +243,9 @@ export const BackButtonDiv = styled.div`
   flex-direction: row;
   text-align: left;
   width: 800px;
-<<<<<<< HEAD
+
   margin-left: 40px;
-=======
-  margin-left: 60px;
->>>>>>> 83a7d69 (new branch)
+
   margin-bottom: 40px;
   margin-top: 20px;
 `;
@@ -269,7 +258,6 @@ export const WhiteBackgroundDiv = styled.div`
   padding-top: 20px;
   box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
 `;
-
 
 export const Wrapper2 = styled.div`
   display: flex;
@@ -293,15 +281,10 @@ export const BottomColumnDiv = styled.div`
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
+
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-=======
-  margin-left: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
->>>>>>> 83a7d69 (new branch)
 `;
 
 export const TextDiv1 = styled.div`
@@ -316,15 +299,13 @@ export const PageDiv = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-<<<<<<< HEAD
+
   position: relative;
-=======
->>>>>>> 83a7d69 (new branch)
+
   margin-bottom: 40px;
 `;
 
 export const ShippingDetailsDiv = styled.div`
-  
   display: flex;
   flex-direction: column;
   align-items: flex-start;

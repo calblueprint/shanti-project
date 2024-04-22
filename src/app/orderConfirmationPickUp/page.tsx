@@ -44,6 +44,7 @@ import {
   RightColumnDiv,
   DetailsHeader,
   ImageDiv,
+  Wrapper2,
   PageDiv,
   CenterDiv,
   BackButtonDiv,
