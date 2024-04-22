@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Body1Bold, Body2, Body3 } from '@/styles/fonts';
 
-import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import { HeartIcon, Hover, FavoriteDiv, ProductNameDiv } from './styles';
 
 import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';

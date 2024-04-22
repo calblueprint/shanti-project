@@ -6,40 +6,38 @@ import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import { getOrderById } from '@/api/supabase/queries/order_queries';
 import {
+  Heading3Bold,
   Body1,
   Body1Bold,
-  Body2Light,
-  Heading3Bold,
   Heading4Bold,
+  Body2Light,
 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
-import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
 import {
-  TextDiv,
-  TextDiv1,
-  BackButtonDiv,
   FavoriteDiv,
   OutterFavoriteDiv,
+  TextDiv1,
   LabelBox,
-  LabelBox1,
   ScrollDiv,
   ShippingDetailsDiv,
-  ImageDiv,
   BottomColumnDiv,
-  Wrapper,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
+  ImageDiv,
   PageDiv,
   CenterDiv,
+  BackButtonDiv,
+  TextDiv,
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
+import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
@@ -66,7 +64,7 @@ export default function OrderConfirmationPickUp() {
 
     fetchProducts();
     setUserDetails();
-  }, []);
+  });
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
@@ -93,7 +91,7 @@ export default function OrderConfirmationPickUp() {
               </TextDiv>
               <OutterFavoriteDiv>
                 <TextDiv1>
-                  <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
+                  <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
                 </TextDiv1>
                 <ScrollDiv>
                   {Cart.map(cartItem => (
@@ -108,13 +106,13 @@ export default function OrderConfirmationPickUp() {
                           }}
                         />
                       </ImageDiv>
-                      <LabelBox1>
+                      <LabelBox>
                         <Body1Bold>{cartItem.name}</Body1Bold>
                         <br />
                         <Body2Light style={{ marginTop: '-10px' }}>
                           Category: {cartItem.category}
                         </Body2Light>
-                      </LabelBox1>
+                      </LabelBox>
                       <LabelBox>
                         <div>
                           <span

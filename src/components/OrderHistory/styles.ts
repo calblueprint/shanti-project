@@ -1,6 +1,6 @@
 // styles.ts
 import styled from 'styled-components';
-import { X, Check, Loader } from 'react-feather';
+import { X, Check, Send } from 'react-feather';
 import COLORS from '../../styles/colors';
 
 export const containerStyle = styled.div`
@@ -165,8 +165,21 @@ export const GalleryImage = styled.img`
 
 export const RowDiv = styled.div`
   width: 700px;
+<<<<<<< HEAD
   height: 300px;
   margin-bottom: 20px;
+=======
+  height: 400px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+<<<<<<< HEAD
+>>>>>>> b287da7 (temp)
+=======
+<<<<<<< HEAD
+>>>>>>> b287da7 (temp)
+=======
+>>>>>>> b287da70273f0befb5c5c6b437883b203f43b605
+>>>>>>> 0c497ffa604d1a861f8fac67277446b2133764a5
 `;
 
 export const OrderStatusDiv = styled.div`
@@ -194,7 +207,7 @@ export const OrderStatusApprovedDiv = styled.div`
 export const OrderStatusSubmittedDiv = styled.div`
   width: 300px;
   height: 35px;
-  background: var(--Baby-Blue, #c7ddff);
+  background: var(--Greyish, #e6e6e6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,7 +225,7 @@ export const CheckStyled = styled(Check)`
   margin-right: 10px;
 `;
 
-export const LoaderStyled = styled(Loader)`
+export const SendStyle = styled(Send)`
   stroke-width: 3px;
   margin-right: 10px;
 `;

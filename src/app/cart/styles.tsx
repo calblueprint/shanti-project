@@ -339,7 +339,7 @@ export const OrderContainer = styled.div`
 export const RightColumnDiv = styled.div`
   flex: 1;
   margin-top: 30px;
-  padding-left: 20px;
+  margin-bottom: 30px;
 `;
 
 export const Heading = styled.h1`
@@ -379,5 +379,5 @@ export const CategorySpacing = styled.div`
 `;
 
 export const OrderSumSectionSpacing = styled.div`
-  margin-left: 135px;
+  margin-left: 65px;
 `;

@@ -5,11 +5,11 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import {
   Heading2,
-  Body3,
   Heading3,
   Heading1,
   Body1Bold,
   Body2Bold,
+  Body2Light,
   Body2,
 } from '@/styles/fonts';
 import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
@@ -31,13 +31,15 @@ import {
   fetchOrderProductById,
   fetchProductWithQuantityById,
 } from '@/api/supabase/queries/order_queries';
-import { Check, CheckCircle, X, Send } from 'react-feather';
+import { Check, X, Send } from 'react-feather';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   LogOutButton,
   NavBarMovedUP,
-  AccountDetails,
+  AccountDetailsDeliv,
+  AccountDetailsPickUp,
   HeadingBack,
+  Spacing,
   HeadingSpacing,
   TextSpacing,
   OrderHistory,
@@ -185,13 +187,13 @@ function OrderHistorySection(props: { Orders: Order[] }) {
             >
               Order No. {Orders[0].id}
             </Body1Bold>
-            <Body2
+            <Body2Light
               style={{
                 marginTop: '5px',
               }}
             >
               {fD}
-            </Body2>
+            </Body2Light>
             <div
               style={{
                 display: 'flex',
@@ -202,7 +204,7 @@ function OrderHistorySection(props: { Orders: Order[] }) {
                 borderRadius: '20px', // adjust the border radius to make it more oval-shaped
                 background: backgroundColor,
                 marginTop: '20px',
-                marginBottom: '15px',
+                marginBottom: '23px',
               }}
             >
               {icon}
@@ -266,38 +268,37 @@ function AccountDetailSectionDelivery(props: { user: User }) {
   }, []);
   return (
     <main>
-      <AccountDetails>
+      <AccountDetailsDeliv>
         <Heading2>Account Details</Heading2>
         <HeadingSpacing>
           <Body2Bold>Name</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body3>
+          <Body2>
             {user?.first_name} {user?.last_name}
-          </Body3>
+          </Body2>
         </TextSpacing>
         <HeadingSpacing>
           <Body2Bold>Email</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body3>{user?.email}</Body3>
+          <Body2>{user?.email}</Body2>
         </TextSpacing>
-
         <HeadingSpacing>
           <Body2Bold>Phone</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body3>{user?.phone_numbers}</Body3>
+          <Body2>{user?.phone_numbers}</Body2>
         </TextSpacing>
         <HeadingSpacing>
           <Body2Bold>Address</Body2Bold>
         </HeadingSpacing>
         <TextSpacing>
-          <Body3>
+          <Body2>
             {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-          </Body3>
+          </Body2>
         </TextSpacing>
-      </AccountDetails>
+      </AccountDetailsDeliv>
     </main>
   );
 }
@@ -306,7 +307,7 @@ function AccountDetailSectionPickUp(props: { user: User }) {
 
   return (
     <main>
-      <AccountDetails>
+      <AccountDetailsPickUp>
         <Heading2>Account Details</Heading2>
 
         <HeadingSpacing>
@@ -330,7 +331,7 @@ function AccountDetailSectionPickUp(props: { user: User }) {
         <TextSpacing>
           <Body2> {user?.phone_numbers}</Body2>
         </TextSpacing>
-      </AccountDetails>
+      </AccountDetailsPickUp>
     </main>
   );
 }

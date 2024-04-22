@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
 import { Body1Bold, Body2, Body3 } from '@/styles/fonts';
 
-import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import {
   HeartIcon,
   Hover,
@@ -26,20 +25,6 @@ export default function IndividualItem(props: {
   const { favorite, Favorites, setFavorites } = props;
   const router = useRouter();
   const [hovering, setHovering] = useState(false);
-
-  useEffect(() => {
-    async function changeCategory() {
-      try {
-        favorite.category = await convertButtonNumberToCategory(
-          favorite.category,
-        );
-      } catch (error) {
-        // console.error(error);
-      }
-    }
-
-    changeCategory();
-  }, [favorite]);
 
   async function clickFunctions(props2: { fav: Product }) {
     const { fav } = props2;

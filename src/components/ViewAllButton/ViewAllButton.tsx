@@ -1,15 +1,14 @@
 import Link from 'next/link';
-import { ArrowRight } from 'react-feather';
-import { Body1Point5 } from '@/styles/fonts';
-import { ViewAllDiv } from './styles';
+import { Body2 } from '@/styles/fonts';
+import { ArrowRightIcon, ViewAllDiv } from './styles';
 
 export default function BackButton(props: { destination: string }) {
   const { destination } = props;
   return (
     <Link href={destination}>
       <ViewAllDiv>
-        <Body1Point5>View All</Body1Point5>
-        <ArrowRight />
+        <Body2>View All</Body2>
+        <ArrowRightIcon />
       </ViewAllDiv>
     </Link>
   );

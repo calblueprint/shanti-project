@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import { ArrowRight } from 'react-feather';
 import COLORS from '../../styles/colors';
 
 export const ViewAllDiv = styled.div`
+  width: 80px;
+  gap: 5px;
   display: flex;
   align-items: center;
   color: ${COLORS.black};
@@ -13,3 +16,8 @@ export const ViewAllDiv = styled.div`
 `;
 
 export const placeHolder = '';
+
+export const ArrowRightIcon = styled(ArrowRight)`
+  width: 20px;
+  height: 20px;
+`;

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Heading1, Body1 } from '@/styles/fonts';
+import { Heading2, Body1 } from '@/styles/fonts';
 import OrderDetailsWithProducts from '../../components/OrderHistory/OrderHistoryBox';
 import { fetchOrderIdsByUserIdSorted } from '../../api/supabase/queries/order_queries';
 import Footer from '../../components/FooterFolder/Footer';
@@ -10,6 +10,7 @@ import {
   OutterBox,
   NavBarMovedUP,
   Fullscreen,
+  BackButtonDiv,
 } from './styles';
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -29,10 +30,10 @@ function OrderHistory() {
     <Fullscreen>
       <NavBarMovedUP />
       <OutterBox>
-        <BackButton destination="./profileScreen" />
-        <div style={{ marginTop: '40px', marginBottom: '20px' }}>
-          <Heading1>Order History</Heading1>
-        </div>
+        <BackButtonDiv>
+          <BackButton destination="./profileScreen" />
+        </BackButtonDiv>
+        <Heading2>Order History</Heading2>
         <OrderHistoryContainer>
           {orderIds.length > 0 ? (
             orderIds.map((orderId: number) => (

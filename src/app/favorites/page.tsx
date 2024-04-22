@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Heading1 } from '@/styles/fonts';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import BackButton from '../../components/BackButton/BackButton';
 
 import { arrayOfFavorites } from '../../api/supabase/queries/user_queries';
@@ -18,7 +19,16 @@ export default function FavoritesPage() {
 
   async function fetchProducts() {
     const data = (await arrayOfFavorites()) as Product[];
-    setFavorites(data);
+    const mapCategories = await Promise.all(
+      data.map(async product => {
+        const updateCategory = await convertButtonNumberToCategory(
+          product.category,
+        );
+        return { ...product, category: updateCategory };
+      }),
+    );
+
+    setFavorites(mapCategories);
   }
   useEffect(() => {
     fetchProducts();
