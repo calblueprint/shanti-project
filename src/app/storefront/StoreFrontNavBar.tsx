@@ -47,6 +47,8 @@ export default function StoreFrontNavBar(props: {
   const [buttonDisplay, setButtonDisplay] = useState<StorefrontButtons[]>([]);
   const [ind, setInd] = useState(0);
   let newInd = 0;
+  const reachedSt = true;
+  const reachedE = false;
   const [reachedStart, setReachedStart] = useState(false);
   const [reachedEnd, setReachedEnd] = useState(true);
 
@@ -110,7 +112,7 @@ export default function StoreFrontNavBar(props: {
       setInd(newInd);
       changeDisplay(1, newInd);
     }
-    setReachedEnd(ind + 5 < buttonCategories.length);
+    setReachedEnd(newInd + 5 < buttonCategories.length);
     setReachedStart(true);
   };
 
