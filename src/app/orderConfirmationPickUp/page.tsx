@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 
-import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import { getOrderById } from '@/api/supabase/queries/order_queries';
 import {
@@ -36,12 +35,11 @@ import {
   TextDiv,
 } from './styles';
 
-import { Product, User, Pickup } from '../../schema/schema';
+import { Product, Pickup } from '../../schema/schema';
 import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
-  const [user, setUser] = useState<User>();
   const [pickupTime, setPickupTime] = useState<Pickup>();
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
@@ -49,14 +47,12 @@ export default function OrderConfirmationPickUp() {
   useEffect(() => {
     async function fetchProducts() {
       const cartItems = (await fetchCartItemsWithQuantityByID(
-        orderIDFromSearch,
+        String(orderIDFromSearch),
       )) as Product[];
       setCart(cartItems);
     }
 
     async function setUserDetails() {
-      const fetchedUser = await fetchUser();
-      setUser(fetchedUser);
       const currOrder = await getOrderById(Number(orderIDFromSearch));
       const pickup = await fetchPickupTimesByID(currOrder.pickup_time_id);
       setPickupTime(pickup);
@@ -64,7 +60,7 @@ export default function OrderConfirmationPickUp() {
 
     fetchProducts();
     setUserDetails();
-  });
+  }, []);
 
   function organizePickupTime() {
     const startTime = pickupTime?.start_time.toLocaleString();
@@ -81,17 +77,17 @@ export default function OrderConfirmationPickUp() {
       <NavBar />
       <CenterDiv>
         <PageDiv>
-          <BackButtonDiv>
-            <BackButton destination="./storefront" />
-          </BackButtonDiv>
           <BottomColumnDiv>
             <LeftColumnDiv>
+              <BackButtonDiv>
+                <BackButton destination="./storefront" />
+              </BackButtonDiv>
               <TextDiv>
-                <Heading3Bold>Your order has been submitted</Heading3Bold>
+                <Heading3Bold>Your Order has been Submitted</Heading3Bold>
               </TextDiv>
               <OutterFavoriteDiv>
                 <TextDiv1>
-                  <Heading4Bold>Order No. {user?.cart_id}</Heading4Bold>
+                  <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
                 </TextDiv1>
                 <ScrollDiv>
                   {Cart.map(cartItem => (
