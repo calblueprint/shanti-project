@@ -39,7 +39,6 @@ import {
   ScrollDiv,
   ShippingDetailsDiv,
   BottomColumnDiv,
-  LabelBox1,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,

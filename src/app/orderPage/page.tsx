@@ -2,7 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { Check, X, Send } from 'react-feather';
-import { Body1, Body2Light, Heading3Bold, Heading4Bold, Body2, Heading2, Body1Bold } from '@/styles/fonts';
+import {
+  Body1,
+  Body2Light,
+  Heading3Bold,
+  Heading4Bold,
+  Body2,
+  Heading2,
+  Body1Bold,
+} from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -87,7 +95,7 @@ export default function OrderPage() {
     }
     fetchProducts();
   }, []);
-  
+
   const status = order?.order_status?.toLowerCase() || 'default';
 
   return (
@@ -101,24 +109,24 @@ export default function OrderPage() {
           <BottomColumnDiv>
             <LeftColumnDiv>
               <TextDiv>
-              <Heading2>{formatDate(order?.created_at)}</Heading2>
+                <Heading2>{formatDate(order?.created_at)}</Heading2>
               </TextDiv>
               <OutterFavoriteDiv>
                 <TextDiv1>
-                  <Heading4Bold>Order No</Heading4Bold>
+                  <Heading4Bold>Order No. {order?.id}</Heading4Bold>
                 </TextDiv1>
                 <ScrollDiv>
-                {orders.map(product => (
-                  <FavoriteDiv key={product.id}>
-                    <ImageDiv>
-                    <img
-                      src={product.photo}
-                      alt={product.name}
-                      width={150}
-                      height={150}
-                      style={{ marginTop: '0' }}
-                    />
-                    </ImageDiv>
+                  {orders.map(product => (
+                    <FavoriteDiv key={product.id}>
+                      <ImageDiv>
+                        <img
+                          src={product.photo}
+                          alt={product.name}
+                          width={150}
+                          height={150}
+                          style={{ marginTop: '0' }}
+                        />
+                      </ImageDiv>
 
                       <LabelBox>
                         <Body1Bold>{product.name}</Body1Bold>
@@ -162,12 +170,8 @@ export default function OrderPage() {
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>
-
         </PageDiv>
       </CenterDiv>
     </div>
   );
 }
-
-
-

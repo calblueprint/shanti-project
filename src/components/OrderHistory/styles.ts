@@ -172,6 +172,9 @@ export const RowDiv = styled.div`
   height: 400px;
   margin-bottom: 20px;
   margin-top: 20px;
+<<<<<<< HEAD
+>>>>>>> b287da7 (temp)
+=======
 >>>>>>> b287da7 (temp)
 `;
 

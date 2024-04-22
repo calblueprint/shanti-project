@@ -93,14 +93,20 @@ export const LogOutButton = styled.button`
   line-height: normal;
   border: transparent;
 <<<<<<< HEAD
+<<<<<<< HEAD
   border-radius: 5px;
   width: 405px;
   height: 50px;
 =======
+=======
+>>>>>>> b287da7 (temp)
   border-radius: 10px;
   width: 500px;
   height: 55px;
   margin-top: 40px;
+<<<<<<< HEAD
+>>>>>>> b287da7 (temp)
+=======
 >>>>>>> b287da7 (temp)
 `;
 /* transform: translateY(200px); */
@@ -154,9 +160,12 @@ export const Hover = styled.div<{ $ishovering?: boolean }>`
 
 export const BackButtonDiv = styled.div`
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-bottom: 30px;
   margin-top: 50px;
 =======
+=======
+>>>>>>> b287da7 (temp)
   margin-top: 50px;  
   margin-bottom: 40px;
 >>>>>>> b287da7 (temp)

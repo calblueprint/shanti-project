@@ -72,12 +72,35 @@ function FavoriteSection(props: {
             <ViewAllButton destination="./favorites" />
           </HeaderDiv>
           {Favorites.slice(0, 2).map(favorite => (
+<<<<<<< HEAD
             <IndividualItem
               key={favorite.id}
               favorite={favorite}
               setFavorites={setFavorites}
               Favorites={Favorites}
             />
+=======
+            <FavoriteDiv key={favorite.id}>
+              <img
+                src={favorite.photo}
+                alt={favorite.name}
+                style={{ width: '100px', height: '100px' }}
+              />
+              <ProductNameDiv>
+                <Body1Bold>
+                  {favorite.name} </Body1Bold>
+                  <Spacing />
+                  <Body2Light>
+                  Category: {favorite.category}
+                  </Body2Light>
+              </ProductNameDiv>
+              <TransparentButton
+                onClick={() => clickFunctions({ fav: favorite })}
+              >
+                <HeartIcon />
+              </TransparentButton>
+            </FavoriteDiv>
+>>>>>>> b287da7 (temp)
           ))}
         </FavoritesContainer>
       </main>
