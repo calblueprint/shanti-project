@@ -371,14 +371,20 @@ export default function Profile() {
     const data = await fetchUser();
     setUser(data);
   }
-  useEffect(() => {
-    async function fetchProducts() {
-      const data = (await arrayOfFavorites()) as Product[];
+  async function fetchProducts() {
+    const data = (await arrayOfFavorites()) as Product[];
+    const mapCategories = await Promise.all(
+      data.map(async product => {
+        const updateCategory = await convertButtonNumberToCategory(
+          product.category,
+        );
+        return { ...product, category: updateCategory };
+      }),
+    );
+    setFavorites(mapCategories);
+  }
 
-      console.log(data);
-      // console.log(data);
-      setFavorites(data);
-    }
+  useEffect(() => {
     fetchProducts();
     fetchOrders();
     getUser();
