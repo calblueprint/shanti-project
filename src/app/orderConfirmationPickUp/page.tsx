@@ -4,7 +4,11 @@ import { useState, useEffect } from 'react';
 
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
-import { getOrderById } from '@/api/supabase/queries/order_queries';
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
+import {
+  fetchCurrentOrdersByUser,
+  getOrderById,
+} from '@/api/supabase/queries/order_queries';
 import {
   Body2Bold,
   Body2,
@@ -15,7 +19,10 @@ import {
   Body2Light,
 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
-import { fetchCartItemsWithQuantity,fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
+import {
+  fetchCartItemsWithQuantity,
+  fetchCartItemsWithQuantityByID,
+} from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -31,13 +38,11 @@ import {
   LabelBox,
   ScrollDiv,
   ShippingDetailsDiv,
-  ImageDiv,
   BottomColumnDiv,
-  LabelBox1,
   LeftColumnDiv,
   RightColumnDiv,
   DetailsHeader,
-  Wrapper2,
+  ImageDiv,
   PageDiv,
   CenterDiv,
   BackButtonDiv,
@@ -45,7 +50,7 @@ import {
 } from './styles';
 
 import { Product, User, Pickup } from '../../schema/schema';
- 
+
 export default function OrderConfirmationPickUp() {
   const [Cart, setCart] = useState<Product[]>([]);
   const [user, setUser] = useState<User>();
@@ -113,13 +118,13 @@ export default function OrderConfirmationPickUp() {
                           }}
                         />
                       </ImageDiv>
-                      <LabelBox1>
+                      <LabelBox>
                         <Body1Bold>{cartItem.name}</Body1Bold>
                         <br />
                         <Body2Light style={{ marginTop: '-10px' }}>
                           Category: {cartItem.category}
                         </Body2Light>
-                      </LabelBox1>
+                      </LabelBox>
                       <LabelBox>
                         <div>
                           <span
@@ -156,7 +161,6 @@ export default function OrderConfirmationPickUp() {
               </ShippingDetailsDiv>
             </RightColumnDiv>
           </BottomColumnDiv>
-
         </PageDiv>
       </CenterDiv>
     </div>
