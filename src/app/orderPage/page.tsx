@@ -6,11 +6,10 @@ import {
   Body2Light,
   Heading3Bold,
   Heading4Bold,
-  Body2,
   Heading2,
   Body1Bold,
 } from '@/styles/fonts';
-import { fetchUser } from '@/api/supabase/queries/user_queries';
+
 import { useSearchParams } from 'next/navigation';
 import { fetchPickupTimesByID } from '@/api/supabase/queries/pickup_queries';
 import BackButton from '../../components/BackButton/BackButton';
@@ -33,7 +32,6 @@ import {
   BottomColumnDiv,
   ShippingDetailsDiv,
   LabelBox,
-  TextDiv2,
   LeftColumnDiv,
   ScrollDiv,
   PageDiv,
@@ -67,15 +65,6 @@ function formatDate(date: string | undefined): string {
   const year = res.getFullYear();
 
   return `${month} ${day}, ${year}`;
-}
-
-function formatTime(date: string | undefined): string {
-  if (!date) return '';
-
-  const hour = date.substring(11, 13);
-  const minute = date.substring(14, 16);
-
-  return `${hour}:${minute}`;
 }
 
 export default function OrderPage() {

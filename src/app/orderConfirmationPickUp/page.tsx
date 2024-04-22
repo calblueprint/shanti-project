@@ -13,10 +13,7 @@ import {
   Body2Light,
 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
-import {
-  fetchCartItemsWithQuantity,
-  fetchCartItemsWithQuantityByID,
-} from '../../api/supabase/queries/cart_queries';
+import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import BackButton from '../../components/BackButton/BackButton';
 
@@ -34,7 +31,6 @@ import {
   RightColumnDiv,
   DetailsHeader,
   ImageDiv,
-  Wrapper2,
   PageDiv,
   CenterDiv,
   BackButtonDiv,

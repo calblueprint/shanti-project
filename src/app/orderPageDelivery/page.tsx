@@ -12,7 +12,6 @@ import {
   Body2Light,
   Heading2Bold,
   Heading3Bold,
-  Heading4Bold,
 } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
 import {
@@ -24,8 +23,6 @@ import {
   getOrderById,
 } from '@/api/supabase/queries/order_queries';
 import BackButton from '../../components/BackButton/BackButton';
-
-import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 import NavBar from '../../components/NavBarFolder/NavBar';
 
@@ -45,15 +42,8 @@ import {
   StatusButton,
 } from './styles';
 
-import {
-  Product,
-  User,
-  Address,
-  ProductWithQuantity,
-  Order,
-} from '../../schema/schema';
+import { User, Address, ProductWithQuantity, Order } from '../../schema/schema';
 import { Body1Bold } from '../orderPage/styles';
-import { BackButtonDiv } from '../orderConfirmationPickUp/styles';
 
 export default function OrderPageDelivery() {
   const [orders, setOrders] = useState<ProductWithQuantity[]>([]);
@@ -135,12 +125,11 @@ export default function OrderPageDelivery() {
 
   function organizeOrderTime() {
     const Time = order?.created_at.toLocaleString();
-    console.log(Time);
+
     let ampm = 'AM';
     const date =
       Time == null ? ['00', '00'] : Time?.substring(11, 16).split(':');
 
-    console.log(date);
     if (parseInt(date[0], 10) >= 12) {
       date[0] = (parseInt(date[0], 10) - 12).toLocaleString();
       ampm = 'PM';

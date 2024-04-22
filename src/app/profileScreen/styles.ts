@@ -196,6 +196,7 @@ export const LogOutDiv = styled.div`
   justify-content: center;
   width: 500px;
   height: 350px;
+  margin-top: 40px;
 `;
 
 export const MessageDiv = styled.div`

@@ -41,13 +41,6 @@ export default function App() {
     }
   };
 
-  async function applyFilter(e: React.KeyboardEvent<HTMLButtonElement>) {
-    const keypressed = e.code;
-    if (keypressed === 'Enter') {
-      handleLogin();
-    }
-  }
-
   return (
     <Fullscreen>
       <Image
