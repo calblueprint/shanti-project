@@ -38,6 +38,7 @@ export default function ItemDisplay({
   const [Item, setItem] = useState<Product>();
   const [IsFavorite, setIsFavorite] = useState(false);
   const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -48,7 +49,7 @@ export default function ItemDisplay({
         );
         const data = (await fetchUserProducts()) as Product[];
         const user = (await fetchUser()) as User;
-        if (user == undefined || user.fav_items == undefined) return;
+        if (user === undefined || user.fav_items === undefined) return;
         setIsFavorite(
           !!user.fav_items.find(item => item === Number(params.productId)),
         );
@@ -108,7 +109,7 @@ export default function ItemDisplay({
           <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             <b>Category:</b> {Item?.category}
           </Body1>
-          <Buttons productNumber={params.productId} />
+          <Buttons productNumber={params.productId} setTotal={setTotal} />
           <Body2Bold style={{ paddingTop: '40px' }}>Product Details:</Body2Bold>
           <Body2Light style={{ paddingTop: '20px' }}>
             {Item?.description}

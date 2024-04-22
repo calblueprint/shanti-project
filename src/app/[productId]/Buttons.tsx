@@ -11,9 +11,12 @@ import {
 
 import { addToCart } from '../../api/supabase/queries/cart_queries';
 
-export default function Buttons(props: { productNumber: number }) {
+export default function Buttons(props: {
+  productNumber: number;
+  setTotal: (val: number) => void;
+}) {
   const [quantity, setQuantity] = useState<number>(1);
-  const { productNumber } = props;
+  const { productNumber, setTotal } = props;
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -28,6 +31,7 @@ export default function Buttons(props: { productNumber: number }) {
   // used hyphen instead of dash for display
   const changeCart = () => {
     addToCart(productNumber, quantity);
+    setTotal(productNumber + quantity);
     if (quantity <= 1) {
       toast(`you have added ${quantity} item to the cart!`);
     } else {

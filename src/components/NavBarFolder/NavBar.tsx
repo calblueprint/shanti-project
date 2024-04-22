@@ -13,7 +13,7 @@ import {
   IconWithLabelLink,
 } from './styles';
 
-export default function NavBar({ ...rest }) {
+export default function NavBar() {
   const [data, setData] = useState(0);
   const [isZero, setIsZero] = useState(true);
 
@@ -21,6 +21,7 @@ export default function NavBar({ ...rest }) {
     const fetchData = async () => {
       setData(await totalNumberOfItemsInCart());
     };
+
     fetchData();
   }, []);
 
@@ -34,7 +35,7 @@ export default function NavBar({ ...rest }) {
   }, [data]);
 
   return (
-    <NavBarComp {...rest}>
+    <NavBarComp>
       <IconWithLabelLink href="../storefront">
         <Image
           src="/images/ShantiLogo.png"

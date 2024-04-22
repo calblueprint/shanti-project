@@ -35,7 +35,7 @@ import {
   TextDiv,
 } from './styles';
 
-import { Product, User, Pickup } from '../../schema/schema';
+import { Product, Pickup } from '../../schema/schema';
 import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
 
 export default function OrderConfirmationPickUp() {

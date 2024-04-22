@@ -41,7 +41,6 @@ import {
 
 import { Product, User, Address } from '../../schema/schema';
 import { Body1Bold } from '../orderPage/styles';
-import { BackButtonDiv } from '../orderConfirmationPickUp/styles';
 
 export default function OrderConfirmationDelivery() {
   const [Cart, setCart] = useState<Product[]>([]);
@@ -93,7 +92,8 @@ export default function OrderConfirmationDelivery() {
       'November',
       'December',
     ];
-    const dateStr = `${months[parseInt(date[1], 10)]} ${date[2]}, ${date[0]}`;
+
+    const dateStr = `${months[Number(date[1]) - 1]} ${date[2]}, ${date[0]}`;
     return `${dateStr}`;
   }
 
@@ -105,7 +105,7 @@ export default function OrderConfirmationDelivery() {
           <BottomColumnDiv>
             <LeftColumnDiv>
               <BackButton destination="./storefront" />
-              <Heading3Bold>Your order has been Submitted</Heading3Bold>
+              <Heading3Bold>Your Order has been Submitted</Heading3Bold>
               <OutterFavoriteDiv>
                 <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
                 <ScrollDiv>
