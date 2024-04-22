@@ -18,6 +18,7 @@ import {
   DeliveryTimes,
   fetchDeliveryTimes,
 } from '@/api/supabase/queries/delivery_queries';
+import { BackButtonDiv } from '../orderConfirmationPickUp/styles';
 import BackButton from '../../components/BackButton/BackButton';
 
 import { fetchCartItemsWithQuantityByID } from '../../api/supabase/queries/cart_queries';
@@ -102,6 +103,9 @@ export default function OrderConfirmationDelivery() {
       <NavBar />
       <CenterDiv>
         <PageDiv>
+          <BackButtonDiv>
+            <BackButton destination="./storefront" />
+          </BackButtonDiv>
           <BottomColumnDiv>
             <LeftColumnDiv>
               <BackButton destination="./storefront" />
@@ -121,8 +125,25 @@ export default function OrderConfirmationDelivery() {
                         }}
                       />
                       <LabelBox>
-                        <Body1Bold>{cartItem.name}</Body1Bold>
-                        <Body2Light>Category: {cartItem.category}</Body2Light>
+                        <div>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontWeight: 'bold',
+                              marginRight: '4px',
+                            }}
+                          >
+                            Quantity:
+                          </span>
+                          <span
+                            style={{
+                              display: 'inline-block',
+                              fontSize: '16px',
+                            }}
+                          >
+                            {cartItem.quantity}
+                          </span>
+                        </div>
                       </LabelBox>
                       <Quantity>
                         <Body2>

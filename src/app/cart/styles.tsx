@@ -61,7 +61,7 @@ export const Backtext = styled.p`
 export const TrashIcon = styled(Trash2)`
   width: 30px;
   height: 30px;
-  color: navy;
+  color: ${COLORS.navy};
   margin-right: 30px;
   margin-left: 50px;
   margin-top: 28px;
