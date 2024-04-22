@@ -107,9 +107,11 @@ export default function StoreFrontNavBar(props: {
       } else {
         newInd = ind + 4;
       }
-      setInd(newInd);
+      setInd(ind);
       changeDisplay(1, newInd);
     }
+    console.log(ind);
+    console.log(buttonCategories.length);
     setReachedEnd(ind + 5 < buttonCategories.length);
     setReachedStart(true);
   };

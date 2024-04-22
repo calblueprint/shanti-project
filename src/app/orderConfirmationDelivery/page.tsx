@@ -105,7 +105,7 @@ export default function OrderConfirmationDelivery() {
           <BottomColumnDiv>
             <LeftColumnDiv>
               <BackButton destination="./storefront" />
-              <Heading3Bold>Your order has been submitted</Heading3Bold>
+              <Heading3Bold>Your order has been Submitted</Heading3Bold>
               <OutterFavoriteDiv>
                 <Heading4Bold>Order No. {orderIDFromSearch}</Heading4Bold>
                 <ScrollDiv>

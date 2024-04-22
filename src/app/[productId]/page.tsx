@@ -6,8 +6,8 @@ import { Body1, Heading1, Body2Light, Body2Bold, Body3 } from '@/styles/fonts';
 import {
   fetchProductByID,
   fetchUserProducts,
-} from '../../api/supabase/queries/product_queries';
-import BackButton from '../../components/BackButton/BackButton';
+} from '@/api/supabase/queries/product_queries';
+import BackButton from '@/components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
@@ -22,9 +22,12 @@ import {
   HeartIcon,
   TopRightContainer,
 } from './styles';
-import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
+import {
+  addOrRemoveProductFromFavorite,
+  fetchUser,
+} from '../../api/supabase/queries/user_queries';
 import NavBar from '../../components/NavBarFolder/NavBar';
-import { Product } from '../../schema/schema';
+import { Product, User } from '../../schema/schema';
 import Buttons from './Buttons';
 
 export default function ItemDisplay({
@@ -44,8 +47,11 @@ export default function ItemDisplay({
           response.category,
         );
         const data = (await fetchUserProducts()) as Product[];
-
-        setIsFavorite(!!data.find(item => item.id === params.productId));
+        const user = (await fetchUser()) as User;
+        if (user == undefined || user.fav_items == undefined) return;
+        setIsFavorite(
+          !!user.fav_items.find(item => item === Number(params.productId)),
+        );
         if (response) {
           setItem(response);
           setFilteredProducts(data);
@@ -56,7 +62,7 @@ export default function ItemDisplay({
     }
 
     fetchProducts();
-  }, [params.productId]);
+  }, []);
 
   async function handleFavorite() {
     await addOrRemoveProductFromFavorite(
