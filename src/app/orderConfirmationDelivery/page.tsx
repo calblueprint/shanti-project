@@ -92,7 +92,9 @@ export default function OrderConfirmationDelivery() {
     const userGrp = user?.delivery_group == null ? 1 : user?.delivery_group;
     const Time = delivTimes[userGrp]?.delivery_time.toLocaleString();
     const res: Date = new Date(Time);
-    const dateStr = `${months[res.getMonth() - 1]} ${res.getDate()}, ${res.getFullYear()}`;
+    const dateStr = `${
+      months[res.getMonth() - 1]
+    } ${res.getDate()}, ${res.getFullYear()}`;
     return `${dateStr}`;
   }
 

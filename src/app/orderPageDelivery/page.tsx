@@ -115,16 +115,21 @@ export default function OrderPageDelivery() {
     const userGrp = user?.delivery_group == null ? 1 : user?.delivery_group;
     const Time = delivTimes[userGrp]?.delivery_time.toLocaleString();
     const res: Date = new Date(Time);
-    const dateStr = `${months[res.getMonth() - 1]} ${res.getDate()}, ${res.getFullYear()}`;
+    const dateStr = `${
+      months[res.getMonth() - 1]
+    } ${res.getDate()}, ${res.getFullYear()}`;
     return `${dateStr}`;
   }
 
   function organizeOrderDate() {
-    const Time = order?.created_at == null ? 1 : order?.created_at.toLocaleString();
+    const Time =
+      order?.created_at == null ? 1 : order?.created_at.toLocaleString();
     const res: Date = new Date(Time);
-    const dateStr = `${months[res.getMonth() - 1]} ${res.getDate()}, ${res.getFullYear()}`;
+    const dateStr = `${
+      months[res.getMonth() - 1]
+    } ${res.getDate()}, ${res.getFullYear()}`;
     let ampm = 'AM';
-    let hour = res.getHours()
+    let hour = res.getHours();
     if (hour > 12) {
       hour -= 12;
       ampm = 'PM';
