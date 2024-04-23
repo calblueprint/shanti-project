@@ -5,7 +5,7 @@ import {
   fetchUser,
   fetchCurrentUserAddress,
 } from '@/api/supabase/queries/user_queries';
-
+import { convertButtonNumberToCategory } from '@/api/supabase/queries/button_queries';
 import {
   Body1,
   Body2,
@@ -82,7 +82,16 @@ export default function OrderPageDelivery() {
         currOrderId,
       )) as ProductWithQuantity[];
       const currOrder = await getOrderById(currOrderId);
-      setOrders(data);
+      const mapCategories = await Promise.all(
+        data.map(async product => {
+          const updateCategory = await convertButtonNumberToCategory(
+            product.category,
+          );
+          return { ...product, category: updateCategory };
+        }),
+      );
+
+      setOrders(mapCategories);
       setOrder(currOrder);
     }
 

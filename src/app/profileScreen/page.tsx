@@ -39,7 +39,6 @@ import {
   AccountDetailsDeliv,
   AccountDetailsPickUp,
   HeadingBack,
-  Spacing,
   HeadingSpacing,
   TextSpacing,
   OrderHistory,
@@ -345,7 +344,7 @@ function LogoutSection() {
     });
     setTimeout(() => {
       router.push('/login');
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -399,7 +398,7 @@ export default function Profile() {
       <NavBarMovedUP />
       <ToastContainer
         position="top-center"
-        autoClose={500}
+        autoClose={3000}
         limit={1}
         hideProgressBar
       />

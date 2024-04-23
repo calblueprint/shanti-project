@@ -246,9 +246,10 @@ export async function fetchCartItemsWithQuantityByID(
   id: string | null,
 ): Promise<ProductWithQuantity[]> {
   if (id == null) throw new Error('no cartID');
+
   const cart = await fetchCartById(id);
   const productPromises = cart.map(async (item: CartItem) => {
-    const product = await fetchProductByID(item.product_id);
+    const product = await fetchProductByID(Number(item.product_id));
     return {
       name: product.name,
       quantity: item.quantity,

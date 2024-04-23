@@ -40,6 +40,7 @@ export const OrderHistoryContainer = styled.div`
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
   width: 800px; // Width of the outer box
   height: auto;
+  min-height: 300px;
   margin-top: 20px;
   padding-top: 10px;
 `;

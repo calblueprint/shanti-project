@@ -6,8 +6,8 @@ import { Body1, Heading1, Body2Light, Body2Bold, Body3 } from '@/styles/fonts';
 import {
   fetchProductByID,
   fetchUserProducts,
-} from '../../api/supabase/queries/product_queries';
-import BackButton from '../../components/BackButton/BackButton';
+} from '@/api/supabase/queries/product_queries';
+import BackButton from '@/components/BackButton/BackButton';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {
@@ -22,9 +22,12 @@ import {
   HeartIcon,
   TopRightContainer,
 } from './styles';
-import { addOrRemoveProductFromFavorite } from '../../api/supabase/queries/user_queries';
+import {
+  addOrRemoveProductFromFavorite,
+  fetchUser,
+} from '../../api/supabase/queries/user_queries';
 import NavBar from '../../components/NavBarFolder/NavBar';
-import { Product } from '../../schema/schema';
+import { Product, User } from '../../schema/schema';
 import Buttons from './Buttons';
 
 export default function ItemDisplay({
@@ -35,6 +38,7 @@ export default function ItemDisplay({
   const [Item, setItem] = useState<Product>();
   const [IsFavorite, setIsFavorite] = useState(false);
   const [FilteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -44,8 +48,11 @@ export default function ItemDisplay({
           response.category,
         );
         const data = (await fetchUserProducts()) as Product[];
-
-        setIsFavorite(!!data.find(item => item.id === params.productId));
+        const user = (await fetchUser()) as User;
+        if (user === undefined || user.fav_items === undefined) return;
+        setIsFavorite(
+          !!user.fav_items.find(item => item === Number(params.productId)),
+        );
         if (response) {
           setItem(response);
           setFilteredProducts(data);
@@ -56,7 +63,7 @@ export default function ItemDisplay({
     }
 
     fetchProducts();
-  }, [params.productId]);
+  }, []);
 
   async function handleFavorite() {
     await addOrRemoveProductFromFavorite(
@@ -102,7 +109,7 @@ export default function ItemDisplay({
           <Body1 style={{ fontWeight: 'normal', paddingTop: '5px' }}>
             <b>Category:</b> {Item?.category}
           </Body1>
-          <Buttons productNumber={params.productId} />
+          <Buttons productNumber={params.productId} setTotal={setTotal} />
           <Body2Bold style={{ paddingTop: '40px' }}>Product Details:</Body2Bold>
           <Body2Light style={{ paddingTop: '20px' }}>
             {Item?.description}

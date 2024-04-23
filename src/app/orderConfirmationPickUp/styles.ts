@@ -9,11 +9,9 @@ export const FavoriteDiv = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 750px;
+  width: 100%;
   margin-bottom: 50px;
   margin-top: 30px;
-  margin-right: 20px;
-  gap: 40px;
 `;
 
 export const OutterFavoriteDiv = styled.div`
@@ -30,21 +28,21 @@ export const OutterFavoriteDiv = styled.div`
   margin-right: 60px;
   margin-left: 60px;
   padding-right: 20px;
-  padding-left: 40px;
+  padding-left: 20px;
   padding-top: 10px;
 `;
 
 export const ScrollDiv = styled.div`
   overflow: scroll;
   overflow-x: hidden;
-  max-width: 100%;
+  width: 100%;
 `;
 
 export const ImageDiv = styled.div`
   box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.08);
   width: 150px;
   height: 150px;
-  margin-left: 30px;
+  margin-left: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,26 +223,17 @@ export const LeftColumnDiv = styled.div`
 export const RightColumnDiv = styled.div`
   display: flex;
   flex-flow: column;
-<<<<<<< HEAD
-
-=======
->>>>>>> 0c497ffa604d1a861f8fac67277446b2133764a5
   align-items: left;
   width: 475px;
+  margin-top: 78px;
 `;
 
 export const BackButtonDiv = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  width: 800px;
-<<<<<<< HEAD
-
-  margin-left: 40px;
-
-=======
-  margin-left: 40px;
->>>>>>> 0c497ffa604d1a861f8fac67277446b2133764a5
+  width: 100%;
+  margin-left: 60px;
   margin-bottom: 40px;
   margin-top: 20px;
 `;
@@ -280,7 +269,7 @@ export const BottomColumnDiv = styled.div`
 export const TextDiv = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
+  margin-left: 55px;
   margin-top: 10px;
   margin-bottom: 10px;
 `;

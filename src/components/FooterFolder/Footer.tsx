@@ -34,8 +34,7 @@ export default function Footer() {
           <Body1
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              window.location.href =
-                'https://www.facebook.com/ShantiProjectSF/';
+              window.open('https://www.facebook.com/ShantiProjectSF/');
             }}
           >
             <MySpanIcon>
@@ -45,8 +44,9 @@ export default function Footer() {
           <Body1
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              window.location.href =
-                'https://www.youtube.com/channel/UCc3DMrL7_KDOzeJNVkoFrsA';
+              window.open(
+                'https://www.youtube.com/channel/UCc3DMrL7_KDOzeJNVkoFrsA',
+              );
             }}
           >
             <MySpanIcon>
@@ -56,8 +56,7 @@ export default function Footer() {
           <Body1
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              window.location.href =
-                'https://www.instagram.com/shantiprojectsf/';
+              window.open('https://www.instagram.com/shantiprojectsf/');
             }}
           >
             <MySpanIcon>
@@ -77,8 +76,10 @@ export default function Footer() {
           <Body2New
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              window.location.href =
-                'https://maps.app.goo.gl/LJWvkdhwrRMhjEZs7';
+              window.open(
+                'https://maps.app.goo.gl/LJWvkdhwrRMhjEZs7',
+                '_blank',
+              );
             }}
           >
             <MySpan>SEE ON MAP</MySpan>
