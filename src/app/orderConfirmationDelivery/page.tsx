@@ -49,6 +49,21 @@ export default function OrderConfirmationDelivery() {
   const searchParams = useSearchParams();
   const orderIDFromSearch = searchParams.get('orderID');
   const [delivTimes, setDelivTimes] = useState<DeliveryTimes[]>([]);
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
   useEffect(() => {
     async function fetchProducts() {
       const cartItems = (await fetchCartItemsWithQuantityByID(
@@ -76,24 +91,8 @@ export default function OrderConfirmationDelivery() {
   function organizeDelivTime() {
     const userGrp = user?.delivery_group == null ? 1 : user?.delivery_group;
     const Time = delivTimes[userGrp]?.delivery_time.toLocaleString();
-    const date =
-      Time == null ? ['0', '0', '0'] : Time?.substring(0, 10).split('-');
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
-    const dateStr = `${months[Number(date[1]) - 1]} ${date[2]}, ${date[0]}`;
+    const res: Date = new Date(Time);
+    const dateStr = `${months[res.getMonth() - 1]} ${res.getDate()}, ${res.getFullYear()}`;
     return `${dateStr}`;
   }
 
