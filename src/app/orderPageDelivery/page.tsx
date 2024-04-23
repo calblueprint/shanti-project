@@ -114,37 +114,30 @@ export default function OrderPageDelivery() {
   function organizeDelivTime() {
     const userGrp = user?.delivery_group == null ? 1 : user?.delivery_group;
     const Time = delivTimes[userGrp]?.delivery_time.toLocaleString();
-    const date =
-      Time == null ? ['0', '0', '0'] : Time?.substring(0, 10).split('-');
-    const dateStr = `${months[parseInt(date[1], 10) - 1]} ${date[2]}, ${
-      date[0]
-    }`;
+    const res: Date = new Date(Time);
+    const dateStr = `${
+      months[res.getMonth() - 1]
+    } ${res.getDate()}, ${res.getFullYear()}`;
     return `${dateStr}`;
   }
 
   function organizeOrderDate() {
-    const Time = order?.created_at.toLocaleString();
-    const date =
-      Time == null ? ['0', '0', '0'] : Time?.substring(0, 10).split('-');
-    const dateStr = `${months[parseInt(date[1], 10) - 1]} ${date[2]}, ${
-      date[0]
-    }`;
-    return `${dateStr}`;
-  }
-
-  function organizeOrderTime() {
-    const Time = order?.created_at.toLocaleString();
-
+    const Time =
+      order?.created_at == null ? 1 : order?.created_at.toLocaleString();
+    const res: Date = new Date(Time);
+    const dateStr = `${
+      months[res.getMonth() - 1]
+    } ${res.getDate()}, ${res.getFullYear()}`;
     let ampm = 'AM';
-    const date =
-      Time == null ? ['00', '00'] : Time?.substring(11, 16).split(':');
-
-    if (parseInt(date[0], 10) >= 12) {
-      date[0] = (parseInt(date[0], 10) - 12).toLocaleString();
+    let hour = res.getHours();
+    if (hour > 12) {
+      hour -= 12;
+      ampm = 'PM';
+    } else if (hour === 12) {
       ampm = 'PM';
     }
-    const timeStr = `${date[0]}:${date[1]} ${ampm}`;
-    return `${timeStr}`;
+    const timeStr = `${hour}:${res.getMinutes()} ${ampm}`;
+    return [dateStr, timeStr];
   }
 
   return (
@@ -157,8 +150,8 @@ export default function OrderPageDelivery() {
               <BackButton destination="./orderHistory" />
               <Heading2Bold>Order No. {orderIDFromSearch}</Heading2Bold>
               <OutterFavoriteDiv>
-                <Body1>Order Date: {organizeOrderDate()}</Body1>
-                <Body1>Order Time: {organizeOrderTime()}</Body1>
+                <Body1>Order Date: {organizeOrderDate()[0]}</Body1>
+                <Body1>Order Time: {organizeOrderDate()[1]}</Body1>
                 <ScrollDiv>
                   {orders.map(product => (
                     <FavoriteDiv key={product.id}>

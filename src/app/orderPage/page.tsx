@@ -117,7 +117,7 @@ export default function OrderPage() {
       <CenterDiv>
         <PageDiv>
           <BackButtonDiv>
-            <BackButton destination="./storefront" />
+            <BackButton destination="./orderHistory" />
           </BackButtonDiv>
           <BottomColumnDiv>
             <LeftColumnDiv>
