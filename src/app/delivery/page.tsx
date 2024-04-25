@@ -17,7 +17,6 @@ import {
   fetchCartItemsWithQuantity,
   totalNumberOfItemsInCart,
 } from '../../api/supabase/queries/cart_queries';
-import { Heading1, Normal700Text } from '../../styles/fonts';
 import {
   ProductWithQuantity,
   User,
@@ -31,10 +30,14 @@ import {
   OrderContainer,
   OrderButton,
   InformationContainer,
-  InformationText,
   BackButtonDiv,
   OutterDiv,
+  InformationField,
+  Label,
+  Input,
+  ForceColumnDiv,
 } from './styles';
+import { Heading1Bold } from '../../styles/fonts';
 
 export default function App() {
   const [numberOfItems, setNumberOfItems] = useState(0);
@@ -61,21 +64,32 @@ export default function App() {
     <main>
       <NavBar />
       <OutterDiv>
-        <BackButtonDiv>
-          <BackButton destination="/storefront" />
-        </BackButtonDiv>
         <DeliveryContainer>
-          <InformationContainer>
-            <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
-            <Normal700Text>Name</Normal700Text>
-            <InformationText>
+          <ForceColumnDiv>
+            <BackButtonDiv>
+              <BackButton destination="/storefront" />
+            </BackButtonDiv>
+
+            <Heading1Bold style={{ marginLeft: '41px', marginTop: '20px' }}>
+              Shipping
+            </Heading1Bold>
+
+            <InformationContainer>
+              <Label>Name</Label>
+              <Input />
               {`${Profile?.first_name} ${Profile?.last_name}`}
-            </InformationText>
-            <Normal700Text>Address</Normal700Text>
-            <InformationText>
+              <Input />
+              <Label>Address</Label>
+              <Input />
               {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
-            </InformationText>
-          </InformationContainer>
+              <Input />
+              <Label>Phone Number</Label>
+              <Input />
+              {Profile?.phone_numbers}
+              <Input />
+            </InformationContainer>
+          </ForceColumnDiv>
+
           <OrderContainer>
             <OrderSummary cart={cart} numberOfItems={numberOfItems} />
             <OrderButton
@@ -97,3 +111,15 @@ export default function App() {
     </main>
   );
 }
+
+// {/* <InformationContainer>
+//   <Heading1 style={{ marginBottom: '38px' }}>Shipping</Heading1>
+//   <Normal700Text>Name</Normal700Text>
+//   <InformationText>
+//     {`${Profile?.first_name} ${Profile?.last_name}`}
+//   </InformationText>
+//   <Normal700Text>Address</Normal700Text>
+//   <InformationText>
+//     {UserAddress?.street}, {UserAddress?.city}, {UserAddress?.zipcode}
+//   </InformationText>
+// </InformationContainer> */}

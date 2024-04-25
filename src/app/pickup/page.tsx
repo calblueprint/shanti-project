@@ -1,9 +1,6 @@
 'use client';
 
 // import { GlobalStyle } from "@/styles/components";
-
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
 import { ArrowLeft } from 'react-feather';
 import { fetchUser } from '@/api/supabase/queries/user_queries';
 import querystring from 'querystring';
@@ -14,7 +11,7 @@ import {
 } from '@/api/supabase/queries/cart_queries';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Body1, Heading4Bold } from '@/styles/fonts';
+import { Heading4Bold } from '@/styles/fonts';
 import { fetchNRecentPickupTimes } from '@/api/supabase/queries/pickup_queries';
 import {
   updateCartPickupId,
@@ -39,7 +36,7 @@ import {
   PickupContent,
   PickupContainer,
   PickupTimeButton,
-  ToastPopUP,
+  InformationContainer,
 } from './styles';
 
 function DateInfoComponent(date: { date: unknown }) {
@@ -104,12 +101,6 @@ export default function PickUp() {
   return (
     <div>
       <NavBar />
-      <ToastPopUP
-        position="top-right"
-        autoClose={500}
-        limit={1}
-        hideProgressBar
-      />
       <PageDiv>
         <ForceColumnDiv>
           <BackDiv onClick={() => router.push('/cart')}>
@@ -120,29 +111,32 @@ export default function PickUp() {
             <Heading4Bold style={{ marginBottom: '38px', fontSize: '40px' }}>
               Pick Up
             </Heading4Bold>
-            <Heading4Bold>Name</Heading4Bold>
+            <InformationContainer>
+              <Heading4Bold>Name</Heading4Bold>
+              <PickupContent>
+                {Profile?.first_name} {Profile?.last_name}
+              </PickupContent>
+              <Heading4Bold>Phone Number</Heading4Bold>
+              <PickupContent>{Profile?.phone_numbers}</PickupContent>
+            </InformationContainer>
+            {/* <Heading4Bold>Name</Heading4Bold>
             <PickupContent>
               {Profile?.first_name} {Profile?.last_name}
             </PickupContent>
             <Heading4Bold>Phone Number</Heading4Bold>
-            <PickupContent>{Profile?.phone_numbers}</PickupContent>
+            <PickupContent>{Profile?.phone_numbers}</PickupContent> */}
+
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Heading4Bold>Time Slot</Heading4Bold>
+            </div>
+
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                marginBottom: '10px',
+                width: '660px',
               }}
             >
-              <Heading4Bold>Time Slot</Heading4Bold>
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-              {' '}
-              <Body1>Pick Up times: 10:00 AM - 12:00 PM</Body1>{' '}
-            </div>
-            <div>
-              <Body1>Location: 3170 23rd Street, San Francisco, CA 94110</Body1>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               {Time.map(time => (
                 <PickupTimeButton
                   key={time.id}
@@ -164,6 +158,8 @@ export default function PickUp() {
                 </PickupTimeButton>
               ))}
             </div>
+            <div> Pick Up times: 10:00 AM - 12:00 PM </div>
+            <div>Location: 3170 23rd Street, San Francisco, CA 94110</div>
           </PickupContainer>
         </ForceColumnDiv>
         <RightColumnDiv>
@@ -177,13 +173,12 @@ export default function PickUp() {
                 await updateOrderStatus(orderID, OrderStatus.Submitted);
                 await createOrder();
                 const newestOrder = await fetchCartIdFromUser();
+                console.log(newestOrder);
                 await updateOrderStatus(newestOrder, OrderStatus.inProgress);
                 const queryString = querystring.stringify({ orderID });
                 router.push(`/orderConfirmationPickUp?${queryString}`);
-              }
-              if (selectedPickupIndex === 0) {
-                toast(`You must select a pick-up date!`);
-                toast.clearWaitingQueue();
+              } else {
+                // TODO handle the case where they didn't select a time!
               }
             }}
           >
