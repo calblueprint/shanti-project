@@ -160,7 +160,7 @@ export default function OrderPage() {
               <ShippingDetailsDiv>
                 <Heading3Bold>Pickup Information</Heading3Bold>
                 <DetailsHeader>Time Slot</DetailsHeader>
-                <Body1>{organizePickupTime()} (10:00 am - 12:30 pm)</Body1>
+                <Body1>{organizePickupTime()} (10:30 am - 12:30 pm)</Body1>
                 <DetailsHeader>Location</DetailsHeader>
                 <Body1>3170 23rd Street, San Francisco, CA 94110</Body1>
               </ShippingDetailsDiv>
