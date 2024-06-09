@@ -137,7 +137,7 @@ export default function PickUp() {
             </div>
             <div style={{ marginBottom: '10px' }}>
               {' '}
-              <Body1>Pick Up times: 10:00 AM - 12:00 PM</Body1>{' '}
+              <Body1>Pick Up times: 10:30 AM - 12:30 PM</Body1>{' '}
             </div>
             <div>
               <Body1>Location: 3170 23rd Street, San Francisco, CA 94110</Body1>
